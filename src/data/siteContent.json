@@ -1,0 +1,447 @@
+{
+  "visibility": {
+    "hero": true,
+    "process": true,
+    "features": true,
+    "integrations": true,
+    "pricing": true,
+    "caseStudies": true,
+    "faq": true,
+    "contact": true
+  },
+  "assets": {
+    "logoType": "image",
+    "logoUrl": "/uploads/1791381914884-Logo_Alt_5-10.png",
+    "faviconUrl": "/favicon.ico",
+    "heroMockupType": "image",
+    "heroMockupImage": "/images/mockups/dashboard.png"
+  },
+  "brand": {
+    "name": "CODEICON",
+    "badge": "Modern ekipler için strateji ve büyüme",
+    "siteTitle": "CODEICON | MICE Acente Sistemi",
+    "ctaText": "Bize Ulaşın",
+    "contactEmail": "hello@codeicon.co",
+    "contactPhone": "+90 (533) 889 99 44"
+  },
+  "buttons": {
+    "navbarCtaText": "Bize Ulaşın",
+    "navbarCtaHref": "#contact",
+    "heroPrimaryText": "Hadi Başlayalım",
+    "heroPrimaryHref": "#contact",
+    "heroSecondaryText": "Bize Ulaşın",
+    "heroSecondaryHref": "#contact",
+    "contactSubmitText": "Mesajı Gönder",
+    "newsletterSubmitText": "Abone Ol"
+  },
+  "navigation": {
+    "headerLinks": [
+      {
+        "id": "1",
+        "label": "Hakkımızda",
+        "href": "#process"
+      },
+      {
+        "id": "2",
+        "label": "Özellikler",
+        "href": "#features"
+      },
+      {
+        "id": "3",
+        "label": "Fiyatlandırma",
+        "href": "#pricing"
+      }
+    ],
+    "footerLinks": [
+      {
+        "label": "Ana Sayfa",
+        "href": "#"
+      },
+      {
+        "label": "Hakkımızda",
+        "href": "#process"
+      },
+      {
+        "label": "Fiyatlandırma",
+        "href": "#pricing"
+      },
+      {
+        "label": "Referanslar",
+        "href": "#references"
+      }
+    ]
+  },
+  "hero": {
+    "title": "MICE Acentelerini",
+    "titleAccent": "geleceğe taşıyoruz",
+    "subtitle": "Codeicon girişimlerle ortaklık kurarak operasyonları kolaylaştırıyor, ekip performansını artırıyor ve kalıcı başarı için bir temel oluşturuyor.",
+    "rating": "4.9 / 5",
+    "customerCount": "50+ MICE & Acente",
+    "ctaPrimary": "Hadi Başlayalım",
+    "ctaSecondary": "Bize Ulaşın",
+    "mockupBrowserUrl": "app.preview.live",
+    "cardTitle": "Acenteler",
+    "cardFilterText": "En Yeniler",
+    "cardFooterText": "Tüm Acenteler",
+    "statsTitle": "Günlük Ortalama",
+    "customers": [
+      {
+        "id": "1",
+        "name": "Mert Yılmaz",
+        "company": "Tempus Travel (MICE)",
+        "initials": "MY",
+        "avatarBg": "#FEF7AF",
+        "avatarColor": "#594C00",
+        "statValue": "2h 20m",
+        "statBadge": "+30dk bu hafta"
+      },
+      {
+        "id": "2",
+        "name": "Selin Kaya",
+        "company": "La Tour Event",
+        "initials": "SK",
+        "avatarBg": "#D4E3CB",
+        "avatarColor": "#334A29",
+        "statValue": "3h 45m",
+        "statBadge": "+45dk bu hafta"
+      },
+      {
+        "id": "3",
+        "name": "Burak Demir",
+        "company": "Ravento Travel",
+        "initials": "BD",
+        "avatarBg": "#E3CBDD",
+        "avatarColor": "#4D2845",
+        "statValue": "1h 50m",
+        "statBadge": "+15dk bu hafta"
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "Sıfır Hata Altyapısı",
+    "title": "Üç adımda akıllı ve hatasız acente operasyonu",
+    "subtitle": "Otellere talep geçmekten teklif hazırlamaya, sahada araç koordinasyonuna ve cari mutabakata kadar her adım birbiriyle kusursuz konuşur.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Kolay Kullanım",
+        "description": "Sisteminizi dakikalar içinde açalım."
+      },
+      {
+        "number": "02",
+        "title": "Anında Kurulum",
+        "description": "Tanımlamalarınızı ve yetkilendirmelerinizi tamamlayın."
+      },
+      {
+        "number": "03",
+        "title": "Operasyonlarınızı Yönetmeye Başlayın",
+        "description": "Artık her şey sizin için daha kolay, daha efektif, daha ulaşılabilir."
+      }
+    ],
+    "footerStatus": "Sistem Durumu: Tam Operasyonel"
+  },
+  "features": {
+    "eyebrow": "Merkezi Modül Altyapısı",
+    "title": "Yüksek Performanslı Acente Mimarisi",
+    "subtitle": "Operasyonel yükü azaltan, ekiplerinizi senkronize eden ve tüm süreçleri merkezileştiren akıllı altyapı.",
+    "tabs": [
+      {
+        "id": "portal",
+        "label": "Müşteri Portalı",
+        "title": "Müşterilerinize online teklif ve mutabakat gönderin",
+        "description": "Müşterilerinizin teklifleri online inceleyip tek tıkla onayladığı, onaylanan teklifin kendini kilitleyerek otomatik projeye dönüştüğü altyapı."
+      },
+      {
+        "id": "kpi",
+        "label": "Saha & Transfer",
+        "title": "Akıllı transfer planlama ve filo yönetimi",
+        "description": "Uçuş saatlerine duyarlı otomatik kalkış hesaplama, araç pax kapasitesi kontrolü ve şoförlere anlık WhatsApp görev emri iletimi."
+      },
+      {
+        "id": "automation",
+        "label": "MICE & Projeler",
+        "title": "Kongre, toplantı ve grup organizasyonları",
+        "description": "Çoklu otel yönetimi, matbu Excel rooming listelerini tek tıkla sisteme aktarma ve projeye özel anlık kar/zarar analizi."
+      },
+      {
+        "id": "team",
+        "label": "Finans & Mutabakat",
+        "title": "TCMB canlı kurlar ve otomatik cari mutabakat",
+        "description": "Grup giriş gününde döviz kurunu sabitleme, onaylanan faturaların muhasebe havuzuna düşmesi ve tedarikçilerle dijital mutabakat."
+      }
+    ]
+  },
+  "integrations": {
+    "eyebrow": "Entegre Ekosistem",
+    "title": "Güçlü ve tam uyumlu entegrasyonlar",
+    "subtitle": "Kullandığınız bankalar, TCMB canlı kurları, otel sistemleri ve muhasebe ERP'leriyle kesintisiz iki yönlü veri köprüsü.",
+    "highlights": [
+      "50+ hazır resmi acente entegrasyonu",
+      "TCMB Canlı Kur ve Sabitleme",
+      "Otomatik Muhasebe & ERP Entegrasyonu"
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Şeffaf Paketler",
+    "title": "Esnek ve şeffaf fiyatlandırma",
+    "subtitle": "Acentenizin operasyon hacmine en uygun paketi seçin, işiniz büyüdükçe dilediğiniz zaman yükseltin.",
+    "plans": [
+      {
+        "name": "Butik Acente",
+        "badge": "Hızlı Başlangıç",
+        "popular": false,
+        "priceMonthly": 199,
+        "priceAnnual": 159,
+        "description": "Münferit operasyonlar ve Sejour rezervasyonları yöneten butik acenteler için ideal.",
+        "cta": "Demoyu İncele",
+        "ctaHref": "#contact",
+        "features": [
+          "2 Kullanıcı Hesabı",
+          "Sejour & Münferit Konaklama",
+          "Hızlı Teklif Hazırlama",
+          "E-posta & Destek Hattı",
+          "Matbu Excel İçe Aktarım"
+        ]
+      },
+      {
+        "name": "MICE Pro",
+        "badge": "En Çok Tercih Edilen",
+        "popular": true,
+        "priceMonthly": 399,
+        "priceAnnual": 319,
+        "description": "Kongre, etkinlik ve yoğun saha transferleri yöneten profesyonel MICE ekipleri için.",
+        "cta": "Demoyu İncele",
+        "ctaHref": "#contact",
+        "features": [
+          "5 Kullanıcı Hesabı",
+          "Tam Kapsamlı MICE & Proje Modülü",
+          "Akıllı Transfer & Pax Kontrolü",
+          "TCMB Canlı Kur & Forecast",
+          "Online Müşteri Teklif Onayı",
+          "Öncelikli 7/24 Destek"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "badge": "Büyük Organizasyonlar",
+        "popular": false,
+        "priceMonthly": 499,
+        "priceAnnual": 399,
+        "description": "Büyük kongre firmaları, çok şubeli acenteler ve kurumsal seyahat şirketleri için.",
+        "cta": "Bizimle İletişime Geçin",
+        "ctaHref": "#contact",
+        "features": [
+          "Sınırsız Kullanıcı Hesabı",
+          "Tüm MICE Pro Özellikleri Dahil",
+          "Özel ERP / Muhasebe Entegrasyonu",
+          "Özel Güvenlik SLA & Bulut Yedekleme",
+          "Kişisel Müşteri Temsilcisi & Eğitim"
+        ]
+      }
+    ],
+    "currency": "€",
+    "monthlyLabel": "Aylık",
+    "annualLabel": "Yıllık",
+    "annualDiscountBadge": "%20 İndirim",
+    "socialProofRating": "4.9 / 5 Memnuniyet",
+    "socialProofText": "50+ MICE & Acente Ekibi",
+    "featuresHeader": "Pakete Dahil Özellikler",
+    "perMonthLabel": "/ ay"
+  },
+  "caseStudies": {
+    "eyebrow": "Saha Deneyimleri",
+    "title": "Başarı Hikayeleri & Referanslar",
+    "subtitle": "CODEICON ile operasyonlarını sıfır hataya indiren sektörün öncü turizm ve MICE acenteleri."
+  },
+  "faq": {
+    "eyebrow": "Merak Edilenler",
+    "title": "Aklınıza takılan sorular",
+    "subtitle": "Sistemin işleyişi, geçiş süreci ve entegrasyonlar hakkında en çok merak edilen soruların yanıtları.",
+    "items": [
+      {
+        "q": "Mevcut Excel rooming ve transfer listelerimizi içeri aktarabilir miyiz?",
+        "a": "Evet! Matbu Excel desteğimiz sayesinde yüzlerce misafirden oluşan konaklama veya transfer listelerini tek tıkla sisteme aktarabilirsiniz."
+      },
+      {
+        "q": "Uçuş saati değiştiğinde transfer saatleri otomatik güncelleniyor mu?",
+        "a": "Evet, sistem uçuş saatine doğrudan duyarlıdır. Belirlediğiniz kurala göre (örneğin uçuştan 3 saat önce) transfer saati ve araç planı otomatik olarak revize edilir."
+      },
+      {
+        "q": "Döviz kurları nasıl yönetiliyor? TCMB entegrasyonu var mı?",
+        "a": "Sistem TCMB günlük kurlarını canlı çeker. Dilerseniz grup giriş tarihindeki kuru tek tıkla sabitleyebilir ve döviz dalgalanmalarına karşı bütçenizi garantiye alabilirsiniz."
+      },
+      {
+        "q": "Müşteriler teklifleri sistem üzerinden online onaylayabiliyor mu?",
+        "a": "Kesinlikle. Müşterinize özel güvenli onay linki iletilir ve onaylandığı an teklif kendini otomatik kilitleyerek Projeler modülüne aktarılır."
+      },
+      {
+        "q": "Sisteme geçiş ve personellerin eğitimi ne kadar sürüyor?",
+        "a": "Kullanıcı dostu arayüz sayesinde sistem dakikalar içinde açılır; operasyon ekibiniz en geç 1-2 gün içinde tüm modülleri aktif şekilde kullanmaya başlar."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Geleceğin Acentesi",
+    "title": "Yolculuğa Başlayın",
+    "subtitle": "Acentenizin operasyonel ve finansal süreçlerini tek akıllı omurgada birleştirelim.",
+    "email": "hello@codeicon.co",
+    "phone": "+90 (533) 889 99 44",
+    "nameLabel": "Ad Soyad",
+    "namePlaceholder": "Adınız Soyadınız",
+    "emailLabel": "E-Posta",
+    "emailPlaceholder": "ornek@acente.com",
+    "messageLabel": "Operasyonel İhtiyaçlarınız",
+    "messagePlaceholder": "Acentenizin büyüklüğü, yıllık pax hacminiz veya ilgilendiğiniz modüller...",
+    "successTitle": "Mesajınız Başarıyla İletildi!",
+    "successMessage": "MICE ve operasyon uzmanımız en kısa sürede sizinle iletişime geçecektir.",
+    "successButton": "Yeni bir mesaj gönder",
+    "newsletterTitle": "MICE & Acente Bültenine Kaydolun",
+    "newsletterSubtitle": "Turizm teknolojileri, saha yönetimi ve acente kârlılığı üzerine güncel rehberler.",
+    "newsletterPlaceholder": "E-posta adresiniz",
+    "newsletterSuccess": "✓ Bülten aboneliğiniz başarıyla kaydedildi!"
+  },
+  "footer": {
+    "description": "CODEICON, kurumsal MICE acenteleri ve seyahat ekipleri için geliştirilmiş yeni nesil operasyon ve finans işletim sistemidir.",
+    "systemStatus": "Tüm Sistemler Operasyonel",
+    "showSystemStatus": true,
+    "col1Title": "Hızlı Erişim",
+    "col1Links": [
+      {
+        "label": "Ana Sayfa",
+        "href": "#"
+      },
+      {
+        "label": "Hakkımızda",
+        "href": "#process"
+      },
+      {
+        "label": "Özellikler",
+        "href": "#features"
+      },
+      {
+        "label": "Fiyatlandırma",
+        "href": "#pricing"
+      },
+      {
+        "label": "Referanslar",
+        "href": "#references"
+      }
+    ],
+    "email": "hello@codeicon.co",
+    "phone": "+90 (533) 889 99 44",
+    "location": "İstanbul & Antalya, Türkiye",
+    "copyright": "© 2026 CODEICON. Tüm hakları saklıdır.",
+    "legalLinks": [
+      {
+        "label": "Gizlilik Politikası",
+        "href": "#"
+      },
+      {
+        "label": "Kullanım Koşulları",
+        "href": "#"
+      }
+    ]
+  },
+  "references": {
+    "logos": [
+      {
+        "id": "1791380703136",
+        "name": "TEMPUS TRAVEL",
+        "logoUrl": "/uploads/1791380715995-TEMPUS_LOGO_BLACK.png",
+        "category": "MICE & Kongre"
+      },
+      {
+        "id": "1791380717817",
+        "name": "LA TOUR EVENT",
+        "logoUrl": "/uploads/1791380736167-TRANSPARAN-LOGO-03-1-scaled.png",
+        "category": "MICE & Kongre"
+      },
+      {
+        "id": "1791380738433",
+        "name": "RAVENTO TRAVEL",
+        "logoUrl": "/uploads/1791380760782-Varl_k_31_4x-8-2.png",
+        "category": "MICE & Kongre"
+      }
+    ],
+    "items": [],
+    "testimonials": [
+      {
+        "quote": "CODEICON ile operasyonlarımızı tamamen merkezileştirdik. Excel karmaşası ve saha transferlerinde pax çakışmaları tamamen geride kaldı.",
+        "author": "Anılay Acıkavak",
+        "role": "Operasyon Direktörü, Tempus Travel",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+      },
+      {
+        "quote": "Tekliflerimizin online onaylanıp tek tıkla kilitlenerek projeye dönüşmesi satış ekibimizin hızını ve dönüşüm oranını 3 katına çıkardı.",
+        "author": "Haki Tokul",
+        "role": "Genel Koordinatör, La Tour Event",
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
+      },
+      {
+        "quote": "TCMB canlı kurlar üzerinden proje girişinde kur sabitleme ve online cari mutabakat muhasebe departmanımıza müthiş zaman kazandırdı.",
+        "author": "Tayfun Kürtür",
+        "role": "Kurucu Ortak, Ravento Travel",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
+      }
+    ]
+  },
+  "theme": {
+    "fontFamily": "'Geist', 'Albert Sans', -apple-system, sans-serif",
+    "fontName": "Geist & Albert Sans (Grovia)",
+    "googleFontUrl": "https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&family=Fragment+Mono&family=Geist:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+    "colors": {
+      "background": "#F4F2EE",
+      "foreground": "#1A1A1A",
+      "muted": "#7A7570",
+      "accent": "#FEF7AF",
+      "accentText": "#594C00",
+      "cardBg": "#FFFFFF",
+      "border": "#E6E1DC",
+      "buttonBg": "#1A1A1A",
+      "buttonText": "#FFFFFF"
+    },
+    "typography": {
+      "heroTitle": {
+        "size": "clamp(2.5rem, 5.5vw, 4.25rem)",
+        "weight": "400",
+        "italic": false,
+        "color": "#1A1A1A"
+      },
+      "heroTitleAccent": {
+        "weight": "400",
+        "italic": true,
+        "color": "#1A1A1A"
+      },
+      "heroSubtitle": {
+        "size": "clamp(1rem, 2vw, 1.125rem)",
+        "weight": "400",
+        "italic": false,
+        "color": "#7A7570"
+      },
+      "sectionEyebrow": {
+        "size": "0.75rem",
+        "weight": "500",
+        "italic": false,
+        "color": "#594C00"
+      },
+      "sectionTitle": {
+        "size": "clamp(1.875rem, 3.8vw, 2.75rem)",
+        "weight": "400",
+        "italic": false,
+        "color": "#1A1A1A"
+      },
+      "sectionSubtitle": {
+        "size": "1rem",
+        "weight": "400",
+        "italic": false,
+        "color": "#7A7570"
+      },
+      "cardTitle": {
+        "size": "1.25rem",
+        "weight": "500",
+        "italic": false,
+        "color": "#1A1A1A"
+      }
+    }
+  }
+}
