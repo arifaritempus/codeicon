@@ -5408,10 +5408,12 @@ export default function AdminPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-sm font-bold text-[#1A1A1A]">Genel Blog Sayfası Ayarları</h3>
-                      <p className="text-xs text-[#8C8C8C]">Blog ana sayfasının (/blog) başlıkları ve görünürlük durumu</p>
+                      <p className="text-xs text-[#8C8C8C]">
+                        Blog başlıkları ve menü görünürlüğü (Kapalıyken Google SEO ve doğrudan linkler kesintisiz çalışır)
+                      </p>
                     </div>
 
-                    <label className="flex items-center gap-2 cursor-pointer bg-white px-3 py-1.5 rounded-full border border-[#DDD7D0] shadow-2xs">
+                    <label className="flex items-center gap-2 cursor-pointer bg-white px-3.5 py-1.5 rounded-full border border-[#DDD7D0] shadow-2xs hover:bg-[#FAF9F6] transition">
                       <input
                         type="checkbox"
                         checked={content.blog?.enabled !== false}
@@ -5424,10 +5426,19 @@ export default function AdminPage() {
                         className="rounded border-[#DDD7D0] text-[#1A1A1A] focus:ring-black"
                       />
                       <span className="text-xs font-semibold text-[#1A1A1A]">
-                        {content.blog?.enabled !== false ? "Blog Aktif (Yayında)" : "Blog Gizli (Kapalı)"}
+                        {content.blog?.enabled !== false ? "Menüde Göster (Açık)" : "Menüde Gizle (Sadece SEO Aktif)"}
                       </span>
                     </label>
                   </div>
+
+                  {content.blog?.enabled === false && (
+                    <div className="p-3 bg-[#FEF7AF]/40 border border-[#E6DD82] rounded-xl text-xs text-[#594C00] flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 shrink-0 text-[#594C00]" />
+                      <span>
+                        <strong>Google &amp; SEO Modu Aktif:</strong> Blog bağlantısı sitenin üst menüsünde (Navbar) ve alt bilgisinde (Footer) ziyaretçilere gösterilmez; ancak tüm blog sayfaları (`/blog`), `sitemap.xml` ve Google arama indekslemesi arama motorlarında öne çıkmanız için %100 aktif kalır.
+                      </span>
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div>
