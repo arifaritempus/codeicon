@@ -5643,9 +5643,6 @@ export default function AdminPage() {
                                     <span className="font-mono text-[10px] bg-neutral-100 px-1.5 py-0.5 rounded text-neutral-600">
                                       /{post.slug}
                                     </span>
-                                    {post.author?.name && (
-                                      <span>Yazar: <strong>{post.author.name}</strong></span>
-                                    )}
                                   </div>
                                 </div>
                               </div>
@@ -6123,41 +6120,6 @@ export default function AdminPage() {
                         type="text"
                         value={editingPost.publishedAt || new Date().toISOString().split("T")[0]}
                         onChange={(e) => setEditingPost({ ...editingPost, publishedAt: e.target.value })}
-                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
-                      />
-                    </div>
-
-                    {/* Author Info */}
-                    <div>
-                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
-                        Yazar Adı
-                      </label>
-                      <input
-                        type="text"
-                        value={editingPost.author?.name || "CODEICON Ekibi"}
-                        onChange={(e) =>
-                          setEditingPost({
-                            ...editingPost,
-                            author: { ...(editingPost.author || {}), name: e.target.value },
-                          })
-                        }
-                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
-                        Yazar Unvanı
-                      </label>
-                      <input
-                        type="text"
-                        value={editingPost.author?.role || "MICE & Teknoloji Editörü"}
-                        onChange={(e) =>
-                          setEditingPost({
-                            ...editingPost,
-                            author: { ...(editingPost.author || {}), role: e.target.value },
-                          })
-                        }
                         className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
                       />
                     </div>

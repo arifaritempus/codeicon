@@ -180,31 +180,16 @@ export default function BlogClient({
                     </p>
                   </div>
 
-                  {/* Author & Read More */}
+                  {/* Read More Action */}
                   <div className="pt-4 border-t border-[#F0ECE7] flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={
-                          featuredPost.author?.avatar ||
-                          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
-                        }
-                        alt={featuredPost.author?.name || "Yazar"}
-                        className="w-9 h-9 rounded-full object-cover border border-[#DDD7D0]"
-                      />
-                      <div>
-                        <div className="text-xs font-bold text-[#1A1A1A]">
-                          {featuredPost.author?.name || "CODEICON Ekibi"}
-                        </div>
-                        {featuredPost.author?.role && (
-                          <div className="text-[10px] text-[#8C8C8C]">
-                            {featuredPost.author.role}
-                          </div>
-                        )}
-                      </div>
+                    <div className="flex items-center gap-2 text-xs text-[#8C8C8C]">
+                      {featuredPost.publishedAt && <span>{featuredPost.publishedAt}</span>}
+                      {featuredPost.publishedAt && <span>•</span>}
+                      <span>{featuredPost.readingTime || "5 dk okuma"}</span>
                     </div>
 
-                    <span className="inline-flex items-center gap-1 text-xs font-bold text-[#1A1A1A] group-hover:translate-x-1 transition-transform">
-                      <span>Okumaya Başla</span>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1A1A1A] group-hover:translate-x-1 transition-transform">
+                      <span>Makaleyi İncele</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
@@ -261,24 +246,17 @@ export default function BlogClient({
                     </p>
                   </div>
 
-                  {/* Author & Arrow */}
+                  {/* Card Bottom Meta & Arrow */}
                   <div className="pt-3 border-t border-[#F0ECE7] flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <img
-                        src={
-                          post.author?.avatar ||
-                          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
-                        }
-                        alt={post.author?.name || "Yazar"}
-                        className="w-6 h-6 rounded-full object-cover"
-                      />
-                      <span className="text-[11px] font-semibold text-[#1A1A1A]">
-                        {post.author?.name || "CODEICON Ekibi"}
-                      </span>
-                    </div>
+                    <span className="text-[11px] font-medium text-[#8C8C8C]">
+                      {post.readingTime || "5 dk okuma"}
+                    </span>
 
-                    <span className="w-7 h-7 rounded-full bg-[#FAF9F6] border border-[#E6E1DC] flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
-                      <ArrowRight className="w-3 h-3" />
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1A1A1A] group-hover:translate-x-0.5 transition-transform">
+                      <span>Devamını Oku</span>
+                      <span className="w-6 h-6 rounded-full bg-[#FAF9F6] border border-[#E6E1DC] flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
+                        <ArrowRight className="w-3 h-3" />
+                      </span>
                     </span>
                   </div>
                 </div>

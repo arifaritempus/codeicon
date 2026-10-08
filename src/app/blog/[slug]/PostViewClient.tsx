@@ -247,25 +247,20 @@ export default function PostViewClient({
               </p>
             )}
 
-            {/* Author Bar */}
+            {/* Meta Bar: Date, Reading Time & Share */}
             <div className="pt-4 border-t border-[#EAE6E1] flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <img
-                  src={
-                    post.author?.avatar ||
-                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
-                  }
-                  alt={post.author?.name || "Yazar"}
-                  className="w-11 h-11 rounded-full object-cover border border-[#DDD7D0] shadow-2xs"
-                />
-                <div>
-                  <div className="text-sm font-bold text-[#1A1A1A]">
-                    {post.author?.name || "CODEICON Ekibi"}
-                  </div>
-                  <div className="text-xs text-[#8C8C8C]">
-                    {post.author?.role || "Sektörel Analist & Editör"}
-                  </div>
-                </div>
+              <div className="flex items-center gap-3 text-xs text-[#8C8C8C]">
+                {post.publishedAt && (
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {post.publishedAt}
+                  </span>
+                )}
+                {post.publishedAt && <span>•</span>}
+                <span className="flex items-center gap-1.5 font-medium">
+                  <Clock className="w-3.5 h-3.5" />
+                  {post.readingTime || "5 dk okuma"}
+                </span>
               </div>
 
               {/* Share Buttons */}
@@ -355,31 +350,6 @@ export default function PostViewClient({
                 ))}
               </div>
             )}
-          </div>
-
-          {/* Author Box */}
-          <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-white border border-[#E6E1DC] flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-2xs text-center sm:text-left">
-            <img
-              src={
-                post.author?.avatar ||
-                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
-              }
-              alt={post.author?.name || "Yazar"}
-              className="w-16 h-16 rounded-full object-cover border border-[#DDD7D0] shadow-sm shrink-0"
-            />
-            <div className="space-y-1.5">
-              <div className="text-xs uppercase tracking-wider font-bold text-[#8C8C8C]">
-                Yazar Hakkında
-              </div>
-              <h4 className="text-base font-bold text-[#1A1A1A]">
-                {post.author?.name || "CODEICON Ekibi"}
-              </h4>
-              <p className="text-xs sm:text-sm text-[#7A7570] leading-relaxed">
-                CODEICON Turizm ve MICE Teknolojileri araştırma birimi; acentelerin
-                kârlılığını artıran finansal otomasyonlar, saha yönetimi ve
-                dijital dönüşüm üzerine içerikler üretmektedir.
-              </p>
-            </div>
           </div>
 
           {/* Related Posts */}
