@@ -65,10 +65,12 @@ export async function saveSiteContent(content: any) {
   return supabaseSuccess;
 }
 
-export async function uploadMediaToSupabase(buffer: Buffer, fileName: string, contentType: string = "image/png") {
-  const timestamp = Date.now();
-  const sanitizedName = fileName.replace(/[^a-zA-Z0-9.-]/g, "_");
-  const uniquePath = `uploads/${timestamp}-${sanitizedName}`;
+export async function uploadMediaToSupabase(
+  buffer: Buffer,
+  uniqueFileName: string,
+  contentType: string = "image/png"
+) {
+  const uniquePath = `uploads/${uniqueFileName}`;
 
   const { error } = await supabase.storage.from(BUCKET_NAME).upload(uniquePath, buffer, {
     contentType,
@@ -82,9 +84,10 @@ export async function uploadMediaToSupabase(buffer: Buffer, fileName: string, co
   const { data: publicData } = supabase.storage.from(BUCKET_NAME).getPublicUrl(uniquePath);
   return {
     url: publicData.publicUrl,
-    name: fileName,
+    name: uniqueFileName,
   };
 }
+
 
 export async function listUploadedMedia() {
   const media: { name: string; url: string; folder: string }[] = [];

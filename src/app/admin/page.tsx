@@ -222,7 +222,7 @@ export default function AdminPage() {
         body: formData,
       });
       const data = await res.json();
-      if (data.success && data.url) {
+      if (res.ok && data.success && data.url) {
         if (type === "logo") {
           setContent({
             ...content,
@@ -251,15 +251,21 @@ export default function AdminPage() {
           });
         }
         loadMedia();
+      } else {
+        setSaveError(data.error || "Görsel yüklenemedi!");
+        setTimeout(() => setSaveError(null), 6000);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Upload error:", err);
+      setSaveError("Dosya yüklenirken bağlantı hatası oluştu.");
+      setTimeout(() => setSaveError(null), 6000);
     } finally {
       setUploadingLogo(false);
       setUploadingFavicon(false);
       setUploadingGeneral(false);
     }
   };
+
 
   const handleSave = async () => {
     setSaving(true);
