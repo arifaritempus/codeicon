@@ -37,6 +37,23 @@ import {
   LogOut,
   KeyRound,
   Loader2,
+  BookOpen,
+  Bot,
+  Edit3,
+  FileText,
+  Search,
+  Tag,
+  Calendar,
+  User,
+  Clock,
+  X,
+  Heading2,
+  Heading3,
+  Quote,
+  List,
+  Wand2,
+  EyeOff,
+  RefreshCw,
 } from "lucide-react";
 
 export default function AdminPage() {
@@ -46,6 +63,21 @@ export default function AdminPage() {
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+
+  // Blog State
+  const [editingPost, setEditingPost] = useState<any | null>(null);
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [aiTopic, setAiTopic] = useState("");
+  const [aiTone, setAiTone] = useState("profesyonel");
+  const [aiAudience, setAiAudience] = useState("MICE Acenteleri & Operasyon Yöneticileri");
+  const [aiProvider, setAiProvider] = useState<"builtin" | "gemini" | "openai">("builtin");
+  const [aiCustomKey, setAiCustomKey] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [blogSearchQuery, setBlogSearchQuery] = useState("");
+  const [blogCategoryFilter, setBlogCategoryFilter] = useState("Tümü");
+  const [postEditorTab, setPostEditorTab] = useState<"edit" | "preview">("edit");
+  const [deleteConfirmSlug, setDeleteConfirmSlug] = useState<string | null>(null);
 
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
@@ -189,6 +221,17 @@ export default function AdminPage() {
         if (!data.theme.colors) data.theme.colors = {};
         if (!data.theme.typography) data.theme.typography = {};
 
+        if (!data.blog) {
+          data.blog = {
+            enabled: true,
+            eyebrow: "CODEICON BLOG",
+            title: "MICE ve Turizm Teknolojileri Rehberi",
+            subtitle: "Acente kârlılığı, saha operasyonları ve seyahat yazılımları üzerine pratik analizler ve ipuçları.",
+            posts: [],
+          };
+        }
+        if (!data.blog.posts) data.blog.posts = [];
+
         setContent(data);
       })
       .catch((err) => console.error(err));
@@ -307,6 +350,203 @@ export default function AdminPage() {
       console.error("Save error:", error);
       setSaveError(error?.message || "Sunucuyla bağlantı kurulamadı.");
       setTimeout(() => setSaveError(null), 5000);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Blog Management Helpers
+  const generateSlug = (text: string) => {
+    const trMap: Record<string, string> = {
+      ç: "c", Ç: "c", ğ: "g", Ğ: "g", ı: "i", İ: "i", ö: "o", Ö: "o", ş: "s", Ş: "s", ü: "u", Ü: "u",
+    };
+    return text
+      .split("")
+      .map((c) => trMap[c] || c)
+      .join("")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  };
+
+  const AI_SUGGESTIONS = [
+    "TCMB Otomatik Kur Entegrasyonunun MICE Acentelerine Sağladığı Kârlılık ve Kur Riski Koruması",
+    "Havalimanı Operasyonlarında WhatsApp Karşılama ve Şoför Görev Emri Yönetimi",
+    "MICE Kongrelerinde Excel Rooming List Çilesine Son: Hataları Sıfıra İndirme Yolları",
+    "Acente Operasyonlarında Dinamik Transfer Rotalama ve Araç Kapasite Optimizasyonu",
+    "Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme",
+    "Kongre ve Etkinlik Kayıt Masalarında Hızlı QR Check-in ile Sıraları Yok Etme",
+  ];
+
+  const handleGenerateBlogWithAi = async () => {
+    if (!aiTopic.trim()) {
+      setAiError("Lütfen bir konu yazın veya aşağıdaki hazır başlıklardan birine tıklayın.");
+      return;
+    }
+    setAiLoading(true);
+    setAiError(null);
+
+    try {
+      const res = await fetch("/api/ai/generate-blog", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          topic: aiTopic,
+          tone: aiTone,
+          audience: aiAudience,
+          provider: aiProvider,
+          apiKey: aiCustomKey || undefined,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Yapay zeka içeriği oluşturamadı.");
+      }
+
+      setEditingPost(data.article);
+      setPostEditorTab("edit");
+      setIsAiModalOpen(false);
+      setAiTopic("");
+    } catch (err: any) {
+      console.error("AI Generation error:", err);
+      setAiError(err.message || "İçerik üretilirken bir hata oluştu.");
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
+  const handleSaveBlogPost = async (postToSave: any) => {
+    if (!postToSave.title || !postToSave.title.trim()) {
+      alert("Lütfen bir başlık girin.");
+      return;
+    }
+    const slug = (postToSave.slug || generateSlug(postToSave.title)).trim();
+    const finalPost = {
+      ...postToSave,
+      slug,
+      published: postToSave.published !== false,
+      publishedAt: postToSave.publishedAt || new Date().toISOString().split("T")[0],
+      readingTime: postToSave.readingTime || "5 dk okuma",
+      tags: Array.isArray(postToSave.tags)
+        ? postToSave.tags
+        : typeof postToSave.tags === "string"
+        ? postToSave.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
+        : [],
+      author: postToSave.author || {
+        name: "CODEICON Ekibi",
+        role: "MICE & Teknoloji Editörü",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      },
+    };
+
+    const currentPosts = content?.blog?.posts || [];
+    const existingIdx = currentPosts.findIndex((p: any) => p.slug === slug);
+
+    let newPosts;
+    if (existingIdx >= 0) {
+      newPosts = [...currentPosts];
+      newPosts[existingIdx] = finalPost;
+    } else {
+      newPosts = [finalPost, ...currentPosts];
+    }
+
+    const updatedContent = {
+      ...content,
+      blog: {
+        ...(content?.blog || {}),
+        posts: newPosts,
+      },
+    };
+
+    setContent(updatedContent);
+    setEditingPost(null);
+
+    try {
+      setSaving(true);
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedContent),
+      });
+      if (res.ok) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
+      }
+    } catch (e) {
+      console.error("Direct save failed:", e);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleTogglePostPublished = async (postSlug: string) => {
+    const currentPosts = content?.blog?.posts || [];
+    const newPosts = currentPosts.map((p: any) => {
+      if (p.slug === postSlug) {
+        return { ...p, published: !p.published };
+      }
+      return p;
+    });
+
+    const updatedContent = {
+      ...content,
+      blog: {
+        ...(content?.blog || {}),
+        posts: newPosts,
+      },
+    };
+
+    setContent(updatedContent);
+
+    try {
+      setSaving(true);
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedContent),
+      });
+      if (res.ok) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 2000);
+      }
+    } catch (e) {
+      console.error("Toggle published error:", e);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDeleteBlogPost = async (postSlug: string) => {
+    const currentPosts = content?.blog?.posts || [];
+    const newPosts = currentPosts.filter((p: any) => p.slug !== postSlug);
+
+    const updatedContent = {
+      ...content,
+      blog: {
+        ...(content?.blog || {}),
+        posts: newPosts,
+      },
+    };
+
+    setContent(updatedContent);
+    setDeleteConfirmSlug(null);
+
+    try {
+      setSaving(true);
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedContent),
+      });
+      if (res.ok) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
+      }
+    } catch (e) {
+      console.error("Delete blog post error:", e);
     } finally {
       setSaving(false);
     }
@@ -698,6 +938,7 @@ export default function AdminPage() {
               { id: "integrations", label: "🔗 Entegrasyonlar", icon: Link2 },
               { id: "pricing", label: "💳 Fiyatlandırma", icon: CreditCard },
               { id: "references", label: "⭐ Referanslar & Logolar", icon: Building2 },
+              { id: "blog", label: "✍️ Blog & İçerik", icon: BookOpen },
               { id: "faq", label: "❓ Sıkça Sorulanlar (FAQ)", icon: HelpCircle },
               { id: "contact", label: "✉️ İletişim & Slogan", icon: Mail },
             ].map((tab) => {
@@ -5066,6 +5307,423 @@ export default function AdminPage() {
               </div>
             )}
 
+            {/* TAB: BLOG & CONTENT MANAGEMENT */}
+            {activeTab === "blog" && (
+              <div className="space-y-8">
+                {/* Header with Stats & Actions */}
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-[#EAE6E1]">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-xl bg-[#FEF7AF] text-[#1A1A1A] flex items-center justify-center font-bold text-sm">
+                        ✍️
+                      </span>
+                      <h2 className="text-xl font-bold text-[#1A1A1A]">Blog & İçerik Yönetimi</h2>
+                    </div>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      MICE ve acente operasyonlarına özel sektörel makaleleri yönetin veya yapay zeka ile otomatik yeni içerikler üretin.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={() => {
+                        setAiError(null);
+                        setIsAiModalOpen(true);
+                      }}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FEF7AF] text-[#1A1A1A] text-xs font-bold hover:bg-[#FCEE71] transition shadow-xs"
+                    >
+                      <Bot className="w-3.5 h-3.5" />
+                      <span>🤖 YZ ile Yazı Üret</span>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setEditingPost({
+                          slug: "",
+                          title: "",
+                          excerpt: "",
+                          category: "Operasyon",
+                          coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=80",
+                          published: true,
+                          publishedAt: new Date().toISOString().split("T")[0],
+                          readingTime: "5 dk okuma",
+                          author: {
+                            name: "CODEICON Ekibi",
+                            role: "MICE & Teknoloji Editörü",
+                            avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+                          },
+                          tags: ["MICE", "Operasyon"],
+                          content: "## Giriş\n\nBu makalede acente süreçlerini kolaylaştıracak kritik adımları ele alıyoruz...\n\n### Önemli Noktalar\n- Madde 1\n- Madde 2\n\n> [!NOTE]\n> Operasyonel süreçlerde dijitalleşme ekiplerin hata payını en aza indirir.",
+                        });
+                        setPostEditorTab("edit");
+                      }}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-xs font-semibold hover:bg-neutral-800 transition shadow-xs"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>+ Yeni Blog Yazısı</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Quick Stats Cards */}
+                {(() => {
+                  const posts = content.blog?.posts || [];
+                  const publishedCount = posts.filter((p: any) => p.published !== false).length;
+                  const draftCount = posts.filter((p: any) => p.published === false).length;
+                  return (
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] flex items-center justify-between">
+                        <div>
+                          <p className="text-[11px] font-bold text-[#8C8C8C] uppercase">Toplam Yazı</p>
+                          <p className="text-2xl font-bold text-[#1A1A1A] mt-0.5">{posts.length}</p>
+                        </div>
+                        <span className="w-10 h-10 rounded-xl bg-white border border-[#DDD7D0] flex items-center justify-center text-sm shadow-2xs">
+                          📚
+                        </span>
+                      </div>
+                      <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] flex items-center justify-between">
+                        <div>
+                          <p className="text-[11px] font-bold text-emerald-600 uppercase">Yayında</p>
+                          <p className="text-2xl font-bold text-[#1A1A1A] mt-0.5">{publishedCount}</p>
+                        </div>
+                        <span className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center text-sm shadow-2xs">
+                          ✓
+                        </span>
+                      </div>
+                      <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] flex items-center justify-between">
+                        <div>
+                          <p className="text-[11px] font-bold text-amber-600 uppercase">Taslak</p>
+                          <p className="text-2xl font-bold text-[#1A1A1A] mt-0.5">{draftCount}</p>
+                        </div>
+                        <span className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center text-sm shadow-2xs">
+                          📝
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {/* 1. BLOG GENERAL SETTINGS */}
+                <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-sm font-bold text-[#1A1A1A]">Genel Blog Sayfası Ayarları</h3>
+                      <p className="text-xs text-[#8C8C8C]">Blog ana sayfasının (/blog) başlıkları ve görünürlük durumu</p>
+                    </div>
+
+                    <label className="flex items-center gap-2 cursor-pointer bg-white px-3 py-1.5 rounded-full border border-[#DDD7D0] shadow-2xs">
+                      <input
+                        type="checkbox"
+                        checked={content.blog?.enabled !== false}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            blog: { ...(content.blog || {}), enabled: e.target.checked },
+                          })
+                        }
+                        className="rounded border-[#DDD7D0] text-[#1A1A1A] focus:ring-black"
+                      />
+                      <span className="text-xs font-semibold text-[#1A1A1A]">
+                        {content.blog?.enabled !== false ? "Blog Aktif (Yayında)" : "Blog Gizli (Kapalı)"}
+                      </span>
+                    </label>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Üst Başlık (Eyebrow)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.blog?.eyebrow || "CODEICON BLOG"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            blog: { ...(content.blog || {}), eyebrow: e.target.value },
+                          })
+                        }
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Sayfa Ana Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.blog?.title || "MICE ve Turizm Teknolojileri Rehberi"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            blog: { ...(content.blog || {}), title: e.target.value },
+                          })
+                        }
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Açıklama / Alt Başlık
+                      </label>
+                      <input
+                        type="text"
+                        value={
+                          content.blog?.subtitle ||
+                          "Acente kârlılığı, saha operasyonları ve seyahat yazılımları üzerine pratik analizler ve ipuçları."
+                        }
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            blog: { ...(content.blog || {}), subtitle: e.target.value },
+                          })
+                        }
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. POST LIST & FILTERS */}
+                <div className="space-y-4">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                    <div className="relative flex-1 max-w-md">
+                      <Search className="w-4 h-4 text-[#8C8C8C] absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        placeholder="Blog yazılarında ara (başlık, etiket veya özet)..."
+                        value={blogSearchQuery}
+                        onChange={(e) => setBlogSearchQuery(e.target.value)}
+                        className="w-full pl-9 pr-3 py-2 bg-white rounded-xl border border-[#DDD7D0] text-xs focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    {/* Category Filter Pills */}
+                    <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+                      {["Tümü", "Operasyon", "Finans", "Saha Yönetimi", "Teknoloji", "Vaka Analizi"].map((cat) => (
+                        <button
+                          key={cat}
+                          onClick={() => setBlogCategoryFilter(cat)}
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium shrink-0 transition ${
+                            blogCategoryFilter === cat
+                              ? "bg-[#1A1A1A] text-white"
+                              : "bg-[#FAF9F6] text-[#605F5F] hover:text-[#1A1A1A] border border-[#DDD7D0]"
+                          }`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Posts List */}
+                  {(() => {
+                    const allPosts: any[] = content.blog?.posts || [];
+                    const filteredPosts = allPosts.filter((p: any) => {
+                      const matchesCategory =
+                        blogCategoryFilter === "Tümü" ||
+                        (p.category && p.category.toLowerCase() === blogCategoryFilter.toLowerCase());
+                      const q = blogSearchQuery.toLowerCase().trim();
+                      const matchesQuery =
+                        !q ||
+                        p.title?.toLowerCase().includes(q) ||
+                        p.excerpt?.toLowerCase().includes(q) ||
+                        p.category?.toLowerCase().includes(q) ||
+                        (Array.isArray(p.tags) && p.tags.some((t: string) => t.toLowerCase().includes(q)));
+                      return matchesCategory && matchesQuery;
+                    });
+
+                    if (filteredPosts.length === 0) {
+                      return (
+                        <div className="text-center py-12 px-4 rounded-2xl border-2 border-dashed border-[#DDD7D0] bg-[#FAF9F6]">
+                          <BookOpen className="w-10 h-10 text-[#8C8C8C] mx-auto mb-2 opacity-50" />
+                          <h4 className="text-sm font-bold text-[#1A1A1A]">Blog Yazısı Bulunamadı</h4>
+                          <p className="text-xs text-[#605F5F] mt-1 max-w-sm mx-auto">
+                            {blogSearchQuery
+                              ? "Arama kriterinize uygun blog yazısı bulunamadı."
+                              : "Henüz yayınlanmış bir blog yazısı yok. İlk yazınızı yapay zeka ile 10 saniyede üretebilirsiniz!"}
+                          </p>
+                          <div className="mt-4 flex items-center justify-center gap-2">
+                            <button
+                              onClick={() => setIsAiModalOpen(true)}
+                              className="px-4 py-2 rounded-full bg-[#FEF7AF] text-[#1A1A1A] text-xs font-bold hover:bg-[#FCEE71] transition"
+                            >
+                              🤖 YZ ile Yazı Üret
+                            </button>
+                            <button
+                              onClick={() => {
+                                setEditingPost({
+                                  slug: "",
+                                  title: "",
+                                  excerpt: "",
+                                  category: "Operasyon",
+                                  coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=80",
+                                  published: true,
+                                  publishedAt: new Date().toISOString().split("T")[0],
+                                  readingTime: "5 dk okuma",
+                                  author: {
+                                    name: "CODEICON Ekibi",
+                                    role: "MICE & Teknoloji Editörü",
+                                    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+                                  },
+                                  tags: ["MICE"],
+                                  content: "## Giriş\n\nİçerik...",
+                                });
+                                setPostEditorTab("edit");
+                              }}
+                              className="px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-xs font-semibold hover:bg-neutral-800 transition"
+                            >
+                              Manuel Ekle
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div className="space-y-3">
+                        {filteredPosts.map((post: any) => {
+                          const isPublished = post.published !== false;
+                          const isDeletingThis = deleteConfirmSlug === post.slug;
+
+                          return (
+                            <div
+                              key={post.slug}
+                              className="bg-white rounded-2xl border border-[#DDD7D0] p-4 sm:p-5 shadow-2xs hover:shadow-xs transition flex flex-col md:flex-row md:items-center justify-between gap-4"
+                            >
+                              {/* Left Post Thumbnail & Details */}
+                              <div className="flex items-start gap-4 min-w-0 flex-1">
+                                {post.coverImage ? (
+                                  <img
+                                    src={post.coverImage}
+                                    alt={post.title}
+                                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover shrink-0 border border-[#DDD7D0]"
+                                  />
+                                ) : (
+                                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-[#FAF9F6] border border-[#DDD7D0] flex items-center justify-center text-xl shrink-0">
+                                    📄
+                                  </div>
+                                )}
+
+                                <div className="min-w-0 flex-1">
+                                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#FAF9F6] text-[#1A1A1A] border border-[#DDD7D0]">
+                                      {post.category || "Genel"}
+                                    </span>
+                                    <span className="text-[11px] text-[#8C8C8C] flex items-center gap-1">
+                                      <Clock className="w-3 h-3" />
+                                      {post.readingTime || "5 dk"}
+                                    </span>
+                                    <span className="text-[11px] text-[#8C8C8C] flex items-center gap-1">
+                                      <Calendar className="w-3 h-3" />
+                                      {post.publishedAt || "Yeni"}
+                                    </span>
+                                    <span
+                                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                                        isPublished
+                                          ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                                          : "bg-amber-50 text-amber-700 border border-amber-200"
+                                      }`}
+                                    >
+                                      {isPublished ? "● Yayında" : "○ Taslak"}
+                                    </span>
+                                  </div>
+
+                                  <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] truncate hover:text-black">
+                                    {post.title}
+                                  </h4>
+
+                                  <p className="text-xs text-[#605F5F] line-clamp-2 mt-1">
+                                    {post.excerpt}
+                                  </p>
+
+                                  <div className="flex items-center gap-3 mt-2 text-[11px] text-[#8C8C8C]">
+                                    <span className="font-mono text-[10px] bg-neutral-100 px-1.5 py-0.5 rounded text-neutral-600">
+                                      /{post.slug}
+                                    </span>
+                                    {post.author?.name && (
+                                      <span>Yazar: <strong>{post.author.name}</strong></span>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Right Actions */}
+                              <div className="flex items-center gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[#F0ECE6] justify-end">
+                                {/* Fast Status Toggle */}
+                                <button
+                                  onClick={() => handleTogglePostPublished(post.slug)}
+                                  title={isPublished ? "Taslağa Al" : "Yayınla"}
+                                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition border ${
+                                    isPublished
+                                      ? "bg-neutral-50 text-neutral-700 border-[#DDD7D0] hover:bg-neutral-100"
+                                      : "bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700"
+                                  }`}
+                                >
+                                  {isPublished ? "Taslağa Al" : "Hemen Yayınla"}
+                                </button>
+
+                                {/* Live Preview Link */}
+                                <Link
+                                  href={`/blog/${post.slug}`}
+                                  target="_blank"
+                                  className="p-2 rounded-xl bg-[#FAF9F6] border border-[#DDD7D0] text-[#1A1A1A] hover:bg-[#F4F2EE] transition"
+                                  title="Sitede Canlı Görüntüle"
+                                >
+                                  <ExternalLink className="w-4 h-4" />
+                                </Link>
+
+                                {/* Edit Button */}
+                                <button
+                                  onClick={() => {
+                                    setEditingPost({ ...post });
+                                    setPostEditorTab("edit");
+                                  }}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1A1A1A] text-white text-xs font-semibold hover:bg-neutral-800 transition"
+                                >
+                                  <Edit3 className="w-3.5 h-3.5" />
+                                  <span>Düzenle</span>
+                                </button>
+
+                                {/* Delete Confirmation */}
+                                {isDeletingThis ? (
+                                  <div className="flex items-center gap-1 bg-red-50 p-1 rounded-xl border border-red-200">
+                                    <span className="text-[10px] font-bold text-red-700 px-1">Silinsin mi?</span>
+                                    <button
+                                      onClick={() => handleDeleteBlogPost(post.slug)}
+                                      className="px-2 py-1 rounded bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition"
+                                    >
+                                      Evet
+                                    </button>
+                                    <button
+                                      onClick={() => setDeleteConfirmSlug(null)}
+                                      className="px-2 py-1 rounded bg-white text-[#1A1A1A] text-[10px] font-semibold border border-neutral-300"
+                                    >
+                                      İptal
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <button
+                                    onClick={() => setDeleteConfirmSlug(post.slug)}
+                                    className="p-2 rounded-xl text-neutral-400 hover:text-red-600 hover:bg-red-50 transition"
+                                    title="Yazıyı Sil"
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
+                </div>
+              </div>
+            )}
+
             {/* Bottom Save Bar */}
             <div className="mt-8 pt-6 border-t border-[#F0ECE6] flex items-center justify-between">
               <span className="text-xs text-[#8C8C8C]">
@@ -5082,6 +5740,691 @@ export default function AdminPage() {
           </div>
         </div>
       </div>
+
+      {/* ========================================================================= */}
+      {/* 🤖 AI BLOG GENERATOR MODAL */}
+      {/* ========================================================================= */}
+      {isAiModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+          <div className="bg-white w-full max-w-2xl rounded-3xl border border-[#DDD7D0] shadow-2xl p-6 sm:p-8 space-y-6 my-8">
+            {/* Header */}
+            <div className="flex items-start justify-between gap-4 pb-4 border-b border-[#F0ECE6]">
+              <div className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-2xl bg-[#FEF7AF] text-[#1A1A1A] flex items-center justify-center text-lg font-bold shadow-2xs">
+                  🤖
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-[#1A1A1A]">
+                    Yapay Zeka ile Sektörel Blog Yazısı Üret
+                  </h3>
+                  <p className="text-xs text-[#605F5F] mt-0.5">
+                    MICE acenteleri için SEO uyumlu, profesyonel ve sektörel makale oluşturun.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => !aiLoading && setIsAiModalOpen(false)}
+                className="p-1.5 rounded-full text-[#8C8C8C] hover:text-[#1A1A1A] hover:bg-neutral-100 transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Quick Topic Chips */}
+            <div>
+              <label className="block text-[11px] font-bold text-[#8C8C8C] uppercase mb-2">
+                ⚡ Hızlı Konu Önerileri (Tıklayarak Seçin):
+              </label>
+              <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
+                {AI_SUGGESTIONS.map((sug, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setAiTopic(sug)}
+                    className={`text-left text-xs px-3 py-1.5 rounded-xl border transition ${
+                      aiTopic === sug
+                        ? "bg-[#1A1A1A] text-white border-black font-semibold"
+                        : "bg-[#FAF9F6] text-[#605F5F] border-[#DDD7D0] hover:text-[#1A1A1A] hover:bg-[#F4F2EE]"
+                    }`}
+                  >
+                    {sug}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Topic Input */}
+            <div>
+              <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">
+                Makale Konusu veya Anahtar Kelimeler:
+              </label>
+              <textarea
+                value={aiTopic}
+                onChange={(e) => setAiTopic(e.target.value)}
+                placeholder="Örn: Havalimanı transfer operasyonlarında şoför ve rehber WhatsApp görev emri otomasyonu ve zaman tasarrufu..."
+                rows={3}
+                className="w-full px-3.5 py-2.5 rounded-2xl border border-[#DDD7D0] text-xs focus:outline-none focus:border-black bg-white shadow-2xs resize-none"
+              />
+            </div>
+
+            {/* Settings Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                  Hedef Okuyucu Kitlesi
+                </label>
+                <select
+                  value={aiAudience}
+                  onChange={(e) => setAiAudience(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                >
+                  <option value="MICE Acenteleri & Operasyon Yöneticileri">MICE & Kongre Operasyon Yöneticileri</option>
+                  <option value="Seyahat Acentesi Sahipleri & Genel Müdürler">Acente Sahipleri & Genel Müdürler</option>
+                  <option value="Saha & Transfer Operasyon Ekipleri">Saha & Transfer Operasyon Ekipleri</option>
+                  <option value="Muhasebe & Finans Yöneticileri">Muhasebe & Finans Ekipleri</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                  Yazı Dili & Üslubu
+                </label>
+                <select
+                  value={aiTone}
+                  onChange={(e) => setAiTone(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                >
+                  <option value="profesyonel">Profesyonel & Güven Verici</option>
+                  <option value="egitici">Eğitici & Adım Adım Rehber</option>
+                  <option value="cozum-odakli">Çözüm Odaklı & Vaka Analizi</option>
+                  <option value="vizyoner">Vizyoner & İnovatif</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Provider Selection */}
+            <div className="p-3.5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-[#1A1A1A]">YZ Motoru Tercihi:</label>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+                  {aiProvider === "builtin" ? "Ücretsiz & Hazır" : "Gelişmiş LLM"}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { id: "builtin", label: "Dahili MICE YZ (Varsayılan)" },
+                  { id: "gemini", label: "Google Gemini AI" },
+                  { id: "openai", label: "OpenAI GPT-4o" },
+                ].map((prov) => (
+                  <button
+                    key={prov.id}
+                    type="button"
+                    onClick={() => setAiProvider(prov.id as any)}
+                    className={`py-2 px-2.5 rounded-xl text-center text-[11px] font-medium transition border ${
+                      aiProvider === prov.id
+                        ? "bg-[#1A1A1A] text-white border-black font-semibold shadow-xs"
+                        : "bg-white text-[#605F5F] border-[#DDD7D0] hover:text-[#1A1A1A]"
+                    }`}
+                  >
+                    {prov.label}
+                  </button>
+                ))}
+              </div>
+
+              {aiProvider !== "builtin" && (
+                <div>
+                  <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                    Özel API Anahtarı (İsteğe Bağlı)
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="Boş bırakırsanız sistem ortam değişkeni kullanılır"
+                    value={aiCustomKey}
+                    onChange={(e) => setAiCustomKey(e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                  />
+                </div>
+              )}
+            </div>
+
+            {aiError && (
+              <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 shrink-0 text-red-500" />
+                <span>{aiError}</span>
+              </div>
+            )}
+
+            {/* Footer */}
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                type="button"
+                disabled={aiLoading}
+                onClick={() => setIsAiModalOpen(false)}
+                className="px-4 py-2 rounded-full border border-[#DDD7D0] text-xs font-semibold text-[#605F5F] hover:bg-neutral-100 transition"
+              >
+                Vazgeç
+              </button>
+
+              <button
+                type="button"
+                disabled={aiLoading || !aiTopic.trim()}
+                onClick={handleGenerateBlogWithAi}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1A1A1A] text-white text-xs font-bold hover:bg-neutral-800 transition disabled:opacity-50 shadow-sm"
+              >
+                {aiLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-[#FEF7AF]" />
+                    <span>Yapay Zeka İçeriği Hazırlıyor...</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-3.5 h-3.5 text-[#FEF7AF]" />
+                    <span>✨ Makaleyi Üret ve Düzenle</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* ✍️ BLOG POST EDIT / CREATE MODAL */}
+      {/* ========================================================================= */}
+      {editingPost && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white w-full max-w-4xl h-[90vh] rounded-3xl border border-[#DDD7D0] shadow-2xl flex flex-col overflow-hidden">
+            {/* Modal Header */}
+            <div className="px-6 py-4 border-b border-[#F0ECE6] flex items-center justify-between shrink-0 bg-[#FAF9F6]">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-xl bg-[#1A1A1A] text-[#FEF7AF] flex items-center justify-center text-sm font-bold">
+                  ✍️
+                </span>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[#1A1A1A]">
+                    {editingPost.slug ? "Blog Yazısını Düzenle" : "Yeni Blog Yazısı Oluştur"}
+                  </h3>
+                  <p className="text-[11px] text-[#8C8C8C]">
+                    Başlık, görsel, kategori, etiketler ve markdown içeriğini özelleştirin.
+                  </p>
+                </div>
+              </div>
+
+              {/* Edit / Preview Switcher */}
+              <div className="flex items-center gap-2">
+                <div className="flex items-center p-1 bg-white border border-[#DDD7D0] rounded-xl shadow-2xs">
+                  <button
+                    onClick={() => setPostEditorTab("edit")}
+                    className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                      postEditorTab === "edit"
+                        ? "bg-[#1A1A1A] text-white shadow-2xs"
+                        : "text-[#605F5F] hover:text-[#1A1A1A]"
+                    }`}
+                  >
+                    ✏️ Düzenle
+                  </button>
+                  <button
+                    onClick={() => setPostEditorTab("preview")}
+                    className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                      postEditorTab === "preview"
+                        ? "bg-[#1A1A1A] text-white shadow-2xs"
+                        : "text-[#605F5F] hover:text-[#1A1A1A]"
+                    }`}
+                  >
+                    👁️ Canlı Önizleme
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => setEditingPost(null)}
+                  className="p-1.5 rounded-full text-[#8C8C8C] hover:text-[#1A1A1A] hover:bg-neutral-200 transition"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              {postEditorTab === "edit" ? (
+                <>
+                  {/* Meta Form */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                    {/* Title */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Makale Başlığı *
+                      </label>
+                      <input
+                        type="text"
+                        value={editingPost.title || ""}
+                        onChange={(e) => {
+                          const title = e.target.value;
+                          setEditingPost({
+                            ...editingPost,
+                            title,
+                            slug: editingPost.slug || generateSlug(title),
+                          });
+                        }}
+                        placeholder="Örn: MICE Kongrelerinde Rooming List Yönetimi"
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-sm font-semibold bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    {/* Slug */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="text-[10px] font-bold text-[#8C8C8C] uppercase">
+                          URL Bağlantısı (Slug)
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (editingPost.title) {
+                              setEditingPost({
+                                ...editingPost,
+                                slug: generateSlug(editingPost.title),
+                              });
+                            }
+                          }}
+                          className="text-[10px] font-semibold text-blue-600 hover:underline"
+                        >
+                          Başlıktan Yenile
+                        </button>
+                      </div>
+                      <div className="flex items-center">
+                        <span className="px-2.5 py-2 bg-neutral-100 border border-r-0 border-[#DDD7D0] rounded-l-xl text-xs text-[#8C8C8C] font-mono">
+                          /blog/
+                        </span>
+                        <input
+                          type="text"
+                          value={editingPost.slug || ""}
+                          onChange={(e) => setEditingPost({ ...editingPost, slug: e.target.value })}
+                          className="w-full px-3 py-2 rounded-r-xl border border-[#DDD7D0] text-xs font-mono bg-white focus:outline-none focus:border-black"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Category */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Kategori
+                      </label>
+                      <select
+                        value={editingPost.category || "Operasyon"}
+                        onChange={(e) => setEditingPost({ ...editingPost, category: e.target.value })}
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      >
+                        <option value="Operasyon">Operasyon</option>
+                        <option value="Finans">Finans & Muhasebe</option>
+                        <option value="Saha Yönetimi">Saha Yönetimi</option>
+                        <option value="Teknoloji">Teknoloji & Yazılım</option>
+                        <option value="Vaka Analizi">Vaka Analizi</option>
+                      </select>
+                    </div>
+
+                    {/* Excerpt */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Kısa Özet (Meta Description / Listeleme Açıklaması)
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={editingPost.excerpt || ""}
+                        onChange={(e) => setEditingPost({ ...editingPost, excerpt: e.target.value })}
+                        placeholder="Yazının kartlarda ve Google arama sonuçlarında görünecek 1-2 cümlelik özeti..."
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black resize-none"
+                      />
+                    </div>
+
+                    {/* Cover Image */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Kapak Görseli URL
+                      </label>
+                      <div className="flex gap-2 items-center">
+                        <input
+                          type="text"
+                          value={editingPost.coverImage || ""}
+                          onChange={(e) => setEditingPost({ ...editingPost, coverImage: e.target.value })}
+                          placeholder="https://images.unsplash.com/..."
+                          className="flex-1 px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                        />
+                        {editingPost.coverImage && (
+                          <img
+                            src={editingPost.coverImage}
+                            alt="Preview"
+                            className="w-10 h-10 rounded-lg object-cover border border-[#DDD7D0]"
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Reading Time & Date */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Okuma Süresi
+                      </label>
+                      <input
+                        type="text"
+                        value={editingPost.readingTime || "5 dk okuma"}
+                        onChange={(e) => setEditingPost({ ...editingPost, readingTime: e.target.value })}
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Yayın Tarihi
+                      </label>
+                      <input
+                        type="text"
+                        value={editingPost.publishedAt || new Date().toISOString().split("T")[0]}
+                        onChange={(e) => setEditingPost({ ...editingPost, publishedAt: e.target.value })}
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    {/* Author Info */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Yazar Adı
+                      </label>
+                      <input
+                        type="text"
+                        value={editingPost.author?.name || "CODEICON Ekibi"}
+                        onChange={(e) =>
+                          setEditingPost({
+                            ...editingPost,
+                            author: { ...(editingPost.author || {}), name: e.target.value },
+                          })
+                        }
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Yazar Unvanı
+                      </label>
+                      <input
+                        type="text"
+                        value={editingPost.author?.role || "MICE & Teknoloji Editörü"}
+                        onChange={(e) =>
+                          setEditingPost({
+                            ...editingPost,
+                            author: { ...(editingPost.author || {}), role: e.target.value },
+                          })
+                        }
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    {/* Tags */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">
+                        Etiketler (Virgülle ayırın)
+                      </label>
+                      <input
+                        type="text"
+                        value={
+                          Array.isArray(editingPost.tags)
+                            ? editingPost.tags.join(", ")
+                            : editingPost.tags || ""
+                        }
+                        onChange={(e) =>
+                          setEditingPost({
+                            ...editingPost,
+                            tags: e.target.value.split(",").map((t: string) => t.trim()),
+                          })
+                        }
+                        placeholder="MICE, Kongre, Transfer, Otomasyon"
+                        className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] text-xs bg-white focus:outline-none focus:border-black"
+                      />
+                    </div>
+
+                    {/* Published Switch */}
+                    <div className="flex items-center gap-3 pt-4">
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={editingPost.published !== false}
+                          onChange={(e) =>
+                            setEditingPost({ ...editingPost, published: e.target.checked })
+                          }
+                          className="rounded border-[#DDD7D0] text-[#1A1A1A] focus:ring-black"
+                        />
+                        <span className="text-xs font-bold text-[#1A1A1A]">
+                          {editingPost.published !== false ? "✓ Yazı Yayında" : "○ Taslak Olarak Sakla"}
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  {/* Markdown Content Editor */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wide">
+                        Makale İçeriği (Markdown)
+                      </label>
+                      <span className="text-[11px] text-[#8C8C8C]">
+                        Başlıklar (##, ###), listeler (-) ve vurgu kutuları (&gt; [!NOTE]) desteklenir.
+                      </span>
+                    </div>
+
+                    {/* Toolbar */}
+                    <div className="flex flex-wrap items-center gap-1.5 p-2 bg-[#FAF9F6] border border-[#DDD7D0] rounded-xl text-xs">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const current = editingPost.content || "";
+                          setEditingPost({ ...editingPost, content: current + "\n\n## Yeni Başlık\n" });
+                        }}
+                        className="px-2.5 py-1 bg-white border border-[#DDD7D0] rounded-lg font-bold hover:bg-neutral-100"
+                        title="Ana Başlık (H2)"
+                      >
+                        H2
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const current = editingPost.content || "";
+                          setEditingPost({ ...editingPost, content: current + "\n\n### Alt Başlık\n" });
+                        }}
+                        className="px-2.5 py-1 bg-white border border-[#DDD7D0] rounded-lg font-bold hover:bg-neutral-100"
+                        title="Alt Başlık (H3)"
+                      >
+                        H3
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const current = editingPost.content || "";
+                          setEditingPost({ ...editingPost, content: current + " **kalın metin** " });
+                        }}
+                        className="px-2.5 py-1 bg-white border border-[#DDD7D0] rounded-lg font-bold hover:bg-neutral-100"
+                        title="Kalın"
+                      >
+                        B
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const current = editingPost.content || "";
+                          setEditingPost({ ...editingPost, content: current + " *italik metin* " });
+                        }}
+                        className="px-2.5 py-1 bg-white border border-[#DDD7D0] rounded-lg italic hover:bg-neutral-100"
+                        title="İtalik"
+                      >
+                        I
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const current = editingPost.content || "";
+                          setEditingPost({ ...editingPost, content: current + "\n- Liste öğesi 1\n- Liste öğesi 2\n" });
+                        }}
+                        className="px-2.5 py-1 bg-white border border-[#DDD7D0] rounded-lg hover:bg-neutral-100"
+                        title="Liste"
+                      >
+                        • Liste
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const current = editingPost.content || "";
+                          setEditingPost({ ...editingPost, content: current + "\n> Alıntı metni buraya...\n" });
+                        }}
+                        className="px-2.5 py-1 bg-white border border-[#DDD7D0] rounded-lg hover:bg-neutral-100"
+                        title="Alıntı"
+                      >
+                        “ Alıntı
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const current = editingPost.content || "";
+                          setEditingPost({
+                            ...editingPost,
+                            content: current + "\n> [!NOTE]\n> MICE operasyonlarında kritik ipucu burada yer alır.\n",
+                          });
+                        }}
+                        className="px-2.5 py-1 bg-[#FEF7AF] text-[#1A1A1A] border border-[#DDD7D0] rounded-lg font-semibold hover:bg-[#FCEE71]"
+                        title="Vurgu / İpucu Kutusu"
+                      >
+                        💡 Bilgi Kutusu
+                      </button>
+                    </div>
+
+                    <textarea
+                      rows={14}
+                      value={editingPost.content || ""}
+                      onChange={(e) => setEditingPost({ ...editingPost, content: e.target.value })}
+                      placeholder="## Başlık..."
+                      className="w-full p-4 rounded-2xl border border-[#DDD7D0] font-mono text-xs leading-relaxed focus:outline-none focus:border-black bg-white shadow-2xs"
+                    />
+                  </div>
+                </>
+              ) : (
+                /* LIVE PREVIEW TAB */
+                <div className="space-y-6 max-w-2xl mx-auto py-4">
+                  {editingPost.coverImage && (
+                    <img
+                      src={editingPost.coverImage}
+                      alt={editingPost.title}
+                      className="w-full h-64 rounded-2xl object-cover border border-[#DDD7D0] shadow-xs"
+                    />
+                  )}
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#FEF7AF] text-[#1A1A1A]">
+                        {editingPost.category || "Genel"}
+                      </span>
+                      <span className="text-xs text-[#8C8C8C]">{editingPost.readingTime || "5 dk okuma"}</span>
+                      <span className="text-xs text-[#8C8C8C]">• {editingPost.publishedAt}</span>
+                    </div>
+
+                    <h1 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] leading-tight">
+                      {editingPost.title || "Başlık Girilmedi"}
+                    </h1>
+
+                    <p className="text-sm text-[#605F5F] italic border-l-2 border-[#1A1A1A] pl-3 py-1">
+                      {editingPost.excerpt}
+                    </p>
+                  </div>
+
+                  <hr className="border-[#EAE6E1]" />
+
+                  {/* Rendered markdown body */}
+                  <div className="prose prose-neutral max-w-none text-xs sm:text-sm leading-relaxed space-y-3">
+                    {(editingPost.content || "").split("\n").map((line: string, i: number) => {
+                      const t = line.trim();
+                      if (!t) return null;
+                      if (t.startsWith("### ")) {
+                        return (
+                          <h3 key={i} className="text-base font-bold text-[#1A1A1A] mt-4 mb-1">
+                            {t.replace("### ", "")}
+                          </h3>
+                        );
+                      }
+                      if (t.startsWith("## ")) {
+                        return (
+                          <h2 key={i} className="text-xl font-bold text-[#1A1A1A] mt-6 mb-2">
+                            {t.replace("## ", "")}
+                          </h2>
+                        );
+                      }
+                      if (t.startsWith("> [!NOTE]") || t.startsWith("> [!TIP]") || t.startsWith("> [!IMPORTANT]")) {
+                        return (
+                          <div key={i} className="p-3 my-3 bg-[#FEF7AF]/30 border-l-4 border-[#1A1A1A] rounded-r-xl text-xs font-medium text-[#1A1A1A]">
+                            {t.replace(/^>\s*\[!\w+\]\s*/, "")}
+                          </div>
+                        );
+                      }
+                      if (t.startsWith("> ")) {
+                        return (
+                          <blockquote key={i} className="border-l-4 border-[#DDD7D0] pl-3 italic my-3 text-xs text-[#605F5F]">
+                            {t.replace("> ", "")}
+                          </blockquote>
+                        );
+                      }
+                      if (t.startsWith("- ") || t.startsWith("* ")) {
+                        return (
+                          <li key={i} className="list-disc list-inside text-neutral-700 ml-2">
+                            {t.slice(2)}
+                          </li>
+                        );
+                      }
+                      return (
+                        <p key={i} className="text-neutral-700 leading-relaxed">
+                          {t}
+                        </p>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-6 py-4 border-t border-[#F0ECE6] flex items-center justify-between shrink-0 bg-[#FAF9F6]">
+              <div className="flex items-center gap-2">
+                <span
+                  className={`w-2.5 h-2.5 rounded-full ${
+                    editingPost.published !== false ? "bg-emerald-500" : "bg-amber-500"
+                  }`}
+                />
+                <span className="text-xs font-semibold text-[#605F5F]">
+                  Durum: {editingPost.published !== false ? "Yayında" : "Taslak"}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setEditingPost(null)}
+                  className="px-4 py-2 rounded-full border border-[#DDD7D0] text-xs font-semibold text-[#605F5F] hover:bg-neutral-100 transition"
+                >
+                  Kapat
+                </button>
+
+                <button
+                  type="button"
+                  disabled={saving}
+                  onClick={() => handleSaveBlogPost(editingPost)}
+                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#1A1A1A] text-white text-xs font-bold hover:bg-neutral-800 transition shadow-xs"
+                >
+                  <Save className="w-3.5 h-3.5" />
+                  <span>{saving ? "Kaydediliyor..." : "Yazıyı Kaydet"}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

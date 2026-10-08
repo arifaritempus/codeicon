@@ -42,24 +42,44 @@ export default function Footer({ content }: { content?: any }) {
 
   const col1Title = content?.footer?.col1Title || "Sayfalar";
   const defaultNavLinks = [
-    { label: "Ana Sayfa", href: "#" },
-    { label: "Hakkımızda", href: "#process" },
-    { label: "Özellikler", href: "#features" },
-    { label: "Fiyatlandırma", href: "#pricing" },
-    { label: "Referanslar", href: "#references" },
+    { label: "Ana Sayfa", href: "/" },
+    { label: "Hakkımızda", href: "/#process" },
+    { label: "Özellikler", href: "/#features" },
+    { label: "Fiyatlandırma", href: "/#pricing" },
+    { label: "Blog", href: "/blog" },
   ];
 
-  const col1Links =
+  let rawCol1Links =
     Array.isArray(content?.footer?.col1Links) && content.footer.col1Links.length > 0
       ? content.footer.col1Links
       : Array.isArray(content?.navigation?.footerLinks) && content.navigation.footerLinks.length > 0
       ? content.navigation.footerLinks
       : defaultNavLinks;
 
+  if (
+    content?.blog?.enabled !== false &&
+    !rawCol1Links.some(
+      (l: any) =>
+        l.href === "/blog" ||
+        l.href === "#blog" ||
+        l.label?.trim().toLowerCase() === "blog"
+    )
+  ) {
+    rawCol1Links = [...rawCol1Links, { label: "Blog", href: "/blog" }];
+  }
+
+  const col1Links = rawCol1Links.map((l: any) => ({
+    ...l,
+    href: l.href && l.href.startsWith("#") ? `/${l.href}` : l.href,
+  }));
+
   const col2Title = content?.footer?.col2Title;
   const col2Links =
     Array.isArray(content?.footer?.col2Links) && content.footer.col2Links.length > 0
-      ? content.footer.col2Links
+      ? content.footer.col2Links.map((l: any) => ({
+          ...l,
+          href: l.href && l.href.startsWith("#") ? `/${l.href}` : l.href,
+        }))
       : null;
 
   const socials = content?.footer?.socials || {

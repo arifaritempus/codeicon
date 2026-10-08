@@ -13,15 +13,35 @@ export default function Navbar({ content }: { content?: any }) {
   const assets = content?.assets || {};
 
   const defaultNavLinks = [
-    { label: "About", href: "#process" },
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Özellikler", href: "/#features" },
+    { label: "Entegrasyonlar", href: "/#integrations" },
+    { label: "Fiyatlar", href: "/#pricing" },
+    { label: "Blog", href: "/blog" },
   ];
 
-  const navLinks =
+  let rawNavLinks =
     content?.navigation?.headerLinks && content.navigation.headerLinks.length > 0
       ? content.navigation.headerLinks
       : defaultNavLinks;
+
+  // If blog is enabled and not explicitly in navLinks, include it
+  if (
+    content?.blog?.enabled !== false &&
+    !rawNavLinks.some(
+      (l: any) =>
+        l.href === "/blog" ||
+        l.href === "#blog" ||
+        l.label?.trim().toLowerCase() === "blog"
+    )
+  ) {
+    rawNavLinks = [...rawNavLinks, { label: "Blog", href: "/blog" }];
+  }
+
+  // Ensure hash links have leading slash so they work across pages
+  const navLinks = rawNavLinks.map((l: any) => ({
+    ...l,
+    href: l.href && l.href.startsWith("#") ? `/${l.href}` : l.href,
+  }));
 
   return (
     <>

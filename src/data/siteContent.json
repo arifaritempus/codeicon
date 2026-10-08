@@ -5,7 +5,7 @@
     "features": true,
     "integrations": true,
     "pricing": true,
-    "caseStudies": true,
+    "caseStudies": false,
     "faq": true,
     "contact": true
   },
@@ -87,29 +87,29 @@
     "customers": [
       {
         "id": "1",
-        "name": "Mert Yılmaz",
-        "company": "Tempus Travel (MICE)",
-        "initials": "MY",
+        "name": "Selim Akduman",
+        "company": "Tempus Travel",
+        "initials": "SA",
         "avatarBg": "#FEF7AF",
         "avatarColor": "#594C00",
-        "statValue": "2h 20m",
-        "statBadge": "+30dk bu hafta"
-      },
-      {
-        "id": "2",
-        "name": "Selin Kaya",
-        "company": "La Tour Event",
-        "initials": "SK",
-        "avatarBg": "#D4E3CB",
-        "avatarColor": "#334A29",
         "statValue": "3h 45m",
         "statBadge": "+45dk bu hafta"
       },
       {
+        "id": "2",
+        "name": "Haki Tokul",
+        "company": "La Tour Event",
+        "initials": "HT",
+        "avatarBg": "#D4E3CB",
+        "avatarColor": "#334A29",
+        "statValue": "2h 20m",
+        "statBadge": "+25dk bu hafta"
+      },
+      {
         "id": "3",
-        "name": "Burak Demir",
+        "name": "Tayfun Kürtür",
         "company": "Ravento Travel",
-        "initials": "BD",
+        "initials": "TK",
         "avatarBg": "#E3CBDD",
         "avatarColor": "#4D2845",
         "statValue": "1h 50m",
@@ -129,19 +129,19 @@
         "description": "Sisteminizi dakikalar içinde açalım.",
         "preview": {
           "badge": "LİVE",
-          "title": "Hesap & Ekip Daveti",
+          "title": "Hesap & Ekip",
           "items": [
             {
               "label": "Kullanıcı Adı",
-              "status": "mert.yilmaz"
+              "status": ""
             },
             {
               "label": "Kurumsal E-Posta",
-              "status": "mert@tempustravel.com"
+              "status": ""
             },
             {
               "label": "Ekip Erişimi",
-              "status": "Aktif (5 Kullanıcı)"
+              "status": "Aktif (9 Kullanıcı)"
             }
           ]
         }
@@ -183,7 +183,7 @@
             },
             {
               "label": "TCMB Kur Sabitleme",
-              "status": "€38.45 Kilitli"
+              "status": "€55.45 Kilitli"
             },
             {
               "label": "Online Müşteri Onayı",
@@ -221,9 +221,8 @@
         "title": "Akıllı transfer planlama ve filo yönetimi",
         "description": "Uçuş saatlerine duyarlı otomatik kalkış hesaplama, araç pax kapasitesi kontrolü ve şoförlere anlık WhatsApp görev emri iletimi.",
         "bullets": [
-          "Uçuş rötarlarına duyarlı dinamik kalkış saati",
-          "Araç koltuk kapasitesi ve pax çakışma uyarısı",
-          "Şoför ve rehberlere anlık WhatsApp görev emri"
+          "Uçuşlara duyarlı dinamik kalkış saati",
+          "Araç koltuk kapasitesi ve pax çakışma uyarısı"
         ],
         "ctaText": "Saha Modülünü Keşfedin",
         "ctaHref": "#contact",
@@ -237,7 +236,7 @@
         "description": "Çoklu otel yönetimi, matbu Excel rooming listelerini tek tıkla sisteme aktarma ve projeye özel anlık kar/zarar analizi.",
         "bullets": [
           "Excel rooming listelerini sıfır veri kaybıyla aktarın",
-          "Kongre ve bayi toplantılarına özel çoklu otel yönetimi",
+          "Kurumsal etkinlik ve bayi toplantılarına özel çoklu otel yönetimi",
           "Projeye özel anlık gelir, gider ve kârlılık tablosu"
         ],
         "ctaText": "MICE Modülünü İnceleyin",
@@ -283,14 +282,14 @@
       },
       {
         "id": "erp",
-        "name": "Logo & Netsis",
+        "name": "Logo & Netsis & Dia (YAKINDA)",
         "category": "Muhasebe",
         "desc": "Onaylanan operasyon faturalarını anında ERPye aktarın.",
         "icon": "📊"
       },
       {
         "id": "flight",
-        "name": "THY & Pegasus API",
+        "name": "THY & Pegasus & AJet API (YAKINDA)",
         "category": "Uçuş",
         "desc": "Canlı uçuş durumu ve otomatik transfer saati senkronu.",
         "icon": "✈️"
@@ -304,21 +303,14 @@
       },
       {
         "id": "whatsapp",
-        "name": "WhatsApp Görev Emri",
+        "name": "WhatsApp Görev Emri (YAKINDA)",
         "category": "Saha",
         "desc": "Şoför ve operasyon rehberlerine anında görev detaylarını iletin.",
         "icon": "💬"
       },
       {
-        "id": "amadeus",
-        "name": "Amadeus & Sabre",
-        "category": "GDS",
-        "desc": "Global biletleme sistemleriyle çift yönlü senkronizasyon.",
-        "icon": "🌐"
-      },
-      {
         "id": "payment",
-        "name": "PayTR & Sanal POS",
+        "name": "PayTR & Sanal POS (YAKINDA)",
         "category": "Tahsilat",
         "desc": "Müşterilerinizden online link ile güvenli kredi kartı tahsilatı.",
         "icon": "💳"
@@ -358,8 +350,8 @@
         "name": "MICE Pro",
         "badge": "En Çok Tercih Edilen",
         "popular": true,
-        "priceMonthly": 399,
-        "priceAnnual": 319,
+        "priceMonthly": 499,
+        "priceAnnual": 399,
         "description": "Kongre, etkinlik ve yoğun saha transferleri yöneten profesyonel MICE ekipleri için.",
         "cta": "Demoyu İncele",
         "ctaHref": "#contact",
@@ -376,8 +368,8 @@
         "name": "Enterprise",
         "badge": "Büyük Organizasyonlar",
         "popular": false,
-        "priceMonthly": 499,
-        "priceAnnual": 399,
+        "priceMonthly": 599,
+        "priceAnnual": 479,
         "description": "Büyük kongre firmaları, çok şubeli acenteler ve kurumsal seyahat şirketleri için.",
         "cta": "Bizimle İletişime Geçin",
         "ctaHref": "#contact",
@@ -621,7 +613,7 @@
   },
   "theme": {
     "fontFamily": "'Geist', 'Albert Sans', -apple-system, sans-serif",
-    "fontName": "Geist & Albert Sans (Grovia)",
+    "fontName": "Geist & Albert Sans (Grovia Orijinal)",
     "googleFontUrl": "https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700&family=Fragment+Mono&family=Geist:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
     "colors": {
       "background": "#F4F2EE",
@@ -677,5 +669,86 @@
         "color": "#1A1A1A"
       }
     }
+  },
+  "updatedAt": "2026-10-08T12:53:08.267Z",
+  "blog": {
+    "enabled": true,
+    "eyebrow": "Sektörel Rehberler & Analizler",
+    "title": "MICE & Seyahat Teknolojileri Blogu",
+    "subtitle": "Acente operasyonları, finans yönetimi, TCMB kur mutabakatı ve saha transferlerinde sektörel analizler ve pratik rehberler.",
+    "posts": [
+      {
+        "id": "post-1",
+        "slug": "mice-operasyonlarinda-tcmb-canli-kur-sabitleme-stratejileri",
+        "title": "MICE Operasyonlarında TCMB Canlı Kur ve Sabitleme Stratejileri",
+        "excerpt": "Dövizli kongre ve grup operasyonlarında kur dalgalanmalarına karşı acente kârlılığını korumanın ve faturalama süreçlerini otomatikleştirmenin yolları.",
+        "category": "Finans & Operasyon",
+        "tags": [
+          "TCMB",
+          "Kur Sabitleme",
+          "MICE Finans",
+          "ERP"
+        ],
+        "coverImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "Anılay Acıkavak",
+          "role": "Operasyon Direktörü",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-08",
+        "readingTime": "5 dk okuma",
+        "published": true,
+        "featured": true,
+        "content": "## Döviz Dalgalanması ve MICE Acentelerinin En Büyük Riski\n\nKongre ve kurumsal etkinlik yönetiminde (MICE), bütçenin aylar öncesinden döviz (EUR/USD) üzerinden belirlenip tahsilatın ve tedarikçi ödemelerinin farklı tarihlerde TL veya döviz olarak yapılması, acenteler için ciddi kur farkı zararlarına yol açabilmektedir.\n\nBirçok acente, Excel tablolarında manuel girilen kurlarla veya teklif tarihindeki kurla işlem yapmaya çalıştığında faturanın kesildiği gün ile ödeme günü arasındaki kur farkı nedeniyle proje kârlılığının %15 ila %30'unu kaybedebilmektedir.\n\n### Çözüm: Proje Bazlı Otomatik Kur Sabitleme\n\nCODEICON ile acenteler, TCMB (Türkiye Cumhuriyet Merkez Bankası) API entegrasyonu sayesinde şu avantajları elde eder:\n\n1. **Giriş Günü (Check-in) Kur Kilitleme:** Misafirlerin otele giriş yaptığı günkü TCMB efektif satış kuru sistem tarafından otomatik çekilir ve projeye kilitlenir.\n2. **Tedarikçi ile Anlık Mutabakat:** Otel, rehber, transfer ve restoran tedarikçilerine kesilecek faturalar kilitlenen kur üzerinden tek tuşla doğrulanır.\n3. **ERP & Muhasebe Köprüsü:** Logo, Netsis ve Dia gibi ERP sistemlerine onaylanan faturalar tam kur tutarıyla çift yönlü aktarılır.\n\n> \"Kur sabitleme sistemi sayesinde 180 kişilik bir tıp kongresinde beklenmedik 42.000 TL'lik kur farkı kaybını tamamen engelledik.\"\n\n### Geleceğe Yönelik Tavsiyeler\n\nAcentenizin finansal sağlığını korumak için teklif sözleşmelerine mutlaka **TCMB giriş kuru maddesi** ekleyin ve operasyon yazılımınızın canlı kur API bağlantısını kontrol edin."
+      },
+      {
+        "id": "post-2",
+        "slug": "otomatik-transfer-ve-sofor-whatsapp-gorev-emri",
+        "title": "Saha Transferlerinde Sıfır Hata: Şoför WhatsApp Görev Emri Otomasyonu",
+        "excerpt": "Rötarlı uçuşlar, değişen havalimanı transferleri ve yüzlerce kişilik yolcu listelerinde şoför iletişimini nasıl %100 otonom hale getirebilirsiniz?",
+        "category": "Saha & Transfer",
+        "tags": [
+          "Transfer",
+          "WhatsApp",
+          "Saha Operasyonu",
+          "Uçuş API"
+        ],
+        "coverImage": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "Haki Tokul",
+          "role": "Saha Koordinatörü",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-06",
+        "readingTime": "4 dk okuma",
+        "published": true,
+        "featured": false,
+        "content": "## Havalimanı Karşılamalarında Yaşanan Klasik Sorunlar\n\nBüyük ölçekli etkinliklerde aynı gün içerisinde 50 farklı uçuşla gelen 300 misafirin transferini organize etmek, operasyon ekiplerinin en yoğun stres yaşadığı anlardan biridir.\n\nUçak rötarları, terminal değişiklikleri ve şoförlerin güncel isim listelerine ulaşamaması sık sık karşılaşılan aksaklıklardır.\n\n### WhatsApp Otomasyonu ile Anlık Görev Emri\n\nCODEICON Saha Modülü, THY ve Pegasus API bağlantısı sayesinde uçuş saatlerindeki rötarları gerçek zamanlı algılar:\n\n- **Otonom Saat Revizyonu:** Uçak 45 dakika rötarlı indiğinde transfer karşılama saati sistemde otomatik güncellenir.\n- **Şoföre Tek Tıkla WhatsApp Görev Emri:** Şoföre araç plakası, misafir ismi, uçuş kodu ve özel karşılama tabelası tek tıkla WhatsApp şablonuyla iletilir.\n- **QR Kodlu Yolcu Doğrulama:** Araca binen misafirler QR kod okutularak sisteme \"Karşılandı\" olarak işlenir."
+      },
+      {
+        "id": "post-3",
+        "slug": "matbu-excel-listelerinden-tek-tikla-rooming-yukleme",
+        "title": "Yüzlerce Kişilik Oda (Rooming) Listelerini Excel'den Tek Tıkla Sisteme Aktarma",
+        "excerpt": "Müşterilerden gelen dağınık Excel formatlarını veri kaybı yaşamadan tek tıkla ayrıştıran akıllı içe aktarım rehberi.",
+        "category": "Acente Teknolojileri",
+        "tags": [
+          "Excel",
+          "Rooming",
+          "Otel Yönetimi",
+          "Veri Aktarımı"
+        ],
+        "coverImage": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "Tayfun Kürtür",
+          "role": "Yazılım Direktörü",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-04",
+        "readingTime": "3 dk okuma",
+        "published": true,
+        "featured": false,
+        "content": "## Excel Çilesine Son Veren Akıllı Veri Haritalama\n\nKurumsal müşterilerin her biri kendi şirket şablonunda bir oda listesi gönderir: kimisinde T.C. kimlik numarası ilk sütundadır, kimisinde ad-soyad birleşiktir, kimisinde ise oda tipi belirtilmemiştir.\n\nOperasyon ekipleri bu listeleri otel şablonuna uydurmak için saatlerce kopyala-yapıştır yapmak zorunda kalır.\n\n### CODEICON Matbu Excel İçe Aktarıcı Nasıl Çalışır?\n\n1. **Sütun Eşleme Motoru:** Dosyayı sürükleyip bıraktığınızda sistem sütun başlıklarını otomatik tanır.\n2. **Hata Yakalama (Data Validation):** Eksik T.C., hatalı giriş-çıkış tarihi veya mükerrer isimleri kırmızı ile vurgular.\n3. **Tek Tıkla Projeye Atama:** Onaylanan liste Sejour veya otel formatına dönüştürülerek projeye bağlanır."
+      }
+    ]
   }
 }
