@@ -25,7 +25,7 @@ export default function Integrations({ content }: { content?: any }) {
         }))
       : defaultSteps;
 
-  const items = Array.isArray(content?.items) && content.items.length > 0 ? content.items : null;
+  const items = Array.isArray(content?.items) ? content.items : null;
 
   // Fallback SVG Brand / Tech Logos matching Grovia Screenshot 5
   const fallbackTiles = [
@@ -119,8 +119,11 @@ export default function Integrations({ content }: { content?: any }) {
     },
   ];
 
-  const col1 = items ? items.slice(0, 4) : fallbackTiles.slice(0, 4);
-  const col2 = items ? items.slice(4, 8) : fallbackTiles.slice(4, 8);
+  // Dynamically divide items evenly across 2 staggered columns
+  const allTiles = items !== null ? items : fallbackTiles;
+  const half = Math.ceil(allTiles.length / 2);
+  const col1 = allTiles.slice(0, half);
+  const col2 = allTiles.slice(half);
 
   return (
     <section id="integrations" className="py-20 sm:py-28 bg-[#F4F2EE] relative overflow-hidden">

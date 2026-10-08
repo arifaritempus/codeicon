@@ -10,7 +10,27 @@ const BUCKET_NAME = "logos";
 const FILE_NAME = "siteContent.json";
 
 export async function getSiteContent() {
-  // 1. Try Supabase Storage (with short cache / real-time)
+  // 1. Try Supabase Storage (real-time, zero-cache via direct authenticated fetch)
+  try {
+    const timestamp = Date.now();
+    const directUrl = `${SUPABASE_URL}/storage/v1/object/authenticated/${BUCKET_NAME}/${FILE_NAME}?t=${timestamp}`;
+    const res = await fetch(directUrl, {
+      cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+        apikey: SUPABASE_KEY,
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+      },
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.error("Error reading from Supabase storage (direct fetch):", err);
+  }
+
+  // 1.1 Fallback to Supabase SDK download if direct fetch fails
   try {
     const { data, error } = await supabase.storage.from(BUCKET_NAME).download(FILE_NAME);
     if (!error && data) {
@@ -18,7 +38,7 @@ export async function getSiteContent() {
       return JSON.parse(text);
     }
   } catch (err) {
-    console.error("Error reading from Supabase storage:", err);
+    console.error("Error downloading from Supabase storage:", err);
   }
 
   // 2. Fallback to local file
@@ -36,13 +56,15 @@ export async function getSiteContent() {
 }
 
 export async function saveSiteContent(content: any) {
+  content.updatedAt = new Date().toISOString();
   const jsonString = JSON.stringify(content, null, 2);
 
-  // 1. Save to Supabase Storage
+  // 1. Save to Supabase Storage with cacheControl: "0" to prevent Cloudflare/browser caching
   let supabaseSuccess = false;
   try {
     const { error } = await supabase.storage.from(BUCKET_NAME).upload(FILE_NAME, jsonString, {
       contentType: "application/json",
+      cacheControl: "0",
       upsert: true,
     });
     if (!error) {

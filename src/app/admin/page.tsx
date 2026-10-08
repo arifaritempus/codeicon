@@ -3474,31 +3474,56 @@ export default function AdminPage() {
               <div className="space-y-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#EAE6E1]">
                   <div>
-                    <h2 className="text-xl font-bold text-[#1A1A1A]">Entegrasyonlar Yönetimi</h2>
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-xl font-bold text-[#1A1A1A]">Entegrasyonlar Yönetimi</h2>
+                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAE6E1] text-[#1A1A1A] font-semibold">
+                        {content.integrations?.items?.length || 0} adet
+                      </span>
+                    </div>
                     <p className="text-xs text-[#605F5F] mt-1">Sitede gösterilen entegrasyon kartlarını ekleyin, silin ve içeriklerini düzenleyin</p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const newItems = [
-                        ...(content.integrations?.items || []),
-                        {
-                          name: "Yeni Entegrasyon",
-                          category: "Genel",
-                          desc: "Entegrasyon açıklaması buraya gelecek.",
-                          icon: "⚡"
-                        }
-                      ];
-                      setContent({
-                        ...content,
-                        integrations: { ...content.integrations, items: newItems }
-                      });
-                    }}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-xs font-semibold hover:bg-neutral-800 transition shadow-sm self-start sm:self-auto"
-                  >
-                    <Plus className="w-3.5 h-3.5" />
-                    <span>+ Yeni Entegrasyon Ekle</span>
-                  </button>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={handleSave}
+                      disabled={saving}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition shadow-sm disabled:opacity-50"
+                    >
+                      {saving ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          <span>Kaydediliyor...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Save className="w-3.5 h-3.5" />
+                          <span>Değişiklikleri Kaydet</span>
+                        </>
+                      )}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newItems = [
+                          ...(content.integrations?.items || []),
+                          {
+                            name: "Yeni Entegrasyon",
+                            category: "Genel",
+                            desc: "Entegrasyon açıklaması buraya gelecek.",
+                            icon: "⚡"
+                          }
+                        ];
+                        setContent({
+                          ...content,
+                          integrations: { ...content.integrations, items: newItems }
+                        });
+                      }}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-xs font-semibold hover:bg-neutral-800 transition shadow-sm self-start sm:self-auto"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>+ Yeni Entegrasyon Ekle</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Section Header Editor */}
@@ -3639,21 +3664,17 @@ export default function AdminPage() {
                           </div>
                         </div>
 
-                        {content.integrations.items.length > 1 && (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              if (confirm(`"${item.name || 'Bu'}" entegrasyonunu silmek istediğinize emin misiniz?`)) {
-                                const newItems = content.integrations.items.filter((_: any, i: number) => i !== idx);
-                                setContent({ ...content, integrations: { ...content.integrations, items: newItems } });
-                              }
-                            }}
-                            className="p-1.5 rounded-lg text-rose-600 hover:bg-rose-50 transition"
-                            title="Entegrasyonu Sil"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        )}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newItems = content.integrations.items.filter((_: any, i: number) => i !== idx);
+                            setContent({ ...content, integrations: { ...content.integrations, items: newItems } });
+                          }}
+                          className="p-1.5 rounded-lg text-rose-600 hover:bg-rose-50 transition"
+                          title="Entegrasyonu Sil"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -3701,6 +3722,30 @@ export default function AdminPage() {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                <div className="flex items-center justify-between pt-4 border-t border-[#EAE6E1]">
+                  <p className="text-xs text-[#8C8C8C]">
+                    Yaptığınız değişikliklerin canlı sitede hemen görünmesi için kaydedin.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleSave}
+                    disabled={saving}
+                    className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition shadow-sm disabled:opacity-50"
+                  >
+                    {saving ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        <span>Kaydediliyor...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Save className="w-3.5 h-3.5" />
+                        <span>Değişiklikleri Kaydet</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
             )}
@@ -3903,10 +3948,8 @@ export default function AdminPage() {
                             <button
                               type="button"
                               onClick={() => {
-                                if (confirm(`"${pl.name || 'Bu'}" paketini silmek istediğinize emin misiniz?`)) {
-                                  const newPlans = content.pricing.plans.filter((_: any, pIdx: number) => pIdx !== idx);
-                                  setContent({ ...content, pricing: { ...content.pricing, plans: newPlans } });
-                                }
+                                const newPlans = content.pricing.plans.filter((_: any, pIdx: number) => pIdx !== idx);
+                                setContent({ ...content, pricing: { ...content.pricing, plans: newPlans } });
                               }}
                               className="p-1.5 rounded-lg text-rose-600 hover:bg-rose-50 transition"
                               title="Paketi Sil"
