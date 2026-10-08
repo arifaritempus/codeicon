@@ -57,9 +57,43 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const relatedPosts = posts.filter((p) => p.slug !== slug && p.published !== false);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
+  const postUrl = `${baseUrl}/blog/${slug}`;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    articleBody: post.content,
+    url: postUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    image: post.coverImage ? [post.coverImage] : undefined,
+    keywords: Array.isArray(post.tags) ? post.tags.join(", ") : post.tags,
+    articleSection: post.category,
+    inLanguage: "tr-TR",
+    publisher: {
+      "@type": "Organization",
+      name: "CODEICON",
+      url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/favicon.ico`,
+      },
+    },
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F2EE] text-[#1A1A1A]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <SmoothScroll />
       <Navbar content={content} />
       <main className="flex-1 w-full max-w-full overflow-x-hidden">

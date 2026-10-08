@@ -28,9 +28,37 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function BlogPage() {
   const content = await getSiteContent();
   const blogSettings = content?.blog || {};
+  const posts: any[] = (blogSettings.posts || []).filter((p: any) => p.published !== false);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
+
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: blogSettings.title || "MICE & Seyahat Teknolojileri Blogu",
+    description: blogSettings.subtitle || "Acente operasyonları ve sektörel analizler",
+    url: `${baseUrl}/blog`,
+    publisher: {
+      "@type": "Organization",
+      name: "CODEICON",
+      url: baseUrl,
+    },
+    blogPost: posts.map((p, idx) => ({
+      "@type": "BlogPosting",
+      position: idx + 1,
+      headline: p.title,
+      description: p.excerpt,
+      url: `${baseUrl}/blog/${p.slug}`,
+      datePublished: p.publishedAt,
+      image: p.coverImage,
+    })),
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F2EE] text-[#1A1A1A]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <SmoothScroll />
       <Navbar content={content} />
       <main className="flex-1 w-full max-w-full overflow-x-hidden">
