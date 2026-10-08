@@ -34,7 +34,7 @@ export default function Navbar({ content }: { content?: any }) {
         l.label?.trim().toLowerCase() === "blog"
     )
   ) {
-    rawNavLinks = [...rawNavLinks, { label: "Blog", href: "/blog" }];
+    rawNavLinks = [...rawNavLinks, { id: "blog-nav-link", label: "Blog", href: "/blog" }];
   }
 
   // Ensure hash links have leading slash so they work across pages
@@ -76,7 +76,7 @@ export default function Navbar({ content }: { content?: any }) {
           <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm text-[#605F5F] font-medium">
             {navLinks.map((link: any, idx: number) => (
               <a
-                key={link.id || idx}
+                key={link.id ? `nav-link-${link.id}` : `nav-link-${idx}`}
                 href={link.href}
                 className="hover:text-[#1A1A1A] transition-colors whitespace-nowrap"
               >
@@ -113,7 +113,7 @@ export default function Navbar({ content }: { content?: any }) {
           <div className="md:hidden mt-2 bg-white/95 backdrop-blur-lg border border-[#E6E1DC] shadow-xl rounded-2xl p-4 flex flex-col gap-2">
             {navLinks.map((link: any, idx: number) => (
               <a
-                key={link.id || idx}
+                key={link.id ? `mob-link-${link.id}` : `mob-link-${idx}`}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-sm font-medium text-[#1A1A1A] py-2 px-3 rounded-lg hover:bg-[#F4F2EE] transition"
