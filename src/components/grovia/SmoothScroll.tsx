@@ -19,7 +19,6 @@ export default function SmoothScroll() {
     let targetY = window.scrollY;
     let isRunning = false;
     let rafId: number | null = null;
-    let anchorRafId: number | null = null;
 
     // Authentic Grovia / Framer lerp factor for signature floaty, buttery feel
     const LERP_FACTOR = 0.085;
@@ -70,12 +69,6 @@ export default function SmoothScroll() {
       // Check if ctrl key is pressed (pinch to zoom)
       if (e.ctrlKey) return;
 
-      // Cancel any ongoing anchor navigation so mouse immediately takes over
-      if (anchorRafId) {
-        cancelAnimationFrame(anchorRafId);
-        anchorRafId = null;
-      }
-
       e.preventDefault();
 
       let delta = e.deltaY;
@@ -96,56 +89,14 @@ export default function SmoothScroll() {
 
     // Keep target synchronized when native scroll events occur (e.g. scrollbar drag, spacebar, arrows)
     const onScroll = () => {
-      if (!isRunning && !anchorRafId) {
+      if (!isRunning) {
         currentY = window.scrollY;
         targetY = window.scrollY;
       }
     };
 
-    // Snappy, fast smooth scroll for anchor link clicks (~280ms cubic ease)
-    const fastScrollTo = (targetPosition: number, duration = 280) => {
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-        isRunning = false;
-      }
-      if (anchorRafId) {
-        cancelAnimationFrame(anchorRafId);
-        anchorRafId = null;
-      }
-
-      const startPosition = window.scrollY;
-      const distance = targetPosition - startPosition;
-      if (Math.abs(distance) < 5) return;
-
-      let startTime: number | null = null;
-      const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-
-      const step = (timestamp: number) => {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = easeOutCubic(progress);
-        const newY = Math.round(startPosition + distance * ease);
-
-        window.scrollTo(0, newY);
-        currentY = newY;
-        targetY = newY;
-
-        if (progress < 1) {
-          anchorRafId = requestAnimationFrame(step);
-        } else {
-          window.scrollTo(0, targetPosition);
-          currentY = targetPosition;
-          targetY = targetPosition;
-          anchorRafId = null;
-        }
-      };
-
-      anchorRafId = requestAnimationFrame(step);
-    };
-
-    // Smooth anchor link click handling for menu & footer
+    // Smooth anchor link click handling for menu & footer links
+    // Uses the exact same buttery Grovia lerp physics as mouse scrolling!
     const onAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest("a");
       if (!target) return;
@@ -162,6 +113,16 @@ export default function SmoothScroll() {
         (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === ""))
       ) {
         hash = href.substring(1);
+      } else if (
+        href === "/" &&
+        (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === ""))
+      ) {
+        // Logo / Home link
+        e.preventDefault();
+        targetY = 0;
+        startAnimation();
+        window.history.pushState(null, "", "/");
+        return;
       }
 
       if (hash) {
@@ -170,9 +131,8 @@ export default function SmoothScroll() {
           e.preventDefault();
           const rect = element.getBoundingClientRect();
           const elementTop = rect.top + window.scrollY - 85; // 85px offset for floating navbar
-          const boundedTop = Math.max(0, Math.min(elementTop, maxScroll()));
-
-          fastScrollTo(boundedTop, 280);
+          targetY = Math.max(0, Math.min(elementTop, maxScroll()));
+          startAnimation();
 
           window.history.pushState(null, "", hash);
         }
@@ -193,9 +153,6 @@ export default function SmoothScroll() {
       document.removeEventListener("click", onAnchorClick, { capture: true });
       if (rafId) {
         cancelAnimationFrame(rafId);
-      }
-      if (anchorRafId) {
-        cancelAnimationFrame(anchorRafId);
       }
     };
   }, []);

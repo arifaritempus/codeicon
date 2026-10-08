@@ -43,26 +43,8 @@ export default function Navbar({ content }: { content?: any }) {
     href: l.href && l.href.startsWith("#") ? `/${l.href}` : l.href,
   }));
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (_e: React.MouseEvent<HTMLAnchorElement>, _href: string) => {
     setMobileMenuOpen(false);
-    if (!href) return;
-
-    const hashIdx = href.indexOf("#");
-    if (hashIdx !== -1) {
-      const hash = href.substring(hashIdx);
-      if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
-        const element = document.querySelector(hash);
-        if (element) {
-          e.preventDefault();
-          const targetY = element.getBoundingClientRect().top + window.pageYOffset - 85;
-          window.scrollTo({
-            top: targetY,
-            behavior: "smooth",
-          });
-          window.history.pushState(null, "", hash);
-        }
-      }
-    }
   };
 
   return (
@@ -72,13 +54,6 @@ export default function Navbar({ content }: { content?: any }) {
           {/* Logo */}
           <Link
             href="/"
-            onClick={(e) => {
-              if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                window.history.pushState(null, "", "/");
-              }
-            }}
             className="flex items-center gap-2.5 font-medium text-lg tracking-tight text-[#1A1A1A] shrink-0"
           >
             {assets.logoType === "image" && assets.logoUrl ? (
