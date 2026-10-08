@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { SlidersHorizontal } from "lucide-react";
 import Navbar from "@/components/grovia/Navbar";
 import Hero from "@/components/grovia/Hero";
 import ProcessSteps from "@/components/grovia/ProcessSteps";
@@ -219,18 +217,7 @@ export default async function Home() {
         )}
       </main>
       <Footer content={content} />
-
-      {/* Floating Admin Button */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
-        <Link
-          href="/admin"
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#1A1A1A] text-white text-[11px] sm:text-xs font-semibold shadow-xl hover:bg-neutral-800 transition-all hover:scale-105 border border-white/20 group"
-          title="İçerikleri Düzenle"
-        >
-          <SlidersHorizontal className="w-3.5 h-3.5 text-[#FEF7AF] transition-transform group-hover:rotate-45" />
-          <span>Yönetim Paneli</span>
-        </Link>
-      </div>
     </div>
   );
 }
+

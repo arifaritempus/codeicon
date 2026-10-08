@@ -32,7 +32,11 @@ import {
   Type,
   Sliders,
   Bold,
-  Italic
+  Italic,
+  Lock,
+  LogOut,
+  KeyRound,
+  Loader2,
 } from "lucide-react";
 
 export default function AdminPage() {
@@ -42,6 +46,13 @@ export default function AdminPage() {
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
 
   // Media Library state
   const [mediaList, setMediaList] = useState<{ name: string; url: string; folder: string }[]>([]);
@@ -53,6 +64,18 @@ export default function AdminPage() {
   const logoInputRef = useRef<HTMLInputElement>(null);
   const faviconInputRef = useRef<HTMLInputElement>(null);
   const generalInputRef = useRef<HTMLInputElement>(null);
+
+  // Check auth on mount
+  useEffect(() => {
+    fetch("/api/auth/check")
+      .then((res) => res.json())
+      .then((data) => {
+        setIsAuthenticated(!!data.authenticated);
+      })
+      .catch(() => {
+        setIsAuthenticated(false);
+      });
+  }, []);
 
   useEffect(() => {
     fetch("/api/content")
@@ -267,13 +290,160 @@ export default function AdminPage() {
   };
 
 
-  if (!content) {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginLoading(true);
+    setLoginError(null);
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: loginEmail,
+          password: loginPassword,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setIsAuthenticated(true);
+        setLoginPassword("");
+      } else {
+        setLoginError(data.error || "Giriş başarısız. Lütfen bilgilerinizi kontrol edin.");
+      }
+    } catch (err: any) {
+      setLoginError("Sunucuyla bağlantı kurulamadı.");
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } finally {
+      setIsAuthenticated(false);
+    }
+  };
+
+  // 1. Initial auth checking state
+  if (isAuthenticated === null) {
     return (
       <div className="min-h-screen bg-[#F4F2EE] flex items-center justify-center text-sm font-medium text-[#605F5F]">
-        Yönetim paneli yükleniyor...
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 className="w-6 h-6 animate-spin text-[#1A1A1A]" />
+          <span>Güvenlik kontrolü yapılıyor...</span>
+        </div>
       </div>
     );
   }
+
+  // 2. Login screen if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#F4F2EE] flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden">
+        {/* Background glow & styling matching Grovia */}
+        <div className="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(#DDD7D0_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#FEF7AF]/30 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="relative w-full max-w-md bg-white border border-[#DDD7D0] rounded-3xl p-8 sm:p-10 shadow-xl shadow-black/[0.03]">
+          <div className="flex flex-col items-center text-center mb-8">
+            <div className="w-12 h-12 rounded-2xl bg-[#1A1A1A] text-white flex items-center justify-center font-bold text-lg mb-4 shadow-md">
+              C
+            </div>
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#1A1A1A]">
+              CODEICON Yönetici Girişi
+            </h1>
+            <p className="text-xs sm:text-sm text-[#605F5F] mt-1.5">
+              Yönetim paneline erişmek için yetkili bilgilerinizi girin.
+            </p>
+          </div>
+
+          {loginError && (
+            <div className="mb-6 p-3.5 rounded-2xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2.5 animate-fadeIn">
+              <AlertTriangle className="w-4 h-4 text-red-500 shrink-0" />
+              <span>{loginError}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-[#1A1A1A] mb-1.5">
+                Yönetici E-Posta
+              </label>
+              <div className="relative">
+                <input
+                  type="email"
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                  placeholder="hello@codeicon.co"
+                  required
+                  autoFocus
+                  className="w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border border-[#DDD7D0] text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#1A1A1A] transition"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#1A1A1A] mb-1.5">
+                Şifre
+              </label>
+              <div className="relative">
+                <input
+                  type="password"
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
+                  placeholder="••••••••"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border border-[#DDD7D0] text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#1A1A1A] transition"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loginLoading}
+              className="w-full mt-2 py-3.5 px-4 rounded-xl bg-[#1A1A1A] text-white text-xs sm:text-sm font-bold hover:bg-neutral-800 active:scale-[0.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2 shadow-sm"
+            >
+              {loginLoading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Giriş Yapılıyor...</span>
+                </>
+              ) : (
+                <>
+                  <Lock className="w-4 h-4" />
+                  <span>Güvenli Giriş Yap</span>
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-[#DDD7D0]/60 flex items-center justify-between text-xs text-[#8C8C8C]">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 hover:text-[#1A1A1A] transition"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Ana Sayfaya Dön</span>
+            </Link>
+            <span className="font-mono text-[11px] text-[#A0A0A0]">v3.2 Secure</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!content) {
+    return (
+      <div className="min-h-screen bg-[#F4F2EE] flex items-center justify-center text-sm font-medium text-[#605F5F]">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 className="w-6 h-6 animate-spin text-[#1A1A1A]" />
+          <span>Yönetim paneli yükleniyor...</span>
+        </div>
+      </div>
+    );
+  }
+
 
   const toggleVisibility = (key: string) => {
     setContent({
@@ -426,6 +596,15 @@ export default function AdminPage() {
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Siteyi Canlı Gör</span>
             </Link>
+
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white border border-[#DDD7D0] text-xs font-semibold text-neutral-600 hover:text-red-600 hover:border-red-200 hover:bg-red-50 transition"
+              title="Oturumu Kapat"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Çıkış</span>
+            </button>
 
             <button
               onClick={handleSave}

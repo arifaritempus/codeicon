@@ -2,11 +2,17 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { uploadMediaToSupabase } from "@/lib/contentStore";
+import { isSessionValid } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
+    const authenticated = await isSessionValid();
+    if (!authenticated) {
+      return NextResponse.json({ error: "Yetkisiz işlem! Lütfen giriş yapın." }, { status: 401 });
+    }
+
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
 
