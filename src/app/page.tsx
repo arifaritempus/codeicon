@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import { SlidersHorizontal } from "lucide-react";
 import Navbar from "@/components/grovia/Navbar";
@@ -14,21 +12,13 @@ import ContactCta from "@/components/grovia/ContactCta";
 import Footer from "@/components/grovia/Footer";
 import SmoothScroll from "@/components/grovia/SmoothScroll";
 import type { Metadata } from "next";
+import { getSiteContent } from "@/lib/contentStore";
 
 export const dynamic = "force-dynamic";
-
-function getContent() {
-  const filePath = path.join(process.cwd(), "src/data/siteContent.json");
-  try {
-    const raw = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(raw);
-  } catch (e) {
-    return null;
-  }
-}
+export const revalidate = 0;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const content = getContent();
+  const content = await getSiteContent();
   const title =
     content?.brand?.siteTitle ||
     `${content?.brand?.name || "CODEICON"} — MICE Acente Sistemi`;
@@ -47,8 +37,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Home() {
-  const content = getContent();
+export default async function Home() {
+  const content = await getSiteContent();
+
   const visibility = content?.visibility || {
     hero: true,
     process: true,

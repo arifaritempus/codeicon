@@ -1,12 +1,23 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { listUploadedMedia } from "@/lib/contentStore";
+
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
     const media: { name: string; url: string; folder: string }[] = [];
 
-    // 1. Root public files (logo, favicon)
+    // 1. Supabase Storage Uploads
+    try {
+      const supabaseMedia = await listUploadedMedia();
+      media.push(...supabaseMedia);
+    } catch (e) {
+      console.warn("Supabase media list error:", e);
+    }
+
+    // 2. Root public files (logo, favicon)
     const publicDir = path.join(process.cwd(), "public");
     if (fs.existsSync(publicDir)) {
       const rootFiles = fs.readdirSync(publicDir);
@@ -17,7 +28,7 @@ export async function GET() {
       }
     }
 
-    // 2. Uploads folder
+    // 3. Uploads folder
     const uploadsDir = path.join(publicDir, "uploads");
     if (fs.existsSync(uploadsDir)) {
       const uploadFiles = fs.readdirSync(uploadsDir);
@@ -28,7 +39,7 @@ export async function GET() {
       }
     }
 
-    // 3. Mockups folder
+    // 4. Mockups folder
     const mockupsDir = path.join(publicDir, "images", "mockups");
     if (fs.existsSync(mockupsDir)) {
       const mockupFiles = fs.readdirSync(mockupsDir);
@@ -39,8 +50,13 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json({ media });
+    return NextResponse.json({ media }, {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+      },
+    });
   } catch (error) {
     return NextResponse.json({ error: "Failed to list media" }, { status: 500 });
   }
 }
+

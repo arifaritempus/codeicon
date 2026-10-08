@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Save,
   CheckCircle,
@@ -13,6 +14,7 @@ import {
   HelpCircle,
   Mail,
   ArrowLeft,
+  AlertTriangle,
   Plus,
   Trash2,
   Check,
@@ -35,9 +37,11 @@ import {
 
 export default function AdminPage() {
   const [content, setContent] = useState<any>(null);
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("navigation");
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   // Media Library state
   const [mediaList, setMediaList] = useState<{ name: string; url: string; folder: string }[]>([]);
@@ -237,6 +241,7 @@ export default function AdminPage() {
   const handleSave = async () => {
     setSaving(true);
     setSaveSuccess(false);
+    setSaveError(null);
     try {
       const res = await fetch("/api/content", {
         method: "POST",
@@ -245,14 +250,22 @@ export default function AdminPage() {
       });
       if (res.ok) {
         setSaveSuccess(true);
+        router.refresh();
         setTimeout(() => setSaveSuccess(false), 3000);
+      } else {
+        const errData = await res.json().catch(() => ({}));
+        setSaveError(errData.error || "Değişiklikler kaydedilemedi!");
+        setTimeout(() => setSaveError(null), 5000);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Save error:", error);
+      setSaveError(error?.message || "Sunucuyla bağlantı kurulamadı.");
+      setTimeout(() => setSaveError(null), 5000);
     } finally {
       setSaving(false);
     }
   };
+
 
   if (!content) {
     return (
@@ -420,6 +433,8 @@ export default function AdminPage() {
               className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold transition-all shadow-sm ${
                 saveSuccess
                   ? "bg-emerald-600 text-white"
+                  : saveError
+                  ? "bg-red-600 text-white"
                   : "bg-[#1A1A1A] text-white hover:bg-neutral-800 disabled:opacity-50"
               }`}
             >
@@ -427,6 +442,11 @@ export default function AdminPage() {
                 <>
                   <Check className="w-4 h-4" />
                   <span>Kaydedildi!</span>
+                </>
+              ) : saveError ? (
+                <>
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>Hata Oluştu!</span>
                 </>
               ) : saving ? (
                 <span>Kaydediliyor...</span>
@@ -439,7 +459,23 @@ export default function AdminPage() {
             </button>
           </div>
         </div>
+
+        {saveError && (
+          <div className="bg-red-50 border-t border-red-200 px-6 py-2.5 text-xs text-red-700 flex items-center justify-between animate-fadeIn">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-red-500 shrink-0" />
+              <span><strong>Kaydetme Hatası:</strong> {saveError}</span>
+            </div>
+            <button
+              onClick={() => setSaveError(null)}
+              className="text-red-500 hover:text-red-800 text-xs font-semibold underline"
+            >
+              Kapat
+            </button>
+          </div>
+        )}
       </header>
+
 
       {/* Main Container */}
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8">

@@ -1,25 +1,50 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { revalidatePath } from "next/cache";
+import { getSiteContent, saveSiteContent } from "@/lib/contentStore";
 
-const contentFilePath = path.join(process.cwd(), "src/data/siteContent.json");
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function GET() {
   try {
-    const fileData = fs.readFileSync(contentFilePath, "utf8");
-    const json = JSON.parse(fileData);
-    return NextResponse.json(json);
+    const content = await getSiteContent();
+    if (!content) {
+      return NextResponse.json({ error: "Content not found" }, { status: 404 });
+    }
+    return NextResponse.json(content, {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+      },
+    });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to read content file" }, { status: 500 });
+    console.error("GET /api/content error:", error);
+    return NextResponse.json({ error: "Failed to read content" }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    fs.writeFileSync(contentFilePath, JSON.stringify(body, null, 2), "utf8");
-    return NextResponse.json({ success: true, message: "Content updated successfully" });
+    await saveSiteContent(body);
+
+    // Invalidate Next.js cache so changes reflect instantly
+    try {
+      revalidatePath("/", "layout");
+      revalidatePath("/admin");
+    } catch (e) {
+      console.warn("Revalidation warning:", e);
+    }
+
+    return NextResponse.json(
+      { success: true, message: "Content updated successfully" },
+      {
+        headers: {
+          "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+        },
+      }
+    );
   } catch (error) {
+    console.error("POST /api/content error:", error);
     return NextResponse.json({ error: "Failed to save content" }, { status: 500 });
   }
 }
