@@ -101,14 +101,29 @@ export default function SmoothScroll() {
       if (!target) return;
 
       const href = target.getAttribute("href");
-      if (href && href.startsWith("#") && href.length > 1) {
-        const element = document.querySelector(href);
+      if (!href) return;
+
+      let hash = "";
+      if (href.startsWith("#") && href.length > 1) {
+        hash = href;
+      } else if (
+        href.startsWith("/#") &&
+        href.length > 2 &&
+        (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === ""))
+      ) {
+        hash = href.substring(1);
+      }
+
+      if (hash) {
+        const element = document.querySelector(hash);
         if (element) {
           e.preventDefault();
           const rect = element.getBoundingClientRect();
-          const elementTop = rect.top + window.scrollY - 80; // 80px offset for floating navbar
+          const elementTop = rect.top + window.scrollY - 85; // 85px offset for floating navbar
           targetY = Math.max(0, Math.min(elementTop, maxScroll()));
           startAnimation();
+
+          window.history.pushState(null, "", hash);
         }
       }
     };

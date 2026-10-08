@@ -19,7 +19,8 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
   background-color: #f4f2ee;
   color: #1a1a1a;
   overflow-x: hidden;

@@ -43,6 +43,28 @@ export default function Navbar({ content }: { content?: any }) {
     href: l.href && l.href.startsWith("#") ? `/${l.href}` : l.href,
   }));
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setMobileMenuOpen(false);
+    if (!href) return;
+
+    const hashIdx = href.indexOf("#");
+    if (hashIdx !== -1) {
+      const hash = href.substring(hashIdx);
+      if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
+        const element = document.querySelector(hash);
+        if (element) {
+          e.preventDefault();
+          const targetY = element.getBoundingClientRect().top + window.pageYOffset - 85;
+          window.scrollTo({
+            top: targetY,
+            behavior: "smooth",
+          });
+          window.history.pushState(null, "", hash);
+        }
+      }
+    }
+  };
+
   return (
     <>
       <header className="fixed top-5 inset-x-0 mx-auto w-[92%] max-w-[720px] z-50 transition-all">
@@ -50,6 +72,13 @@ export default function Navbar({ content }: { content?: any }) {
           {/* Logo */}
           <Link
             href="/"
+            onClick={(e) => {
+              if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                window.history.pushState(null, "", "/");
+              }
+            }}
             className="flex items-center gap-2.5 font-medium text-lg tracking-tight text-[#1A1A1A] shrink-0"
           >
             {assets.logoType === "image" && assets.logoUrl ? (
@@ -78,7 +107,8 @@ export default function Navbar({ content }: { content?: any }) {
               <a
                 key={link.id ? `nav-link-${link.id}` : `nav-link-${idx}`}
                 href={link.href}
-                className="hover:text-[#1A1A1A] transition-colors whitespace-nowrap"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="hover:text-[#1A1A1A] transition-colors whitespace-nowrap cursor-pointer"
               >
                 {link.label}
               </a>
@@ -89,7 +119,8 @@ export default function Navbar({ content }: { content?: any }) {
           <div className="flex items-center gap-2 shrink-0">
             <a
               href={ctaHref}
-              className="hidden sm:inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-xs sm:text-sm font-medium hover:bg-black transition-all shadow-xs group whitespace-nowrap"
+              onClick={(e) => handleNavClick(e, ctaHref)}
+              className="hidden sm:inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-xs sm:text-sm font-medium hover:bg-black transition-all shadow-xs group whitespace-nowrap cursor-pointer"
             >
               <span>{ctaText}</span>
               <span className="w-5 h-5 rounded-full bg-white text-[#1A1A1A] flex items-center justify-center text-xs transition-transform group-hover:translate-x-0.5">
@@ -115,8 +146,8 @@ export default function Navbar({ content }: { content?: any }) {
               <a
                 key={link.id ? `mob-link-${link.id}` : `mob-link-${idx}`}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-medium text-[#1A1A1A] py-2 px-3 rounded-lg hover:bg-[#F4F2EE] transition"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-sm font-medium text-[#1A1A1A] py-2 px-3 rounded-lg hover:bg-[#F4F2EE] transition cursor-pointer"
               >
                 {link.label}
               </a>
@@ -124,8 +155,8 @@ export default function Navbar({ content }: { content?: any }) {
             <div className="pt-2 border-t border-[#EAE6E1] mt-1">
               <a
                 href={ctaHref}
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2.5 px-4 rounded-full bg-[#1A1A1A] text-white text-xs font-semibold block"
+                onClick={(e) => handleNavClick(e, ctaHref)}
+                className="w-full text-center py-2.5 px-4 rounded-full bg-[#1A1A1A] text-white text-xs font-semibold block cursor-pointer"
               >
                 {ctaText}
               </a>

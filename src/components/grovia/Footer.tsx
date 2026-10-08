@@ -90,6 +90,26 @@ export default function Footer({ content }: { content?: any }) {
 
   const legalLinks = Array.isArray(content?.footer?.legalLinks) ? content.footer.legalLinks : [];
 
+  const handleFooterLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href) return;
+    const hashIdx = href.indexOf("#");
+    if (hashIdx !== -1) {
+      const hash = href.substring(hashIdx);
+      if (typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "")) {
+        const element = document.querySelector(hash);
+        if (element) {
+          e.preventDefault();
+          const targetY = element.getBoundingClientRect().top + window.pageYOffset - 85;
+          window.scrollTo({
+            top: targetY,
+            behavior: "smooth",
+          });
+          window.history.pushState(null, "", hash);
+        }
+      }
+    }
+  };
+
   return (
     <footer className="w-full bg-transparent px-3 sm:px-6 max-w-7xl mx-auto pb-8">
       {/* Soft Light Container matching Grovia Screenshot 11 */}
@@ -140,6 +160,7 @@ export default function Footer({ content }: { content?: any }) {
                 <li key={idx}>
                   <Link
                     href={link.href || "#"}
+                    onClick={(e) => handleFooterLinkClick(e, link.href)}
                     className="text-[#1A1A1A] hover:text-black font-medium transition-colors"
                   >
                     {link.label}
@@ -161,6 +182,7 @@ export default function Footer({ content }: { content?: any }) {
                   <li key={idx}>
                     <Link
                       href={link.href || "#"}
+                      onClick={(e) => handleFooterLinkClick(e, link.href)}
                       className="text-[#1A1A1A] hover:text-black font-medium transition-colors"
                     >
                       {link.label}
