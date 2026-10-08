@@ -406,7 +406,12 @@ export default function AdminPage() {
         throw new Error(data.error || "Yapay zeka içeriği oluşturamadı.");
       }
 
-      setEditingPost(data.article);
+      const generatedArticle = data.article || data.post;
+      if (!generatedArticle) {
+        throw new Error("Sunucudan geçerli bir makale nesnesi alınamadı.");
+      }
+
+      setEditingPost(generatedArticle);
       setPostEditorTab("edit");
       setIsAiModalOpen(false);
       setAiTopic("");
