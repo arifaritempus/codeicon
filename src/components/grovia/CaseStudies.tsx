@@ -5,102 +5,124 @@ import { useState } from "react";
 export default function CaseStudies({ content }: { content?: any }) {
   const [showAll, setShowAll] = useState(false);
 
-  const title = content?.title || "Success stories";
+  const title = content?.title || "Başarı Hikayeleri & Referanslar";
   const subtitle =
     content?.subtitle ||
-    "Grovia has partnered with growing businesses to build foundations for sustainable success. Explore real stories of transformation.";
+    "CODEICON ile operasyonlarını sıfır hataya indiren sektörün öncü turizm ve MICE acenteleri.";
+
+  const defaultStoryImages = [
+    "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&q=80",
+  ];
+
+  const defaultGradients = [
+    "from-[#48CAE4] to-[#F4A261]",
+    "from-[#F28482] to-[#F7B267]",
+    "from-[#F3C68F] to-[#E5989B]",
+    "from-[#E9D8A6] to-[#94D2BD]",
+  ];
 
   const defaultStories = [
     {
-      id: "pluto",
-      title: "Pluto",
+      id: "tempus",
+      title: "Tempus Travel (MICE)",
       year: "2025",
-      description: "Helped Pluto scale their product team and streamline onboarding as they expanded into new markets.",
+      impact: "180 Pax Sıfır Hata",
+      description: "Antalya ve İstanbul kongre operasyonlarında 180 kişilik transfer ve çoklu otel rooming sürecini tek tıkla yönetti.",
       bgGradient: "from-[#48CAE4] to-[#F4A261]",
-      logoText: "Pluto Inc",
-      logoIcon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white">
-          <path d="M4 4l8 8-8 8V4zm8 0l8 8-8 8V4z" />
-        </svg>
-      ),
+      logoText: "Tempus Travel",
+      customLogoUrl: "/uploads/1791380715995-TEMPUS_LOGO_BLACK.png",
       image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
     },
     {
-      id: "vitahealth",
-      title: "VitaHealth",
-      year: "2024",
-      description: "Partnered with VitaHealth to set up their first operations team from the ground up.",
+      id: "latour",
+      title: "La Tour Event",
+      year: "2025",
+      impact: "3 Kat Hızlı Teklif Dönüşü",
+      description: "Müşterilerine online teklif sunup link üzerinden onay alma altyapısı sayesinde satış döngüsünü 2 güne indirdi.",
       bgGradient: "from-[#F28482] to-[#F7B267]",
-      logoText: "VitaHealth",
-      logoIcon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white">
-          <path d="M19 10.5h-5.5V5a1.5 1.5 0 00-3 0v5.5H5a1.5 1.5 0 000 3h5.5V19a1.5 1.5 0 003 0v-5.5H19a1.5 1.5 0 000-3z" />
-        </svg>
-      ),
+      logoText: "La Tour Event",
+      customLogoUrl: "/uploads/1791380736167-TRANSPARAN-LOGO-03-1-scaled.png",
       image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&auto=format&fit=crop&q=80",
     },
     {
-      id: "boxmedia",
-      title: "BoxMedia",
-      year: "2025",
-      description: "Supported BoxMedia, a creative agency, in building their client success team and internal delivery process.",
+      id: "ravento",
+      title: "Ravento Travel",
+      year: "2024",
+      impact: "TCMB Canlı Mutabakat",
+      description: "Dövizli gruplarda giriş günü kur sabitleme ve otel tedarikçileriyle online cari mutabakat ile finansal riskleri sıfırladı.",
       bgGradient: "from-[#F3C68F] to-[#E5989B]",
-      logoText: "BoxMedia",
-      logoIcon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white">
-          <path d="M21 16.5l-9 5.2-9-5.2V7.5L12 2.3l9 5.2v9z" stroke="currentColor" fill="none" strokeWidth="2" />
-        </svg>
-      ),
+      logoText: "Ravento Travel",
+      customLogoUrl: "/uploads/1791380760782-Varl_k_31_4x-8-2.png",
       image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
     },
     {
       id: "novatech",
-      title: "NovaTech",
-      year: "2023",
-      description: "Helped NovaTech optimize cross-functional collaboration between marketing, product, and sales teams.",
+      title: "Global MICE Partner",
+      year: "2024",
+      impact: "Uçuş Senkronu & Filo",
+      description: "Rötarlı uçuşlarda otomatik transfer revizyonu ve şoför WhatsApp görev emri ile saha operasyonunu %100 otonomlaştırdı.",
       bgGradient: "from-[#E9D8A6] to-[#94D2BD]",
-      logoText: "NovaTech",
-      logoIcon: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white">
-          <circle cx="12" cy="12" r="8" fill="currentColor" />
-        </svg>
-      ),
+      logoText: "Global MICE",
+      customLogoUrl: "",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&q=80",
     },
   ];
 
-  // If user uploaded custom logos/references, map them into the grid
-  const userLogos = Array.isArray(content?.logos) ? content.logos : [];
-  const stories = userLogos.length > 0
+  // Dynamic Stories: Prefer content.items, then fallback to logos or defaults
+  const userItems = Array.isArray(content?.items) && content.items.length > 0 ? content.items : null;
+  const userLogos = Array.isArray(content?.logos) && content.logos.length > 0 ? content.logos : null;
+
+  const stories = userItems
+    ? userItems.map((item: any, i: number) => ({
+        id: item.id || `story-${i}`,
+        title: item.title || item.client || "Referans",
+        year: item.year || "2025",
+        impact: item.impact || "",
+        description: item.description || "Operasyonel süreçleri dijitalleştirildi.",
+        bgGradient: item.bgGradient || defaultGradients[i % defaultGradients.length],
+        logoText: item.title || item.client || "MICE Partner",
+        customLogoUrl: item.logoUrl || "",
+        image: item.image || defaultStoryImages[i % defaultStoryImages.length],
+      }))
+    : userLogos
     ? userLogos.map((l: any, i: number) => ({
         id: l.id || `logo-${i}`,
         title: l.name || "Referans",
         year: "2025",
-        description: l.category ? `${l.name} için MICE ve operasyon altyapısı entegrasyonu sağlandı.` : "Operasyonel süreçleri dijitalleştirildi.",
-        bgGradient: defaultStories[i % defaultStories.length].bgGradient,
+        impact: l.category || "",
+        description: l.category
+          ? `${l.name} için MICE ve operasyon altyapısı entegrasyonu sağlandı.`
+          : "Operasyonel süreçleri dijitalleştirildi.",
+        bgGradient: defaultGradients[i % defaultGradients.length],
         logoText: l.name,
         customLogoUrl: l.logoUrl,
-        image: defaultStories[i % defaultStories.length].image,
+        image: defaultStoryImages[i % defaultStoryImages.length],
       }))
     : defaultStories;
 
   const defaultTestimonials = [
     {
-      quote: "Grovia helped us streamline our operations and scale faster than we imagined. Their mix of strategy and execution is unmatched.",
-      author: "Talia Smith",
-      role: "Head of Product at Forma",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
-    },
-    {
-      quote: "Working with Grovia felt like having an extension of our team. They understood our challenges and executed with precision.",
-      author: "Jordan Johnson",
-      role: "COO at Metricon",
+      quote:
+        "CODEICON ile operasyonlarımızı tamamen merkezileştirdik. Excel karmaşası ve saha transferlerinde pax çakışmaları tamamen geride kaldı.",
+      author: "Anılay Acıkavak",
+      role: "Operasyon Direktörü, Tempus Travel",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80",
     },
     {
-      quote: "From the first meeting, Grovia brought clarity and momentum to our hiring. We couldn't have scaled without them.",
-      author: "Samuel Torres",
-      role: "Founder at Bloomtech",
+      quote:
+        "Tekliflerimizin online onaylanıp tek tıkla kilitlenerek projeye dönüşmesi satış ekibimizin hızını ve dönüşüm oranını 3 katına çıkardı.",
+      author: "Haki Tokul",
+      role: "Genel Koordinatör, La Tour Event",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+    },
+    {
+      quote:
+        "TCMB canlı kurlar üzerinden proje girişinde kur sabitleme ve online cari mutabakat muhasebe departmanımıza müthiş zaman kazandırdı.",
+      author: "Tayfun Kürtür",
+      role: "Kurucu Ortak, Ravento Travel",
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80",
     },
   ];
@@ -163,6 +185,13 @@ export default function CaseStudies({ content }: { content?: any }) {
                   )}
                 </div>
 
+                {/* Impact / KPI Tag at bottom left if present */}
+                {story.impact && (
+                  <div className="absolute bottom-3 left-3 z-10 px-2.5 py-0.5 rounded-full bg-emerald-950/60 backdrop-blur-md text-emerald-300 text-[11px] font-mono font-medium border border-emerald-400/30">
+                    {story.impact}
+                  </div>
+                )}
+
                 {/* Year Pill Tag at bottom right */}
                 <div className="absolute bottom-3 right-3 z-10 px-2.5 py-0.5 rounded-full bg-black/40 backdrop-blur-md text-white/90 text-[11px] font-mono font-medium">
                   {story.year}
@@ -186,9 +215,9 @@ export default function CaseStudies({ content }: { content?: any }) {
         <div className="flex justify-center mb-16 sm:mb-20">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="bg-white border border-[#DCD6D0] hover:border-[#1A1A1A] rounded-full px-6 py-2.5 text-sm font-medium text-[#1A1A1A] shadow-xs transition-all hover:bg-neutral-50"
+            className="bg-white border border-[#DCD6D0] hover:border-[#1A1A1A] rounded-full px-6 py-2.5 text-sm font-medium text-[#1A1A1A] shadow-xs transition-all hover:bg-neutral-50 cursor-pointer"
           >
-            {showAll ? "Show less" : "Read more"}
+            {showAll ? (content?.ctaLessText || "Daha Az Göster") : (content?.ctaText || "Daha Fazla Göster")}
           </button>
         </div>
 

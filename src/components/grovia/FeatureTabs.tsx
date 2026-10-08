@@ -1,55 +1,55 @@
 "use client";
 
 import { useState } from "react";
-import { Laptop, TrendingUp, Layers, Users, Sparkles, Check } from "lucide-react";
+import { Laptop, TrendingUp, Layers, Users, Sparkles, Check, ArrowRight } from "lucide-react";
 
 export default function FeatureTabs({ content }: { content?: any }) {
-  const [activeTab, setActiveTab] = useState(3); // Default to Team management matching screenshot 4
+  const [activeTab, setActiveTab] = useState(0);
 
-  const title = content?.title || "Built for high performance";
+  const title = content?.title || "Yüksek Performanslı Acente Mimarisi";
   const subtitle =
     content?.subtitle ||
-    "Grovia gives your team everything it needs to stay aligned, track performance, and scale with confidence — all in one place.";
+    "Operasyonel yükü azaltan, ekiplerinizi senkronize eden ve tüm süreçleri merkezileştiren akıllı altyapı.";
 
   const defaultTabs = [
     {
       id: "portal",
-      label: "Client portal",
+      label: "Müşteri Portalı",
       icon: Laptop,
-      badge: "CLIENT PORTAL",
-      title: "Seamless client experience",
+      badge: "MÜŞTERİ PORTALI",
+      title: "Müşterilerinize online teklif ve mutabakat gönderin",
       description:
-        "Provide customers with an interactive, branded portal to review proposals, track itinerary changes, and sign off with zero back-and-forth friction.",
+        "Müşterilerinizin teklifleri online inceleyip tek tıkla onayladığı, onaylanan teklifin kendini kilitleyerek otomatik projeye dönüştüğü altyapı.",
       mockupType: "portal",
     },
     {
       id: "kpi",
-      label: "KPI tracking",
+      label: "Saha & Transfer",
       icon: TrendingUp,
-      badge: "KPI TRACKING",
-      title: "Real-time performance metrics",
+      badge: "SAHA & TRANSFER",
+      title: "Akıllı transfer planlama ve filo yönetimi",
       description:
-        "Gain instant visibility into booking volumes, profit margins, and supplier disbursements with automated currency indexing and live analytics.",
+        "Uçuş saatlerine duyarlı otomatik kalkış hesaplama, araç pax kapasitesi kontrolü ve şoförlere anlık WhatsApp görev emri iletimi.",
       mockupType: "kpi",
     },
     {
       id: "automation",
-      label: "Workflow automation",
+      label: "MICE & Projeler",
       icon: Layers,
-      badge: "WORKFLOW AUTOMATION",
-      title: "Smart operational automation",
+      badge: "MICE & PROJELER",
+      title: "Kongre, toplantı ve grup organizasyonları",
       description:
-        "Transform proposals into active projects in one click, sync rooming sheets to flight itineraries, and alert dispatchers to vehicle capacity constraints automatically.",
+        "Çoklu otel yönetimi, matbu Excel rooming listelerini tek tıkla sisteme aktarma ve projeye özel anlık kar/zarar analizi.",
       mockupType: "automation",
     },
     {
       id: "team",
-      label: "Team management",
+      label: "Finans & Mutabakat",
       icon: Users,
-      badge: "TEAM MANAGEMENT",
-      title: "Built for growing teams",
+      badge: "FİNANS & MUTABAKAT",
+      title: "TCMB canlı kurlar ve otomatik cari mutabakat",
       description:
-        "Easily onboard new members, assign roles, and manage access. Keep your organization structured and scalable from day one.",
+        "Grup giriş gününde döviz kurunu sabitleme, onaylanan faturaların muhasebe havuzuna düşmesi ve tedarikçilerle dijital mutabakat.",
       mockupType: "team",
     },
   ];
@@ -60,10 +60,14 @@ export default function FeatureTabs({ content }: { content?: any }) {
     id: t.id || defaultTabs[i % defaultTabs.length].id,
     label: t.label || defaultTabs[i % defaultTabs.length].label,
     icon: icons[i % icons.length],
-    badge: (t.label || defaultTabs[i % defaultTabs.length].label).toUpperCase(),
+    badge: t.mockupBadge || (t.label || defaultTabs[i % defaultTabs.length].label).toUpperCase(),
     title: t.title || defaultTabs[i % defaultTabs.length].title,
     description: t.description || defaultTabs[i % defaultTabs.length].description,
+    bullets: t.bullets || [],
+    ctaText: t.ctaText,
+    ctaHref: t.ctaHref || "#contact",
     mockupType: defaultTabs[i % defaultTabs.length].mockupType,
+    mockupUrl: t.mockupUrl,
   }));
 
   const currentTab = tabs[activeTab] || tabs[0] || defaultTabs[3];
@@ -154,40 +158,76 @@ export default function FeatureTabs({ content }: { content?: any }) {
 
                 <h3 className="text-xl sm:text-2xl font-bold text-[#1A1A1A] tracking-tight">
                   {currentTab.mockupType === "team"
-                    ? "Welcome!"
+                    ? "TCMB Canlı Finans"
                     : currentTab.mockupType === "kpi"
-                    ? "Live KPI Board"
+                    ? "Canlı Filo & Transfer"
                     : currentTab.mockupType === "automation"
-                    ? "Active Pipeline"
-                    : "Client Space"}
+                    ? "MICE Proje Altyapısı"
+                    : "Müşteri Teklif Portalı"}
                 </h3>
 
                 {/* Form fields mockup */}
                 <div className="space-y-3 pt-1">
                   <div>
                     <label className="text-[11px] font-medium text-[#7A7570] block mb-1">
-                      {currentTab.mockupType === "team" ? "Username" : "Workspace / Group"}
+                      {currentTab.mockupType === "team"
+                        ? "Kur Durumu"
+                        : currentTab.mockupType === "kpi"
+                        ? "Transfer Güzergahı"
+                        : currentTab.mockupType === "automation"
+                        ? "Organizasyon / Proje"
+                        : "Teklif & Proje Adı"}
                     </label>
-                    <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#A09A93]">
-                      {currentTab.mockupType === "team" ? "Your username" : "MICE Operations 2026"}
+                    <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#2A2A2A] font-medium">
+                      {currentTab.mockupType === "team"
+                        ? "€38.45 (Giriş Günü Sabitlendi)"
+                        : currentTab.mockupType === "kpi"
+                        ? "Antalya Havalimanı - Belek Kongre"
+                        : currentTab.mockupType === "automation"
+                        ? "Uluslararası Tıp Kongresi (MICE)"
+                        : "2026 Bayi Toplantısı Teklifi"}
                     </div>
                   </div>
 
                   <div>
                     <label className="text-[11px] font-medium text-[#7A7570] block mb-1">
-                      {currentTab.mockupType === "team" ? "Email" : "Assigned Manager"}
+                      {currentTab.mockupType === "team"
+                        ? "Fatura Havuzu"
+                        : currentTab.mockupType === "kpi"
+                        ? "Pax Kapasitesi"
+                        : currentTab.mockupType === "automation"
+                        ? "Rooming List"
+                        : "Müşteri Yetkilisi"}
                     </label>
-                    <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#A09A93]">
-                      {currentTab.mockupType === "team" ? "Your email" : "mert@tempustravel.com"}
+                    <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#2A2A2A] font-medium">
+                      {currentTab.mockupType === "team"
+                        ? "12 Tedarikçi Faturası Eşleşti"
+                        : currentTab.mockupType === "kpi"
+                        ? "45 / 45 Dolu (1 Ek Minibüs)"
+                        : currentTab.mockupType === "automation"
+                        ? "180 Pax Aktarıldı (0 Hata)"
+                        : "onay@kurumsal-musteri.com"}
                     </div>
                   </div>
 
                   <div>
                     <label className="text-[11px] font-medium text-[#7A7570] block mb-1">
-                      {currentTab.mockupType === "team" ? "Password" : "Status & Key"}
+                      {currentTab.mockupType === "team"
+                        ? "ERP Senkronu"
+                        : currentTab.mockupType === "kpi"
+                        ? "Saha İletişimi"
+                        : currentTab.mockupType === "automation"
+                        ? "Kârlılık Durumu"
+                        : "Onay Linki Durumu"}
                     </label>
-                    <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#A09A93]">
-                      ••••••••••••••••
+                    <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-emerald-700 font-medium">
+                      {currentTab.mockupType === "team"
+                        ? "✓ Logo / Netsis Entegre"
+                        : currentTab.mockupType === "kpi"
+                        ? "✓ WhatsApp Görev Emri İletildi"
+                        : currentTab.mockupType === "automation"
+                        ? "✓ Net Kâr: %28.4 (Canlı)"
+                        : "✓ Güvenli Token ile Onaylandı"}
                     </div>
                   </div>
                 </div>
@@ -206,6 +246,35 @@ export default function FeatureTabs({ content }: { content?: any }) {
             <p className="text-sm sm:text-base text-[#7A7570] leading-relaxed max-w-md">
               {currentTab.description}
             </p>
+
+            {/* Feature Bullets */}
+            {currentTab.bullets && currentTab.bullets.length > 0 && (
+              <ul className="space-y-2.5 pt-2">
+                {currentTab.bullets.map((bullet: string, bIdx: number) => (
+                  <li key={bIdx} className="flex items-center gap-2.5 text-sm text-[#2A2A2A]">
+                    <div className="w-5 h-5 rounded-full bg-[#EBE7E2] flex items-center justify-center shrink-0">
+                      <Check className="w-3 h-3 text-[#1A1A1A]" />
+                    </div>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* CTA Button */}
+            {currentTab.ctaText && (
+              <div className="pt-3">
+                <a
+                  href={currentTab.ctaHref || "#contact"}
+                  className="grovia-btn-primary inline-flex text-xs sm:text-sm"
+                >
+                  <span>{currentTab.ctaText}</span>
+                  <span className="grovia-btn-arrow">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

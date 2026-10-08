@@ -342,7 +342,7 @@ export default function Hero({
               </div>
               <div className="flex items-center gap-1.5 text-[10px] font-medium text-[#605F5F] bg-[#F4F2EE] px-2.5 py-0.5 rounded-full border border-black/5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Canlı Acente Sistemi</span>
+                <span>{content?.mockupStatusBadge || "Canlı Acente Sistemi"}</span>
               </div>
             </div>
             <img

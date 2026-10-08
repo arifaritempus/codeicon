@@ -90,8 +90,12 @@ export default function ContactCta({
                   />
                 </div>
                 <div className="text-xs">
-                  <span className="font-semibold text-white block">4.9 / 5 Rated</span>
-                  <span className="text-white/60">Over 9.2k Customers</span>
+                  <span className="font-semibold text-white block">
+                    {content?.socialProofRating || "4.9 / 5 Memnuniyet"}
+                  </span>
+                  <span className="text-white/60">
+                    {content?.socialProofText || "50+ MICE & Acente Ekibi"}
+                  </span>
                 </div>
               </div>
             </div>

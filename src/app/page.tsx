@@ -219,7 +219,9 @@ export default function Home() {
         {visibility.features && <FeatureTabs content={content?.features} />}
         {visibility.integrations && <Integrations content={content?.integrations} />}
         {visibility.pricing && <Pricing content={content?.pricing} />}
-        {visibility.caseStudies && <CaseStudies content={content?.references || content?.caseStudies} />}
+        {visibility.caseStudies && (
+          <CaseStudies content={{ ...(content?.caseStudies || {}), ...(content?.references || {}) }} />
+        )}
         {visibility.faq && <Faq content={content?.faq} />}
         {visibility.contact && (
           <ContactCta content={content?.contact} buttons={content?.buttons} />

@@ -115,7 +115,8 @@
         "statValue": "1h 50m",
         "statBadge": "+15dk bu hafta"
       }
-    ]
+    ],
+    "mockupStatusBadge": "Canlı Acente Sistemi"
   },
   "process": {
     "eyebrow": "Sıfır Hata Altyapısı",
@@ -125,17 +126,71 @@
       {
         "number": "01",
         "title": "Kolay Kullanım",
-        "description": "Sisteminizi dakikalar içinde açalım."
+        "description": "Sisteminizi dakikalar içinde açalım.",
+        "preview": {
+          "badge": "LİVE",
+          "title": "Hesap & Ekip Daveti",
+          "items": [
+            {
+              "label": "Kullanıcı Adı",
+              "status": "mert.yilmaz"
+            },
+            {
+              "label": "Kurumsal E-Posta",
+              "status": "mert@tempustravel.com"
+            },
+            {
+              "label": "Ekip Erişimi",
+              "status": "Aktif (5 Kullanıcı)"
+            }
+          ]
+        }
       },
       {
         "number": "02",
         "title": "Anında Kurulum",
-        "description": "Tanımlamalarınızı ve yetkilendirmelerinizi tamamlayın."
+        "description": "Tanımlamalarınızı ve yetkilendirmelerinizi tamamlayın.",
+        "preview": {
+          "badge": "YETKİLİ",
+          "title": "Yetki & Rol Dağılımı",
+          "items": [
+            {
+              "label": "MICE & Satış",
+              "status": "Tam Erişim"
+            },
+            {
+              "label": "Saha & Transfer",
+              "status": "Pax & Filo"
+            },
+            {
+              "label": "Finans & Muhasebe",
+              "status": "TCMB & Fatura"
+            }
+          ]
+        }
       },
       {
         "number": "03",
         "title": "Operasyonlarınızı Yönetmeye Başlayın",
-        "description": "Artık her şey sizin için daha kolay, daha efektif, daha ulaşılabilir."
+        "description": "Artık her şey sizin için daha kolay, daha efektif, daha ulaşılabilir.",
+        "preview": {
+          "badge": "AKTİF SAHA",
+          "title": "Canlı Operasyon",
+          "items": [
+            {
+              "label": "180 Pax Transfer",
+              "status": "4 Araç Hazır"
+            },
+            {
+              "label": "TCMB Kur Sabitleme",
+              "status": "€38.45 Kilitli"
+            },
+            {
+              "label": "Online Müşteri Onayı",
+              "status": "Onaylandı"
+            }
+          ]
+        }
       }
     ],
     "footerStatus": "Sistem Durumu: Tam Operasyonel"
@@ -149,25 +204,61 @@
         "id": "portal",
         "label": "Müşteri Portalı",
         "title": "Müşterilerinize online teklif ve mutabakat gönderin",
-        "description": "Müşterilerinizin teklifleri online inceleyip tek tıkla onayladığı, onaylanan teklifin kendini kilitleyerek otomatik projeye dönüştüğü altyapı."
+        "description": "Müşterilerinizin teklifleri online inceleyip tek tıkla onayladığı, onaylanan teklifin kendini kilitleyerek otomatik projeye dönüştüğü altyapı.",
+        "bullets": [
+          "Teklif onaylandığı an kendini otomatik kilitler",
+          "Müşteriye özel şifresiz güvenli token linki",
+          "Revizyon geçmişi ve detaylı log takibi"
+        ],
+        "ctaText": "Portal Demosunu İncele",
+        "ctaHref": "#contact",
+        "mockupBadge": "ONLINE PORTAL",
+        "mockupUrl": "portal.codeicon.co/teklif-onay"
       },
       {
         "id": "kpi",
         "label": "Saha & Transfer",
         "title": "Akıllı transfer planlama ve filo yönetimi",
-        "description": "Uçuş saatlerine duyarlı otomatik kalkış hesaplama, araç pax kapasitesi kontrolü ve şoförlere anlık WhatsApp görev emri iletimi."
+        "description": "Uçuş saatlerine duyarlı otomatik kalkış hesaplama, araç pax kapasitesi kontrolü ve şoförlere anlık WhatsApp görev emri iletimi.",
+        "bullets": [
+          "Uçuş rötarlarına duyarlı dinamik kalkış saati",
+          "Araç koltuk kapasitesi ve pax çakışma uyarısı",
+          "Şoför ve rehberlere anlık WhatsApp görev emri"
+        ],
+        "ctaText": "Saha Modülünü Keşfedin",
+        "ctaHref": "#contact",
+        "mockupBadge": "TRANSFER FİLO",
+        "mockupUrl": "codeicon.co/app/transfer"
       },
       {
         "id": "automation",
         "label": "MICE & Projeler",
         "title": "Kongre, toplantı ve grup organizasyonları",
-        "description": "Çoklu otel yönetimi, matbu Excel rooming listelerini tek tıkla sisteme aktarma ve projeye özel anlık kar/zarar analizi."
+        "description": "Çoklu otel yönetimi, matbu Excel rooming listelerini tek tıkla sisteme aktarma ve projeye özel anlık kar/zarar analizi.",
+        "bullets": [
+          "Excel rooming listelerini sıfır veri kaybıyla aktarın",
+          "Kongre ve bayi toplantılarına özel çoklu otel yönetimi",
+          "Projeye özel anlık gelir, gider ve kârlılık tablosu"
+        ],
+        "ctaText": "MICE Modülünü İnceleyin",
+        "ctaHref": "#contact",
+        "mockupBadge": "MICE & KONGRE",
+        "mockupUrl": "codeicon.co/app/mice"
       },
       {
         "id": "team",
         "label": "Finans & Mutabakat",
         "title": "TCMB canlı kurlar ve otomatik cari mutabakat",
-        "description": "Grup giriş gününde döviz kurunu sabitleme, onaylanan faturaların muhasebe havuzuna düşmesi ve tedarikçilerle dijital mutabakat."
+        "description": "Grup giriş gününde döviz kurunu sabitleme, onaylanan faturaların muhasebe havuzuna düşmesi ve tedarikçilerle dijital mutabakat.",
+        "bullets": [
+          "TCMB günlük kurlarını anlık çeker ve projeye sabitler",
+          "Otel ve tedarikçilerle tek tıkla cari mutabakat",
+          "Logo, Netsis ve Mikro ERP sistemleriyle tam uyumlu"
+        ],
+        "ctaText": "Finans Modülünü Görün",
+        "ctaHref": "#contact",
+        "mockupBadge": "TCMB & FİNANS",
+        "mockupUrl": "codeicon.co/app/finance"
       }
     ]
   },
@@ -179,6 +270,66 @@
       "50+ hazır resmi acente entegrasyonu",
       "TCMB Canlı Kur ve Sabitleme",
       "Otomatik Muhasebe & ERP Entegrasyonu"
+    ],
+    "ctaText": "Hemen Başlayın",
+    "ctaHref": "#contact",
+    "items": [
+      {
+        "id": "tcmb",
+        "name": "TCMB Kurlar",
+        "category": "Finans",
+        "desc": "Canlı döviz kuru çekme ve proje bazlı kur sabitleme.",
+        "icon": "🏛️"
+      },
+      {
+        "id": "erp",
+        "name": "Logo & Netsis",
+        "category": "Muhasebe",
+        "desc": "Onaylanan operasyon faturalarını anında ERPye aktarın.",
+        "icon": "📊"
+      },
+      {
+        "id": "flight",
+        "name": "THY & Pegasus API",
+        "category": "Uçuş",
+        "desc": "Canlı uçuş durumu ve otomatik transfer saati senkronu.",
+        "icon": "✈️"
+      },
+      {
+        "id": "hotel",
+        "name": "HotelRunner & Sejour",
+        "category": "Konaklama",
+        "desc": "Otel müsaitlik ve rezervasyon akışlarını tek ekranda toplayın.",
+        "icon": "🏨"
+      },
+      {
+        "id": "whatsapp",
+        "name": "WhatsApp Görev Emri",
+        "category": "Saha",
+        "desc": "Şoför ve operasyon rehberlerine anında görev detaylarını iletin.",
+        "icon": "💬"
+      },
+      {
+        "id": "amadeus",
+        "name": "Amadeus & Sabre",
+        "category": "GDS",
+        "desc": "Global biletleme sistemleriyle çift yönlü senkronizasyon.",
+        "icon": "🌐"
+      },
+      {
+        "id": "payment",
+        "name": "PayTR & Sanal POS",
+        "category": "Tahsilat",
+        "desc": "Müşterilerinizden online link ile güvenli kredi kartı tahsilatı.",
+        "icon": "💳"
+      },
+      {
+        "id": "excel",
+        "name": "Matbu Excel İçe Aktarım",
+        "category": "Veri",
+        "desc": "Yüzlerce kişilik rooming ve transfer listelerini tek tıkla yükleyin.",
+        "icon": "📑"
+      }
     ]
   },
   "pricing": {
@@ -298,13 +449,15 @@
     "newsletterTitle": "MICE & Acente Bültenine Kaydolun",
     "newsletterSubtitle": "Turizm teknolojileri, saha yönetimi ve acente kârlılığı üzerine güncel rehberler.",
     "newsletterPlaceholder": "E-posta adresiniz",
-    "newsletterSuccess": "✓ Bülten aboneliğiniz başarıyla kaydedildi!"
+    "newsletterSuccess": "✓ Bülten aboneliğiniz başarıyla kaydedildi!",
+    "socialProofRating": "4.9 / 5 Memnuniyet",
+    "socialProofText": "50+ MICE & Acente Ekibi"
   },
   "footer": {
     "description": "CODEICON, kurumsal MICE acenteleri ve seyahat ekipleri için geliştirilmiş yeni nesil operasyon ve finans işletim sistemidir.",
     "systemStatus": "Tüm Sistemler Operasyonel",
     "showSystemStatus": true,
-    "col1Title": "Hızlı Erişim",
+    "col1Title": "Sayfalar",
     "col1Links": [
       {
         "label": "Ana Sayfa",
@@ -340,7 +493,34 @@
         "label": "Kullanım Koşulları",
         "href": "#"
       }
-    ]
+    ],
+    "newsletterTitle": "MICE & Acente Bültenine Kaydolun",
+    "newsletterButtonText": "Abone Ol",
+    "newsletterSuccess": "✓ Bülten aboneliğiniz başarıyla kaydedildi!",
+    "col2Title": "Platform & Modüller",
+    "col2Links": [
+      {
+        "label": "MICE & Kongre Yönetimi",
+        "href": "#features"
+      },
+      {
+        "label": "Saha & Filo Transferi",
+        "href": "#features"
+      },
+      {
+        "label": "TCMB Canlı Kur & Finans",
+        "href": "#features"
+      },
+      {
+        "label": "Online Müşteri Portalı",
+        "href": "#features"
+      }
+    ],
+    "socials": {
+      "twitter": "https://x.com",
+      "instagram": "https://instagram.com",
+      "linkedin": "https://linkedin.com"
+    }
   },
   "references": {
     "logos": [
@@ -363,7 +543,56 @@
         "category": "MICE & Kongre"
       }
     ],
-    "items": [],
+    "items": [
+      {
+        "id": "tempus",
+        "client": "Tempus Travel",
+        "title": "Tempus Travel (MICE)",
+        "year": "2025",
+        "industry": "MICE & Kongre",
+        "impact": "180 Pax Sıfır Hata",
+        "description": "Antalya ve İstanbul kongre operasyonlarında 180 kişilik transfer ve çoklu otel rooming sürecini tek tıkla yönetti.",
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
+        "logoUrl": "/uploads/1791380715995-TEMPUS_LOGO_BLACK.png",
+        "bgGradient": "from-[#48CAE4] to-[#F4A261]"
+      },
+      {
+        "id": "latour",
+        "client": "La Tour Event",
+        "title": "La Tour Event",
+        "year": "2025",
+        "industry": "Kurumsal Etkinlik",
+        "impact": "3 Kat Hızlı Teklif Dönüşü",
+        "description": "Müşterilerine online teklif sunup link üzerinden onay alma altyapısı sayesinde satış döngüsünü 2 güne indirdi.",
+        "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&auto=format&fit=crop&q=80",
+        "logoUrl": "/uploads/1791380736167-TRANSPARAN-LOGO-03-1-scaled.png",
+        "bgGradient": "from-[#F28482] to-[#F7B267]"
+      },
+      {
+        "id": "ravento",
+        "client": "Ravento Travel",
+        "title": "Ravento Travel",
+        "year": "2024",
+        "industry": "Incoming & DMC",
+        "impact": "TCMB Canlı Mutabakat",
+        "description": "Dövizli gruplarda giriş günü kur sabitleme ve otel tedarikçileriyle online cari mutabakat ile finansal riskleri sıfırladı.",
+        "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+        "logoUrl": "/uploads/1791380760782-Varl_k_31_4x-8-2.png",
+        "bgGradient": "from-[#F3C68F] to-[#E5989B]"
+      },
+      {
+        "id": "novatech",
+        "client": "Global MICE Partner",
+        "title": "Global MICE Partner",
+        "year": "2024",
+        "industry": "Uluslararası Kongre",
+        "impact": "Uçuş Senkronu & Filo",
+        "description": "Rötarlı uçuşlarda otomatik transfer revizyonu ve şoför WhatsApp görev emri ile saha operasyonunu %100 otonomlaştırdı.",
+        "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&q=80",
+        "logoUrl": "",
+        "bgGradient": "from-[#E9D8A6] to-[#94D2BD]"
+      }
+    ],
     "testimonials": [
       {
         "quote": "CODEICON ile operasyonlarımızı tamamen merkezileştirdik. Excel karmaşası ve saha transferlerinde pax çakışmaları tamamen geride kaldı.",
@@ -383,7 +612,12 @@
         "role": "Kurucu Ortak, Ravento Travel",
         "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
       }
-    ]
+    ],
+    "eyebrow": "Saha Deneyimleri",
+    "title": "Başarı Hikayeleri & Referanslar",
+    "subtitle": "CODEICON ile operasyonlarını sıfır hataya indiren sektörün öncü turizm ve MICE acenteleri.",
+    "ctaText": "Daha Fazla Göster",
+    "ctaLessText": "Daha Az Göster"
   },
   "theme": {
     "fontFamily": "'Geist', 'Albert Sans', -apple-system, sans-serif",

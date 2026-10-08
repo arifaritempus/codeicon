@@ -1781,7 +1781,108 @@ export default function AdminPage() {
                   </div>
                 </div>
 
-                {/* 5. BOTTOM BAR: COPYRIGHT & LEGAL LINKS */}
+                {/* 5. FOOTER NEWSLETTER & SOCIAL MEDIA */}
+                <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-4">
+                  <h3 className="text-sm font-bold text-[#1A1A1A]">Footer E-Bülten & Sosyal Medya</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Footer E-Bülten Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.footer?.newsletterTitle || ""}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            footer: { ...content.footer, newsletterTitle: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2 text-xs font-bold rounded-xl border border-[#DDD7D0]"
+                        placeholder="Örn: MICE & Acente Bültenine Kaydolun"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Footer Bülten Buton Metni
+                      </label>
+                      <input
+                        type="text"
+                        value={content.footer?.newsletterButtonText || ""}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            footer: { ...content.footer, newsletterButtonText: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2 text-xs font-semibold rounded-xl border border-[#DDD7D0]"
+                        placeholder="Örn: Abone Ol"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <h4 className="text-xs font-bold text-[#1A1A1A] mb-2">Sosyal Medya Linkleri</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div>
+                        <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">X (Twitter) URL</label>
+                        <input
+                          type="text"
+                          value={content.footer?.socials?.twitter || ""}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              footer: {
+                                ...content.footer,
+                                socials: { ...(content.footer?.socials || {}), twitter: e.target.value },
+                              },
+                            })
+                          }
+                          className="w-full px-3 py-1.5 text-xs font-mono rounded-lg border border-[#DDD7D0]"
+                          placeholder="https://x.com/..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">Instagram URL</label>
+                        <input
+                          type="text"
+                          value={content.footer?.socials?.instagram || ""}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              footer: {
+                                ...content.footer,
+                                socials: { ...(content.footer?.socials || {}), instagram: e.target.value },
+                              },
+                            })
+                          }
+                          className="w-full px-3 py-1.5 text-xs font-mono rounded-lg border border-[#DDD7D0]"
+                          placeholder="https://instagram.com/..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold text-[#8C8C8C] uppercase mb-1">LinkedIn URL</label>
+                        <input
+                          type="text"
+                          value={content.footer?.socials?.linkedin || ""}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              footer: {
+                                ...content.footer,
+                                socials: { ...(content.footer?.socials || {}), linkedin: e.target.value },
+                              },
+                            })
+                          }
+                          className="w-full px-3 py-1.5 text-xs font-mono rounded-lg border border-[#DDD7D0]"
+                          placeholder="https://linkedin.com/..."
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 6. BOTTOM BAR: COPYRIGHT & LEGAL LINKS */}
                 <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-4">
                   <h3 className="text-sm font-bold text-[#1A1A1A]">Alt Telif Bandı & Yasal Sözleşmeler</h3>
 
@@ -2526,6 +2627,18 @@ export default function AdminPage() {
                         className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm font-mono focus:border-[#1A1A1A] focus:outline-none"
                       />
                     </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Hero Mockup Canlı Durum Rozeti (Badge)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hero.mockupStatusBadge || "Canlı Acente Sistemi"}
+                        onChange={(e) => setContent({ ...content, hero: { ...content.hero, mockupStatusBadge: e.target.value } })}
+                        placeholder="Örn: Canlı Acente Sistemi"
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:border-[#1A1A1A] focus:outline-none"
+                      />
+                    </div>
                   </div>
 
                   {/* Hero Sağ Acente & İstatistik Kartı Ayarları */}
@@ -3243,6 +3356,43 @@ export default function AdminPage() {
                       className="w-full px-3.5 py-2 rounded-xl border border-[#DDD7D0] text-xs focus:border-[#1A1A1A] focus:outline-none"
                     />
                   </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Buton Yazısı (CTA)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.integrations?.ctaText || "Hemen Başlayın"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            integrations: { ...content.integrations, ctaText: e.target.value }
+                          })
+                        }
+                        placeholder="Örn: Hemen Başlayın"
+                        className="w-full px-3.5 py-2 rounded-xl border border-[#DDD7D0] text-xs focus:border-[#1A1A1A] focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Buton Hedef Linki
+                      </label>
+                      <input
+                        type="text"
+                        value={content.integrations?.ctaHref || "#contact"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            integrations: { ...content.integrations, ctaHref: e.target.value }
+                          })
+                        }
+                        placeholder="Örn: #contact"
+                        className="w-full px-3.5 py-2 rounded-xl border border-[#DDD7D0] text-xs font-mono focus:border-[#1A1A1A] focus:outline-none"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Integrations Grid */}
@@ -3791,6 +3941,42 @@ export default function AdminPage() {
                       className="w-full px-4 py-2 rounded-xl border border-[#DDD7D0] text-xs"
                       placeholder="Örn: Birlikte Başardığımız Önde Gelen Markalar & Acenteler"
                     />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Kartları Genişletme Butonu Metni
+                      </label>
+                      <input
+                        type="text"
+                        value={content.references?.ctaText || "Daha Fazla Göster"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            references: { ...content.references, ctaText: e.target.value },
+                          })
+                        }
+                        placeholder="Örn: Daha Fazla Göster"
+                        className="w-full px-4 py-2 rounded-xl border border-[#DDD7D0] text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Kartları Daraltma Butonu Metni
+                      </label>
+                      <input
+                        type="text"
+                        value={content.references?.ctaLessText || "Daha Az Göster"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            references: { ...content.references, ctaLessText: e.target.value },
+                          })
+                        }
+                        placeholder="Örn: Daha Az Göster"
+                        className="w-full px-4 py-2 rounded-xl border border-[#DDD7D0] text-xs"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -4391,6 +4577,33 @@ export default function AdminPage() {
                         value={content.contact.phone || ""}
                         onChange={(e) => setContent({ ...content, contact: { ...content.contact, phone: e.target.value } })}
                         className="w-full px-4 py-2 rounded-xl border border-[#DDD7D0] text-xs font-mono"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Sosyal Kanıt Puanı (Rating)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.contact.socialProofRating || "4.9 / 5 Memnuniyet"}
+                        onChange={(e) => setContent({ ...content, contact: { ...content.contact, socialProofRating: e.target.value } })}
+                        placeholder="Örn: 4.9 / 5 Memnuniyet"
+                        className="w-full px-4 py-2 rounded-xl border border-[#DDD7D0] text-xs font-medium"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Sosyal Kanıt Müşteri Hacmi
+                      </label>
+                      <input
+                        type="text"
+                        value={content.contact.socialProofText || "50+ MICE & Acente Ekibi"}
+                        onChange={(e) => setContent({ ...content, contact: { ...content.contact, socialProofText: e.target.value } })}
+                        placeholder="Örn: 50+ MICE & Acente Ekibi"
+                        className="w-full px-4 py-2 rounded-xl border border-[#DDD7D0] text-xs font-medium"
                       />
                     </div>
                   </div>

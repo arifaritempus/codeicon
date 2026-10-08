@@ -74,19 +74,54 @@ export default function ProcessSteps({ content }: { content?: any }) {
                             )}
                           </div>
                           <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                            {idx === 0 ? "LIVE" : idx === 1 ? "YETKİLİ" : "AKTİF SAHA"}
+                            {step.preview?.badge || (idx === 0 ? "LIVE" : idx === 1 ? "YETKİLİ" : "AKTİF SAHA")}
                           </span>
                         </div>
 
-                        {/* Step 0: Create Account & Invite */}
-                        {idx === 0 && (
+                        {/* Dynamic Step Preview Content */}
+                        {step.preview?.items && step.preview.items.length > 0 ? (
                           <>
                             <div>
                               <h4 className="text-base font-medium text-[#1A1A1A]">
-                                Create account
+                                {step.preview.title || step.title}
+                              </h4>
+                              {idx === 0 && (
+                                <div className="inline-flex items-center gap-1.5 mt-2 px-2 py-1 rounded-full bg-[#F4F2EE] border border-[#E6E1DC]">
+                                  <span className="text-[10px] text-[#605F5F] font-medium">+ Davet</span>
+                                  <div className="flex -space-x-1.5">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&auto=format&fit=crop&q=80" alt="Avatar" className="w-4 h-4 rounded-full border border-white object-cover" />
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&auto=format&fit=crop&q=80" alt="Avatar" className="w-4 h-4 rounded-full border border-white object-cover" />
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&auto=format&fit=crop&q=80" alt="Avatar" className="w-4 h-4 rounded-full border border-white object-cover" />
+                                    <span className="w-4 h-4 rounded-full bg-[#1A1A1A] text-white text-[8px] flex items-center justify-center font-mono">+2</span>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="space-y-2 pt-1">
+                              {step.preview.items.map((it: any, itIdx: number) => (
+                                <div
+                                  key={itIdx}
+                                  className="p-2 rounded-lg bg-[#FAF9F6] border border-[#EDE8E3] flex items-center justify-between text-xs"
+                                >
+                                  <div className="flex items-center gap-1.5">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                                    <span className="font-semibold text-[#1A1A1A]">{it.label}</span>
+                                  </div>
+                                  <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                                    {it.status || it.value || "Aktif"}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : idx === 0 ? (
+                          <>
+                            <div>
+                              <h4 className="text-base font-medium text-[#1A1A1A]">
+                                Hesap Oluştur & Ekip Daveti
                               </h4>
                               <div className="inline-flex items-center gap-1.5 mt-2 px-2 py-1 rounded-full bg-[#F4F2EE] border border-[#E6E1DC]">
-                                <span className="text-[10px] text-[#605F5F] font-medium">+ Invite</span>
+                                <span className="text-[10px] text-[#605F5F] font-medium">+ Davet</span>
                                 <div className="flex -space-x-1.5">
                                   <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&auto=format&fit=crop&q=80" alt="Avatar" className="w-4 h-4 rounded-full border border-white object-cover" />
                                   <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&auto=format&fit=crop&q=80" alt="Avatar" className="w-4 h-4 rounded-full border border-white object-cover" />
@@ -97,23 +132,20 @@ export default function ProcessSteps({ content }: { content?: any }) {
                             </div>
                             <div className="space-y-2.5 pt-1">
                               <div>
-                                <span className="text-[11px] font-medium text-[#7A7570] block mb-1">Username</span>
+                                <span className="text-[11px] font-medium text-[#7A7570] block mb-1">Kullanıcı Adı</span>
                                 <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3 py-1.5 text-xs text-[#2A2A2A] font-medium">
                                   mert.yilmaz
                                 </div>
                               </div>
                               <div>
-                                <span className="text-[11px] font-medium text-[#7A7570] block mb-1">Email</span>
+                                <span className="text-[11px] font-medium text-[#7A7570] block mb-1">Kurumsal E-Posta</span>
                                 <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3 py-1.5 text-xs text-[#2A2A2A] font-medium">
                                   mert@tempustravel.com
                                 </div>
                               </div>
                             </div>
                           </>
-                        )}
-
-                        {/* Step 1: Instant Setup & Roles */}
-                        {idx === 1 && (
+                        ) : idx === 1 ? (
                           <>
                             <div>
                               <h4 className="text-base font-medium text-[#1A1A1A]">
@@ -136,10 +168,7 @@ export default function ProcessSteps({ content }: { content?: any }) {
                               </div>
                             </div>
                           </>
-                        )}
-
-                        {/* Step 2: Live Operations Dashboard */}
-                        {idx === 2 && (
+                        ) : (
                           <>
                             <div>
                               <h4 className="text-base font-medium text-[#1A1A1A]">
