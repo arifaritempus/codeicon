@@ -2,8 +2,8 @@ import { createClient } from "@supabase/supabase-js";
 import fs from "fs";
 import path from "path";
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://lnyhtuudivwsbedxbauw.supabase.co";
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxueWh0dXVkaXZ3c2JlZHhiYXV3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDc5MzI4MiwiZXhwIjoyMTAwMzY5MjgyfQ.GsYUWvBlCu0MRQHG7R9ed5U-BsjHrl5-XvmPhykTuus";
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://zetujnpgzeoxicqhevdv.supabase.co";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpldHVqbnBnemVveGljcWhldmR2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc5MTQ2NzQyNiwiZXhwIjoyMTA3MDQzNDI2fQ.9cKUJc5X9127ljv9uw5EQV_YzDjNJO4efECZ7uhKf0s";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 const BUCKET_NAME = "logos";
