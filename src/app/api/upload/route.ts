@@ -36,6 +36,8 @@ export async function POST(request: Request) {
     const secureFileName = validation.sanitizedName;
     const mimeType = validation.mimeType;
 
+    let storageError: any = null;
+
     // 2. Try uploading to Supabase Storage with cryptographically unguessable name & verified MIME
     try {
       const uploaded = await uploadMediaToSupabase(buffer, secureFileName, mimeType);
@@ -45,28 +47,40 @@ export async function POST(request: Request) {
         name: secureFileName,
         size: file.size,
       });
-    } catch (storageErr) {
-      console.warn("Supabase storage upload failed, falling back to local file:", storageErr);
+    } catch (storageErr: any) {
+      storageError = storageErr;
+      console.warn("Supabase storage upload failed, attempting local fallback:", storageErr);
     }
 
-    // 3. Fallback to local uploads directory (works in local dev)
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
+    // 3. Fallback to local uploads directory (safe in local dev, ignored on read-only serverless)
+    try {
+      const uploadDir = path.join(process.cwd(), "public", "uploads");
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+
+      const filePath = path.join(uploadDir, secureFileName);
+      fs.writeFileSync(filePath, buffer);
+
+      return NextResponse.json({
+        success: true,
+        url: `/uploads/${secureFileName}`,
+        name: secureFileName,
+        size: file.size,
+      });
+    } catch (localErr) {
+      console.error("Local file fallback failed:", localErr);
+      return NextResponse.json(
+        { error: storageError?.message || "Depolama alanına dosya yüklenemedi. Lütfen tekrar deneyin." },
+        { status: 500 }
+      );
     }
-
-    const filePath = path.join(uploadDir, secureFileName);
-    fs.writeFileSync(filePath, buffer);
-
-    return NextResponse.json({
-      success: true,
-      url: `/uploads/${secureFileName}`,
-      name: secureFileName,
-      size: file.size,
-    });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Upload error:", error);
-    return NextResponse.json({ error: "Dosya yükleme işlemi başarısız oldu." }, { status: 500 });
+    return NextResponse.json(
+      { error: error?.message || "Dosya yükleme işlemi başarısız oldu." },
+      { status: 500 }
+    );
   }
 }
 

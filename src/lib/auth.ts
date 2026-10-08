@@ -11,15 +11,23 @@ function sign(payload: string): string {
   return `${payload}.${hmac}`;
 }
 
-function verify(token: string): boolean {
-  if (!token || !token.includes(".")) return false;
+function verify(rawToken: string): boolean {
+  if (!rawToken) return false;
+  // Decode in case cookie came URL-encoded (e.g. %3D instead of ==)
+  const token = decodeURIComponent(rawToken);
+  if (!token.includes(".")) return false;
   const parts = token.split(".");
   if (parts.length !== 2) return false;
   const [payload, hmac] = parts;
   const expectedHmac = crypto.createHmac("sha256", AUTH_SECRET).update(payload).digest("hex");
   try {
-    if (crypto.timingSafeEqual(Buffer.from(hmac), Buffer.from(expectedHmac))) {
-      const data = JSON.parse(Buffer.from(payload, "base64").toString("utf-8"));
+    const hmacBuf = Buffer.from(hmac);
+    const expBuf = Buffer.from(expectedHmac);
+    if (hmacBuf.length === expBuf.length && crypto.timingSafeEqual(hmacBuf, expBuf)) {
+      // Support both base64url and standard base64 payloads
+      const isBase64Url = payload.includes("-") || payload.includes("_") || !payload.includes("=");
+      const encoding = isBase64Url ? "base64url" : "base64";
+      const data = JSON.parse(Buffer.from(payload, encoding).toString("utf-8"));
       if (data.email === ADMIN_EMAIL && data.exp > Date.now()) {
         return true;
       }
@@ -41,7 +49,7 @@ export function createSessionToken(): string {
       email: ADMIN_EMAIL,
       exp: Date.now() + 1000 * 60 * 60 * 24 * 7, // 7 days
     })
-  ).toString("base64");
+  ).toString("base64url");
   return sign(payload);
 }
 

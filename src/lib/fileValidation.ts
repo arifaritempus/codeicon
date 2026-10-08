@@ -10,43 +10,62 @@ export interface FileValidationResult {
 
 // Magic bytes signatures for trusted media formats
 export function inspectMagicBytes(buffer: Buffer): { mime: string; ext: string } | null {
-  if (buffer.length >= 8 &&
-      buffer[0] === 0x89 &&
-      buffer[1] === 0x50 &&
-      buffer[2] === 0x4E &&
-      buffer[3] === 0x47 &&
-      buffer[4] === 0x0D &&
-      buffer[5] === 0x0A &&
-      buffer[6] === 0x1A &&
-      buffer[7] === 0x0A) {
+  // PNG: 89 50 4E 47 0D 0A 1A 0A
+  if (
+    buffer.length >= 8 &&
+    buffer[0] === 0x89 &&
+    buffer[1] === 0x50 &&
+    buffer[2] === 0x4E &&
+    buffer[3] === 0x47 &&
+    buffer[4] === 0x0D &&
+    buffer[5] === 0x0A &&
+    buffer[6] === 0x1A &&
+    buffer[7] === 0x0A
+  ) {
     return { mime: "image/png", ext: "png" };
   }
 
-  if (buffer.length >= 3 &&
-      buffer[0] === 0xFF &&
-      buffer[1] === 0xD8 &&
-      buffer[2] === 0xFF) {
+  // JPEG / JPG: FF D8 (SOI marker)
+  if (buffer.length >= 2 && buffer[0] === 0xFF && buffer[1] === 0xD8) {
     return { mime: "image/jpeg", ext: "jpg" };
   }
 
-  if (buffer.length >= 4 &&
-      buffer[0] === 0x47 &&
-      buffer[1] === 0x49 &&
-      buffer[2] === 0x46) {
+  // GIF: GIF87a or GIF89a
+  if (
+    buffer.length >= 4 &&
+    buffer[0] === 0x47 &&
+    buffer[1] === 0x49 &&
+    buffer[2] === 0x46
+  ) {
     return { mime: "image/gif", ext: "gif" };
   }
 
-  if (buffer.length >= 12 &&
-      buffer.toString("ascii", 0, 4) === "RIFF" &&
-      buffer.toString("ascii", 8, 12) === "WEBP") {
+  // WEBP: RIFF .... WEBP
+  if (
+    buffer.length >= 12 &&
+    buffer.toString("ascii", 0, 4) === "RIFF" &&
+    buffer.toString("ascii", 8, 12) === "WEBP"
+  ) {
     return { mime: "image/webp", ext: "webp" };
   }
 
-  if (buffer.length >= 4 &&
-      buffer[0] === 0x00 &&
-      buffer[1] === 0x00 &&
-      buffer[2] === 0x01 &&
-      buffer[3] === 0x00) {
+  // AVIF: ....ftypavif or ....ftypavis
+  if (
+    buffer.length >= 12 &&
+    buffer.toString("ascii", 4, 8) === "ftyp" &&
+    (buffer.toString("ascii", 8, 12) === "avif" || buffer.toString("ascii", 8, 12) === "avis")
+  ) {
+    return { mime: "image/avif", ext: "avif" };
+  }
+
+  // ICO: 00 00 01 00
+  if (
+    buffer.length >= 4 &&
+    buffer[0] === 0x00 &&
+    buffer[1] === 0x00 &&
+    buffer[2] === 0x01 &&
+    buffer[3] === 0x00
+  ) {
     return { mime: "image/x-icon", ext: "ico" };
   }
 
@@ -57,15 +76,17 @@ export function inspectMagicBytes(buffer: Buffer): { mime: string; ext: string }
 export function sanitizeSvg(content: string): boolean {
   const lower = content.toLowerCase();
   // Check for SVG tag
-  if (!lower.includes("<svg") || !lower.includes("</svg>")) {
+  if (!lower.includes("<svg")) {
     return false;
   }
-  // Disallow scripts, objects, embeds, iframes, and event handlers
+  // Disallow scripts, objects, embeds, iframes, and active code event handlers
   const forbiddenPatterns = [
     /<script\b/i,
     /<\/script>/i,
     /javascript:/i,
-    /data:/i,
+    /data:text\/html/i,
+    /data:text\/javascript/i,
+    /data:application/i,
     /<iframe\b/i,
     /<object\b/i,
     /<embed\b/i,
@@ -97,9 +118,10 @@ export function validateImageUpload(buffer: Buffer, originalFileName: string): F
   }
 
   const rawExt = (originalFileName.split(".").pop() || "").toLowerCase();
+  const startsLikeSvg = buffer.length > 5 && buffer.toString("utf-8", 0, Math.min(buffer.length, 200)).toLowerCase().includes("<svg");
 
   // Handle SVG specifically
-  if (rawExt === "svg") {
+  if (rawExt === "svg" || startsLikeSvg) {
     const text = buffer.toString("utf-8");
     if (!sanitizeSvg(text)) {
       return {
@@ -115,7 +137,7 @@ export function validateImageUpload(buffer: Buffer, originalFileName: string): F
     const sanitizedBase = originalFileName
       .replace(/\.svg$/i, "")
       .replace(/[^a-zA-Z0-9_-]/g, "_")
-      .slice(0, 40);
+      .slice(0, 40) || "vector";
     const sanitizedName = `${sanitizedBase}-${randomSuffix}.svg`;
 
     return {
@@ -131,7 +153,7 @@ export function validateImageUpload(buffer: Buffer, originalFileName: string): F
   if (!inspected) {
     return {
       valid: false,
-      error: "Güvenlik Uyarısı: Geçersiz veya desteklenmeyen görsel formatı! Yalnızca PNG, JPEG, GIF, WEBP, ICO veya güvenli SVG yüklenebilir.",
+      error: "Güvenlik Uyarısı: Geçersiz veya desteklenmeyen görsel formatı! Yalnızca PNG, JPEG, GIF, WEBP, AVIF, ICO veya güvenli SVG yüklenebilir.",
       sanitizedName: "",
       mimeType: "",
       extension: "",

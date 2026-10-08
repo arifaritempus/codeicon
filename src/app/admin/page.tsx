@@ -223,34 +223,51 @@ export default function AdminPage() {
       });
       const data = await res.json();
       if (res.ok && data.success && data.url) {
+        let updatedContent = { ...content };
         if (type === "logo") {
-          setContent({
+          updatedContent = {
             ...content,
             assets: {
               ...content.assets,
               logoUrl: data.url,
               logoType: "image",
             },
-          });
+          };
         } else if (type === "favicon") {
-          setContent({
+          updatedContent = {
             ...content,
             assets: {
               ...content.assets,
               faviconUrl: data.url,
             },
-          });
+          };
         } else if (type === "heroMockup") {
-          setContent({
+          updatedContent = {
             ...content,
             assets: {
               ...content.assets,
               heroMockupImage: data.url,
               heroMockupType: "image",
             },
-          });
+          };
         }
+        setContent(updatedContent);
         loadMedia();
+
+        // Auto-save to Supabase immediately so changes reflect everywhere
+        try {
+          const saveRes = await fetch("/api/content", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedContent),
+          });
+          if (saveRes.ok) {
+            setSaveSuccess(true);
+            setTimeout(() => setSaveSuccess(false), 3000);
+          }
+        } catch (saveErr) {
+          console.warn("Auto save after upload error:", saveErr);
+        }
       } else {
         setSaveError(data.error || "Görsel yüklenemedi!");
         setTimeout(() => setSaveError(null), 6000);
@@ -2385,11 +2402,31 @@ export default function AdminPage() {
             {/* TAB: MEDIA, LOGO & FAVICON */}
             {activeTab === "media" && (
               <div className="space-y-8">
-                <div>
-                  <h2 className="text-xl font-bold text-[#1A1A1A]">Medya, Logo ve Favicon Yönetimi</h2>
-                  <p className="text-xs text-[#605F5F] mt-1">
-                    Sitede kullanılacak logonuzu, favicon ikonunuzu ve ekran görüntülerini tek tıkla yükleyin veya değiştirin.
-                  </p>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#EAE6E1]">
+                  <div>
+                    <h2 className="text-xl font-bold text-[#1A1A1A]">Medya, Logo ve Favicon Yönetimi</h2>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      Sitede kullanılacak logonuzu, favicon ikonunuzu ve ekran görüntülerini tek tıkla yükleyin veya değiştirin.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleSave}
+                    disabled={saving}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition shadow-sm disabled:opacity-50 self-start sm:self-auto"
+                  >
+                    {saving ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        <span>Kaydediliyor...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Save className="w-3.5 h-3.5" />
+                        <span>Değişiklikleri Kaydet</span>
+                      </>
+                    )}
+                  </button>
                 </div>
 
                 {/* 1. LOGO SECTION */}
@@ -4387,17 +4424,30 @@ export default function AdminPage() {
                                     try {
                                       const res = await fetch("/api/upload", { method: "POST", body: formData });
                                       const data = await res.json();
-                                      if (data.success && data.url) {
+                                      if (res.ok && data.success && data.url) {
                                         const newLogos = [...content.references.logos];
                                         newLogos[idx].logoUrl = data.url;
-                                        setContent({
+                                        const updatedContent = {
                                           ...content,
                                           references: { ...content.references, logos: newLogos },
-                                        });
+                                        };
+                                        setContent(updatedContent);
                                         loadMedia();
+
+                                        // Auto-save
+                                        fetch("/api/content", {
+                                          method: "POST",
+                                          headers: { "Content-Type": "application/json" },
+                                          body: JSON.stringify(updatedContent),
+                                        }).catch(() => {});
+                                      } else {
+                                        setSaveError(data.error || "Görsel yüklenemedi!");
+                                        setTimeout(() => setSaveError(null), 6000);
                                       }
-                                    } catch (err) {
+                                    } catch (err: any) {
                                       console.error("Upload error:", err);
+                                      setSaveError("Görsel yüklenirken bağlantı hatası oluştu.");
+                                      setTimeout(() => setSaveError(null), 6000);
                                     }
                                   }}
                                 />
