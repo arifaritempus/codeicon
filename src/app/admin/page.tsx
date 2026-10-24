@@ -79,6 +79,10 @@ export default function AdminPage() {
   const [postEditorTab, setPostEditorTab] = useState<"edit" | "preview">("edit");
   const [deleteConfirmSlug, setDeleteConfirmSlug] = useState<string | null>(null);
 
+  // Automated Daily Cron state
+  const [cronLoading, setCronLoading] = useState(false);
+  const [cronResult, setCronResult] = useState<{ success: boolean; message: string; title?: string } | null>(null);
+
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [loginEmail, setLoginEmail] = useState("");
@@ -246,6 +250,49 @@ export default function AdminPage() {
         if (data.media) setMediaList(data.media);
       })
       .catch((err) => console.error(err));
+  };
+
+  const reloadContent = async () => {
+    try {
+      const res = await fetch("/api/content?t=" + Date.now(), { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        if (data) {
+          if (!data.blog) data.blog = { enabled: true, posts: [] };
+          if (!data.blog.posts) data.blog.posts = [];
+          setContent(data);
+        }
+      }
+    } catch (e) {
+      console.error("Failed to reload content:", e);
+    }
+  };
+
+  const handleTriggerDailyCron = async () => {
+    setCronLoading(true);
+    setCronResult(null);
+    try {
+      const res = await fetch("/api/cron/generate-blog", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Günlük blog makalesi oluşturulamadı.");
+      }
+      await reloadContent();
+      setCronResult({
+        success: true,
+        message: data.message || "Yeni günlük makale başarıyla oluşturuldu!",
+        title: data.post?.title,
+      });
+    } catch (err: any) {
+      setCronResult({
+        success: false,
+        message: err.message || "Cron çalıştırılırken bir hata oluştu.",
+      });
+    } finally {
+      setCronLoading(false);
+    }
   };
 
   const handleFileUpload = async (
@@ -5407,6 +5454,80 @@ export default function AdminPage() {
                     </div>
                   );
                 })()}
+
+                {/* AUTOMATED DAILY BLOG CRON CARD */}
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-[#FEF7AF]/30 via-[#FAF9F6] to-white border border-[#EAE6E1] space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#FEF7AF] text-[#1A1A1A] flex items-center justify-center font-bold text-base shrink-0 shadow-2xs">
+                        ⏱️
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="text-sm font-bold text-[#1A1A1A]">Otomatik Günlük Blog Cron Motoru</h3>
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            Aktif (Her Gün 09:00 TR / 06:00 UTC)
+                          </span>
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-neutral-100 text-neutral-600 border border-neutral-200">
+                            Vercel Cron Uyumlu
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#605F5F] mt-1 max-w-2xl leading-relaxed">
+                          Sistem her sabah <strong>&ldquo;MICE acente sistemi&rdquo;</strong>, <strong>&ldquo;MICE yönetim sistemi&rdquo;</strong>, <strong>&ldquo;Online MICE sistemi&rdquo;</strong>, <strong>&ldquo;MICE programı&rdquo;</strong> ve operasyonel konularda yapay zeka tarafından <u>her gün farklı ve benzersiz bir anlatımla</u> makale üretir ve otomatik olarak yayına alır.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0 sm:self-center">
+                      <button
+                        onClick={handleTriggerDailyCron}
+                        disabled={cronLoading}
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1A1A1A] text-white text-xs font-bold hover:bg-neutral-800 disabled:opacity-50 transition shadow-xs cursor-pointer"
+                      >
+                        {cronLoading ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            <span>Yapay Zeka Yazıyor &amp; Yayına Alınıyor...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Sparkles className="w-3.5 h-3.5 text-[#FEF7AF]" />
+                            <span>⚡ Günlük Cron&apos;u Şimdi Çalıştır</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {cronResult && (
+                    <div
+                      className={`p-3.5 rounded-xl border text-xs flex items-start justify-between gap-3 ${
+                        cronResult.success
+                          ? "bg-emerald-50/80 border-emerald-200 text-emerald-800"
+                          : "bg-red-50 border-red-200 text-red-700"
+                      }`}
+                    >
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm">{cronResult.success ? "🎉" : "⚠️"}</span>
+                        <div>
+                          <p className="font-bold">{cronResult.message}</p>
+                          {cronResult.title && (
+                            <p className="mt-0.5 text-neutral-600">
+                              Oluşturulan Başlık: <strong>&ldquo;{cronResult.title}&rdquo;</strong>
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setCronResult(null)}
+                        className="text-neutral-400 hover:text-neutral-700 font-bold"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+                </div>
 
                 {/* 1. BLOG GENERAL SETTINGS */}
                 <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-4">
