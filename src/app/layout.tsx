@@ -36,6 +36,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  other: {
+    "geo.region": "TR-34",
+    "geo.placename": "Istanbul",
+    "geo.position": "41.0082;28.9784",
+    "ICBM": "41.0082, 28.9784",
+  },
 };
 
 const structuredData = {
@@ -49,6 +55,12 @@ const structuredData = {
       logo: "https://codeicon.co/favicon.ico",
       description:
         "MICE ve Seyahat Acenteleri için Kurumsal İşletim Sistemi ve Finansal Otomasyon Platformu",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "İstanbul",
+        addressRegion: "Marmara",
+        addressCountry: "TR",
+      },
       contactPoint: {
         "@type": "ContactPoint",
         email: "hello@codeicon.co",
