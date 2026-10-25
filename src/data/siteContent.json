@@ -670,7 +670,7 @@
       }
     }
   },
-  "updatedAt": "2026-10-24T23:28:25.254Z",
+  "updatedAt": "2026-10-25T13:45:07.279Z",
   "blog": {
     "enabled": false,
     "eyebrow": "Sektörel Rehberler & Analizler",
@@ -1030,7 +1030,6 @@
   },
   "hepp": {
     "enabled": true,
-    "badge": "KKTC'DE İLK",
     "eyebrow": "YENİ MOBİL RANDEVU UYGULAMASI",
     "title": "Her anında Hepp yanında.",
     "subtitle": "KKTC'de berber, kuaför, veteriner, ev temizliği ve daha fazlası için randevu uygulaması. İşletme onaylar, hepp WhatsApp ya da bildirimle hatırlatır.",
@@ -1041,7 +1040,7 @@
     "websiteUrl": "https://hepp.app",
     "appStoreUrl": "https://hepp.app/tr/haber-ver",
     "playStoreUrl": "https://hepp.app/tr/haber-ver",
-    "ctaText": "Açılışta Haber Ver",
+    "ctaText": "hepp.app Web Sitesini Ziyaret Et",
     "secondaryCtaText": "hepp.app'i Ziyaret Et",
     "pills": [
       "Müşteriye Ücretsiz",

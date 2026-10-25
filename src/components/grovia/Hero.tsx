@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight, ChevronDown, Check, ExternalLink, X, Loader2, Sparkles, Smartphone, Laptop } from "lucide-react";
+import { ArrowRight, Check, Laptop, Smartphone } from "lucide-react";
 
 export default function Hero({
   content,
@@ -31,64 +30,11 @@ export default function Hero({
 
   // Hepp configuration (from Supabase/siteContent or defaults)
   const hepp = content?.hepp || {
-    badge: "KKTC'DE İLK",
-    eyebrow: "YENİ MOBİL RANDEVU UYGULAMASI",
     title: "Her anında Hepp yanında.",
     subtitle: "KKTC'de berber, kuaför, veteriner, ev temizliği ve daha fazlası için randevu uygulaması. İşletme onaylar, hepp WhatsApp ya da bildirimle hatırlatır.",
     primaryImage: "/images/hepp/hepp-home.png", // Discovery Home screen in FRONT (as requested)
     secondaryImage: "/images/hepp/hepp-business.png", // Business detail screen in BACK (as requested)
     websiteUrl: "https://hepp.app",
-    ctaText: "Açılışta Haber Ver",
-  };
-
-  // Lead modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [leadName, setLeadName] = useState("");
-  const [leadContact, setLeadContact] = useState("");
-  const [leadType, setLeadType] = useState<"musteri" | "isletme">("musteri");
-  const [leadLoading, setLeadLoading] = useState(false);
-  const [leadSuccess, setLeadSuccess] = useState(false);
-  const [leadError, setLeadError] = useState<string | null>(null);
-
-  const handleLeadSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!leadName.trim() || !leadContact.trim()) {
-      setLeadError("Lütfen adınızı ve telefon/e-posta bilginizi giriniz.");
-      return;
-    }
-    setLeadLoading(true);
-    setLeadError(null);
-
-    try {
-      const isEmail = leadContact.includes("@");
-      const res = await fetch("/api/hepp/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: leadName,
-          phone: isEmail ? undefined : leadContact,
-          email: isEmail ? leadContact : undefined,
-          type: leadType,
-        }),
-      });
-
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || "Kayıt alınamadı.");
-      }
-
-      setLeadSuccess(true);
-      setTimeout(() => {
-        setIsModalOpen(false);
-        setLeadSuccess(false);
-        setLeadName("");
-        setLeadContact("");
-      }, 2500);
-    } catch (err: any) {
-      setLeadError(err.message || "Bir hata oluştu.");
-    } finally {
-      setLeadLoading(false);
-    }
   };
 
   const defaultLogos = [
@@ -223,15 +169,14 @@ export default function Hero({
             className="group relative bg-gradient-to-b from-white via-white to-[#FFF9F6] rounded-3xl p-6 sm:p-8 border border-[#E6E1DC] shadow-[0_15px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(255,77,45,0.08)] transition-all duration-300 flex flex-col justify-between text-left"
           >
             <div>
-              {/* Product Badges */}
+              {/* Product Badges (KKTC'de ilk removed as requested) */}
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FAF9F6] text-[#1A1A1A] border border-[#E6E1DC]">
                   <Smartphone className="w-3.5 h-3.5 text-[#FF4D2D]" />
                   <span>B2C &amp; YEREL İŞLETME</span>
                 </span>
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#FF4D2D] bg-[#FF4D2D]/10 px-2.5 py-0.5 rounded-full border border-[#FF4D2D]/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D2D] animate-pulse" />
-                  <span>{hepp.badge || "KKTC'DE İLK"}</span>
+                <span className="text-[11px] font-semibold text-[#605F5F] bg-[#F4F2EE] px-2.5 py-0.5 rounded-full border border-[#E6E1DC]">
+                  Mobil Randevu
                 </span>
               </div>
 
@@ -304,37 +249,19 @@ export default function Hero({
               </div>
             </div>
 
-            {/* Bottom Actions & Store Badges */}
-            <div className="space-y-3 pt-2">
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FF4D2D] text-white text-xs sm:text-sm font-bold hover:bg-[#E03D1E] transition shadow-xs cursor-pointer group"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>{hepp.ctaText || "Açılışta Haber Ver"}</span>
-                  <span className="arrow-capsule bg-white text-[#FF4D2D]">
-                    <ArrowRight className="w-3 h-3" />
-                  </span>
-                </button>
-
-                <a
-                  href={hepp.websiteUrl || "https://hepp.app"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white text-[#1A1A1A] border border-[#E6E1DC] text-xs sm:text-sm font-semibold hover:bg-[#F4F2EE] transition cursor-pointer"
-                >
-                  <span>hepp.app</span>
-                  <ExternalLink className="w-3 h-3 text-[#605F5F]" />
-                </a>
-              </div>
-
-              {/* Store Availability Text */}
-              <div className="flex items-center gap-3 text-[11px] text-[#8C8C8C]">
-                <span>🍎 App Store (Yakında)</span>
-                <span>•</span>
-                <span>🤖 Google Play (Yakında)</span>
-              </div>
+            {/* Bottom Actions: Only direct hepp.app redirect as requested */}
+            <div className="pt-2">
+              <a
+                href={hepp.websiteUrl || "https://hepp.app"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#FF4D2D] text-white text-xs sm:text-sm font-bold hover:bg-[#E03D1E] transition shadow-xs group cursor-pointer"
+              >
+                <span>hepp.app Web Sitesini Ziyaret Et</span>
+                <span className="w-5 h-5 rounded-full bg-white text-[#FF4D2D] flex items-center justify-center text-xs transition-transform group-hover:translate-x-0.5">
+                  <ArrowRight className="w-3 h-3 text-[#FF4D2D]" />
+                </span>
+              </a>
             </div>
           </div>
 
@@ -365,119 +292,6 @@ export default function Hero({
           </div>
         </div>
       </div>
-
-      {/* HEPP PRE-REGISTRATION / AÇILIŞTA HABER VER MODAL */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-[#E6E1DC] shadow-2xl relative text-left">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-5 right-5 p-1.5 rounded-full text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-3 mb-3">
-              <img
-                src={hepp.logoSvg || "/images/hepp/hepp-logo.svg"}
-                alt="hepp"
-                className="w-10 h-10 rounded-xl object-contain shadow-2xs"
-              />
-              <div>
-                <h3 className="text-xl font-bold text-[#1A1A1A]">
-                  hepp Açılışında İlk Haberdar Olun
-                </h3>
-                <p className="text-xs text-[#605F5F]">Her anında Hepp yanında.</p>
-              </div>
-            </div>
-
-            <p className="text-xs text-[#605F5F] mb-5 leading-relaxed">
-              KKTC'de berber, kuaför, veteriner, evcil hayvan bakımı ve ev temizliğinde ilk randevunuzu avantajla almak için bilgilerinizi bırakın.
-            </p>
-
-            {leadSuccess ? (
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-center space-y-1">
-                <span className="text-2xl">🎉</span>
-                <p className="font-bold text-sm">Harika! Bilgileriniz Alındı.</p>
-                <p className="text-xs text-emerald-700">hepp açıldığında size öncelikli olarak WhatsApp ve e-posta ile bildireceğiz.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleLeadSubmit} className="space-y-4">
-                {/* Role Switcher */}
-                <div className="grid grid-cols-2 gap-2 p-1 bg-[#F4F2EE] rounded-xl text-xs font-bold text-center">
-                  <button
-                    type="button"
-                    onClick={() => setLeadType("musteri")}
-                    className={`py-2 rounded-lg transition cursor-pointer ${
-                      leadType === "musteri" ? "bg-white text-[#1A1A1A] shadow-2xs" : "text-[#605F5F]"
-                    }`}
-                  >
-                    👤 Müşteriyim
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLeadType("isletme")}
-                    className={`py-2 rounded-lg transition cursor-pointer ${
-                      leadType === "isletme" ? "bg-white text-[#FF4D2D] shadow-2xs" : "text-[#605F5F]"
-                    }`}
-                  >
-                    🏢 İşletme Sahibiyim
-                  </button>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-[#1A1A1A] mb-1">
-                    Ad Soyad {leadType === "isletme" ? "/ İşletme Adı" : ""}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={leadName}
-                    onChange={(e) => setLeadName(e.target.value)}
-                    placeholder={leadType === "isletme" ? "Örn: Salon Bella / Ahmet Kaya" : "Örn: Ahmet Yılmaz"}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-[#FAF9F6]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-[#1A1A1A] mb-1">
-                    Telefon veya WhatsApp
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={leadContact}
-                    onChange={(e) => setLeadContact(e.target.value)}
-                    placeholder="Örn: 0533 889 99 44 veya e-posta"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-[#FAF9F6]"
-                  />
-                </div>
-
-                {leadError && (
-                  <p className="text-xs text-red-600 bg-red-50 p-2.5 rounded-xl border border-red-200">
-                    {leadError}
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={leadLoading}
-                  className="w-full py-3 rounded-full bg-[#FF4D2D] text-white font-bold text-xs hover:bg-[#E03D1E] disabled:opacity-50 transition shadow-xs flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  {leadLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Kaydediliyor...</span>
-                    </>
-                  ) : (
-                    <span>{leadType === "isletme" ? "İşletmemi Ön Kaydet" : "Açılışta Bana Haber Ver"}</span>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
     </section>
   );
 }
