@@ -197,7 +197,10 @@ export default async function Home() {
       <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {visibility.hero && (
           <Hero
-            content={content?.hero}
+            content={{
+              ...(content?.hero || {}),
+              hepp: content?.hepp,
+            }}
             brand={content?.brand}
             assets={content?.assets}
             buttons={content?.buttons}

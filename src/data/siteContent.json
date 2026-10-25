@@ -1027,5 +1027,31 @@
         "content": "## Excel Çilesine Son Veren Akıllı Veri Haritalama\n\nKurumsal müşterilerin her biri kendi şirket şablonunda bir oda listesi gönderir: kimisinde T.C. kimlik numarası ilk sütundadır, kimisinde ad-soyad birleşiktir, kimisinde ise oda tipi belirtilmemiştir.\n\nOperasyon ekipleri bu listeleri otel şablonuna uydurmak için saatlerce kopyala-yapıştır yapmak zorunda kalır.\n\n### CODEICON Matbu Excel İçe Aktarıcı Nasıl Çalışır?\n\n1. **Sütun Eşleme Motoru:** Dosyayı sürükleyip bıraktığınızda sistem sütun başlıklarını otomatik tanır.\n2. **Hata Yakalama (Data Validation):** Eksik T.C., hatalı giriş-çıkış tarihi veya mükerrer isimleri kırmızı ile vurgular.\n3. **Tek Tıkla Projeye Atama:** Onaylanan liste Sejour veya otel formatına dönüştürülerek projeye bağlanır."
       }
     ]
+  },
+  "hepp": {
+    "enabled": true,
+    "badge": "KKTC'DE İLK",
+    "eyebrow": "YENİ MOBİL RANDEVU UYGULAMASI",
+    "title": "Her anında Hepp yanında.",
+    "subtitle": "KKTC'de berber, kuaför, veteriner, ev temizliği ve daha fazlası için randevu uygulaması. İşletme onaylar, hepp WhatsApp ya da bildirimle hatırlatır.",
+    "primaryImage": "/images/hepp/hepp-home.png",
+    "secondaryImage": "/images/hepp/hepp-business.png",
+    "bookingImage": "/images/hepp/hepp-booking.png",
+    "logoSvg": "/images/hepp/hepp-logo.svg",
+    "websiteUrl": "https://hepp.app",
+    "appStoreUrl": "https://hepp.app/tr/haber-ver",
+    "playStoreUrl": "https://hepp.app/tr/haber-ver",
+    "ctaText": "Açılışta Haber Ver",
+    "secondaryCtaText": "hepp.app'i Ziyaret Et",
+    "pills": [
+      "Müşteriye Ücretsiz",
+      "Türkçe ve İngilizce",
+      "Yakında App Store'da"
+    ],
+    "highlights": [
+      "Yakındaki işletmeyi bul, boş saati anında gör",
+      "24 saat ve 2 saat kala WhatsApp hatırlatma bildirimi",
+      "Lefkoşa, Girne ve Mağusa için tek uygulamada tüm hizmetler"
+    ]
   }
 }

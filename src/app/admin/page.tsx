@@ -23,6 +23,7 @@ import {
   Copy,
   ExternalLink,
   Laptop,
+  Smartphone,
   Navigation,
   MousePointerClick,
   Link2,
@@ -985,6 +986,7 @@ export default function AdminPage() {
               { id: "visibility", label: "👁️ Bölüm Görünürlüğü (Aç/Kapa)", icon: Eye },
               { id: "brand", label: "🏷️ Genel & Marka", icon: Settings },
               { id: "hero", label: "🚀 Hero (Giriş)", icon: Sparkles },
+              { id: "hepp", label: "📱 hepp Mobil Uygulama", icon: Smartphone },
               { id: "process", label: "⚡ 3 Adımlı Süreç", icon: Layers },
               { id: "features", label: "📊 Özellik Sekmeleri", icon: Layers },
               { id: "integrations", label: "🔗 Entegrasyonlar", icon: Link2 },
@@ -3353,6 +3355,243 @@ export default function AdminPage() {
                           </div>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: HEPP MOBIL UYGULAMA */}
+            {activeTab === "hepp" && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between pb-4 border-b border-[#EAE6E1]">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-xl bg-[#FF4D2D] text-white flex items-center justify-center font-bold text-sm shadow-2xs">
+                        📱
+                      </span>
+                      <h2 className="text-xl font-bold text-[#1A1A1A]">hepp Mobil Uygulama Yönetimi</h2>
+                    </div>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      Ana sayfadaki Hero çift ürün vitrininde yer alan hepp mobil uygulamasının başlıklarını, görsellerini ve mağaza bağlantılarını buradan düzenleyin.
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://hepp.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E6E1DC] text-xs font-semibold text-[#1A1A1A] hover:bg-[#FAF9F6] transition shadow-2xs"
+                  >
+                    <span>hepp.app Canlı Site</span>
+                    <ExternalLink className="w-3 h-3 text-[#605F5F]" />
+                  </a>
+                </div>
+
+                {/* 1. Metin ve Başlık Ayarları */}
+                <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-4">
+                  <h3 className="text-sm font-bold text-[#1A1A1A]">Metin ve Başlık Ayarları</h3>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Üst Rozet (Badge)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.badge || "KKTC'DE İLK"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), badge: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Slogan / Başlık
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.title || "Her anında Hepp yanında."}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), title: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                      Alt Açıklama (Subtitle)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={
+                        content.hepp?.subtitle ||
+                        "KKTC'de berber, kuaför, veteriner, ev temizliği ve daha fazlası için randevu uygulaması. İşletme onaylar, hepp WhatsApp ya da bildirimle hatırlatır."
+                      }
+                      onChange={(e) =>
+                        setContent({
+                          ...content,
+                          hepp: { ...(content.hepp || {}), subtitle: e.target.value },
+                        })
+                      }
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:border-[#1A1A1A] focus:outline-hidden bg-white resize-none"
+                    />
+                  </div>
+                </div>
+
+                {/* 2. Mockup ve Ekran Görüntüleri Ayarları */}
+                <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-sm font-bold text-[#1A1A1A]">Ekran Görüntüleri &amp; Mockup Yolları</h3>
+                      <p className="text-xs text-[#8C8C8C]">
+                        Gelecekte mobil uygulama ekranları yenilendiğinde buradan yeni görsel yollarını tanımlayabilirsiniz.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Ön Mockup (Ana Keşif Ekranı - Önde Görünen)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.primaryImage || "/images/hepp/hepp-home.png"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), primaryImage: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm font-mono focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/hepp/hepp-home.png</p>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Arka Mockup (İşletme Detayı - Arkada Katman)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.secondaryImage || "/images/hepp/hepp-business.png"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), secondaryImage: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm font-mono focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/hepp/hepp-business.png</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Logo SVG Dosya Yolu
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.logoSvg || "/images/hepp/hepp-logo.svg"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), logoSvg: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm font-mono focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Resmi Web Sitesi Linki
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.websiteUrl || "https://hepp.app"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), websiteUrl: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Görsel Canlı Önizleme */}
+                  <div className="p-4 rounded-xl bg-white border border-[#EAE6E1] flex items-center justify-around gap-4 flex-wrap">
+                    <div className="text-center">
+                      <p className="text-[11px] font-bold text-[#8C8C8C] mb-2 uppercase">Ön Mockup (Ana Ekran)</p>
+                      <img
+                        src={content.hepp?.primaryImage || "/images/hepp/hepp-home.png"}
+                        alt="Ön Mockup"
+                        className="h-36 w-auto object-contain mx-auto drop-shadow-md rounded-xl"
+                      />
+                    </div>
+
+                    <div className="text-center">
+                      <p className="text-[11px] font-bold text-[#8C8C8C] mb-2 uppercase">Arka Mockup (İşletme)</p>
+                      <img
+                        src={content.hepp?.secondaryImage || "/images/hepp/hepp-business.png"}
+                        alt="Arka Mockup"
+                        className="h-36 w-auto object-contain mx-auto drop-shadow-md rounded-xl opacity-80"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Buton ve CTA Ayarları */}
+                <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#EAE6E1] space-y-4">
+                  <h3 className="text-sm font-bold text-[#1A1A1A]">Buton ve Eylem Metinleri</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        Birincil Buton (Ön Kayıt / Haber Ver)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.ctaText || "Açılışta Haber Ver"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), ctaText: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-1.5">
+                        İkincil Buton (Web Sitesi Linki)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hepp?.secondaryCtaText || "hepp.app Sitesini Gör"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            hepp: { ...(content.hepp || {}), secondaryCtaText: e.target.value },
+                          })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:border-[#1A1A1A] focus:outline-hidden bg-white"
+                      />
                     </div>
                   </div>
                 </div>
