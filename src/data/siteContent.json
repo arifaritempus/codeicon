@@ -670,13 +670,36 @@
       }
     }
   },
-  "updatedAt": "2026-10-25T13:45:07.279Z",
+  "updatedAt": "2026-10-25T18:05:20.637Z",
   "blog": {
     "enabled": false,
     "eyebrow": "Sektörel Rehberler & Analizler",
     "title": "MICE & Seyahat Teknolojileri Blogu",
     "subtitle": "Acente operasyonları, finans yönetimi, TCMB kur mutabakatı ve saha transferlerinde sektörel analizler ve pratik rehberler.",
     "posts": [
+      {
+        "title": "Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi",
+        "slug": "online-mice-sistemi-ile-kurumsal-musterilere-interaktif-teklif-deneyimi",
+        "excerpt": "Satış & Müşteri İlişkileri Liderleri için özel olarak hazırlanan bu analizde, Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi odağında iş akışlarını hızlandırma ve kontrolü tek merkezde toplama yöntemlerini inceliyoruz.",
+        "category": "Acente Yönetimi",
+        "tags": [
+          "MICE Acente Sistemi",
+          "Dijital Dönüşüm",
+          "Operasyon",
+          "Acente Yönetimi"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "MICE & Teknoloji Editörü",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-25",
+        "published": true,
+        "featured": false,
+        "content": "## Vizyon: Yarının Acentesi Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi Sürecini Nasıl Yönetecek?\n\nTurizm ve etkinlik endüstrisi köklü bir kabuk değişiminin içinde. Yapay zeka ajanları, otomatik görev emirleri, karekodlu geçiş sistemleri ve gerçek zamanlı finansal entegrasyonlar artık geleceğin vizyonu değil, bugünün rekabet şartıdır.\n\nBu yeni düzende **Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi** gibi kritik süreçleri eski usul yöntemlerle yürütmeye çalışmak, yüksek hızla giden bir yarışta el frenini çekili tutmaya benzer. **Satış & Müşteri İlişkileri Liderleri** için hazırladığımız bu perspektifte, dönüşümün şifrelerini paylaşıyoruz.\n\n---\n\n## Geleneksel Yaklaşımdan Dijital Ekosisteme Geçiş\n\nAcentelerin büyük çoğunluğu işleri yolunda zannederken arka planda devasa bir iş gücü israfı yaşanmaktadır:\n\n- **Eski Düzen:** Personel gününün %40'ını liste kontrol etmeye, WhatsApp'tan konum sormaya ve excel eşleştirmeye harcar.\n- **Yeni Ekosistem:** Rutin veri aktarımları arka planda robotik süreçlerle yürütülür; personel sadece müşteri memnuniyetine ve özel kriz yönetimine odaklanır.\n\n---\n\n## Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi Alanında 3 İnovasyon Dalgası\n\n### 1. Otonom Bildirim Sistemleri\nMüşterinin uçağı rötar yaptığında bunu manuel kontrol etmek yerine, uçuş takip API'lerinin transfer şoförüne otomatik bildirim atması.\n\n### 2. Dinamik Liste Senkronizasyonu\nOtel rooming listesinde bir isim değiştiğinde, aynı anda kongre kayıt sistemindeki yaka kartının ve gala yemeği masa planının güncellenmesi.\n\n### 3. Akıllı Bütçe Koruma Kalkanı\nOperasyonel bir gider girildiği anda projenin kâr-zarar simülasyonunun canlı olarak güncellenmesi.\n\n---\n\n> [!NOTE]\n> **Sektör Öngörüsü:** Önümüzdeki 2 yıl içinde Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi süreçlerini tam entegre sistemlerle yönetmeyen acentelerin kurumsal müşteri ihale kazanma oranlarının **%50'nin üzerinde düşeceği** tahmin edilmektedir.\n\n---\n\n## Değerlendirme\n\n**Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi** bir külfet değil, doğru kurgulandığında acentenizi rakiplerinizden ayıran en parlak vitrindir. Modern altyapılarla bu süreci sıfır stresli bir başarı hikayesine dönüştürebilirsiniz."
+      },
       {
         "title": "Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı",
         "slug": "kurumsal-sirketlerin-tercihi-interaktif-mice-teklif-ve-butce-onay-portali",

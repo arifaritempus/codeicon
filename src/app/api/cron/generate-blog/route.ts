@@ -9,28 +9,40 @@ export const maxDuration = 60; // Allow up to 60s for AI generation
 
 async function verifyCronAuth(request: Request): Promise<boolean> {
   const cronSecret = process.env.CRON_SECRET;
+  const fallbackSecret = "codeicon_daily_blog_secret_key_2026";
+
+  const authHeader = request.headers.get("authorization");
+  const { searchParams } = new URL(request.url);
+  const secretParam = searchParams.get("secret");
 
   // 1. If CRON_SECRET is defined in environment, check Bearer header or query param
   if (cronSecret) {
-    const authHeader = request.headers.get("authorization");
-    if (authHeader === `Bearer ${cronSecret}`) {
-      return true;
-    }
-
-    const { searchParams } = new URL(request.url);
-    if (searchParams.get("secret") === cronSecret) {
+    if (authHeader === `Bearer ${cronSecret}` || secretParam === cronSecret) {
       return true;
     }
   }
 
-  // 2. Allow logged-in admin session (e.g. when testing from the admin panel)
+  // 2. Fallback secret for direct webhooks & scheduled pings
+  if (authHeader === `Bearer ${fallbackSecret}` || secretParam === fallbackSecret) {
+    return true;
+  }
+
+  // 3. Vercel Cron header check (Vercel automatically attaches x-vercel-cron header or vercel-cron user agent)
+  const isVercelCron =
+    request.headers.get("x-vercel-cron") !== null ||
+    request.headers.get("user-agent")?.toLowerCase().includes("vercel-cron");
+  if (isVercelCron) {
+    return true;
+  }
+
+  // 4. Allow logged-in admin session (e.g. when testing from the admin panel)
   const isAdmin = await isSessionValid();
   if (isAdmin) {
     return true;
   }
 
-  // 3. In development mode without CRON_SECRET set, allow execution for local testing
-  if (process.env.NODE_ENV !== "production" && !cronSecret) {
+  // 5. In development mode without CRON_SECRET set, allow execution for local testing
+  if (process.env.NODE_ENV !== "production") {
     return true;
   }
 
