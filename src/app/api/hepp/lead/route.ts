@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { createClient } from "@supabase/supabase-js";
 
 export const dynamic = "force-dynamic";
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://zetujnpgzeoxicqhevdv.supabase.co";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpldHVqbnBnemVveGljcWhldmR2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc5MTQ2NzQyNiwiZXhwIjoyMTA3MDQzNDI2fQ.9cKUJc5X9127ljv9uw5EQV_YzDjNJO4efECZ7uhKf0s";
 
 export async function POST(request: Request) {
   try {
@@ -15,7 +19,42 @@ export async function POST(request: Request) {
       );
     }
 
-    // 1. Send notification email via existing Hostinger SMTP if configured
+    const newLead = {
+      id: Date.now(),
+      name,
+      phone: phone || null,
+      email: email || null,
+      type: type || "musteri",
+      note: note || null,
+      createdAt: new Date().toISOString(),
+    };
+
+    // 1. Persist lead in Supabase Storage (hepp_leads.json)
+    try {
+      const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+      const { data } = await supabase.storage.from("logos").download("hepp_leads.json");
+      let leads: any[] = [];
+      if (data) {
+        try {
+          const text = await data.text();
+          leads = JSON.parse(text);
+          if (!Array.isArray(leads)) leads = [];
+        } catch {
+          leads = [];
+        }
+      }
+
+      leads.unshift(newLead);
+
+      await supabase.storage.from("logos").upload("hepp_leads.json", JSON.stringify(leads, null, 2), {
+        contentType: "application/json",
+        upsert: true,
+      });
+    } catch (dbErr) {
+      console.warn("Could not save lead to Supabase:", dbErr);
+    }
+
+    // 2. Send notification email via existing Hostinger SMTP if configured
     try {
       if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
         const transporter = nodemailer.createTransport({
@@ -73,7 +112,7 @@ export async function POST(request: Request) {
             </div>
 
             <p style="text-align: center; color: #8C8C8C; font-size: 12px; margin-top: 24px;">
-              Bu bildirim CODEICON hepp entegrasyonu üzerinden otomatik gönderilmiştir.
+              Bu kayıt Supabase veritabanında güvenle saklanmış ve e-posta bildirimi olarak iletilmiştir.
             </p>
           </div>
         `;
@@ -86,7 +125,7 @@ export async function POST(request: Request) {
         });
       }
     } catch (mailErr) {
-      console.warn("Mail notification warning (lead still recorded):", mailErr);
+      console.warn("Mail notification warning (lead still saved to Supabase):", mailErr);
     }
 
     return NextResponse.json({
