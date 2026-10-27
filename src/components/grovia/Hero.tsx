@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Check, Laptop, Smartphone } from "lucide-react";
+import { ArrowRight, Check, Laptop, Smartphone, Calculator } from "lucide-react";
 
 export default function Hero({
   content,
@@ -19,7 +19,7 @@ export default function Hero({
   const titleAccent = content?.titleAccent || "inşa ediyoruz.";
   const subtitle =
     content?.subtitle ||
-    "Kurumsal B2B MICE acente işletim sisteminden, Kıbrıs'ın ilk hiper-yerel mobil randevu pazaryerine: operasyonları kolaylaştıran ve değer üreten yeni nesil teknolojiler.";
+    "Kurumsal MICE acente işletim sisteminden, KKTC mevzuatına %100 uyumlu Bordro & İK ERP'sine ve mobil randevu pazaryerine: operasyonları kolaylaştıran yeni nesil teknolojiler.";
 
   const ctaPrimaryText = buttons?.heroPrimaryText || content?.ctaPrimary || "Hadi Başlayalım";
   const ctaPrimaryHref = buttons?.heroPrimaryHref || "#contact";
@@ -27,6 +27,20 @@ export default function Hero({
   const ctaSecondaryHref = buttons?.heroSecondaryHref || "#contact";
 
   const heroMockupImage = assets?.heroMockupImage || "/images/mockups/dashboard.png";
+
+  // BORDRO CY configuration (from Supabase/siteContent or defaults)
+  const bordro = content?.bordro || {
+    eyebrow: "KKTC BORDRO & İK YAZILIMI",
+    statusBadge: "%100 KKTC Mevzuat Uyumlu",
+    title: "BORDRO CY",
+    headline: "KKTC Standartlarında Bulut Bordro & İK",
+    subtitle:
+      "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız hesaplama ve resmi matbu bildirgeler.",
+    primaryImage: "/images/bordro/bordro-dashboard.jpeg",
+    secondaryImage: "/images/bordro/bordro-puantaj.jpeg",
+    ctaText: "Demo Talep Et",
+    ctaHref: "#contact",
+  };
 
   // Hepp configuration (from Supabase/siteContent or defaults)
   const hepp = content?.hepp || {
@@ -61,7 +75,7 @@ export default function Hero({
             <span>CODEICON TEKNOLOJİ EKOSİSTEMİ</span>
           </div>
 
-          <h1 className="custom-hero-title text-4xl sm:text-5xl lg:text-[58px] font-normal tracking-tight text-[#1A1A1A] leading-[1.08] mb-5 break-words">
+          <h1 className="custom-hero-title text-4xl sm:text-5xl lg:text-[56px] font-normal tracking-tight text-[#1A1A1A] leading-[1.08] mb-5 break-words">
             {title}{" "}
             <span className="custom-hero-accent italic font-normal text-[#1A1A1A] block sm:inline">
               {titleAccent}
@@ -73,13 +87,13 @@ export default function Hero({
           </p>
         </div>
 
-        {/* DUAL PRODUCT SHOWCASE (ECOSYSTEM HERO) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch mb-16 sm:mb-24">
+        {/* 3-PRODUCT SHOWCASE: MICE OS -> BORDRO CY -> hepp */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-6 items-stretch mb-16 sm:mb-24">
           
           {/* PRODUCT 1: CODEICON MICE OS */}
           <div
             id="mice-os"
-            className="group relative bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E1DC] shadow-[0_15px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col justify-between text-left"
+            className="group relative bg-white rounded-3xl p-6 sm:p-7 border border-[#E6E1DC] shadow-[0_15px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col justify-between text-left"
           >
             <div>
               {/* Product Badges */}
@@ -96,14 +110,17 @@ export default function Hero({
 
               {/* Product Info */}
               <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] tracking-tight mb-2">
-                MICE Agency Operating System
+                MICE Agency OS
               </h2>
-              <p className="text-sm text-[#605F5F] leading-relaxed mb-6">
+              <p className="text-sm font-semibold text-[#1A1A1A] mb-1">
+                Acente Operasyon &amp; Kur Sistemi
+              </p>
+              <p className="text-xs sm:text-sm text-[#605F5F] leading-relaxed mb-6">
                 Kongre, bayi toplantısı, transfer operasyonu ve TCMB kur sabitleme ile kurumsal acentelerin hata payını sıfırlayan bulut mimarisi.
               </p>
 
               {/* Feature Bullets */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-xs text-[#1A1A1A] font-medium">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 text-xs text-[#1A1A1A] font-medium">
                 <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>TCMB Canlı Kur Sabitleme</span>
@@ -114,11 +131,11 @@ export default function Hero({
                 </div>
                 <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Excel'den Tek Tıkla Rooming</span>
+                  <span>Excel&apos;den Tek Tıkla Rooming</span>
                 </div>
                 <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Sejour &amp; Muhasebe Entegrasyonu</span>
+                  <span>Sejour &amp; Muhasebe Entegre</span>
                 </div>
               </div>
 
@@ -137,17 +154,17 @@ export default function Hero({
                   <img
                     src={heroMockupImage}
                     alt="CODEICON MICE OS Dashboard"
-                    className="w-full h-[220px] sm:h-[260px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full h-[200px] sm:h-[230px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
               </div>
             </div>
 
             {/* Bottom Actions */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-2.5 pt-2">
               <a
                 href={ctaPrimaryHref}
-                className="grovia-btn-primary group text-xs sm:text-sm py-2 px-5"
+                className="grovia-btn-primary group text-xs sm:text-sm py-2 px-4"
               >
                 <span>{ctaPrimaryText}</span>
                 <span className="arrow-capsule">
@@ -156,20 +173,110 @@ export default function Hero({
               </a>
               <a
                 href="#features"
-                className="grovia-btn-secondary text-xs sm:text-sm py-2 px-4"
+                className="grovia-btn-secondary text-xs sm:text-sm py-2 px-3"
               >
-                Tüm Özellikleri Gör
+                Özellikler
               </a>
             </div>
           </div>
 
-          {/* PRODUCT 2: hepp MOBİL RANDEVU UYGULAMASI */}
+          {/* PRODUCT 2: BORDRO CY (BETWEEN MICE OS AND HEPP) */}
           <div
-            id="hepp-app"
-            className="group relative bg-gradient-to-b from-white via-white to-[#FFF9F6] rounded-3xl p-6 sm:p-8 border border-[#E6E1DC] shadow-[0_15px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(255,77,45,0.08)] transition-all duration-300 flex flex-col justify-between text-left"
+            id="bordro-cy"
+            className="group relative bg-white rounded-3xl p-6 sm:p-7 border border-[#E6E1DC] shadow-[0_15px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(37,99,235,0.07)] transition-all duration-300 flex flex-col justify-between text-left"
           >
             <div>
-              {/* Product Badges (KKTC'de ilk removed as requested) */}
+              {/* Product Badges */}
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#EFF6FF] text-[#1D4ED8] border border-[#DBEAFE]">
+                  <Calculator className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>{bordro.eyebrow || "KKTC BORDRO & İK ERP"}</span>
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                  <span>{bordro.statusBadge || "%100 Mevzuat Uyumlu"}</span>
+                </span>
+              </div>
+
+              {/* Product Info */}
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] tracking-tight mb-2">
+                {bordro.title || "BORDRO CY"}
+              </h2>
+              <p className="text-sm font-semibold text-[#1A1A1A] mb-1">
+                {bordro.headline || "KKTC Standartlarında Bulut Bordro & İK"}
+              </p>
+              <p className="text-xs sm:text-sm text-[#605F5F] leading-relaxed mb-6">
+                {bordro.subtitle || "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız hesaplama ve resmi matbu bildirgeler."}
+              </p>
+
+              {/* Feature Bullets */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 text-xs text-[#1A1A1A] font-medium">
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>Net&apos;ten Brüt&apos;e Kuruşu Kuruşuna</span>
+                </div>
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>70.893 ₺ Asgari Ücret Koruması</span>
+                </div>
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>SS7, SS8, İ.S.4 &amp; VD17A</span>
+                </div>
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>Toplu Puantaj &amp; 4 Kutulu Pusula</span>
+                </div>
+              </div>
+
+              {/* Mockup Preview Container */}
+              <div className="relative rounded-2xl p-2 bg-[#FAF9F6] border border-[#EAE6E1] overflow-hidden mb-6 shadow-inner group-hover:border-[#DDD7D0] transition">
+                <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#EAE6E1] bg-white rounded-t-xl mb-1.5 text-[11px] text-[#8C8C8C]">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#E57373]" />
+                    <span className="w-2 h-2 rounded-full bg-[#FFB74D]" />
+                    <span className="w-2 h-2 rounded-full bg-[#81C784]" />
+                    <span className="ml-1 font-mono text-[10px] text-[#605F5F]">app.bordro.cy</span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-neutral-600">KKTC Bordro ERP</span>
+                </div>
+                <div className="overflow-hidden rounded-xl bg-white">
+                  <img
+                    src={bordro.primaryImage || "/images/bordro/bordro-dashboard.jpeg"}
+                    alt="BORDRO CY KKTC Bordro ERP"
+                    className="w-full h-[200px] sm:h-[230px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="flex flex-wrap items-center gap-2.5 pt-2">
+              <a
+                href={bordro.ctaHref || "#contact"}
+                className="grovia-btn-primary group text-xs sm:text-sm py-2 px-4"
+              >
+                <span>{bordro.ctaText || "Demo Talep Et"}</span>
+                <span className="arrow-capsule">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </a>
+              <a
+                href="#contact"
+                className="grovia-btn-secondary text-xs sm:text-sm py-2 px-3"
+              >
+                Mevzuat Bilgisi
+              </a>
+            </div>
+          </div>
+
+          {/* PRODUCT 3: hepp MOBİL RANDEVU UYGULAMASI */}
+          <div
+            id="hepp-app"
+            className="group relative bg-gradient-to-b from-white via-white to-[#FFF9F6] rounded-3xl p-6 sm:p-7 border border-[#E6E1DC] shadow-[0_15px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(255,77,45,0.08)] transition-all duration-300 flex flex-col justify-between text-left"
+          >
+            <div>
+              {/* Product Badges */}
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FAF9F6] text-[#1A1A1A] border border-[#E6E1DC]">
                   <Smartphone className="w-3.5 h-3.5 text-[#FF4D2D]" />
@@ -197,34 +304,34 @@ export default function Hero({
               <p className="text-sm font-semibold text-[#1A1A1A] mb-1">
                 {hepp.title || "Her anında Hepp yanında."}
               </p>
-              <p className="text-sm text-[#605F5F] leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[#605F5F] leading-relaxed mb-6">
                 {hepp.subtitle || "KKTC'de berber, kuaför, veteriner, ev temizliği ve daha fazlası için randevu uygulaması. İşletme onaylar, hepp WhatsApp ya da bildirimle hatırlatır."}
               </p>
 
               {/* Feature Bullets */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-xs text-[#1A1A1A] font-medium">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 text-xs text-[#1A1A1A] font-medium">
                 <div className="flex items-center gap-2 p-2 rounded-xl bg-white border border-[#EAE6E1]">
                   <span className="text-[#FF4D2D] font-bold">⚡</span>
                   <span>Müşteriye %100 Ücretsiz</span>
                 </div>
                 <div className="flex items-center gap-2 p-2 rounded-xl bg-white border border-[#EAE6E1]">
                   <span className="text-[#FF4D2D] font-bold">💬</span>
-                  <span>WhatsApp Hatırlatma Bildirimi</span>
+                  <span>WhatsApp Hatırlatması</span>
                 </div>
                 <div className="flex items-center gap-2 p-2 rounded-xl bg-white border border-[#EAE6E1]">
                   <span className="text-[#FF4D2D] font-bold">📍</span>
-                  <span>Lefkoşa · Girne · Gazimağusa</span>
+                  <span>Lefkoşa · Girne · Mağusa</span>
                 </div>
                 <div className="flex items-center gap-2 p-2 rounded-xl bg-white border border-[#EAE6E1]">
                   <span className="text-[#FF4D2D] font-bold">✓</span>
-                  <span>Türkçe ve İngilizce Deneyim</span>
+                  <span>Türkçe ve İngilizce</span>
                 </div>
               </div>
 
               {/* SWAPPED REAL MOCKUPS DISPLAY (hepp-home in FRONT, hepp-business in BACK) */}
-              <div className="relative rounded-2xl p-4 bg-gradient-to-b from-[#F4F2EE]/50 to-[#FAF9F6] border border-[#EAE6E1] overflow-hidden mb-6 flex items-center justify-center min-h-[260px] sm:min-h-[285px] group-hover:border-[#FF4D2D]/30 transition">
+              <div className="relative rounded-2xl p-3 bg-gradient-to-b from-[#F4F2EE]/50 to-[#FAF9F6] border border-[#EAE6E1] overflow-hidden mb-6 flex items-center justify-center min-h-[200px] sm:min-h-[230px] group-hover:border-[#FF4D2D]/30 transition">
                 {/* Secondary Background Mockup (Aura Spa profile) */}
-                <div className="absolute right-4 sm:right-10 top-3 w-[150px] sm:w-[175px] opacity-45 blur-[0.4px] rotate-[8deg] transition-all duration-500 group-hover:rotate-[11deg] group-hover:opacity-60">
+                <div className="absolute right-3 sm:right-6 top-2 w-[130px] sm:w-[150px] opacity-45 blur-[0.4px] rotate-[8deg] transition-all duration-500 group-hover:rotate-[11deg] group-hover:opacity-60">
                   <img
                     src={hepp.secondaryImage || "/images/hepp/hepp-business.png"}
                     alt="hepp İşletme Profili"
@@ -233,7 +340,7 @@ export default function Hero({
                 </div>
 
                 {/* Primary Foreground Mockup (Discovery Home Screen - user requested in FRONT) */}
-                <div className="relative z-10 w-[170px] sm:w-[200px] -rotate-[3deg] transition-all duration-500 group-hover:rotate-0 group-hover:scale-105">
+                <div className="relative z-10 w-[145px] sm:w-[170px] -rotate-[3deg] transition-all duration-500 group-hover:rotate-0 group-hover:scale-105">
                   <img
                     src={hepp.primaryImage || "/images/hepp/hepp-home.png"}
                     alt="hepp Keşif Ana Ekranı"
@@ -242,9 +349,9 @@ export default function Hero({
                 </div>
 
                 {/* Floating Micro Badge */}
-                <div className="absolute bottom-3 left-3 z-20 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#E6E1DC] shadow-md text-[11px] font-semibold text-[#1A1A1A] flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#FF4D2D]" />
-                  <span>Bugün müsait · Tek dokunuş</span>
+                <div className="absolute bottom-2 left-2 z-20 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#E6E1DC] shadow-md text-[10px] font-semibold text-[#1A1A1A] flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D2D]" />
+                  <span>Bugün müsait</span>
                 </div>
               </div>
             </div>
@@ -255,9 +362,9 @@ export default function Hero({
                 href={hepp.websiteUrl || "https://hepp.app"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#FF4D2D] text-white text-xs sm:text-sm font-bold hover:bg-[#E03D1E] transition shadow-xs group cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FF4D2D] text-white text-xs sm:text-sm font-bold hover:bg-[#E03D1E] transition shadow-xs group cursor-pointer w-full justify-center"
               >
-                <span>hepp.app Web Sitesini Ziyaret Et</span>
+                <span>hepp.app Web Sitesi</span>
                 <span className="w-5 h-5 rounded-full bg-white text-[#FF4D2D] flex items-center justify-center text-xs transition-transform group-hover:translate-x-0.5">
                   <ArrowRight className="w-3 h-3 text-[#FF4D2D]" />
                 </span>

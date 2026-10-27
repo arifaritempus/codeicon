@@ -199,6 +199,7 @@ export default async function Home() {
           <Hero
             content={{
               ...(content?.hero || {}),
+              bordro: content?.bordro,
               hepp: content?.hepp,
             }}
             brand={content?.brand}

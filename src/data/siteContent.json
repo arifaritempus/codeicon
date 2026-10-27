@@ -1051,6 +1051,24 @@
       }
     ]
   },
+  "bordro": {
+    "enabled": true,
+    "eyebrow": "KKTC BORDRO & İK YAZILIMI",
+    "statusBadge": "%100 KKTC Mevzuat Uyumlu",
+    "title": "BORDRO CY",
+    "headline": "KKTC Standartlarında Bulut Bordro & İK ERP",
+    "subtitle": "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız hesaplama ve resmi matbu bildirgeler.",
+    "primaryImage": "/images/bordro/bordro-dashboard.jpeg",
+    "secondaryImage": "/images/bordro/bordro-puantaj.jpeg",
+    "ctaText": "Demo Talep Et",
+    "ctaHref": "#contact",
+    "pills": [
+      "Net'ten Brüt'e Kuruşu Kuruşuna",
+      "70.893 ₺ Asgari Ücret Vergi Koruması",
+      "Resmi SS7, SS8, İ.S.4, VD17A Bildirgeleri",
+      "Toplu Puantaj & 4 Kutulu Pusula"
+    ]
+  },
   "hepp": {
     "enabled": true,
     "eyebrow": "YENİ MOBİL RANDEVU UYGULAMASI",

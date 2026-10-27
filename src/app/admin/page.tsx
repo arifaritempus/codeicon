@@ -24,6 +24,7 @@ import {
   ExternalLink,
   Laptop,
   Smartphone,
+  Calculator,
   Navigation,
   MousePointerClick,
   Link2,
@@ -986,6 +987,7 @@ export default function AdminPage() {
               { id: "visibility", label: "👁️ Bölüm Görünürlüğü (Aç/Kapa)", icon: Eye },
               { id: "brand", label: "🏷️ Genel & Marka", icon: Settings },
               { id: "hero", label: "🚀 Hero (Giriş)", icon: Sparkles },
+              { id: "bordro", label: "📑 BORDRO CY (Bordro ERP)", icon: Calculator },
               { id: "hepp", label: "📱 hepp Mobil Uygulama", icon: Smartphone },
               { id: "process", label: "⚡ 3 Adımlı Süreç", icon: Layers },
               { id: "features", label: "📊 Özellik Sekmeleri", icon: Layers },
@@ -3355,6 +3357,216 @@ export default function AdminPage() {
                           </div>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: BORDRO CY (BORDRO ERP) */}
+            {activeTab === "bordro" && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between pb-4 border-b border-[#EAE6E1]">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-xl bg-[#1E40AF] text-white flex items-center justify-center font-bold text-sm shadow-2xs">
+                        📑
+                      </span>
+                      <h2 className="text-xl font-bold text-[#1A1A1A]">BORDRO CY (KKTC Bordro &amp; İK ERP) Yönetimi</h2>
+                    </div>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      Ana sayfadaki Hero 3&apos;lü ürün ekosisteminde yer alan BORDRO CY kartının başlıklarını, görsellerini ve butonlarını buradan düzenleyin.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Left Column: Form Controls */}
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Üst Kategori Rozeti (Eyebrow)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.bordro?.eyebrow || "KKTC BORDRO & İK YAZILIMI"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            bordro: { ...(content.bordro || {}), eyebrow: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Durum Rozeti (Status Badge)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.bordro?.statusBadge || "%100 KKTC Mevzuat Uyumlu"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            bordro: { ...(content.bordro || {}), statusBadge: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Ürün Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.bordro?.title || "BORDRO CY"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            bordro: { ...(content.bordro || {}), title: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-bold"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Alt Vurgu Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.bordro?.headline || "KKTC Standartlarında Bulut Bordro & İK"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            bordro: { ...(content.bordro || {}), headline: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Açıklama Metni (Subtitle)
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={
+                          content.bordro?.subtitle ||
+                          "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız hesaplama ve resmi matbu bildirgeler."
+                        }
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            bordro: { ...(content.bordro || {}), subtitle: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white resize-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Birincil Mockup Görseli (Dashboard)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.bordro?.primaryImage || "/images/bordro/bordro-dashboard.jpeg"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            bordro: { ...(content.bordro || {}), primaryImage: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-mono text-xs"
+                      />
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/bordro/bordro-dashboard.jpeg</p>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        İkincil Mockup Görseli (Puantaj / Pusula)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.bordro?.secondaryImage || "/images/bordro/bordro-puantaj.jpeg"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            bordro: { ...(content.bordro || {}), secondaryImage: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-mono text-xs"
+                      />
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/bordro/bordro-puantaj.jpeg</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                          Buton Metni
+                        </label>
+                        <input
+                          type="text"
+                          value={content.bordro?.ctaText || "Demo Talep Et"}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              bordro: { ...(content.bordro || {}), ctaText: e.target.value },
+                            })
+                          }
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                          Buton Linki
+                        </label>
+                        <input
+                          type="text"
+                          value={content.bordro?.ctaHref || "#contact"}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              bordro: { ...(content.bordro || {}), ctaHref: e.target.value },
+                            })
+                          }
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Visual Preview */}
+                  <div className="space-y-4">
+                    <div className="p-5 rounded-2xl bg-white border border-[#DDD7D0] shadow-sm">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-[#8C8C8C] mb-3">
+                        Görsel Önizleme
+                      </h3>
+                      <div className="rounded-xl overflow-hidden border border-[#E6E1DC] bg-[#FAF9F6] p-2 space-y-3">
+                        <div>
+                          <span className="text-[11px] font-semibold text-[#605F5F] block mb-1">1. Mockup (Ana Ekran):</span>
+                          <img
+                            src={content.bordro?.primaryImage || "/images/bordro/bordro-dashboard.jpeg"}
+                            alt="BORDRO CY Preview"
+                            className="w-full h-40 object-cover object-top rounded-lg border border-[#DDD7D0]"
+                          />
+                        </div>
+                        <div>
+                          <span className="text-[11px] font-semibold text-[#605F5F] block mb-1">2. Mockup (Puantaj):</span>
+                          <img
+                            src={content.bordro?.secondaryImage || "/images/bordro/bordro-puantaj.jpeg"}
+                            alt="BORDRO CY Puantaj"
+                            className="w-full h-40 object-cover object-top rounded-lg border border-[#DDD7D0]"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
