@@ -1058,8 +1058,8 @@
     "title": "BORDRO CY",
     "headline": "KKTC Standartlarında Bulut Bordro & İK ERP",
     "subtitle": "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız hesaplama ve resmi matbu bildirgeler.",
-    "primaryImage": "/images/bordro/bordro-dashboard.jpeg",
-    "secondaryImage": "/images/bordro/bordro-puantaj.jpeg",
+    "primaryImage": "/images/bordro/bordro-matbu-bos.svg",
+    "secondaryImage": "/images/bordro/bordro-matbu-bos.svg",
     "ctaText": "Demo Talep Et",
     "ctaHref": "#contact",
     "pills": [

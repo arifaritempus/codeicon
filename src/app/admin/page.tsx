@@ -3473,11 +3473,11 @@ export default function AdminPage() {
 
                     <div>
                       <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
-                        Birincil Mockup Görseli (Dashboard)
+                        Birincil Mockup Görseli (Resmi Matbu Şablon)
                       </label>
                       <input
                         type="text"
-                        value={content.bordro?.primaryImage || "/images/bordro/bordro-dashboard.jpeg"}
+                        value={content.bordro?.primaryImage || "/images/bordro/bordro-matbu-bos.svg"}
                         onChange={(e) =>
                           setContent({
                             ...content,
@@ -3486,16 +3486,16 @@ export default function AdminPage() {
                         }
                         className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-mono text-xs"
                       />
-                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/bordro/bordro-dashboard.jpeg</p>
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/bordro/bordro-matbu-bos.svg</p>
                     </div>
 
                     <div>
                       <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
-                        İkincil Mockup Görseli (Puantaj / Pusula)
+                        İkincil Mockup Görseli
                       </label>
                       <input
                         type="text"
-                        value={content.bordro?.secondaryImage || "/images/bordro/bordro-puantaj.jpeg"}
+                        value={content.bordro?.secondaryImage || "/images/bordro/bordro-matbu-bos.svg"}
                         onChange={(e) =>
                           setContent({
                             ...content,
@@ -3504,7 +3504,7 @@ export default function AdminPage() {
                         }
                         className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-mono text-xs"
                       />
-                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/bordro/bordro-puantaj.jpeg</p>
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/bordro/bordro-matbu-bos.svg</p>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
@@ -3547,23 +3547,15 @@ export default function AdminPage() {
                   <div className="space-y-4">
                     <div className="p-5 rounded-2xl bg-white border border-[#DDD7D0] shadow-sm">
                       <h3 className="text-xs font-bold uppercase tracking-wider text-[#8C8C8C] mb-3">
-                        Görsel Önizleme
+                        Görsel Önizleme (KVKK Uyumlu Matbu)
                       </h3>
                       <div className="rounded-xl overflow-hidden border border-[#E6E1DC] bg-[#FAF9F6] p-2 space-y-3">
                         <div>
-                          <span className="text-[11px] font-semibold text-[#605F5F] block mb-1">1. Mockup (Ana Ekran):</span>
+                          <span className="text-[11px] font-semibold text-[#605F5F] block mb-1">Resmi Matbu Şablon:</span>
                           <img
-                            src={content.bordro?.primaryImage || "/images/bordro/bordro-dashboard.jpeg"}
+                            src={content.bordro?.primaryImage || "/images/bordro/bordro-matbu-bos.svg"}
                             alt="BORDRO CY Preview"
-                            className="w-full h-40 object-cover object-top rounded-lg border border-[#DDD7D0]"
-                          />
-                        </div>
-                        <div>
-                          <span className="text-[11px] font-semibold text-[#605F5F] block mb-1">2. Mockup (Puantaj):</span>
-                          <img
-                            src={content.bordro?.secondaryImage || "/images/bordro/bordro-puantaj.jpeg"}
-                            alt="BORDRO CY Puantaj"
-                            className="w-full h-40 object-cover object-top rounded-lg border border-[#DDD7D0]"
+                            className="w-full h-44 object-contain object-center rounded-lg border border-[#DDD7D0] bg-white"
                           />
                         </div>
                       </div>

@@ -36,8 +36,8 @@ export default function Hero({
     headline: "KKTC Standartlarında Bulut Bordro & İK",
     subtitle:
       "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız hesaplama ve resmi matbu bildirgeler.",
-    primaryImage: "/images/bordro/bordro-dashboard.jpeg",
-    secondaryImage: "/images/bordro/bordro-puantaj.jpeg",
+    primaryImage: "/images/bordro/bordro-matbu-bos.svg",
+    secondaryImage: "/images/bordro/bordro-matbu-bos.svg",
     ctaText: "Demo Talep Et",
     ctaHref: "#contact",
   };
@@ -238,13 +238,13 @@ export default function Hero({
                     <span className="w-2 h-2 rounded-full bg-[#81C784]" />
                     <span className="ml-1 font-mono text-[10px] text-[#605F5F]">app.bordro.cy</span>
                   </div>
-                  <span className="text-[10px] font-semibold text-neutral-600">KKTC Bordro ERP</span>
+                  <span className="text-[10px] font-semibold text-neutral-600">Resmi Matbu Maaş Bordrosu</span>
                 </div>
-                <div className="overflow-hidden rounded-xl bg-white">
+                <div className="overflow-hidden rounded-xl bg-white p-1">
                   <img
-                    src={bordro.primaryImage || "/images/bordro/bordro-dashboard.jpeg"}
-                    alt="BORDRO CY KKTC Bordro ERP"
-                    className="w-full h-[200px] sm:h-[230px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                    src={bordro.primaryImage || "/images/bordro/bordro-matbu-bos.svg"}
+                    alt="BORDRO CY KKTC Resmi Boş Matbu Maaş Bordrosu Şablonu"
+                    className="w-full h-[200px] sm:h-[230px] object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
               </div>

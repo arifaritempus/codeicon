@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" style="background:#FFFFFF; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <style>
+      .th { font-weight:700; fill:#1A1A1A; font-size:12px; }
+      .td { font-weight:500; fill:#333333; font-size:12px; }
+      .muted { fill:#737373; font-size:11px; }
+      .mono { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .border { stroke:#262626; stroke-width:1; }
+      .header-bg { fill:#F5F5F4; }
+      .box-header { font-weight:800; font-size:11px; fill:#1A1A1A; letter-spacing:1px; }
+    </style>
+  </defs>
+
+  <!-- Outer Sheet Margin & Border -->
+  <rect x="20" y="20" width="960" height="600" fill="#FFFFFF" class="border" />
+
+  <!-- Sheet Header / Title -->
+  <rect x="20" y="20" width="960" height="42" class="header-bg border" />
+  <text x="500" y="46" text-anchor="middle" font-size="16" font-weight="900" fill="#1A1A1A" letter-spacing="3">
+    MAAŞ BORDROSU (ÜCRET HESAP PUSULASI)
+  </text>
+  <text x="960" y="45" text-anchor="end" font-size="10" font-weight="700" fill="#2563EB" letter-spacing="1">
+    KKTC MATBU FORM
+  </text>
+
+  <!-- Info Grid Lines -->
+  <!-- Row 1: Firma Adı -->
+  <line x1="20" y1="98" x2="980" y2="98" class="border" />
+  <rect x="20" y="62" width="130" height="36" class="header-bg" />
+  <text x="32" y="85" class="th">Firma Adı</text>
+  <line x1="150" y1="62" x2="150" y2="98" class="border" />
+  <text x="165" y="85" class="td" font-weight="700" fill="#171717">ÖRNEK İŞLETMELER LİMİTED (MATBU ŞABLON)</text>
+
+  <!-- Row 2: Adı Soyadı & Maaş Dönemi -->
+  <line x1="20" y1="134" x2="980" y2="134" class="border" />
+  <rect x="20" y="98" width="130" height="36" class="header-bg" />
+  <text x="32" y="121" class="th">Adı Soyadı</text>
+  <line x1="150" y1="98" x2="150" y2="134" class="border" />
+  <text x="165" y="121" class="td" font-weight="600">ÖRNEK ÇALIŞAN (KVKK MATBU ALANI)</text>
+
+  <rect x="580" y="98" width="140" height="36" class="header-bg" />
+  <line x1="580" y1="98" x2="580" y2="134" class="border" />
+  <text x="592" y="121" class="th">Maaş Dönemi</text>
+  <line x1="720" y1="98" x2="720" y2="134" class="border" />
+  <text x="735" y="121" class="td mono" font-weight="700">2026 / EYLÜL</text>
+
+  <!-- Row 3: Kimlik/Pas & Gün -->
+  <line x1="20" y1="170" x2="980" y2="170" class="border" />
+  <rect x="20" y="134" width="130" height="36" class="header-bg" />
+  <text x="32" y="157" class="th">Kimlik / Pas. No</text>
+  <line x1="150" y1="134" x2="150" y2="170" class="border" />
+  <text x="165" y="157" class="td mono">•••••••••• (KORUMALI)</text>
+
+  <rect x="580" y="134" width="140" height="36" class="header-bg" />
+  <line x1="580" y1="134" x2="580" y2="170" class="border" />
+  <text x="592" y="157" class="th">Çalışılan Gün</text>
+  <line x1="720" y1="134" x2="720" y2="170" class="border" />
+  <text x="735" y="157" class="td mono" font-weight="700">30 Gün</text>
+
+  <!-- Row 4: SSK/İhtiyat No & Departman -->
+  <line x1="20" y1="206" x2="980" y2="206" class="border" />
+  <rect x="20" y="170" width="130" height="36" class="header-bg" />
+  <text x="32" y="193" class="th">Sigorta - İhtiyat No</text>
+  <line x1="150" y1="170" x2="150" y2="206" class="border" />
+  <text x="165" y="193" class="td mono">0000000000 - 000000</text>
+
+  <rect x="580" y="170" width="140" height="36" class="header-bg" />
+  <line x1="580" y1="170" x2="580" y2="206" class="border" />
+  <text x="592" y="193" class="th">Çalışılan Birim</text>
+  <line x1="720" y1="170" x2="720" y2="206" class="border" />
+  <text x="735" y="193" class="td">Operasyon &amp; Yönetim</text>
+
+  <!-- 4 MAIN COLUMNS / BOXES -->
+  <!-- Vertical Column Dividers -->
+  <line x1="260" y1="206" x2="260" y2="520" class="border" />
+  <line x1="500" y1="206" x2="500" y2="520" class="border" />
+  <line x1="740" y1="206" x2="740" y2="520" class="border" />
+
+  <!-- BOX HEADERS -->
+  <rect x="20" y="206" width="240" height="30" class="header-bg border" />
+  <text x="140" y="226" text-anchor="middle" class="box-header">1. KAZANÇLAR</text>
+
+  <rect x="260" y="206" width="240" height="30" class="header-bg border" />
+  <text x="380" y="226" text-anchor="middle" class="box-header">2. KESİNTİLER (İŞÇİ)</text>
+
+  <rect x="500" y="206" width="240" height="30" class="header-bg border" />
+  <text x="620" y="226" text-anchor="middle" class="box-header">3. İŞVEREN MALİYETİ</text>
+
+  <rect x="740" y="206" width="240" height="30" class="header-bg border" />
+  <text x="860" y="226" text-anchor="middle" class="box-header">4. NET MAAŞ &amp; YATIRIM</text>
+
+  <!-- BOX 1: KAZANÇLAR ITEMS -->
+  <text x="32" y="265" class="td">Aylık Brüt Maaş</text>
+  <text x="248" y="265" text-anchor="end" class="td mono font-weight-700">78.198,71 ₺</text>
+
+  <text x="32" y="295" class="muted">Emekli Maaşı</text>
+  <text x="248" y="295" text-anchor="end" class="muted mono">-</text>
+
+  <text x="32" y="325" class="td">Ek Kazanç / Mesai</text>
+  <text x="248" y="325" text-anchor="end" class="td mono">0,00 ₺</text>
+
+  <text x="32" y="355" class="muted">Yol &amp; Yemek Yardımı</text>
+  <text x="248" y="355" text-anchor="end" class="muted mono">-</text>
+
+  <text x="32" y="385" class="muted">Barem Derecesi</text>
+  <text x="248" y="385" text-anchor="end" class="muted mono">Derece 1</text>
+
+  <!-- Box 1 Total -->
+  <line x1="20" y1="480" x2="260" y2="480" class="border" />
+  <rect x="20" y="480" width="240" height="40" class="header-bg border" />
+  <text x="32" y="505" class="th">Toplam Kazanç</text>
+  <text x="248" y="505" text-anchor="end" class="th mono" fill="#171717">78.198,71 ₺</text>
+
+  <!-- BOX 2: KESİNTİLER ITEMS -->
+  <text x="272" y="265" class="td">Sigorta İşçi Payı (%8,25)</text>
+  <text x="488" y="265" text-anchor="end" class="td mono">6.451,39 ₺</text>
+
+  <text x="272" y="295" class="td">İhtiyat Sandığı İşçi (%0)</text>
+  <text x="488" y="295" text-anchor="end" class="td mono">0,00 ₺</text>
+
+  <text x="272" y="325" class="td">Gelir Vergisi (PAYE)</text>
+  <text x="488" y="325" text-anchor="end" class="td mono">1.747,32 ₺</text>
+
+  <text x="272" y="355" class="muted">Asgari Ücret Muafiyeti</text>
+  <text x="488" y="355" text-anchor="end" class="muted mono">- 70.893,00 ₺</text>
+
+  <text x="272" y="385" class="muted">Sabit Gelir Vergisi</text>
+  <text x="488" y="385" text-anchor="end" class="muted mono">-</text>
+
+  <!-- Box 2 Total -->
+  <line x1="260" y1="480" x2="500" y2="480" class="border" />
+  <rect x="260" y="480" width="240" height="40" class="header-bg border" />
+  <text x="272" y="505" class="th">Toplam Kesinti</text>
+  <text x="488" y="505" text-anchor="end" class="th mono" fill="#DC2626">8.198,71 ₺</text>
+
+  <!-- BOX 3: PERSONEL MALİYETİ ITEMS -->
+  <text x="512" y="265" class="td">Brüt Ücret</text>
+  <text x="728" y="265" text-anchor="end" class="td mono">78.198,71 ₺</text>
+
+  <text x="512" y="295" class="td">İşveren SSK Payı (%8,71)</text>
+  <text x="728" y="295" text-anchor="end" class="td mono">6.811,11 ₺</text>
+
+  <text x="512" y="325" class="td">Yerli İstihdam Fonu (%5)</text>
+  <text x="728" y="325" text-anchor="end" class="td mono">3.909,93 ₺</text>
+
+  <text x="512" y="355" class="muted">İşveren İhtiyat Payı</text>
+  <text x="728" y="355" text-anchor="end" class="muted mono">0,00 ₺</text>
+
+  <text x="512" y="385" class="muted">Tehlike Sınıfı Primi</text>
+  <text x="728" y="385" text-anchor="end" class="muted mono">%0,50</text>
+
+  <!-- Box 3 Total -->
+  <line x1="500" y1="480" x2="740" y2="480" class="border" />
+  <rect x="500" y="480" width="240" height="40" class="header-bg border" />
+  <text x="512" y="505" class="th">Toplam Şirket Maliyeti</text>
+  <text x="728" y="505" text-anchor="end" class="th mono" fill="#2563EB">88.919,75 ₺</text>
+
+  <!-- BOX 4: NET MAAŞ & YATIRIMLAR -->
+  <text x="752" y="265" class="td">Brüt Maaş</text>
+  <text x="968" y="265" text-anchor="end" class="td mono">78.198,71 ₺</text>
+
+  <text x="752" y="295" class="td">Toplam Kesintiler</text>
+  <text x="968" y="295" text-anchor="end" class="td mono" fill="#DC2626">- 8.198,71 ₺</text>
+
+  <rect x="745" y="315" width="230" height="40" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1" rx="4" />
+  <text x="757" y="339" font-weight="900" font-size="12" fill="#92400E">ÖDENEN NET MAAŞ</text>
+  <text x="965" y="340" text-anchor="end" font-weight="900" font-size="14" class="mono" fill="#15803D">70.000,00 ₺</text>
+
+  <text x="752" y="380" class="muted">Toplam Sigorta Yatırımı</text>
+  <text x="968" y="380" text-anchor="end" class="muted mono">13.262,50 ₺</text>
+
+  <text x="752" y="405" class="muted">Toplam İhtiyat/Fon Yatırımı</text>
+  <text x="968" y="405" text-anchor="end" class="muted mono">3.909,93 ₺</text>
+
+  <!-- Box 4 Foot -->
+  <line x1="740" y1="480" x2="980" y2="480" class="border" />
+  <rect x="740" y="480" width="240" height="40" class="header-bg border" />
+  <text x="752" y="505" class="th">Ödeme Türü</text>
+  <text x="968" y="505" text-anchor="end" class="th" fill="#15803D">Banka Havalesi</text>
+
+  <!-- BOTTOM SIGNATURE & LEGAL ACKNOWLEDGMENT -->
+  <line x1="20" y1="520" x2="980" y2="520" class="border" />
+  <text x="32" y="555" font-size="12" font-style="italic" fill="#404040">
+    &quot;Tüm maaş ve özlük haklarımı bir tamam ve eksiksiz olarak teslim aldım.&quot;
+  </text>
+  <text x="32" y="590" font-size="11" font-weight="700" fill="#737373">
+    Tarih: ..... / ..... / 2026
+  </text>
+
+  <text x="760" y="555" font-size="11" font-weight="700" fill="#525252">
+    İşçi İmzası:
+  </text>
+  <line x1="830" y1="560" x2="960" y2="560" stroke="#737373" stroke-width="1" stroke-dasharray="3 3" />
+
+  <!-- WATERMARK STAMP (KVKK UYUMLU MATBU FORM) -->
+  <g transform="translate(420, 535)">
+    <rect x="0" y="0" width="220" height="32" rx="16" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5" />
+    <text x="110" y="20" text-anchor="middle" font-size="10" font-weight="800" fill="#166534" letter-spacing="1">
+      ✓ KVKK UYUMLU RESMİ MATBU FORM
+    </text>
+  </g>
+</svg>
