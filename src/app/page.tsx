@@ -17,18 +17,77 @@ export const revalidate = 0;
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getSiteContent();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
   const title =
     content?.brand?.siteTitle ||
-    `${content?.brand?.name || "CODEICON"} — MICE Acente Sistemi`;
+    "CODEICON — MICE Acente Sistemi, ARCH OS Mimarlık Yazılımı & Bordro ERP";
   const description =
     content?.hero?.subtitle ||
-    content?.brand?.badge ||
-    "MICE ve Acente Yönetim Sistemi";
+    "CODEICON; kurumsal MICE acente sistemi, MICE yönetim sistemi, online MICE programı, mimarlık ve şantiye platformu ARCH OS, KKTC Bordro CY ve hepp randevu ekosistemini sunan yeni nesil bulut yazılımlarıdır.";
   const favicon = content?.assets?.faviconUrl || "/favicon.ico";
 
   return {
     title,
     description,
+    keywords: [
+      "MICE acente sistemi",
+      "MICE yönetim sistemi",
+      "online MICE sistemi",
+      "MICE programı",
+      "MICE acente yazılımı",
+      "turizm acente otomasyonu",
+      "TCMB kur sabitleme acente",
+      "acente rooming list",
+      "transfer görev emri otomasyonu",
+      "ARCH OS",
+      "mimarlık ofis yazılımı",
+      "mimarlık proje yönetim sistemi",
+      "şantiye takip programı",
+      "taşeron hakediş programı",
+      "tasarım dondurma design freeze",
+      "KKTC bordro programı",
+      "BORDRO CY",
+      "CODEICON",
+    ],
+    alternates: {
+      canonical: baseUrl,
+      types: {
+        "text/plain": "/llms.txt",
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: "tr_TR",
+      url: baseUrl,
+      title,
+      description,
+      siteName: "CODEICON",
+      images: [
+        {
+          url: `${baseUrl}/images/mockups/dashboard.png`,
+          width: 1200,
+          height: 630,
+          alt: "CODEICON Teknoloji Ekosistemi",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${baseUrl}/images/mockups/dashboard.png`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     icons: {
       icon: favicon,
     },
@@ -199,6 +258,7 @@ export default async function Home() {
           <Hero
             content={{
               ...(content?.hero || {}),
+              arch: content?.arch,
               bordro: content?.bordro,
               hepp: content?.hepp,
             }}

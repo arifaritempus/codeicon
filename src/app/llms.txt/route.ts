@@ -8,10 +8,9 @@ export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
 
   const brandName = content?.brand?.name || "CODEICON";
-  const brandTitle = content?.brand?.title || "MICE ve Seyahat Acentesi İşletim Sistemi";
+  const brandTitle = "MICE Acente Sistemi, ARCH OS Mimarlık Platformu & Kurumsal Yazılım Ekosistemi";
   const brandDesc =
-    content?.brand?.description ||
-    "CODEICON; kurumsal MICE acenteleri, kongre ve etkinlik ekipleri için tasarlanmış yeni nesil operasyon, saha yönetimi ve finans işletim sistemidir.";
+    "CODEICON; B2B MICE acente işletim sistemi (MICE OS), mimarlık ve anahtar teslim şantiye yönetim platformu (ARCH OS), KKTC mevzuat uyumlu bordro ERP'si (BORDRO CY) ve yeni nesil randevu pazaryeri (hepp) ile kurumsal süreçleri buluta taşıyan yeni nesil teknoloji ekosistemidir.";
 
   const posts: any[] = (content?.blog?.posts || []).filter((p: any) => p.published !== false);
 
@@ -19,28 +18,45 @@ export async function GET() {
   markdown += `> ${brandDesc}\n\n`;
 
   markdown += `## Temel Bilgiler\n`;
-  markdown += `- **Ürün Türü**: SaaS / Kurumsal MICE & Kongre Yönetim Platformu\n`;
-  markdown += `- **Hedef Kitle**: Kurumsal MICE Acenteleri, Kongre Organizatörleri, Seyahat Acentesi Sahipleri, Saha ve Transfer Ekipleri, Muhasebe & Finans Yöneticileri\n`;
+  markdown += `- **Ekosistem**: B2B & B2C Bulut Yazılımları (SaaS / ERP)\n`;
+  markdown += `- **Hedef Kitle**: MICE ve Kongre Acenteleri, Seyahat Acenteleri, Mimarlık Ofisleri, Şantiye ve İnşaat Yöneticileri, KKTC İşletmeleri & Muhasebe Ekipleri, Hizmet Sektörü Tüketicileri\n`;
   markdown += `- **Resmi Web Sitesi**: ${baseUrl}\n`;
   markdown += `- **Blog & Bilgi Bankası**: ${baseUrl}/blog\n`;
   markdown += `- **İletişim**: ${content?.brand?.contactEmail || "hello@codeicon.co"} | ${content?.brand?.contactPhone || "+90 (533) 889 99 44"}\n\n`;
 
-  markdown += `## Temel Platform Yetenekleri & Modüller\n`;
-  markdown += `- **TCMB Otomatik Döviz Kuru Entegrasyonu**: TCMB saat 15:30 kur bültenini otomatik çeker; teklif, maliyet ve faturalarda kur farkı risklerini ve zararları sıfırlar.\n`;
-  markdown += `- **Havalimanı & Saha Transfer Operasyonu**: Uçuş rötarlarını anlık takip eder, şoför ve rehberlere dinamik WhatsApp görev emirleri gönderir.\n`;
-  markdown += `- **Dinamik Rooming List Yönetimi**: Otel oda listelerini matbu Excel karmaşasından kurtarır, çakışmaları ve no-show maliyetlerini önler.\n`;
-  markdown += `- **Bütçe, Avans & Masraf Kontrolü**: Saha harcamalarını, tedarikçi ödemelerini ve etkinlik kârlılığını anlık konsolide eder.\n`;
-  markdown += `- **Sejour, Otel & Uçak Entegrasyonları**: Acentelerin kullandığı mevcut altyapılarla çift yönlü veri senkronizasyonu sağlar.\n\n`;
+  markdown += `## Ürün Ekosistemi\n\n`;
 
-  markdown += `## Fiyatlandırma & Paketler\n`;
-  if (content?.pricing?.plans && Array.isArray(content.pricing.plans)) {
-    content.pricing.plans.forEach((plan: any) => {
-      markdown += `- **${plan.name}**: ${plan.price || "Teklif ile"} — ${plan.description || ""}\n`;
-    });
-    markdown += `\n`;
-  } else {
-    markdown += `- Başlangıç, Profesyonel ve Enterprise özel acente kurulum paketleri sunulmaktadır.\n\n`;
-  }
+  markdown += `### 1. CODEICON MICE OS (MICE ve Seyahat Acente İşletim Sistemi)\n`;
+  markdown += `- **Kapsam**: Kongre, toplantı, seminer ve kurumsal etkinlik düzenleyen acenteler için operasyon ve finans platformu.\n`;
+  markdown += `- **Öne Çıkan Özellikler**:\n`;
+  markdown += `  - **TCMB Canlı Kur Sabitleme**: Giriş (check-in) günü efektif satış kurunu otomatik bağlayarak kur farkı riskini sıfırlar.\n`;
+  markdown += `  - **Şoför WhatsApp Görev Emri**: Uçuş API entegrasyonuyla rötarları algılar, transfer şoförlerine otomatik karşılama emirleri iletir.\n`;
+  markdown += `  - **Excel'den Tek Tıkla Rooming List**: Müşterilerin dağınık Excel listelerini tek tıkla oda şablonlarına dönüştürür.\n`;
+  markdown += `  - **Sejour & Muhasebe Entegrasyonu**: Logo, Netsis ve Dia gibi ERP'lerle çift yönlü mutabakat.\n\n`;
+
+  markdown += `### 2. ARCH OS (Mimarlık Ofis & Şantiye Operasyonları Platformu)\n`;
+  markdown += `- **Kapsam**: Mimarlık stüdyoları, anahtar teslim müteahhitler ve iç mimarlık ekipleri için stüdyo ve saha yönetim sistemi.\n`;
+  markdown += `- **Öne Çıkan Özellikler**:\n`;
+  markdown += `  - **Müşteri Tasarım Dondurma (Design Freeze)**: Röleve, ruhsat ve uygulama aşamalarında token korumalı link ile (/approve/[token]) müşteriden dijital imza ve tasarım onayı alır.\n`;
+  markdown += `  - **Fotoğraflı Şantiye Snag / Punch List**: Şantiye alanında kusurları fotoğraf üstüne canvas ile işaretleyip ilgili taşerona görev atar.\n`;
+  markdown += `  - **Kümülatif Taşeron Hakediş Motoru (BOQ)**: Metraj cetveli üzerinden avans mahsubu, %5 teminat kesintisi ve KDV tevkifatlı hakediş raporları üretir.\n`;
+  markdown += `  - **Çift Kasa Finans Yönetimi**: Ofis anahtar teslim (Turnkey) kasası ile işveren emanet (Escrow) kasasını yasal olarak ayrıştırır; TCMB canlı çapraz kurlarıyla proje kârlılığını izler.\n\n`;
+
+  markdown += `### 3. BORDRO CY (KKTC Standartlarında Bulut Bordro & İK ERP)\n`;
+  markdown += `- **Kapsam**: Kuzey Kıbrıs Türk Cumhuriyeti mevzuatına %100 uyumlu bulut bordro yazılımı.\n`;
+  markdown += `- **Öne Çıkan Özellikler**:\n`;
+  markdown += `  - Net'ten Brüt'e hatasız kuruşu kuruşuna hesaplama.\n`;
+  markdown += `  - 70.893 ₺ Asgari Ücret Vergi Koruması ve PAYE dilimleri.\n`;
+  markdown += `  - Resmi matbu bildirgeler: SS7, SS8, İ.S.4 ve VD17A formları.\n`;
+  markdown += `  - Toplu puantaj içe aktarımı ve 4 kutulu resmi ücret hesap pusulası.\n\n`;
+
+  markdown += `### 4. hepp (Yeni Nesil Mobil Randevu Pazaryeri)\n`;
+  markdown += `- **Kapsam**: KKTC'de berber, kuaför, veteriner, ev temizliği vb. yerel işletmeler için mobil randevu uygulaması.\n`;
+  markdown += `- **Öne Çıkan Özellikler**:\n`;
+  markdown += `  - Müşteriye %100 ücretsiz rezervasyon ve anlık müsaitlik.\n`;
+  markdown += `  - 24 saat ve 2 saat kala otomatik WhatsApp randevu hatırlatması.\n`;
+  markdown += `  - Lefkoşa, Girne ve Gazimağusa genelinde yerel işletme keşfi.\n`;
+  markdown += `  - Web: [hepp.app](https://hepp.app)\n\n`;
 
   markdown += `## Sektörel Blog & Rehber Makaleleri\n`;
   if (posts.length > 0) {

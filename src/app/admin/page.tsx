@@ -987,6 +987,7 @@ export default function AdminPage() {
               { id: "visibility", label: "👁️ Bölüm Görünürlüğü (Aç/Kapa)", icon: Eye },
               { id: "brand", label: "🏷️ Genel & Marka", icon: Settings },
               { id: "hero", label: "🚀 Hero (Giriş)", icon: Sparkles },
+              { id: "arch", label: "🏛️ ARCH OS (Mimarlık & Şantiye)", icon: Building2 },
               { id: "bordro", label: "📑 BORDRO CY (Bordro ERP)", icon: Calculator },
               { id: "hepp", label: "📱 hepp Mobil Uygulama", icon: Smartphone },
               { id: "process", label: "⚡ 3 Adımlı Süreç", icon: Layers },
@@ -3357,6 +3358,208 @@ export default function AdminPage() {
                           </div>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: ARCH OS (MİMARLIK & ŞANTİYE) */}
+            {activeTab === "arch" && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between pb-4 border-b border-[#EAE6E1]">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-xl bg-[#EA580C] text-white flex items-center justify-center font-bold text-sm shadow-2xs">
+                        🏛️
+                      </span>
+                      <h2 className="text-xl font-bold text-[#1A1A1A]">ARCH OS (Mimarlık &amp; Şantiye Platformu) Yönetimi</h2>
+                    </div>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      Hero vitrinindeki ARCH OS mimarlık ve şantiye platformunun başlıklarını, görsellerini, hakediş ve tasarım dondurma maddelerini buradan yönetin.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Left Column: Form Controls */}
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Üst Kategori Rozeti (Eyebrow)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.arch?.eyebrow || "MİMARLIK & ŞANTİYE SAAS"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            arch: { ...(content.arch || {}), eyebrow: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Durum Rozeti (Status Badge)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.arch?.statusBadge || "TR & KKTC Standartları"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            arch: { ...(content.arch || {}), statusBadge: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Ürün Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.arch?.title || "ARCH OS"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            arch: { ...(content.arch || {}), title: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-bold"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Alt Vurgu Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.arch?.headline || "Mimarlık & Şantiye Operasyonları"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            arch: { ...(content.arch || {}), headline: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Açıklama Metni (Subtitle)
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={
+                          content.arch?.subtitle ||
+                          "Röleve'den ruhsata, şantiye günlüğünden taşeron hakedişine ve dijital tasarım dondurmaya (Design Freeze) mimarlık stüdyolarının bulut işletim sistemi."
+                        }
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            arch: { ...(content.arch || {}), subtitle: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white resize-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Birincil Mockup Görseli (Dashboard)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.arch?.primaryImage || "/images/arch/arch-dashboard.jpg"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            arch: { ...(content.arch || {}), primaryImage: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-mono text-xs"
+                      />
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/arch/arch-dashboard.jpg</p>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Şantiye Operasyonları Görseli
+                      </label>
+                      <input
+                        type="text"
+                        value={content.arch?.secondaryImage || "/images/arch/arch-siteops.jpg"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            arch: { ...(content.arch || {}), secondaryImage: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-mono text-xs"
+                      />
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/arch/arch-siteops.jpg</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                          Buton Metni
+                        </label>
+                        <input
+                          type="text"
+                          value={content.arch?.ctaText || "Demo Talep Et"}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              arch: { ...(content.arch || {}), ctaText: e.target.value },
+                            })
+                          }
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                          Buton Linki
+                        </label>
+                        <input
+                          type="text"
+                          value={content.arch?.ctaHref || "#contact"}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              arch: { ...(content.arch || {}), ctaHref: e.target.value },
+                            })
+                          }
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Visual Preview */}
+                  <div className="space-y-4">
+                    <div className="p-5 rounded-2xl bg-white border border-[#DDD7D0] shadow-sm">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-[#8C8C8C] mb-3">
+                        Görsel Önizleme (Dashboard)
+                      </h3>
+                      <div className="rounded-xl overflow-hidden border border-[#E6E1DC] bg-[#FAF9F6] p-2 space-y-3">
+                        <div>
+                          <span className="text-[11px] font-semibold text-[#605F5F] block mb-1">ARCH OS Stüdyo &amp; Şantiye:</span>
+                          <img
+                            src={content.arch?.primaryImage || "/images/arch/arch-dashboard.jpg"}
+                            alt="ARCH OS Preview"
+                            className="w-full h-44 object-cover object-top rounded-lg border border-[#DDD7D0] bg-white"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

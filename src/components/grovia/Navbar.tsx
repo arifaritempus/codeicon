@@ -76,7 +76,7 @@ export default function Navbar({ content }: { content?: any }) {
             )}
           </Link>
 
-          {/* Product Switcher Pill: MICE OS | BORDRO CY | hepp */}
+          {/* Product Switcher Pill: MICE OS | ARCH OS | BORDRO CY | hepp */}
           <div className="hidden sm:flex items-center bg-[#F4F2EE] p-0.5 rounded-full border border-[#E6E1DC] text-xs font-semibold shrink-0">
             <a
               href="/#mice-os"
@@ -87,13 +87,20 @@ export default function Navbar({ content }: { content?: any }) {
               <span>MICE OS</span>
             </a>
             <a
+              href="/#arch-os"
+              onClick={(e) => handleNavClick(e, "/#arch-os")}
+              className="px-2.5 py-1 rounded-full transition-all duration-200 text-[#605F5F] hover:text-[#1A1A1A] flex items-center gap-1.5 cursor-pointer group"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D2D]" />
+              <span>ARCH OS</span>
+            </a>
+            <a
               href="/#bordro-cy"
               onClick={(e) => handleNavClick(e, "/#bordro-cy")}
               className="px-2.5 py-1 rounded-full transition-all duration-200 text-[#605F5F] hover:text-[#1A1A1A] flex items-center gap-1.5 cursor-pointer group"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
               <span>BORDRO CY</span>
-              <span className="text-[9px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.2 rounded-full">KKTC</span>
             </a>
             <a
               href="/#hepp-app"
@@ -147,19 +154,27 @@ export default function Navbar({ content }: { content?: any }) {
         {mobileMenuOpen && (
           <div className="md:hidden mt-2 bg-white/95 backdrop-blur-lg border border-[#E6E1DC] shadow-xl rounded-2xl p-4 flex flex-col gap-2">
             {/* Mobile Product Switcher */}
-            <div className="grid grid-cols-3 gap-1.5 pb-3 mb-1 border-b border-[#EAE6E1]">
+            <div className="grid grid-cols-4 gap-1 pb-3 mb-1 border-b border-[#EAE6E1]">
               <a
                 href="/#mice-os"
                 onClick={(e) => handleNavClick(e, "/#mice-os")}
-                className="flex items-center justify-center gap-1 py-2 px-1.5 rounded-xl bg-[#F4F2EE] text-[#1A1A1A] text-[11px] font-bold"
+                className="flex items-center justify-center gap-1 py-2 px-1 rounded-xl bg-[#F4F2EE] text-[#1A1A1A] text-[10px] font-bold"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A]" />
                 <span>MICE OS</span>
               </a>
               <a
+                href="/#arch-os"
+                onClick={(e) => handleNavClick(e, "/#arch-os")}
+                className="flex items-center justify-center gap-1 py-2 px-1 rounded-xl bg-orange-50 text-orange-700 text-[10px] font-bold"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D2D]" />
+                <span>ARCH OS</span>
+              </a>
+              <a
                 href="/#bordro-cy"
                 onClick={(e) => handleNavClick(e, "/#bordro-cy")}
-                className="flex items-center justify-center gap-1 py-2 px-1.5 rounded-xl bg-blue-50 text-blue-700 text-[11px] font-bold"
+                className="flex items-center justify-center gap-1 py-2 px-1 rounded-xl bg-blue-50 text-blue-700 text-[10px] font-bold"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                 <span>BORDRO</span>
@@ -167,7 +182,7 @@ export default function Navbar({ content }: { content?: any }) {
               <a
                 href="/#hepp-app"
                 onClick={(e) => handleNavClick(e, "/#hepp-app")}
-                className="flex items-center justify-center gap-1 py-2 px-1.5 rounded-xl bg-neutral-900 text-white text-[11px] font-bold"
+                className="flex items-center justify-center gap-1 py-2 px-1 rounded-xl bg-neutral-900 text-white text-[10px] font-bold"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D2D] animate-pulse" />
                 <span>hepp</span>

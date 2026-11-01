@@ -670,9 +670,9 @@
       }
     }
   },
-  "updatedAt": "2026-10-25T18:05:20.637Z",
+  "updatedAt": "2026-11-02T00:30:00.000Z",
   "blog": {
-    "enabled": false,
+    "enabled": true,
     "eyebrow": "Sektörel Rehberler & Analizler",
     "title": "MICE & Seyahat Teknolojileri Blogu",
     "subtitle": "Acente operasyonları, finans yönetimi, TCMB kur mutabakatı ve saha transferlerinde sektörel analizler ve pratik rehberler.",
@@ -1049,6 +1049,32 @@
         "featured": false,
         "content": "## Excel Çilesine Son Veren Akıllı Veri Haritalama\n\nKurumsal müşterilerin her biri kendi şirket şablonunda bir oda listesi gönderir: kimisinde T.C. kimlik numarası ilk sütundadır, kimisinde ad-soyad birleşiktir, kimisinde ise oda tipi belirtilmemiştir.\n\nOperasyon ekipleri bu listeleri otel şablonuna uydurmak için saatlerce kopyala-yapıştır yapmak zorunda kalır.\n\n### CODEICON Matbu Excel İçe Aktarıcı Nasıl Çalışır?\n\n1. **Sütun Eşleme Motoru:** Dosyayı sürükleyip bıraktığınızda sistem sütun başlıklarını otomatik tanır.\n2. **Hata Yakalama (Data Validation):** Eksik T.C., hatalı giriş-çıkış tarihi veya mükerrer isimleri kırmızı ile vurgular.\n3. **Tek Tıkla Projeye Atama:** Onaylanan liste Sejour veya otel formatına dönüştürülerek projeye bağlanır."
       }
+    ]
+  },
+  "arch": {
+    "enabled": true,
+    "eyebrow": "MİMARLIK & ŞANTİYE SAAS",
+    "statusBadge": "TR & KKTC Standartları",
+    "title": "ARCH OS",
+    "headline": "Mimarlık & Şantiye Operasyonları",
+    "subtitle": "Röleve'den ruhsata, şantiye günlüğünden taşeron hakedişine ve dijital tasarım dondurmaya (Design Freeze) mimarlık stüdyolarının bulut işletim sistemi.",
+    "primaryImage": "/images/arch/arch-dashboard.jpg",
+    "secondaryImage": "/images/arch/arch-siteops.jpg",
+    "projectsImage": "/images/arch/arch-projects.jpg",
+    "logoSvg": "/images/arch/arch-logo.svg",
+    "ctaText": "Demo Talep Et",
+    "ctaHref": "#contact",
+    "pills": [
+      "Müşteri Tasarım Dondurma (Design Freeze)",
+      "Fotoğraflı Şantiye Snagging",
+      "Taşeron BOQ & Kümülatif Hakediş Motoru",
+      "Çift Cüzdan (Ofis & Müşteri Emanet Kasası)"
+    ],
+    "highlights": [
+      "Tek tıkla token korumalı müşteri onay linki (/approve/[token])",
+      "Fotoğraf üstüne canvas çizimle anlık kusur (snag) raporlama",
+      "Avans mahsubu, %5 teminat ve KDV tevkifatlı taşeron hakedişi",
+      "TCMB canlı kurları ile çok para birimli proje kârlılık takibi"
     ]
   },
   "bordro": {

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Check, Laptop, Smartphone, Calculator } from "lucide-react";
+import { ArrowRight, Check, Laptop, Smartphone, Calculator, Building2 } from "lucide-react";
 
 export default function Hero({
   content,
@@ -15,11 +15,11 @@ export default function Hero({
   buttons?: any;
   references?: any;
 }) {
-  const title = content?.title || "Geleceğin Yazılımlarını";
-  const titleAccent = content?.titleAccent || "inşa ediyoruz.";
+  const title = content?.title || "MICE Acente Sistemi";
+  const titleAccent = content?.titleAccent || "& Mimarlık Platformu";
   const subtitle =
     content?.subtitle ||
-    "Kurumsal MICE acente işletim sisteminden, KKTC mevzuatına %100 uyumlu Bordro & İK ERP'sine ve mobil randevu pazaryerine: operasyonları kolaylaştıran yeni nesil teknolojiler.";
+    "Kurumsal B2B MICE acente işletim sisteminden (MICE OS), mimarlık ve anahtar teslim şantiye yönetimine (ARCH OS), KKTC bordro ERP'sine (BORDRO CY) ve mobil randevu pazaryerine (hepp) uzanan entegre bulut ekosistemi.";
 
   const ctaPrimaryText = buttons?.heroPrimaryText || content?.ctaPrimary || "Hadi Başlayalım";
   const ctaPrimaryHref = buttons?.heroPrimaryHref || "#contact";
@@ -27,6 +27,20 @@ export default function Hero({
   const ctaSecondaryHref = buttons?.heroSecondaryHref || "#contact";
 
   const heroMockupImage = assets?.heroMockupImage || "/images/mockups/dashboard.png";
+
+  // ARCH OS configuration (from Supabase/siteContent or defaults)
+  const arch = content?.arch || {
+    eyebrow: "MİMARLIK & ŞANTİYE SAAS",
+    statusBadge: "TR & KKTC Standartları",
+    title: "ARCH OS",
+    headline: "Mimarlık & Şantiye Operasyonları",
+    subtitle:
+      "Röleve'den ruhsata, şantiye günlüğünden taşeron hakedişine ve dijital tasarım dondurmaya (Design Freeze) mimarlık stüdyolarının bulut işletim sistemi.",
+    primaryImage: "/images/arch/arch-dashboard.jpg",
+    secondaryImage: "/images/arch/arch-siteops.jpg",
+    ctaText: "Demo Talep Et",
+    ctaHref: "#contact",
+  };
 
   // BORDRO CY configuration (from Supabase/siteContent or defaults)
   const bordro = content?.bordro || {
@@ -87,8 +101,8 @@ export default function Hero({
           </p>
         </div>
 
-        {/* 3-PRODUCT SHOWCASE: MICE OS -> BORDRO CY -> hepp */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-6 items-stretch mb-16 sm:mb-24">
+        {/* 4-PRODUCT SHOWCASE: MICE OS -> ARCH OS -> BORDRO CY -> hepp */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch mb-16 sm:mb-24">
           
           {/* PRODUCT 1: CODEICON MICE OS */}
           <div
@@ -176,6 +190,96 @@ export default function Hero({
                 className="grovia-btn-secondary text-xs sm:text-sm py-2 px-3"
               >
                 Özellikler
+              </a>
+            </div>
+          </div>
+
+          {/* PRODUCT 2: ARCH OS (MİMARLIK & ŞANTİYE) */}
+          <div
+            id="arch-os"
+            className="group relative bg-white rounded-3xl p-6 sm:p-7 border border-[#E6E1DC] shadow-[0_15px_35px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(249,115,22,0.08)] transition-all duration-300 flex flex-col justify-between text-left"
+          >
+            <div>
+              {/* Product Badges */}
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FFF7ED] text-[#C2410C] border border-[#FFEDD5]">
+                  <Building2 className="w-3.5 h-3.5 text-[#EA580C]" />
+                  <span>{arch.eyebrow || "MİMARLIK & ŞANTİYE SAAS"}</span>
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-full border border-orange-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+                  <span>{arch.statusBadge || "TR & KKTC Standartları"}</span>
+                </span>
+              </div>
+
+              {/* Product Info */}
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] tracking-tight mb-2">
+                {arch.title || "ARCH OS"}
+              </h2>
+              <p className="text-sm font-semibold text-[#1A1A1A] mb-1">
+                {arch.headline || "Mimarlık & Şantiye Operasyonları"}
+              </p>
+              <p className="text-xs sm:text-sm text-[#605F5F] leading-relaxed mb-6">
+                {arch.subtitle || "Röleve'den ruhsata, şantiye günlüğünden taşeron hakedişine ve dijital tasarım dondurmaya (Design Freeze) mimarlık stüdyolarının bulut işletim sistemi."}
+              </p>
+
+              {/* Feature Bullets */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 text-xs text-[#1A1A1A] font-medium">
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-orange-600 shrink-0" />
+                  <span>Müşteri Tasarım Dondurma</span>
+                </div>
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-orange-600 shrink-0" />
+                  <span>Fotoğraflı Şantiye Snag</span>
+                </div>
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-orange-600 shrink-0" />
+                  <span>Taşeron BOQ &amp; Hakediş</span>
+                </div>
+                <div className="flex items-center gap-2 p-2 rounded-xl bg-[#FAF9F6] border border-[#EAE6E1]">
+                  <Check className="w-4 h-4 text-orange-600 shrink-0" />
+                  <span>Çift Kasa (Ofis &amp; Emanet)</span>
+                </div>
+              </div>
+
+              {/* Mockup Preview Container */}
+              <div className="relative rounded-2xl p-2 bg-[#FAF9F6] border border-[#EAE6E1] overflow-hidden mb-6 shadow-inner group-hover:border-[#DDD7D0] transition">
+                <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#EAE6E1] bg-white rounded-t-xl mb-1.5 text-[11px] text-[#8C8C8C]">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#E57373]" />
+                    <span className="w-2 h-2 rounded-full bg-[#FFB74D]" />
+                    <span className="w-2 h-2 rounded-full bg-[#81C784]" />
+                    <span className="ml-1 font-mono text-[10px] text-[#605F5F]">app.archos.live</span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-neutral-600">ARCH OS Stüdyo</span>
+                </div>
+                <div className="overflow-hidden rounded-xl bg-white">
+                  <img
+                    src={arch.primaryImage || "/images/arch/arch-dashboard.jpg"}
+                    alt="ARCH OS Mimarlık ve Şantiye Yönetim Sistemi Dashboard"
+                    className="w-full h-[200px] sm:h-[230px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="flex flex-wrap items-center gap-2.5 pt-2">
+              <a
+                href={arch.ctaHref || "#contact"}
+                className="grovia-btn-primary group text-xs sm:text-sm py-2 px-4"
+              >
+                <span>{arch.ctaText || "Demo Talep Et"}</span>
+                <span className="arrow-capsule">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </a>
+              <a
+                href="#contact"
+                className="grovia-btn-secondary text-xs sm:text-sm py-2 px-3"
+              >
+                Şantiye Modülü
               </a>
             </div>
           </div>
