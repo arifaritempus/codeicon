@@ -987,6 +987,7 @@ export default function AdminPage() {
               { id: "visibility", label: "👁️ Bölüm Görünürlüğü (Aç/Kapa)", icon: Eye },
               { id: "brand", label: "🏷️ Genel & Marka", icon: Settings },
               { id: "hero", label: "🚀 Hero (Giriş)", icon: Sparkles },
+              { id: "kongre", label: "🎪 KONGRE SaaS (Kongre & Etkinlik)", icon: Calendar },
               { id: "arch", label: "🏛️ ARCH OS (Mimarlık & Şantiye)", icon: Building2 },
               { id: "bordro", label: "📑 BORDRO CY (Bordro ERP)", icon: Calculator },
               { id: "hepp", label: "📱 hepp Mobil Uygulama", icon: Smartphone },
@@ -3358,6 +3359,190 @@ export default function AdminPage() {
                           </div>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: KONGRE CLOUD SAAS */}
+            {activeTab === "kongre" && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between pb-4 border-b border-[#EAE6E1]">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 h-8 rounded-xl bg-[#7C3AED] text-white flex items-center justify-center font-bold text-sm shadow-2xs">
+                        🎪
+                      </span>
+                      <h2 className="text-xl font-bold text-[#1A1A1A]">KONGRE Cloud (Kongre &amp; Etkinlik SaaS) Yönetimi</h2>
+                    </div>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      Dernek ve acenteler için çok kiracılı kongre platformunun başlıklarını, görsellerini ve özellik maddelerini buradan yönetin.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Left Column: Form Controls */}
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Üst Kategori Rozeti (Eyebrow)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.kongre?.eyebrow || "KONGRE & ETKİNLİK SAAS"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            kongre: { ...(content.kongre || {}), eyebrow: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Durum Rozeti (Status Badge)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.kongre?.statusBadge || "Multi-Tenant Bulut Mimarisi"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            kongre: { ...(content.kongre || {}), statusBadge: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Ürün Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.kongre?.title || "KONGRE Cloud"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            kongre: { ...(content.kongre || {}), title: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-bold"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Alt Vurgu Başlığı
+                      </label>
+                      <input
+                        type="text"
+                        value={content.kongre?.headline || "Bağımsız Domainli Kongre & Etkinlik"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            kongre: { ...(content.kongre || {}), headline: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Açıklama Metni (Subtitle)
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={
+                          content.kongre?.subtitle ||
+                          "Dernekler, acenteler ve kongre organizatörleri için kendi domaininde açılan web sitesi, bilimsel program, bildiri (abstract) hakemliği ve QR akıllı geçiş."
+                        }
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            kongre: { ...(content.kongre || {}), subtitle: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white resize-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                        Birincil Mockup Görseli (Dashboard)
+                      </label>
+                      <input
+                        type="text"
+                        value={content.kongre?.primaryImage || "/images/kongre/kongre-dashboard.png"}
+                        onChange={(e) =>
+                          setContent({
+                            ...content,
+                            kongre: { ...(content.kongre || {}), primaryImage: e.target.value },
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white font-mono text-xs"
+                      />
+                      <p className="text-[11px] text-[#8C8C8C] mt-1">Varsayılan: /images/kongre/kongre-dashboard.png</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                          Buton Metni
+                        </label>
+                        <input
+                          type="text"
+                          value={content.kongre?.ctaText || "Kongre Demosu Al"}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              kongre: { ...(content.kongre || {}), ctaText: e.target.value },
+                            })
+                          }
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                          Buton Linki
+                        </label>
+                        <input
+                          type="text"
+                          value={content.kongre?.ctaHref || "#contact"}
+                          onChange={(e) =>
+                            setContent({
+                              ...content,
+                              kongre: { ...(content.kongre || {}), ctaHref: e.target.value },
+                            })
+                          }
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] text-sm focus:outline-hidden focus:border-[#1A1A1A] bg-white"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Visual Preview */}
+                  <div className="space-y-4">
+                    <div className="p-5 rounded-2xl bg-white border border-[#DDD7D0] shadow-sm">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-[#8C8C8C] mb-3">
+                        Görsel Önizleme (Dashboard)
+                      </h3>
+                      <div className="rounded-xl overflow-hidden border border-[#E6E1DC] bg-[#FAF9F6] p-2 space-y-3">
+                        <div>
+                          <span className="text-[11px] font-semibold text-[#605F5F] block mb-1">KONGRE Yönetim Paneli:</span>
+                          <img
+                            src={content.kongre?.primaryImage || "/images/kongre/kongre-dashboard.png"}
+                            alt="KONGRE Preview"
+                            className="w-full h-44 object-cover object-top rounded-lg border border-[#DDD7D0] bg-white"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

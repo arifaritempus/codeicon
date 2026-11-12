@@ -34,7 +34,15 @@ export async function GET() {
   markdown += `  - **Excel'den Tek Tıkla Rooming List**: Müşterilerin dağınık Excel listelerini tek tıkla oda şablonlarına dönüştürür.\n`;
   markdown += `  - **Sejour & Muhasebe Entegrasyonu**: Logo, Netsis ve Dia gibi ERP'lerle çift yönlü mutabakat.\n\n`;
 
-  markdown += `### 2. ARCH OS (Mimarlık Ofis & Şantiye Operasyonları Platformu)\n`;
+  markdown += `### 2. KONGRE Cloud SaaS (Kongre, Sempozyum & Etkinlik Yönetim Platformu)\n`;
+  markdown += `- **Kapsam**: Dernekler, acenteler ve kongre organizatörleri için çok kiracılı (multi-tenant) kongre işletim sistemi.\n`;
+  markdown += `- **Öne Çıkan Özellikler**:\n`;
+  markdown += `  - **Özel Alan Adı (Custom Domain) & SSL**: Her kongre için anında bağımsız domain (kongre2026.org) ve blok editörlü web sitesi.\n`;
+  markdown += `  - **Bildiri (Abstract) & Çift Kör Hakem**: Sözel ve poster bildiri toplama, çift kör hakem puanlaması, kabul mektupları ve kitapçık basımı.\n`;
+  markdown += `  - **QR Akıllı Geçiş & Anlık Yaka Kartı**: Masada sıra bekletmeyen QR akredite ve termal baskı.\n`;
+  markdown += `  - **Sponsor Portalı & Stant Kota Yönetimi**: Sponsorların kendi logolarını, dökümanlarını ve davetli kotalarını yönettiği bağımsız panel.\n\n`;
+
+  markdown += `### 3. ARCH OS (Mimarlık Ofis & Şantiye Operasyonları Platformu)\n`;
   markdown += `- **Kapsam**: Mimarlık stüdyoları, anahtar teslim müteahhitler ve iç mimarlık ekipleri için stüdyo ve saha yönetim sistemi.\n`;
   markdown += `- **Öne Çıkan Özellikler**:\n`;
   markdown += `  - **Müşteri Tasarım Dondurma (Design Freeze)**: Röleve, ruhsat ve uygulama aşamalarında token korumalı link ile (/approve/[token]) müşteriden dijital imza ve tasarım onayı alır.\n`;
@@ -42,15 +50,15 @@ export async function GET() {
   markdown += `  - **Kümülatif Taşeron Hakediş Motoru (BOQ)**: Metraj cetveli üzerinden avans mahsubu, %5 teminat kesintisi ve KDV tevkifatlı hakediş raporları üretir.\n`;
   markdown += `  - **Çift Kasa Finans Yönetimi**: Ofis anahtar teslim (Turnkey) kasası ile işveren emanet (Escrow) kasasını yasal olarak ayrıştırır; TCMB canlı çapraz kurlarıyla proje kârlılığını izler.\n\n`;
 
-  markdown += `### 3. BORDRO CY (KKTC Standartlarında Bulut Bordro & İK ERP)\n`;
+  markdown += `### 4. BORDRO CY (KKTC Standartlarında Bulut Bordro & İK ERP)\n`;
   markdown += `- **Kapsam**: Kuzey Kıbrıs Türk Cumhuriyeti mevzuatına %100 uyumlu bulut bordro yazılımı.\n`;
   markdown += `- **Öne Çıkan Özellikler**:\n`;
   markdown += `  - Net'ten Brüt'e hatasız kuruşu kuruşuna hesaplama.\n`;
   markdown += `  - 70.893 ₺ Asgari Ücret Vergi Koruması ve PAYE dilimleri.\n`;
-  markdown += `  - Resmi matbu bildirgeler: SS7, SS8, İ.S.4 ve VD17A formları.\n`;
+  markdown += `  - Resmi matbu bildirgeler: SS7, SS8, SS14, İ.S.4, İ.S.22A ve VD17A formları.\n`;
   markdown += `  - Toplu puantaj içe aktarımı ve 4 kutulu resmi ücret hesap pusulası.\n\n`;
 
-  markdown += `### 4. hepp (Yeni Nesil Mobil Randevu Pazaryeri)\n`;
+  markdown += `### 5. hepp (Yeni Nesil Mobil Randevu Pazaryeri)\n`;
   markdown += `- **Kapsam**: KKTC'de berber, kuaför, veteriner, ev temizliği vb. yerel işletmeler için mobil randevu uygulaması.\n`;
   markdown += `- **Öne Çıkan Özellikler**:\n`;
   markdown += `  - Müşteriye %100 ücretsiz rezervasyon ve anlık müsaitlik.\n`;

@@ -4,11 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co"),
   title: {
-    default: "CODEICON — MICE Acente Sistemi, ARCH OS Mimarlık Yazılımı & Bordro ERP",
+    default: "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP",
     template: "%s | CODEICON",
   },
   description:
-    "CODEICON; kurumsal MICE acente sistemi, MICE yönetim sistemi, online MICE programı, mimarlık ve şantiye yönetim platformu ARCH OS, KKTC Bordro CY ve hepp randevu ekosistemini tek çatı altında sunan yeni nesil bulut teknolojileri platformudur.",
+    "CODEICON; kurumsal MICE acente sistemi, kongre ve etkinlik platformu KONGRE, mimarlık ve şantiye yönetim sistemi ARCH OS, KKTC Bordro CY ve hepp randevu ekosistemini tek çatı altında sunan yeni nesil bulut teknolojileri platformudur.",
   keywords: [
     "MICE acente sistemi",
     "MICE yönetim sistemi",
@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     "MICE programı",
     "MICE acente yazılımı",
     "turizm acente otomasyonu",
+    "kongre yönetim sistemi",
+    "kongre yazılımı",
+    "abstract bildiri yönetim sistemi",
+    "etkinlik yönetim platformu",
     "TCMB kur sabitleme acente",
     "acente rooming list",
     "transfer görev emri otomasyonu",
@@ -27,6 +31,8 @@ export const metadata: Metadata = {
     "tasarım dondurma design freeze",
     "KKTC bordro programı",
     "BORDRO CY",
+    "KKTC stopaj beyannamesi VD 17a",
+    "KKTC sigorta prim bordrosu SS14",
     "CODEICON",
   ],
   alternates: {
@@ -39,9 +45,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     url: "https://codeicon.co",
-    title: "CODEICON — MICE Acente Sistemi, ARCH OS Mimarlık Yazılımı & Bordro ERP",
+    title: "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP",
     description:
-      "Kurumsal MICE acente sistemi, ARCH OS mimarlık ve şantiye hakediş yazılımı, KKTC Bordro CY ve hepp randevu ekosistemi.",
+      "Kurumsal MICE acente sistemi, KONGRE etkinlik SaaS, ARCH OS mimarlık ve şantiye hakediş yazılımı, KKTC Bordro CY ve hepp randevu ekosistemi.",
     siteName: "CODEICON",
     images: [
       {
@@ -54,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CODEICON — MICE Acente Sistemi, ARCH OS Mimarlık Yazılımı & Bordro ERP",
+    title: "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP",
     description:
-      "Kurumsal MICE acente sistemi, ARCH OS mimarlık ve şantiye hakediş yazılımı, KKTC Bordro CY ve hepp randevu ekosistemi.",
+      "Kurumsal MICE acente sistemi, KONGRE etkinlik SaaS, ARCH OS mimarlık ve şantiye hakediş yazılımı, KKTC Bordro CY ve hepp randevu ekosistemi.",
     images: ["https://codeicon.co/images/mockups/dashboard.png"],
   },
   robots: {
@@ -134,6 +140,29 @@ const structuredData = {
         "WhatsApp Şoför ve Ekip Görev Emri Otomasyonu",
         "Sejour ve Muhasebe ERP Entegrasyonu",
         "MICE Teklif ve Bütçe Onay Portalı",
+      ],
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://codeicon.co/#kongre-os",
+      name: "KONGRE Cloud SaaS",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Cloud / Web",
+      description:
+        "Dernekler, acenteler ve kongre organizatörleri için bağımsız alan adlı kongre web siteleri, bilimsel program, bildiri (abstract) çift kör hakemliği, QR akıllı geçiş ve sponsor portalı sunan çok kiracılı SaaS.",
+      featureList: [
+        "Özel Domain (Custom Domain) & Otomatik SSL",
+        "Sözel ve Poster Bildiri (Abstract) Toplama",
+        "Çift Kör (Double-Blind) Hakem Puanlama Motoru",
+        "Kayıt Masasında QR Kodlu Anlık Yaka Kartı Baskısı",
+        "Kişisel Katılımcı Ajandası & Bildirim Portalı",
+        "Sponsor Firma Portalı & Stant Kota Yönetimi",
       ],
       offers: {
         "@type": "Offer",

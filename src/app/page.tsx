@@ -20,10 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
   const title =
     content?.brand?.siteTitle ||
-    "CODEICON — MICE Acente Sistemi, ARCH OS Mimarlık Yazılımı & Bordro ERP";
+    "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP";
   const description =
     content?.hero?.subtitle ||
-    "CODEICON; kurumsal MICE acente sistemi, MICE yönetim sistemi, online MICE programı, mimarlık ve şantiye platformu ARCH OS, KKTC Bordro CY ve hepp randevu ekosistemini sunan yeni nesil bulut yazılımlarıdır.";
+    "CODEICON; kurumsal MICE acente sistemi, kongre ve etkinlik SaaS platformu KONGRE, mimarlık ve şantiye platformu ARCH OS, KKTC Bordro CY ve hepp randevu ekosistemini sunan yeni nesil bulut yazılımlarıdır.";
   const favicon = content?.assets?.faviconUrl || "/favicon.ico";
 
   return {
@@ -36,6 +36,10 @@ export async function generateMetadata(): Promise<Metadata> {
       "MICE programı",
       "MICE acente yazılımı",
       "turizm acente otomasyonu",
+      "kongre yönetim sistemi",
+      "kongre yazılımı",
+      "abstract bildiri yönetim sistemi",
+      "etkinlik yönetim platformu",
       "TCMB kur sabitleme acente",
       "acente rooming list",
       "transfer görev emri otomasyonu",
@@ -47,6 +51,8 @@ export async function generateMetadata(): Promise<Metadata> {
       "tasarım dondurma design freeze",
       "KKTC bordro programı",
       "BORDRO CY",
+      "KKTC stopaj beyannamesi VD 17a",
+      "KKTC sigorta prim bordrosu SS14",
       "CODEICON",
     ],
     alternates: {
@@ -258,6 +264,7 @@ export default async function Home() {
           <Hero
             content={{
               ...(content?.hero || {}),
+              kongre: content?.kongre,
               arch: content?.arch,
               bordro: content?.bordro,
               hepp: content?.hepp,

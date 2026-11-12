@@ -18,11 +18,12 @@
   },
   "brand": {
     "name": "CODEICON",
-    "badge": "Modern ekipler için strateji ve büyüme",
-    "siteTitle": "CODEICON | MICE Acente Sistemi",
+    "badge": "Kurumsal Yazılım & Bulut İşletim Sistemleri Ekosistemi",
+    "siteTitle": "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP",
     "ctaText": "Bize Ulaşın",
     "contactEmail": "hello@codeicon.co",
-    "contactPhone": "+90 (533) 889 99 44"
+    "contactPhone": "+90 (533) 889 99 44",
+    "description": "CODEICON; B2B MICE acente işletim sistemi (MICE OS), çok kiracılı kongre platformu (KONGRE), mimarlık ve şantiye yönetim sistemi (ARCH OS), KKTC mevzuat uyumlu bordro ERP'si (BORDRO CY) ve randevu pazaryeri (hepp) ile kurumsal süreçleri tek çatı altında buluta taşıyan yeni nesil teknoloji ekosistemidir."
   },
   "buttons": {
     "navbarCtaText": "Bize Ulaşın",
@@ -72,11 +73,11 @@
     ]
   },
   "hero": {
-    "title": "MICE Acentelerini",
-    "titleAccent": "geleceğe taşıyoruz",
-    "subtitle": "Codeicon girişimlerle ortaklık kurarak operasyonları kolaylaştırıyor, ekip performansını artırıyor ve kalıcı başarı için bir temel oluşturuyor.",
+    "title": "MICE Acente Sistemi, Kongre",
+    "titleAccent": "& Kurumsal Mimari Yazılımlar",
+    "subtitle": "B2B MICE acente işletim sisteminden (MICE OS), dernek & kongre platformuna (KONGRE), mimarlık ve anahtar teslim şantiye yönetimine (ARCH OS) ve KKTC bordro ERP'sine (BORDRO CY) uzanan entegre bulut ekosistemi.",
     "rating": "4.9 / 5",
-    "customerCount": "50+ MICE & Acente",
+    "customerCount": "85+ MICE, Kongre & Mimarlık Ofisi",
     "ctaPrimary": "Hadi Başlayalım",
     "ctaSecondary": "Bize Ulaşın",
     "mockupBrowserUrl": "app.preview.live",
@@ -119,208 +120,182 @@
     "mockupStatusBadge": "Canlı Acente Sistemi"
   },
   "process": {
-    "eyebrow": "Sıfır Hata Altyapısı",
-    "title": "Üç adımda akıllı ve hatasız acente operasyonu",
-    "subtitle": "Otellere talep geçmekten teklif hazırlamaya, sahada araç koordinasyonuna ve cari mutabakata kadar her adım birbiriyle kusursuz konuşur.",
+    "eyebrow": "Hızlı Entegrasyon & Devreye Alma",
+    "title": "Üç Adımda Kurumsal Yazılım Altyapınızı Dönüştürün",
+    "subtitle": "Dakikalar içinde firmanıza özel bulut ortamınızı ayağa kaldırıyor, verilerinizi aktarıyor ve operasyonlarınızı sıfır hata seviyesine taşıyoruz.",
     "steps": [
       {
-        "number": "Kurulum",
-        "title": "Anında Kurulum",
-        "description": "Sisteminizi dakikalar içinde açalım.",
+        "number": "01",
+        "title": "Anında Bulut Kurulumu",
+        "description": "Şirketinize özel tenant veritabanı, domain yönlendirmeleri ve kullanıcı rolleri dakikalar içinde güvenli izole altyapıda açılır.",
         "preview": {
-          "badge": "LİVE",
-          "title": "Hesap & Ekip",
+          "badge": "LİVE SAAS",
+          "title": "Kurumsal Kimlik & Erişim",
           "items": [
             {
-              "label": "Kullanıcı Adı",
-              "status": ""
+              "label": "Domain & SSL Yapılandırması",
+              "status": "Tamamlandı"
             },
             {
-              "label": "Kurumsal E-Posta",
-              "status": ""
+              "label": "Kullanıcı Rolleri & Fiyat Maskeleme",
+              "status": "Aktif"
             },
             {
-              "label": "Ekip Erişimi",
-              "status": "Aktif (9 Kullanıcı)"
+              "label": "Modüler Lisans Aktivasyonu",
+              "status": "Hazır"
             }
           ]
         }
       },
       {
-        "number": "Tanımlama",
-        "title": "Kolay Kullanım",
-        "description": "Tanımlamalarınızı ve yetkilendirmelerinizi tamamlayın.",
+        "number": "02",
+        "title": "Parametrik Veri & API Bağlantısı",
+        "description": "TCMB döviz kurları, uçuş takip API'leri, WhatsApp şablonları, metraj cetvelleri ve KKTC vergi parametreleri sisteme bağlanır.",
         "preview": {
-          "badge": "YETKİLİ",
-          "title": "Yetki & Rol Dağılımı",
+          "badge": "ENTEGRASYON",
+          "title": "Veri Havuzu & API",
           "items": [
             {
-              "label": "MICE & Satış",
-              "status": "Tam Erişim"
+              "label": "TCMB 15:30 Canlı Kur Beslemesi",
+              "status": "Bağlandı"
             },
             {
-              "label": "Saha & Transfer",
-              "status": "Pax & Filo"
+              "label": "Uçuş Takip & WhatsApp Botu",
+              "status": "Canlı"
             },
             {
-              "label": "Finans & Muhasebe",
-              "status": "TCMB & Fatura"
+              "label": "Otel & Tedarikçi Havuzu",
+              "status": "Senkron"
             }
           ]
         }
       },
       {
-        "number": "Kullanım",
-        "title": "Operasyonlarınızı Yönetmeye Başlayın",
-        "description": "Artık her şey sizin için daha kolay, daha efektif, daha ulaşılabilir.",
+        "number": "03",
+        "title": "Sahada & Ofiste Sıfır Hata",
+        "description": "Ekibiniz cep telefonundan şantiye snagging'ini yönetir, acente transfer emirlerini tek tıkla yollar, hakediş ve bordrolar anında basılır.",
         "preview": {
-          "badge": "AKTİF SAHA",
-          "title": "Canlı Operasyon",
+          "badge": "OPERASYON",
+          "title": "Canlı Göstergeler",
           "items": [
             {
-              "label": "180 Pax Transfer",
-              "status": "4 Araç Hazır"
+              "label": "Transfer & Rooming Listesi",
+              "status": "Sıfır Hata"
             },
             {
-              "label": "TCMB Kur Sabitleme",
-              "status": "€55.45 Kilitli"
+              "label": "Hakediş & Bütçe Mutabakatı",
+              "status": "%100 Uyumlu"
             },
             {
-              "label": "Online Müşteri Onayı",
-              "status": "Onaylandı"
+              "label": "Resmi Bildirgeler (VD17a/SS14)",
+              "status": "Hazır"
             }
           ]
         }
       }
-    ],
-    "footerStatus": "Sistem Durumu: Tam Operasyonel"
+    ]
   },
   "features": {
-    "eyebrow": "Merkezi Modül Altyapısı",
-    "title": "Yüksek Performanslı Acente Mimarisi",
-    "subtitle": "Operasyonel yükü azaltan, ekiplerinizi senkronize eden ve tüm süreçleri merkezileştiren akıllı altyapı.",
+    "eyebrow": "Kurumsal Platform Modülleri",
+    "title": "Sektörlere Özel Entegre Bulut Çözümleri",
+    "subtitle": "MICE acentelerinden kongre organizasyonlarına, mimarlık ofislerinden KKTC işletmelerine kadar operasyonları sıfır hataya indiren modüler sistemler.",
     "tabs": [
       {
-        "id": "portal",
-        "label": "Müşteri Portalı",
-        "title": "Müşterilerinize online teklif ve mutabakat gönderin",
-        "description": "Müşterilerinizin teklifleri online inceleyip tek tıkla onayladığı, onaylanan teklifin kendini kilitleyerek otomatik projeye dönüştüğü altyapı.",
+        "id": "mice-os-tab",
+        "label": "MICE Agency OS",
+        "mockupBadge": "MICE & ACENTE OPERASYONU",
+        "title": "MICE Acenteleri İçin Uçtan Uca Operasyon & Finans",
+        "description": "Kongre, bayi toplantısı ve kurumsal etkinliklerde TCMB canlı kur sabitleme, uçuş API entegreli şoför WhatsApp görev emri ve matbu Excel rooming listelerini tek tıkla sisteme aktarma.",
         "bullets": [
-          "Teklif onaylandığı an kendini otomatik kilitler",
-          "Müşteriye özel şifresiz güvenli token linki",
-          "Revizyon geçmişi ve detaylı log takibi"
+          "TCMB saat 15:30 efektif kuruyla giriş günü kur kilitleme",
+          "THY & Pegasus API ile rötarları algılayan şoför WhatsApp görev emri",
+          "Otel rooming listelerini dağınık Excel'den tek tıkla hatasız eşleme",
+          "Sejour, Logo ve Netsis ile çift yönlü cari mutabakat altyapısı"
         ],
-        "ctaText": "Portal Demosunu İncele",
-        "ctaHref": "#contact",
-        "mockupBadge": "ONLINE PORTAL",
-        "mockupUrl": "portal.codeicon.co/teklif-onay"
+        "ctaText": "MICE Sistemini Keşfet",
+        "ctaHref": "#mice-os"
       },
       {
-        "id": "kpi",
-        "label": "Saha & Transfer",
-        "title": "Akıllı transfer planlama ve filo yönetimi",
-        "description": "Uçuş saatlerine duyarlı otomatik kalkış hesaplama, araç pax kapasitesi kontrolü ve şoförlere anlık WhatsApp görev emri iletimi.",
+        "id": "kongre-os-tab",
+        "label": "KONGRE SaaS",
+        "mockupBadge": "KONGRE & ETKİNLİK PLATFORMU",
+        "title": "Bağımsız Domainli Kongre, Sempozyum & Etkinlik Sitesi",
+        "description": "Dernek ve acentelerin tek tıkla kendi domaininde kongre sitesi açtığı; bildiri (abstract) toplama, çift kör hakemlik, QR kodlu hızlı akredite ve sponsor portallarını yönettiği çok kiracılı SaaS.",
         "bullets": [
-          "Uçuşlara duyarlı dinamik kalkış saati",
-          "Araç koltuk kapasitesi ve pax çakışma uyarısı"
+          "Her kongre için özel domain (kongre2026.org) ve kurumsal blok editör",
+          "Sözel/Poster bildiri toplama, hakem puanlaması ve kabul mektupları",
+          "Kayıt masasında sıra bekletmeyen QR kodlu yaka kartı anlık baskı",
+          "Platin, altın, gümüş sponsorlar için stant yerleşimi ve davetli kotaları"
         ],
-        "ctaText": "Saha Modülünü Keşfedin",
-        "ctaHref": "#contact",
-        "mockupBadge": "TRANSFER FİLO",
-        "mockupUrl": "codeicon.co/app/transfer"
+        "ctaText": "Kongre Platformunu İncele",
+        "ctaHref": "#kongre-os"
       },
       {
-        "id": "automation",
-        "label": "MICE & Projeler",
-        "title": "Kongre, toplantı ve grup organizasyonları",
-        "description": "Çoklu otel yönetimi, matbu Excel rooming listelerini tek tıkla sisteme aktarma ve projeye özel anlık kar/zarar analizi.",
+        "id": "arch-os-tab",
+        "label": "ARCH OS Mimarlık",
+        "mockupBadge": "MİMARLIK & ŞANTİYE SAAS",
+        "title": "Mimarlık Ofisleri & Anahtar Teslim Şantiye İşletim Sistemi",
+        "description": "Tasarım aşamalarında müşteriden token korumalı dijital tasarım dondurma (Design Freeze) onayı alma, şantiyede fotoğraflı snag listesi tutma ve taşeron kümülatif hakediş motoru.",
         "bullets": [
-          "Excel rooming listelerini sıfır veri kaybıyla aktarın",
-          "Kurumsal etkinlik ve bayi toplantılarına özel çoklu otel yönetimi",
-          "Projeye özel anlık gelir, gider ve kârlılık tablosu"
+          "Token korumalı link (/approve/[token]) ile müşteri tasarım dondurma",
+          "Mobil fotoğraf üstüne canvas çizimle şantiyede anlık kusur (snag) raporu",
+          "Birim fiyatlı BOQ metrajı, avans mahsubu ve %5 teminatlı hakediş",
+          "Ofis Turnkey kasası ile İşveren Escrow kasasını ayıran çift cüzdan"
         ],
-        "ctaText": "MICE Modülünü İnceleyin",
-        "ctaHref": "#contact",
-        "mockupBadge": "MICE & KONGRE",
-        "mockupUrl": "codeicon.co/app/mice"
+        "ctaText": "ARCH OS'u Keşfet",
+        "ctaHref": "#arch-os"
       },
       {
-        "id": "team",
-        "label": "Finans & Mutabakat",
-        "title": "TCMB canlı kurlar ve otomatik cari mutabakat",
-        "description": "Grup giriş gününde döviz kurunu sabitleme, onaylanan faturaların muhasebe havuzuna düşmesi ve tedarikçilerle dijital mutabakat.",
+        "id": "bordro-cy-tab",
+        "label": "BORDRO CY",
+        "mockupBadge": "KKTC BORDRO & İK ERP",
+        "title": "KKTC Standartlarında Resmi Matbu Bildirgeli Bordro & İK",
+        "description": "Kuzey Kıbrıs mevzuatına tam uyumlu; 70.893 ₺ asgari ücret vergi koruması, resmi Form VD 17a Stopaj Beyannamesi, Form SS14 Sigorta Bordrosu ve İ.S. 22A İhtiyat Sandığı cetvelleri.",
         "bullets": [
-          "TCMB günlük kurlarını anlık çeker ve projeye sabitler",
-          "Otel ve tedarikçilerle tek tıkla cari mutabakat",
-          "Logo, Netsis ve Mikro ERP sistemleriyle tam uyumlu"
+          "Net'ten Brüt'e ve Brüt'ten Net'e kuruşu kuruşuna hatasız hesaplama motoru",
+          "Gelir ve Vergi Dairesi resmi Form VD 17a Stopaj Beyannamesi (Tablo 1-4)",
+          "Sosyal Sigortalar Form SS14 (D1/D2 bordro tipleri ve sigorta no sıralaması)",
+          "KVKK uyumlu resmi matbu 4 kutulu ücret hesap pusulası dökümü"
         ],
-        "ctaText": "Finans Modülünü Görün",
-        "ctaHref": "#contact",
-        "mockupBadge": "TCMB & FİNANS",
-        "mockupUrl": "codeicon.co/app/finance"
+        "ctaText": "Bordro ERP'sini İncele",
+        "ctaHref": "#bordro-cy"
       }
     ]
   },
   "integrations": {
-    "eyebrow": "Entegre Ekosistem",
-    "title": "Güçlü ve tam uyumlu entegrasyonlar",
-    "subtitle": "Kullandığınız bankalar, TCMB canlı kurları, otel sistemleri ve muhasebe ERP'leriyle kesintisiz iki yönlü veri köprüsü.",
-    "highlights": [
-      "50+ hazır resmi acente entegrasyonu",
-      "TCMB Canlı Kur ve Sabitleme",
-      "Otomatik Muhasebe & ERP Entegrasyonu"
-    ],
-    "ctaText": "Hemen Başlayın",
-    "ctaHref": "#contact",
+    "eyebrow": "Bağlantılı Ekosistem",
+    "title": "İşinizin Omurgasını Oluşturan Sistemlerle Tam Entegre",
+    "subtitle": "Kullandığınız muhasebe yazılımları, hava yolu API'leri, bankalar ve resmi kurum formatlarıyla çift yönlü konuşan güçlü altyapı.",
     "items": [
       {
-        "id": "tcmb",
-        "name": "TCMB Kurlar",
-        "category": "Finans",
-        "desc": "Canlı döviz kuru çekme ve proje bazlı kur sabitleme.",
-        "icon": "🏛️"
+        "name": "TCMB Canlı Kur",
+        "category": "Finans & Döviz",
+        "description": "Saat 15:30 resmi kurlarını çekip projelere kilitler."
       },
       {
-        "id": "erp",
-        "name": "Logo & Netsis & Dia (YAKINDA)",
+        "name": "THY & Pegasus API",
+        "category": "Uçuş & Havalimanı",
+        "description": "Rötarları anlık algılayarak transfer saatini revize eder."
+      },
+      {
+        "name": "WhatsApp Cloud API",
+        "category": "İletişim & Görev",
+        "description": "Şoför görev emirlerini ve randevu hatırlatmalarını iletir."
+      },
+      {
+        "name": "Sejour Acente Sistemi",
+        "category": "Turizm ERP",
+        "description": "Uçuş, yolcu ve otel listelerini çift yönlü senkronize eder."
+      },
+      {
+        "name": "Logo & Netsis ERP",
         "category": "Muhasebe",
-        "desc": "Onaylanan operasyon faturalarını anında ERPye aktarın.",
-        "icon": "📊"
+        "description": "Onaylanan hakediş ve faturaları muhasebeye otomatik aktarır."
       },
       {
-        "id": "flight",
-        "name": "THY & Pegasus & AJet API (YAKINDA)",
-        "category": "Uçuş",
-        "desc": "Canlı uçuş durumu ve otomatik transfer saati senkronu.",
-        "icon": "✈️"
-      },
-      {
-        "id": "hotel",
-        "name": "HotelRunner & Sejour",
-        "category": "Konaklama",
-        "desc": "Otel müsaitlik ve rezervasyon akışlarını tek ekranda toplayın.",
-        "icon": "🏨"
-      },
-      {
-        "id": "whatsapp",
-        "name": "WhatsApp Görev Emri (YAKINDA)",
-        "category": "Saha",
-        "desc": "Şoför ve operasyon rehberlerine anında görev detaylarını iletin.",
-        "icon": "💬"
-      },
-      {
-        "id": "payment",
-        "name": "PayTR & Sanal POS (YAKINDA)",
-        "category": "Tahsilat",
-        "desc": "Müşterilerinizden online link ile güvenli kredi kartı tahsilatı.",
-        "icon": "💳"
-      },
-      {
-        "id": "excel",
-        "name": "Matbu Excel İçe Aktarım",
-        "category": "Veri",
-        "desc": "Yüzlerce kişilik rooming ve transfer listelerini tek tıkla yükleyin.",
-        "icon": "📑"
+        "name": "KKTC Maliye & Sigorta",
+        "category": "Resmi Bildirgeler",
+        "description": "Form VD 17a, SS14 ve İ.S. 22A formatında e-beyan çıktıları."
       }
     ]
   },
@@ -397,29 +372,29 @@
     "subtitle": "CODEICON ile operasyonlarını sıfır hataya indiren sektörün öncü turizm ve MICE acenteleri."
   },
   "faq": {
-    "eyebrow": "Merak Edilenler",
-    "title": "Aklınıza takılan sorular",
-    "subtitle": "Sistemin işleyişi, geçiş süreci ve entegrasyonlar hakkında en çok merak edilen soruların yanıtları.",
+    "eyebrow": "Sıkça Sorulan Sorular",
+    "title": "Aklınıza Takılan Her Detay İçin Buradayız",
+    "subtitle": "Platformlarımızın lisanslaması, veri güvenliği, mevzuat uyumu ve geçiş süreçleri hakkında merak edilenler.",
     "items": [
       {
-        "q": "Mevcut Excel rooming ve transfer listelerimizi içeri aktarabilir miyiz?",
-        "a": "Evet! Matbu Excel desteğimiz sayesinde yüzlerce misafirden oluşan konaklama veya transfer listelerini tek tıkla sisteme aktarabilirsiniz."
+        "question": "MICE Agency OS kur dalgalanmalarına karşı acentemizi nasıl korur?",
+        "answer": "Sistem, misafirlerin otele giriş yaptığı (check-in) tarihteki TCMB efektif satış kurunu projeye kilitler. Teklif aşamasındaki döviz tutarı ile faturanın kesildiği günkü kur arasındaki farkı otomatik hesaplar; tedarikçilerle (otel, rehber, transfer) yapılan mutabakatlarda kur farkı zararını tamamen ortadan kaldırır."
       },
       {
-        "q": "Uçuş saati değiştiğinde transfer saatleri otomatik güncelleniyor mu?",
-        "a": "Evet, sistem uçuş saatine doğrudan duyarlıdır. Belirlediğiniz kurala göre (örneğin uçuştan 3 saat önce) transfer saati ve araç planı otomatik olarak revize edilir."
+        "question": "KONGRE SaaS ile kendi dernek veya kongre domainimizi kullanabilir miyiz?",
+        "answer": "Evet! Çok müşterili (multi-tenant) mimarimiz sayesinde her kongre veya dernek kendi alan adını (örneğin: kongre2026.org veya tipkongresi.com) sisteme bağlayabilir. Otomatik SSL sertifikası üretilir; bilimsel program, bildiri (abstract) toplama, hakem değerlendirmesi ve kayıt formları kendi markanızla çalışır."
       },
       {
-        "q": "Döviz kurları nasıl yönetiliyor? TCMB entegrasyonu var mı?",
-        "a": "Sistem TCMB günlük kurlarını canlı çeker. Dilerseniz grup giriş tarihindeki kuru tek tıkla sabitleyebilir ve döviz dalgalanmalarına karşı bütçenizi garantiye alabilirsiniz."
+        "question": "ARCH OS şantiyede internetsiz ortamda çalışabilir mi ve fiyat maskeleme nedir?",
+        "answer": "ARCH OS, PWA ve çevrimdışı önbellekleme desteği sayesinde şantiyede internet kesilse dahi günlük tutmanıza ve fotoğraflı kusur (snag) işaretlemenize izin verir; bağlantı sağlandığında bulutla senkronize olur. Fiyat maskeleme (Financial Privacy) özelliği ise şantiye şefleri ve çizer mimarların metraj ve çizimleri yönetirken sözleşme kâr marjlarını ve gizli birim fiyatları görmesini engeller."
       },
       {
-        "q": "Müşteriler teklifleri sistem üzerinden online onaylayabiliyor mu?",
-        "a": "Kesinlikle. Müşterinize özel güvenli onay linki iletilir ve onaylandığı an teklif kendini otomatik kilitleyerek Projeler modülüne aktarılır."
+        "question": "BORDRO CY KKTC'nin güncel vergi ve sosyal güvenlik yasalarına tam uyumlu mu?",
+        "answer": "Evet! BORDRO CY, KKTC 24/1982 sayılı Gelir Vergisi Yasası, 70.893 ₺ asgari ücret vergi koruması, Gelir ve Vergi Dairesi Form VD 17a Ücretliler Stopaj Beyannamesi, Sosyal Sigortalar Dairesi Form SS14 (D1/D2 bordro tipleri) ve İhtiyat Sandığı İ.S. 22A mevzuatlarına %100 uyumludur. Net'ten Brüt'e hatasız kuruşu kuruşuna hesaplama yapar."
       },
       {
-        "q": "Sisteme geçiş ve personellerin eğitimi ne kadar sürüyor?",
-        "a": "Kullanıcı dostu arayüz sayesinde sistem dakikalar içinde açılır; operasyon ekibiniz en geç 1-2 gün içinde tüm modülleri aktif şekilde kullanmaya başlar."
+        "question": "Verilerimiz nerede saklanıyor, KVKK ve veri güvenliği nasıl sağlanıyor?",
+        "answer": "Tüm verileriniz endüstri standardı PostgreSQL ve Supabase izole altyapısında şifrelenmiş olarak saklanır. Her müşterinin verisi mantıksal olarak diğerlerinden izole edilir (Tenant Isolation). Günlük otomatik yedeklemeler alınır ve tüm hassas bordro/kimlik verileri KVKK standartlarına uygun olarak maskelenir."
       }
     ]
   },
@@ -670,430 +645,412 @@
       }
     }
   },
-  "updatedAt": "2026-11-02T07:41:22.630Z",
+  "updatedAt": "2026-11-12T20:00:00.000Z",
   "blog": {
     "enabled": true,
     "eyebrow": "Sektörel Rehberler & Analizler",
-    "title": "MICE & Seyahat Teknolojileri Blogu",
-    "subtitle": "Acente operasyonları, finans yönetimi, TCMB kur mutabakatı ve saha transferlerinde sektörel analizler ve pratik rehberler.",
+    "title": "CODEICON Teknoloji & Mevzuat Rehberi",
+    "subtitle": "MICE operasyonları, kongre teknolojileri, mimarlık & şantiye yönetimi ve KKTC bordro mevzuatında sektörel uzman analizleri ve derinlemesine rehberler.",
     "posts": [
       {
-        "title": "Yüzlerce Kişilik Rooming Listelerini Excel'den Tek Tıkla Sisteme Aktarma",
-        "slug": "yuzlerce-kisilik-rooming-listelerini-excel-den-tek-tikla-sisteme-aktarma",
-        "excerpt": "Rezervasyon & Konaklama Sorumluları için özel olarak hazırlanan bu analizde, Yüzlerce Kişilik Rooming Listelerini Excel'den Tek Tıkla Sisteme Aktarma odağında iş akışlarını hızlandırma ve kontrolü tek merkezde toplama yöntemlerini inceliyoruz.",
-        "category": "Acente Teknolojileri",
-        "tags": [
-          "Otel Yönetimi",
-          "Excel Otomasyonu",
-          "No-Show Önleme",
-          "Rooming List"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&auto=format&fit=crop&q=80",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        },
-        "publishedAt": "2026-11-02",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Bir Operasyonun Kaderini Belirleyen Kritik Viraj\n\nMICE ve kurumsal seyahat sektöründe bir projenin başarısı, aylarca süren planlamanın sahada nasıl icra edildiğine bağlıdır. **Yüzlerce Kişilik Rooming Listelerini Excel'den Tek Tıkla Sisteme Aktarma** söz konusu olduğunda, en deneyimli acenteler dahi iletişim kopuklukları veya dağınık veri havuzları nedeniyle beklenmedik krizlerle karşılaşabilmektedir.\n\nÖzellikle **Rezervasyon & Konaklama Sorumluları** için bu süreç; yalnızca operasyonel bir görev değil, müşteriye verilen sözün ve acente itibarının doğrudan sınavıdır. Bu incelememizde, eğitici bir bakış açısıyla sahadaki kör noktaları teşhis ediyor ve somut çözümler üretiyoruz.\n\n---\n\n## Yaşanmış Saha Senaryosu: Tek Bir Detayın Yarattığı Domino Etkisi\n\nGeçtiğimiz sezon 650 kişilik uluslararası bir organizasyonda yaşanan gerçek bir örneği ele alalım:\n\n- **Sorun:** Katılımcı listesindeki son dakika revizyonları WhatsApp ve e-posta üzerinden parçalı olarak paylaşıldı.\n- **Sonuç:** Sahadaki operasyon ekibi revize edilmemiş eski listeyle hareket ettiği için mükerrer tahsisler ve gereksiz transfer maliyetleri doğdu.\n- **Maliyet Faturası:** Proje kâr marjının %18'i sadece 4 saat içinde kontrolsüzce buharlaştı.\n\nBu vaka bize açıkça gösteriyor ki; **Yüzlerce Kişilik Rooming Listelerini Excel'den Tek Tıkla Sisteme Aktarma** manuel kontrollerle sürdürülemeyecek kadar yüksek dinamizme sahiptir.\n\n---\n\n## Darboğazı Kökten Çözen 3 Dönüşüm Hamlesi\n\n### 1. Bilgi Asimetrisini Bitirin: Tekil Doğruluk Kaynağı (Single Source of Truth)\nFarklı departmanların (muhasebe, saha, proje yöneticisi) aynı anda aynı güncel veriye baktığından emin olun. Excel sayfalarını bilgisayardan bilgisayara göndermek yerine bulut tabanlı ve anlık senkronize olan bir işletim sistemi kurun.\n\n### 2. Canlı Yetki ve Görev Dağılımı\nKim ne zaman hangi işlemi yaptı? Değişiklik kimin onayıyla gerçekleşti? Yüzlerce Kişilik Rooming Listelerini Excel'den Tek Tıkla Sisteme Aktarma sürecinde her adımın kayıt altına alınması, sorumluluk bilincini artırır ve kriz anlarında suçlu aramak yerine çözüme odaklanmayı sağlar.\n\n### 3. Otomatik Hata ve Sapma Bildirimleri\nSistem, belirlenen limitlerin dışına çıkan veya saatinde tamamlanmayan adımlarda ilgili operasyon amirine anında alarm üretmelidir.\n\n---\n\n> [!NOTE]\n> **Operasyon Notu:** Yüzlerce Kişilik Rooming Listelerini Excel'den Tek Tıkla Sisteme Aktarma sürecinde otomasyona geçen kurumsal acentelerde, katılımcı başına düşen operasyonel maliyet **ortalama %34 oranında gerilemektedir**.\n\n---\n\n## Süreç Olgunluk Kontrol Listesi\n\n- [ ] Tüm katılımcı ve operasyon verileri anlık olarak tek bir merkezde toplanıyor mu?\n- [ ] Sahadaki son dakika değişiklikleri anında finans ve yönetim ekranlarına yansıyor mu?\n- [ ] Olası no-show veya aksaklıklarda acil durum prosedürleri önceden tanımlandı mı?\n- [ ] Müşteri temsilcisi telefon trafiğine boğulmadan operasyon durumunu görebiliyor mu?\n\n---\n\n## Özet ve Son Söz\n\nAcentecilikte hız önemlidir; ancak kontrolsüz hız felaket getirir. **Yüzlerce Kişilik Rooming Listelerini Excel'den Tek Tıkla Sisteme Aktarma** sürecinizi dijital omurgaya bağlayarak ekibinize nefes aldırabilir, müşterilerinize ise kusursuz bir deneyim sunabilirsiniz."
-      },
-      {
-        "title": "Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış",
-        "slug": "statik-pdf-teklifleri-tarihe-karisiyor-canli-mice-portali-ile-hizli-satis",
-        "excerpt": "Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış konusunda acentelerin operasyonel kör noktalarını gideren, ekipler arası iletişim kopukluklarını bitiren ve kârlılığı koruyan pratik saha analizi.",
-        "category": "Acente Yönetimi",
+        "id": "post-mice-1",
+        "slug": "mice-operasyonlarinda-tcmb-canli-kur-sabitleme-ve-kur-riski-kalkani",
+        "title": "MICE Operasyonlarında TCMB Canlı Kur Sabitleme ve Kur Riski Kalkanı",
+        "excerpt": "Kongre ve grup operasyonlarında döviz kuru dalgalanmalarına karşı acente kârlılığını koruyan TCMB 15:30 efektif bülteni ve check-in kuru kitleme stratejileri.",
+        "category": "MICE & Finans",
         "tags": [
           "MICE Acente Sistemi",
-          "Operasyon",
-          "Dijital Dönüşüm",
-          "Acente Yönetimi"
-        ],
-        "readingTime": "6 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        },
-        "publishedAt": "2026-11-02",
-        "published": true,
-        "featured": false,
-        "content": "## Yönetici Özeti: Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış Alanında Yeni Standartlar\n\nKurumsal seyahat ve MICE projelerinde hata kabul etmeyen dinamikler her geçen gün daha da sertleşiyor. Müşteriler daha hızlı raporlama, daha şeffaf bütçe ve sahada milimetrik koordinasyon talep ediyor. Bu doğrultuda **Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış**, modern bir acentenin omurgasını oluşturan en stratejik çalışma alanlarından biridir.\n\nBu rehberde, analitik bir üslupla **Acente Satış Direktörleri & Müşteri Temsilcileri** için uygulanabilir, net ve doğrudan sahaya adapte edilebilecek 4 aşamalı bir metodoloji paylaşıyoruz.\n\n---\n\n## 4 Adımlı Kusursuzlaştırma Modeli\n\n```\n[1. Hazırlık & Veri Standardizasyonu]\n         ↓\n[2. Otomatik Doğrulama & Kontrol]\n         ↓\n[3. Canlı Saha Entegrasyonu]\n         ↓\n[4. Kapanış & Finansal Mutabakat]\n```\n\n### Adım 1: Gelen Veriyi Standart Şablona Oturtun\nMüşterilerden gelen ham veriler genellikle hatalı harfler, eksik TC/Pasaport numaraları veya karışık saat formatları içerir. Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış sürecinin ilk kuralı, sisteme giren her girdinin anında doğrulanmasıdır.\n\n### Adım 2: Departmanlar Arası Köprü Kurun\nProje yöneticisi bir onay verdiğinde, bu bilginin saha ekibine ve operasyon amirine eş zamanlı düşmesi gerekir. E-posta trafiğinde onay aramak operasyonel körlük yaratır.\n\n### Adım 3: Sahada Mobil Erişilebilirlik\nMasa başında kurgulanan plan sahada uygulanabilir olmalıdır. Sahadaki operasyon ekibi, Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış güncellemelerini anında cebinden görebilmeli ve tek dokunuşla durumu bildirebilmelidir.\n\n### Adım 4: Anında Bütçe & Kur Eşitlemesi\nOperasyon bittiği anda gerçekleşen maliyetler ile tahmini bütçe karşılaştırılmalıdır. Günler sonra yapılan mutabakatlar acentenin kur farkı veya ek hizmet maliyetlerini tahsil etmesini imkansızlaştırır.\n\n---\n\n| Süreç Aşaması | Geleneksel Yöntem | Modern İşletim Sistemi Yaklaşımı |\n| :--- | :--- | :--- |\n| **Veri Girişi** | Manuel Excel kopyala-yapıştır | Akıllı format algılama & tek tıkla aktarım |\n| **Değişiklik Bildirimi** | WhatsApp grupları & telefon | Anlık push notification & bildirim merkezi |\n| **Risk Kontrolü** | Operasyon sonunda fark edilen hatalar | Önceden uyaran yapay zeka & kural motoru |\n| **Kapanış Süresi** | 3 - 7 iş günü | Operasyon bittiği an tek tıkla mutabakat |\n\n---\n\n> [!TIP]\n> **En İyi Uygulama (Best Practice):** Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış sürecini haftalık rutin bir toplantı konusu olmaktan çıkarıp, anlık takip edilen bir dijital gösterge paneline (dashboard) dönüştürün.\n\n---\n\n## Karar Vericiler İçin Sonuç\n\nDijital dönüşüm artık acenteler için pahalı bir lüks değil, kârlılığı ayakta tutan yegane kalkan. **Statik PDF Teklifleri Tarihe Karışıyor: Canlı MICE Portalı ile Hızlı Satış** operasyonunuzu modernize ederek rakiplerinizin günlerce uğraştığı süreçleri dakikalar içinde tamamlayabilirsiniz."
-      },
-      {
-        "title": "Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi",
-        "slug": "online-mice-sistemi-ile-kurumsal-musterilere-interaktif-teklif-deneyimi",
-        "excerpt": "Satış & Müşteri İlişkileri Liderleri için özel olarak hazırlanan bu analizde, Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi odağında iş akışlarını hızlandırma ve kontrolü tek merkezde toplama yöntemlerini inceliyoruz.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "MICE Acente Sistemi",
-          "Dijital Dönüşüm",
-          "Operasyon",
-          "Acente Yönetimi"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        },
-        "publishedAt": "2026-10-25",
-        "published": true,
-        "featured": false,
-        "content": "## Vizyon: Yarının Acentesi Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi Sürecini Nasıl Yönetecek?\n\nTurizm ve etkinlik endüstrisi köklü bir kabuk değişiminin içinde. Yapay zeka ajanları, otomatik görev emirleri, karekodlu geçiş sistemleri ve gerçek zamanlı finansal entegrasyonlar artık geleceğin vizyonu değil, bugünün rekabet şartıdır.\n\nBu yeni düzende **Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi** gibi kritik süreçleri eski usul yöntemlerle yürütmeye çalışmak, yüksek hızla giden bir yarışta el frenini çekili tutmaya benzer. **Satış & Müşteri İlişkileri Liderleri** için hazırladığımız bu perspektifte, dönüşümün şifrelerini paylaşıyoruz.\n\n---\n\n## Geleneksel Yaklaşımdan Dijital Ekosisteme Geçiş\n\nAcentelerin büyük çoğunluğu işleri yolunda zannederken arka planda devasa bir iş gücü israfı yaşanmaktadır:\n\n- **Eski Düzen:** Personel gününün %40'ını liste kontrol etmeye, WhatsApp'tan konum sormaya ve excel eşleştirmeye harcar.\n- **Yeni Ekosistem:** Rutin veri aktarımları arka planda robotik süreçlerle yürütülür; personel sadece müşteri memnuniyetine ve özel kriz yönetimine odaklanır.\n\n---\n\n## Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi Alanında 3 İnovasyon Dalgası\n\n### 1. Otonom Bildirim Sistemleri\nMüşterinin uçağı rötar yaptığında bunu manuel kontrol etmek yerine, uçuş takip API'lerinin transfer şoförüne otomatik bildirim atması.\n\n### 2. Dinamik Liste Senkronizasyonu\nOtel rooming listesinde bir isim değiştiğinde, aynı anda kongre kayıt sistemindeki yaka kartının ve gala yemeği masa planının güncellenmesi.\n\n### 3. Akıllı Bütçe Koruma Kalkanı\nOperasyonel bir gider girildiği anda projenin kâr-zarar simülasyonunun canlı olarak güncellenmesi.\n\n---\n\n> [!NOTE]\n> **Sektör Öngörüsü:** Önümüzdeki 2 yıl içinde Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi süreçlerini tam entegre sistemlerle yönetmeyen acentelerin kurumsal müşteri ihale kazanma oranlarının **%50'nin üzerinde düşeceği** tahmin edilmektedir.\n\n---\n\n## Değerlendirme\n\n**Online MICE Sistemi ile Kurumsal Müşterilere İnteraktif Teklif Deneyimi** bir külfet değil, doğru kurgulandığında acentenizi rakiplerinizden ayıran en parlak vitrindir. Modern altyapılarla bu süreci sıfır stresli bir başarı hikayesine dönüştürebilirsiniz."
-      },
-      {
-        "title": "Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı",
-        "slug": "kurumsal-sirketlerin-tercihi-interaktif-mice-teklif-ve-butce-onay-portali",
-        "excerpt": "Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı konusunda acentelerin operasyonel kör noktalarını gideren, ekipler arası iletişim kopukluklarını bitiren ve kârlılığı koruyan pratik saha analizi.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "Dijital Dönüşüm",
-          "MICE Acente Sistemi",
-          "Acente Yönetimi",
-          "Operasyon"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        },
-        "publishedAt": "2026-10-24",
-        "published": true,
-        "featured": false,
-        "content": "## Yönetici Özeti: Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı Alanında Yeni Standartlar\n\nKurumsal seyahat ve MICE projelerinde hata kabul etmeyen dinamikler her geçen gün daha da sertleşiyor. Müşteriler daha hızlı raporlama, daha şeffaf bütçe ve sahada milimetrik koordinasyon talep ediyor. Bu doğrultuda **Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı**, modern bir acentenin omurgasını oluşturan en stratejik çalışma alanlarından biridir.\n\nBu rehberde, profesyonel bir üslupla **Acente Satış Direktörleri & Müşteri Temsilcileri** için uygulanabilir, net ve doğrudan sahaya adapte edilebilecek 4 aşamalı bir metodoloji paylaşıyoruz.\n\n---\n\n## 4 Adımlı Kusursuzlaştırma Modeli\n\n```\n[1. Hazırlık & Veri Standardizasyonu]\n         ↓\n[2. Otomatik Doğrulama & Kontrol]\n         ↓\n[3. Canlı Saha Entegrasyonu]\n         ↓\n[4. Kapanış & Finansal Mutabakat]\n```\n\n### Adım 1: Gelen Veriyi Standart Şablona Oturtun\nMüşterilerden gelen ham veriler genellikle hatalı harfler, eksik TC/Pasaport numaraları veya karışık saat formatları içerir. Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı sürecinin ilk kuralı, sisteme giren her girdinin anında doğrulanmasıdır.\n\n### Adım 2: Departmanlar Arası Köprü Kurun\nProje yöneticisi bir onay verdiğinde, bu bilginin saha ekibine ve operasyon amirine eş zamanlı düşmesi gerekir. E-posta trafiğinde onay aramak operasyonel körlük yaratır.\n\n### Adım 3: Sahada Mobil Erişilebilirlik\nMasa başında kurgulanan plan sahada uygulanabilir olmalıdır. Sahadaki operasyon ekibi, Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı güncellemelerini anında cebinden görebilmeli ve tek dokunuşla durumu bildirebilmelidir.\n\n### Adım 4: Anında Bütçe & Kur Eşitlemesi\nOperasyon bittiği anda gerçekleşen maliyetler ile tahmini bütçe karşılaştırılmalıdır. Günler sonra yapılan mutabakatlar acentenin kur farkı veya ek hizmet maliyetlerini tahsil etmesini imkansızlaştırır.\n\n---\n\n| Süreç Aşaması | Geleneksel Yöntem | Modern İşletim Sistemi Yaklaşımı |\n| :--- | :--- | :--- |\n| **Veri Girişi** | Manuel Excel kopyala-yapıştır | Akıllı format algılama & tek tıkla aktarım |\n| **Değişiklik Bildirimi** | WhatsApp grupları & telefon | Anlık push notification & bildirim merkezi |\n| **Risk Kontrolü** | Operasyon sonunda fark edilen hatalar | Önceden uyaran yapay zeka & kural motoru |\n| **Kapanış Süresi** | 3 - 7 iş günü | Operasyon bittiği an tek tıkla mutabakat |\n\n---\n\n> [!TIP]\n> **En İyi Uygulama (Best Practice):** Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı sürecini haftalık rutin bir toplantı konusu olmaktan çıkarıp, anlık takip edilen bir dijital gösterge paneline (dashboard) dönüştürün.\n\n---\n\n## Karar Vericiler İçin Sonuç\n\nDijital dönüşüm artık acenteler için pahalı bir lüks değil, kârlılığı ayakta tutan yegane kalkan. **Kurumsal Şirketlerin Tercihi: İnteraktif MICE Teklif ve Bütçe Onay Portalı** operasyonunuzu modernize ederek rakiplerinizin günlerce uğraştığı süreçleri dakikalar içinde tamamlayabilirsiniz."
-      },
-      {
-        "title": "MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu",
-        "slug": "mice-ve-munferit-operasyonlari-tek-catida-birlestiren-erp-ve-sejour-entegrasyonu",
-        "excerpt": "MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu konusunda acentelerin operasyonel kör noktalarını gideren, ekipler arası iletişim kopukluklarını bitiren ve kârlılığı koruyan pratik saha analizi.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "MICE Acente Sistemi",
-          "Acente Yönetimi",
-          "Dijital Dönüşüm",
-          "Operasyon"
-        ],
-        "readingTime": "4 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        },
-        "publishedAt": "2026-10-24",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Acentelerin Gizli Maliyet Kaçağı — MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu\n\nGörünürde başarılı geçen, müşterinin teşekkür ettiği birçok etkinlik veya transfer operasyonunun ardından muhasebe kayıtları açıldığında acı gerçek ortaya çıkar: **Düşük kâr marjı veya beklenmeyen zararlar.**\n\nBu durumun arkasındaki en büyük fail genellikle **MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu** sürecinde gözden kaçan küçük ama biriken operasyonel sapmalardır. Özellikle **Acente Bilgi İşlem (IT) & Finans Yöneticileri** açısından bu makale, acentenin finansal sağlığını korumak adına kritik ipuçları sunmaktadır.\n\n---\n\n## En Sık Yaşanan 3 Operasyonel Tuzak\n\n### 1. Kur ve Zaman Uyumsuzluğu\nTCMB kuru ile piyasa kuru arasındaki makas, projenin onaylandığı gün ile tedarikçiye ödeme yapıldığı gün arasındaki farklar acentenin cebinden çıkar. MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu planlamasında bu dinamik otomatik sabitlenmelidir.\n\n### 2. Şoför, Otel ve Tedarikçi İletişim Kopukluğu\nBir transferin 20 dakika gecikmesi oteldeki check-in kuyruğunu kilitler; check-in kuyruğunun kilitlenmesi salon girişlerini geciktirir. MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu tüm bu zincirin merkezinde yer alır.\n\n### 3. Mükerrer Ödemeler ve Avans Takipsizliği\nSahaya çıkan operasyon sorumlularının yaptığı acil harcamaların fiş/fatura takibi sisteme anında işlenmediğinde, proje sonunda faturasız masraflar acente üzerinde kalır.\n\n---\n\n## Metriklerle Fark: Önce & Sonra\n\n- **Operasyon Hazırlık Süresi:** 14 saatten 2.5 saate düşer (**%82 zaman kazancı**).\n- **Müşteri Revizyon Tepki Hızı:** 45 dakikadan 90 saniyeye iner.\n- **Mali Kaçak Oranı:** Sıfıra yakın denetim doğruluğu.\n\n---\n\n> [!IMPORTANT]\n> **Kritik Hatırlatma:** Bir projenin operasyonel kârı satış masasında değil, sahada MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu gibi kritik operasyonların disiplinle yönetilmesinde kazanılır.\n\n---\n\n## Eylem Planı: Yarın Sabah Nereden Başlamalısınız?\n\n1. **Envanter Çıkarın:** Şu anda MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu için kaç farklı dosya veya mesajlaşma kanalı kullanılıyor?\n2. **Kural Seti Belirleyin:** Hangi harcama veya değişiklik kimin yetkisinde?\n3. **Teknolojiye Emanet Edin:** İnsan hafızasına güvenmek yerine sistem kurallarına güvenin.\n\n---\n\n## Çözüm\n\nCODEICON mimarisi, acentelerin sahada ve masada yaşadığı bu zorlukları kökten çözmek için tasarlanmıştır. MICE ve Münferit Operasyonları Tek Çatıda Birleştiren ERP ve Sejour Entegrasyonu sürecinizi güvene almak ve acentenizi geleceğe taşımak için modern teknolojilerden yararlanın."
-      },
-      {
-        "title": "Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme",
-        "slug": "kurumsal-bayi-toplantilarinda-butce-avans-takibi-ve-fatura-uyusmazliklarini-onleme",
-        "excerpt": "Geleneksel yöntemlerle yönetildiğinde ciddi maliyet ve zaman kaybı yaratan Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme sürecini dijitalleştirerek kusursuzlaştırma rehberi.",
-        "category": "Finans & Kur",
-        "tags": [
-          "Maliyet Yönetimi",
-          "Kur Sabitleme",
-          "ERP Entegrasyonu",
-          "TCMB"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-24",
-        "published": true,
-        "featured": false,
-        "content": "## Vizyon: Yarının Acentesi Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme Sürecini Nasıl Yönetecek?\n\nTurizm ve etkinlik endüstrisi köklü bir kabuk değişiminin içinde. Yapay zeka ajanları, otomatik görev emirleri, karekodlu geçiş sistemleri ve gerçek zamanlı finansal entegrasyonlar artık geleceğin vizyonu değil, bugünün rekabet şartıdır.\n\nBu yeni düzende **Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme** gibi kritik süreçleri eski usul yöntemlerle yürütmeye çalışmak, yüksek hızla giden bir yarışta el frenini çekili tutmaya benzer. **MICE Acenteleri & Operasyon Yöneticileri** için hazırladığımız bu perspektifte, dönüşümün şifrelerini paylaşıyoruz.\n\n---\n\n## Geleneksel Yaklaşımdan Dijital Ekosisteme Geçiş\n\nAcentelerin büyük çoğunluğu işleri yolunda zannederken arka planda devasa bir iş gücü israfı yaşanmaktadır:\n\n- **Eski Düzen:** Personel gününün %40'ını liste kontrol etmeye, WhatsApp'tan konum sormaya ve excel eşleştirmeye harcar.\n- **Yeni Ekosistem:** Rutin veri aktarımları arka planda robotik süreçlerle yürütülür; personel sadece müşteri memnuniyetine ve özel kriz yönetimine odaklanır.\n\n---\n\n## Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme Alanında 3 İnovasyon Dalgası\n\n### 1. Otonom Bildirim Sistemleri\nMüşterinin uçağı rötar yaptığında bunu manuel kontrol etmek yerine, uçuş takip API'lerinin transfer şoförüne otomatik bildirim atması.\n\n### 2. Dinamik Liste Senkronizasyonu\nOtel rooming listesinde bir isim değiştiğinde, aynı anda kongre kayıt sistemindeki yaka kartının ve gala yemeği masa planının güncellenmesi.\n\n### 3. Akıllı Bütçe Koruma Kalkanı\nOperasyonel bir gider girildiği anda projenin kâr-zarar simülasyonunun canlı olarak güncellenmesi.\n\n---\n\n> [!NOTE]\n> **Sektör Öngörüsü:** Önümüzdeki 2 yıl içinde Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme süreçlerini tam entegre sistemlerle yönetmeyen acentelerin kurumsal müşteri ihale kazanma oranlarının **%50'nin üzerinde düşeceği** tahmin edilmektedir.\n\n---\n\n## Değerlendirme\n\n**Kurumsal Bayi Toplantılarında Bütçe & Avans Takibi ve Fatura Uyuşmazlıklarını Önleme** bir külfet değil, doğru kurgulandığında acentenizi rakiplerinizden ayıran en parlak vitrindir. Modern altyapılarla bu süreci sıfır stresli bir başarı hikayesine dönüştürebilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Mice Acente Sistemi, Mice Yönetim Sistemi ile Operasyonel Verimliliği 3 Katına Çıkarma Stratejileri",
-        "slug": "mice-acente-sistemi-mice-yonetim-sistemi-ile-operasyonel-verimliligi-3-katina-cikarma-stratejileri",
-        "excerpt": "Mice Acente Sistemi, Mice Yönetim Sistemi konusunda acentelerin operasyonel kör noktalarını gideren, ekipler arası iletişim kopukluklarını bitiren ve kârlılığı koruyan pratik saha analizi.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "MICE",
-          "Dijitalleşme",
-          "Acente",
-          "Operasyon"
-        ],
-        "readingTime": "6 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-20",
-        "published": true,
-        "featured": false,
-        "content": "## Vizyon: Yarının Acentesi Mice Acente Sistemi, Mice Yönetim Sistemi Sürecini Nasıl Yönetecek?\n\nTurizm ve etkinlik endüstrisi köklü bir kabuk değişiminin içinde. Yapay zeka ajanları, otomatik görev emirleri, karekodlu geçiş sistemleri ve gerçek zamanlı finansal entegrasyonlar artık geleceğin vizyonu değil, bugünün rekabet şartıdır.\n\nBu yeni düzende **Mice Acente Sistemi, Mice Yönetim Sistemi** gibi kritik süreçleri eski usul yöntemlerle yürütmeye çalışmak, yüksek hızla giden bir yarışta el frenini çekili tutmaya benzer. **Muhasebe & Finans Yöneticileri** için hazırladığımız bu perspektifte, dönüşümün şifrelerini paylaşıyoruz.\n\n---\n\n## Geleneksel Yaklaşımdan Dijital Ekosisteme Geçiş\n\nAcentelerin büyük çoğunluğu işleri yolunda zannederken arka planda devasa bir iş gücü israfı yaşanmaktadır:\n\n- **Eski Düzen:** Personel gününün %40'ını liste kontrol etmeye, WhatsApp'tan konum sormaya ve excel eşleştirmeye harcar.\n- **Yeni Ekosistem:** Rutin veri aktarımları arka planda robotik süreçlerle yürütülür; personel sadece müşteri memnuniyetine ve özel kriz yönetimine odaklanır.\n\n---\n\n## Mice Acente Sistemi, Mice Yönetim Sistemi Alanında 3 İnovasyon Dalgası\n\n### 1. Otonom Bildirim Sistemleri\nMüşterinin uçağı rötar yaptığında bunu manuel kontrol etmek yerine, uçuş takip API'lerinin transfer şoförüne otomatik bildirim atması.\n\n### 2. Dinamik Liste Senkronizasyonu\nOtel rooming listesinde bir isim değiştiğinde, aynı anda kongre kayıt sistemindeki yaka kartının ve gala yemeği masa planının güncellenmesi.\n\n### 3. Akıllı Bütçe Koruma Kalkanı\nOperasyonel bir gider girildiği anda projenin kâr-zarar simülasyonunun canlı olarak güncellenmesi.\n\n---\n\n> [!NOTE]\n> **Sektör Öngörüsü:** Önümüzdeki 2 yıl içinde Mice Acente Sistemi, Mice Yönetim Sistemi süreçlerini tam entegre sistemlerle yönetmeyen acentelerin kurumsal müşteri ihale kazanma oranlarının **%50'nin üzerinde düşeceği** tahmin edilmektedir.\n\n---\n\n## Değerlendirme\n\n**Mice Acente Sistemi, Mice Yönetim Sistemi** bir külfet değil, doğru kurgulandığında acentenizi rakiplerinizden ayıran en parlak vitrindir. Modern altyapılarla bu süreci sıfır stresli bir başarı hikayesine dönüştürebilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Tekliften Sahaya Mice Online Sistem, Mice Yönetim Sistemi: Kârlılığı Korumanın İpuçları",
-        "slug": "tekliften-sahaya-mice-online-sistem-mice-yonetim-sistemi-k-rliligi-korumanin-ipuclari",
-        "excerpt": "MICE Acenteleri & Operasyon Yöneticileri için özel olarak hazırlanan bu analizde, Mice Online Sistem, Mice Yönetim Sistemi odağında iş akışlarını hızlandırma ve kontrolü tek merkezde toplama yöntemlerini inceliyoruz.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "Dijitalleşme",
-          "Acente",
-          "MICE",
-          "Operasyon"
-        ],
-        "readingTime": "4 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-19",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Bir Operasyonun Kaderini Belirleyen Kritik Viraj\n\nMICE ve kurumsal seyahat sektöründe bir projenin başarısı, aylarca süren planlamanın sahada nasıl icra edildiğine bağlıdır. **Mice Online Sistem, Mice Yönetim Sistemi** söz konusu olduğunda, en deneyimli acenteler dahi iletişim kopuklukları veya dağınık veri havuzları nedeniyle beklenmedik krizlerle karşılaşabilmektedir.\n\nÖzellikle **MICE Acenteleri & Operasyon Yöneticileri** için bu süreç; yalnızca operasyonel bir görev değil, müşteriye verilen sözün ve acente itibarının doğrudan sınavıdır. Bu incelememizde, vizyoner bir bakış açısıyla sahadaki kör noktaları teşhis ediyor ve somut çözümler üretiyoruz.\n\n---\n\n## Yaşanmış Saha Senaryosu: Tek Bir Detayın Yarattığı Domino Etkisi\n\nGeçtiğimiz sezon 650 kişilik uluslararası bir organizasyonda yaşanan gerçek bir örneği ele alalım:\n\n- **Sorun:** Katılımcı listesindeki son dakika revizyonları WhatsApp ve e-posta üzerinden parçalı olarak paylaşıldı.\n- **Sonuç:** Sahadaki operasyon ekibi revize edilmemiş eski listeyle hareket ettiği için mükerrer tahsisler ve gereksiz transfer maliyetleri doğdu.\n- **Maliyet Faturası:** Proje kâr marjının %18'i sadece 4 saat içinde kontrolsüzce buharlaştı.\n\nBu vaka bize açıkça gösteriyor ki; **Mice Online Sistem, Mice Yönetim Sistemi** manuel kontrollerle sürdürülemeyecek kadar yüksek dinamizme sahiptir.\n\n---\n\n## Darboğazı Kökten Çözen 3 Dönüşüm Hamlesi\n\n### 1. Bilgi Asimetrisini Bitirin: Tekil Doğruluk Kaynağı (Single Source of Truth)\nFarklı departmanların (muhasebe, saha, proje yöneticisi) aynı anda aynı güncel veriye baktığından emin olun. Excel sayfalarını bilgisayardan bilgisayara göndermek yerine bulut tabanlı ve anlık senkronize olan bir işletim sistemi kurun.\n\n### 2. Canlı Yetki ve Görev Dağılımı\nKim ne zaman hangi işlemi yaptı? Değişiklik kimin onayıyla gerçekleşti? Mice Online Sistem, Mice Yönetim Sistemi sürecinde her adımın kayıt altına alınması, sorumluluk bilincini artırır ve kriz anlarında suçlu aramak yerine çözüme odaklanmayı sağlar.\n\n### 3. Otomatik Hata ve Sapma Bildirimleri\nSistem, belirlenen limitlerin dışına çıkan veya saatinde tamamlanmayan adımlarda ilgili operasyon amirine anında alarm üretmelidir.\n\n---\n\n> [!NOTE]\n> **Operasyon Notu:** Mice Online Sistem, Mice Yönetim Sistemi sürecinde otomasyona geçen kurumsal acentelerde, katılımcı başına düşen operasyonel maliyet **ortalama %34 oranında gerilemektedir**.\n\n---\n\n## Süreç Olgunluk Kontrol Listesi\n\n- [ ] Tüm katılımcı ve operasyon verileri anlık olarak tek bir merkezde toplanıyor mu?\n- [ ] Sahadaki son dakika değişiklikleri anında finans ve yönetim ekranlarına yansıyor mu?\n- [ ] Olası no-show veya aksaklıklarda acil durum prosedürleri önceden tanımlandı mı?\n- [ ] Müşteri temsilcisi telefon trafiğine boğulmadan operasyon durumunu görebiliyor mu?\n\n---\n\n## Özet ve Son Söz\n\nAcentecilikte hız önemlidir; ancak kontrolsüz hız felaket getirir. **Mice Online Sistem, Mice Yönetim Sistemi** sürecinizi dijital omurgaya bağlayarak ekibinize nefes aldırabilir, müşterilerinize ise kusursuz bir deneyim sunabilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Karmaşıklıktan tek düzene Sürecinde Hata Payını Sıfırlayan 5 Kritik Operasyon Adımı",
-        "slug": "karmasikliktan-tek-duzene-surecinde-hata-payini-sifirlayan-5-kritik-operasyon-adimi",
-        "excerpt": "Karmaşıklıktan tek düzene operasyonunda karşılaşılan kronik darboğazlar, sahada test edilmiş çözüm yaklaşımları ve modern acentecilik vizyonu.",
-        "category": "Finans & Kur",
-        "tags": [
-          "TCMB",
-          "Acente Bütçesi",
-          "Kur Sabitleme",
-          "ERP Entegrasyonu"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-17",
-        "published": true,
-        "featured": false,
-        "content": "## Vizyon: Yarının Acentesi Karmaşıklıktan tek düzene Sürecini Nasıl Yönetecek?\n\nTurizm ve etkinlik endüstrisi köklü bir kabuk değişiminin içinde. Yapay zeka ajanları, otomatik görev emirleri, karekodlu geçiş sistemleri ve gerçek zamanlı finansal entegrasyonlar artık geleceğin vizyonu değil, bugünün rekabet şartıdır.\n\nBu yeni düzende **Karmaşıklıktan tek düzene** gibi kritik süreçleri eski usul yöntemlerle yürütmeye çalışmak, yüksek hızla giden bir yarışta el frenini çekili tutmaya benzer. **Seyahat Acentesi Sahipleri & Genel Müdürler** için hazırladığımız bu perspektifte, dönüşümün şifrelerini paylaşıyoruz.\n\n---\n\n## Geleneksel Yaklaşımdan Dijital Ekosisteme Geçiş\n\nAcentelerin büyük çoğunluğu işleri yolunda zannederken arka planda devasa bir iş gücü israfı yaşanmaktadır:\n\n- **Eski Düzen:** Personel gününün %40'ını liste kontrol etmeye, WhatsApp'tan konum sormaya ve excel eşleştirmeye harcar.\n- **Yeni Ekosistem:** Rutin veri aktarımları arka planda robotik süreçlerle yürütülür; personel sadece müşteri memnuniyetine ve özel kriz yönetimine odaklanır.\n\n---\n\n## Karmaşıklıktan tek düzene Alanında 3 İnovasyon Dalgası\n\n### 1. Otonom Bildirim Sistemleri\nMüşterinin uçağı rötar yaptığında bunu manuel kontrol etmek yerine, uçuş takip API'lerinin transfer şoförüne otomatik bildirim atması.\n\n### 2. Dinamik Liste Senkronizasyonu\nOtel rooming listesinde bir isim değiştiğinde, aynı anda kongre kayıt sistemindeki yaka kartının ve gala yemeği masa planının güncellenmesi.\n\n### 3. Akıllı Bütçe Koruma Kalkanı\nOperasyonel bir gider girildiği anda projenin kâr-zarar simülasyonunun canlı olarak güncellenmesi.\n\n---\n\n> [!NOTE]\n> **Sektör Öngörüsü:** Önümüzdeki 2 yıl içinde Karmaşıklıktan tek düzene süreçlerini tam entegre sistemlerle yönetmeyen acentelerin kurumsal müşteri ihale kazanma oranlarının **%50'nin üzerinde düşeceği** tahmin edilmektedir.\n\n---\n\n## Değerlendirme\n\n**Karmaşıklıktan tek düzene** bir külfet değil, doğru kurgulandığında acentenizi rakiplerinizden ayıran en parlak vitrindir. Modern altyapılarla bu süreci sıfır stresli bir başarı hikayesine dönüştürebilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Online MICE acente sistemi Sürecinde Hata Payını Sıfırlayan 5 Kritik Operasyon Adımı",
-        "slug": "online-mice-acente-sistemi-surecinde-hata-payini-sifirlayan-5-kritik-operasyon-adimi",
-        "excerpt": "Online MICE acente sistemi operasyonunda karşılaşılan kronik darboğazlar, sahada test edilmiş çözüm yaklaşımları ve modern acentecilik vizyonu.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "MICE",
-          "Acente",
-          "Dijitalleşme",
-          "Operasyon"
-        ],
-        "readingTime": "6 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-13",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Bir Operasyonun Kaderini Belirleyen Kritik Viraj\n\nMICE ve kurumsal seyahat sektöründe bir projenin başarısı, aylarca süren planlamanın sahada nasıl icra edildiğine bağlıdır. **Online MICE acente sistemi** söz konusu olduğunda, en deneyimli acenteler dahi iletişim kopuklukları veya dağınık veri havuzları nedeniyle beklenmedik krizlerle karşılaşabilmektedir.\n\nÖzellikle **MICE Acenteleri & Operasyon Yöneticileri** için bu süreç; yalnızca operasyonel bir görev değil, müşteriye verilen sözün ve acente itibarının doğrudan sınavıdır. Bu incelememizde, profesyonel bir bakış açısıyla sahadaki kör noktaları teşhis ediyor ve somut çözümler üretiyoruz.\n\n---\n\n## Yaşanmış Saha Senaryosu: Tek Bir Detayın Yarattığı Domino Etkisi\n\nGeçtiğimiz sezon 650 kişilik uluslararası bir organizasyonda yaşanan gerçek bir örneği ele alalım:\n\n- **Sorun:** Katılımcı listesindeki son dakika revizyonları WhatsApp ve e-posta üzerinden parçalı olarak paylaşıldı.\n- **Sonuç:** Sahadaki operasyon ekibi revize edilmemiş eski listeyle hareket ettiği için mükerrer tahsisler ve gereksiz transfer maliyetleri doğdu.\n- **Maliyet Faturası:** Proje kâr marjının %18'i sadece 4 saat içinde kontrolsüzce buharlaştı.\n\nBu vaka bize açıkça gösteriyor ki; **Online MICE acente sistemi** manuel kontrollerle sürdürülemeyecek kadar yüksek dinamizme sahiptir.\n\n---\n\n## Darboğazı Kökten Çözen 3 Dönüşüm Hamlesi\n\n### 1. Bilgi Asimetrisini Bitirin: Tekil Doğruluk Kaynağı (Single Source of Truth)\nFarklı departmanların (muhasebe, saha, proje yöneticisi) aynı anda aynı güncel veriye baktığından emin olun. Excel sayfalarını bilgisayardan bilgisayara göndermek yerine bulut tabanlı ve anlık senkronize olan bir işletim sistemi kurun.\n\n### 2. Canlı Yetki ve Görev Dağılımı\nKim ne zaman hangi işlemi yaptı? Değişiklik kimin onayıyla gerçekleşti? Online MICE acente sistemi sürecinde her adımın kayıt altına alınması, sorumluluk bilincini artırır ve kriz anlarında suçlu aramak yerine çözüme odaklanmayı sağlar.\n\n### 3. Otomatik Hata ve Sapma Bildirimleri\nSistem, belirlenen limitlerin dışına çıkan veya saatinde tamamlanmayan adımlarda ilgili operasyon amirine anında alarm üretmelidir.\n\n---\n\n> [!NOTE]\n> **Operasyon Notu:** Online MICE acente sistemi sürecinde otomasyona geçen kurumsal acentelerde, katılımcı başına düşen operasyonel maliyet **ortalama %34 oranında gerilemektedir**.\n\n---\n\n## Süreç Olgunluk Kontrol Listesi\n\n- [ ] Tüm katılımcı ve operasyon verileri anlık olarak tek bir merkezde toplanıyor mu?\n- [ ] Sahadaki son dakika değişiklikleri anında finans ve yönetim ekranlarına yansıyor mu?\n- [ ] Olası no-show veya aksaklıklarda acil durum prosedürleri önceden tanımlandı mı?\n- [ ] Müşteri temsilcisi telefon trafiğine boğulmadan operasyon durumunu görebiliyor mu?\n\n---\n\n## Özet ve Son Söz\n\nAcentecilikte hız önemlidir; ancak kontrolsüz hız felaket getirir. **Online MICE acente sistemi** sürecinizi dijital omurgaya bağlayarak ekibinize nefes aldırabilir, müşterilerinize ise kusursuz bir deneyim sunabilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Makale: Acentelerin Sahada En Sık Düştüğü Tuzaklar ve Çözüm Yolları",
-        "slug": "makale-acentelerin-sahada-en-sik-dustugu-tuzaklar-ve-cozum-yollari",
-        "excerpt": "Geleneksel yöntemlerle yönetildiğinde ciddi maliyet ve zaman kaybı yaratan Makale sürecini dijitalleştirerek kusursuzlaştırma rehberi.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "Dijitalleşme",
-          "Operasyon",
-          "Acente",
-          "MICE"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-12",
-        "published": true,
-        "featured": false,
-        "content": "## Vizyon: Yarının Acentesi Makale Sürecini Nasıl Yönetecek?\n\nTurizm ve etkinlik endüstrisi köklü bir kabuk değişiminin içinde. Yapay zeka ajanları, otomatik görev emirleri, karekodlu geçiş sistemleri ve gerçek zamanlı finansal entegrasyonlar artık geleceğin vizyonu değil, bugünün rekabet şartıdır.\n\nBu yeni düzende **Makale** gibi kritik süreçleri eski usul yöntemlerle yürütmeye çalışmak, yüksek hızla giden bir yarışta el frenini çekili tutmaya benzer. **Seyahat Acentesi Sahipleri & Genel Müdürler** için hazırladığımız bu perspektifte, dönüşümün şifrelerini paylaşıyoruz.\n\n---\n\n## Geleneksel Yaklaşımdan Dijital Ekosisteme Geçiş\n\nAcentelerin büyük çoğunluğu işleri yolunda zannederken arka planda devasa bir iş gücü israfı yaşanmaktadır:\n\n- **Eski Düzen:** Personel gününün %40'ını liste kontrol etmeye, WhatsApp'tan konum sormaya ve excel eşleştirmeye harcar.\n- **Yeni Ekosistem:** Rutin veri aktarımları arka planda robotik süreçlerle yürütülür; personel sadece müşteri memnuniyetine ve özel kriz yönetimine odaklanır.\n\n---\n\n## Makale Alanında 3 İnovasyon Dalgası\n\n### 1. Otonom Bildirim Sistemleri\nMüşterinin uçağı rötar yaptığında bunu manuel kontrol etmek yerine, uçuş takip API'lerinin transfer şoförüne otomatik bildirim atması.\n\n### 2. Dinamik Liste Senkronizasyonu\nOtel rooming listesinde bir isim değiştiğinde, aynı anda kongre kayıt sistemindeki yaka kartının ve gala yemeği masa planının güncellenmesi.\n\n### 3. Akıllı Bütçe Koruma Kalkanı\nOperasyonel bir gider girildiği anda projenin kâr-zarar simülasyonunun canlı olarak güncellenmesi.\n\n---\n\n> [!NOTE]\n> **Sektör Öngörüsü:** Önümüzdeki 2 yıl içinde Makale süreçlerini tam entegre sistemlerle yönetmeyen acentelerin kurumsal müşteri ihale kazanma oranlarının **%50'nin üzerinde düşeceği** tahmin edilmektedir.\n\n---\n\n## Değerlendirme\n\n**Makale** bir külfet değil, doğru kurgulandığında acentenizi rakiplerinizden ayıran en parlak vitrindir. Modern altyapılarla bu süreci sıfır stresli bir başarı hikayesine dönüştürebilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında",
-        "slug": "operasyon-finans-kontrol-merkezi-ile-sonuclandirilmasi-gereken-teklifler-sonuclandirilmasi-gereken-projeler-bekleyen-gelir-faturalari-hakkinda-makale-uretlim",
-        "excerpt": "Geleneksel yöntemlerle yönetildiğinde ciddi maliyet ve zaman kaybı yaratan Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim sürecini dijitalleştirerek kusursuzlaştırma rehberi.",
-        "category": "Finans & Kur",
-        "tags": [
-          "Acente Bütçesi",
-          "ERP Entegrasyonu",
-          "Maliyet Yönetimi",
-          "Kur Sabitleme"
-        ],
-        "readingTime": "4 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-10",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Acentelerin Gizli Maliyet Kaçağı — Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim\n\nGörünürde başarılı geçen, müşterinin teşekkür ettiği birçok etkinlik veya transfer operasyonunun ardından muhasebe kayıtları açıldığında acı gerçek ortaya çıkar: **Düşük kâr marjı veya beklenmeyen zararlar.**\n\nBu durumun arkasındaki en büyük fail genellikle **Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim** sürecinde gözden kaçan küçük ama biriken operasyonel sapmalardır. Özellikle **Muhasebe & Finans Yöneticileri** açısından bu makale, acentenin finansal sağlığını korumak adına kritik ipuçları sunmaktadır.\n\n---\n\n## En Sık Yaşanan 3 Operasyonel Tuzak\n\n### 1. Kur ve Zaman Uyumsuzluğu\nTCMB kuru ile piyasa kuru arasındaki makas, projenin onaylandığı gün ile tedarikçiye ödeme yapıldığı gün arasındaki farklar acentenin cebinden çıkar. Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim planlamasında bu dinamik otomatik sabitlenmelidir.\n\n### 2. Şoför, Otel ve Tedarikçi İletişim Kopukluğu\nBir transferin 20 dakika gecikmesi oteldeki check-in kuyruğunu kilitler; check-in kuyruğunun kilitlenmesi salon girişlerini geciktirir. Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim tüm bu zincirin merkezinde yer alır.\n\n### 3. Mükerrer Ödemeler ve Avans Takipsizliği\nSahaya çıkan operasyon sorumlularının yaptığı acil harcamaların fiş/fatura takibi sisteme anında işlenmediğinde, proje sonunda faturasız masraflar acente üzerinde kalır.\n\n---\n\n## Metriklerle Fark: Önce & Sonra\n\n- **Operasyon Hazırlık Süresi:** 14 saatten 2.5 saate düşer (**%82 zaman kazancı**).\n- **Müşteri Revizyon Tepki Hızı:** 45 dakikadan 90 saniyeye iner.\n- **Mali Kaçak Oranı:** Sıfıra yakın denetim doğruluğu.\n\n---\n\n> [!IMPORTANT]\n> **Kritik Hatırlatma:** Bir projenin operasyonel kârı satış masasında değil, sahada Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim gibi kritik operasyonların disiplinle yönetilmesinde kazanılır.\n\n---\n\n## Eylem Planı: Yarın Sabah Nereden Başlamalısınız?\n\n1. **Envanter Çıkarın:** Şu anda Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim için kaç farklı dosya veya mesajlaşma kanalı kullanılıyor?\n2. **Kural Seti Belirleyin:** Hangi harcama veya değişiklik kimin yetkisinde?\n3. **Teknolojiye Emanet Edin:** İnsan hafızasına güvenmek yerine sistem kurallarına güvenin.\n\n---\n\n## Çözüm\n\nCODEICON mimarisi, acentelerin sahada ve masada yaşadığı bu zorlukları kökten çözmek için tasarlanmıştır. Operasyon & Finans Kontrol Merkezi ile sonuçlandırılması gereken teklifler sonuçlandırılması gereken projeler bekleyen gelir faturaları hakkında makale üretlim sürecinizi güvene almak ve acentenizi geleceğe taşımak için modern teknolojilerden yararlanın.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": ".: Acentelerin Sahada En Sık Düştüğü Tuzaklar ve Çözüm Yolları",
-        "slug": "acentelerin-sahada-en-sik-dustugu-tuzaklar-ve-cozum-yollari",
-        "excerpt": "Geleneksel yöntemlerle yönetildiğinde ciddi maliyet ve zaman kaybı yaratan . sürecini dijitalleştirerek kusursuzlaştırma rehberi.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "Operasyon",
-          "Acente",
-          "Dijitalleşme",
-          "MICE"
-        ],
-        "readingTime": "6 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-09",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Acentelerin Gizli Maliyet Kaçağı — .\n\nGörünürde başarılı geçen, müşterinin teşekkür ettiği birçok etkinlik veya transfer operasyonunun ardından muhasebe kayıtları açıldığında acı gerçek ortaya çıkar: **Düşük kâr marjı veya beklenmeyen zararlar.**\n\nBu durumun arkasındaki en büyük fail genellikle **.** sürecinde gözden kaçan küçük ama biriken operasyonel sapmalardır. Özellikle **MICE Acenteleri & Operasyon Yöneticileri** açısından bu makale, acentenin finansal sağlığını korumak adına kritik ipuçları sunmaktadır.\n\n---\n\n## En Sık Yaşanan 3 Operasyonel Tuzak\n\n### 1. Kur ve Zaman Uyumsuzluğu\nTCMB kuru ile piyasa kuru arasındaki makas, projenin onaylandığı gün ile tedarikçiye ödeme yapıldığı gün arasındaki farklar acentenin cebinden çıkar. . planlamasında bu dinamik otomatik sabitlenmelidir.\n\n### 2. Şoför, Otel ve Tedarikçi İletişim Kopukluğu\nBir transferin 20 dakika gecikmesi oteldeki check-in kuyruğunu kilitler; check-in kuyruğunun kilitlenmesi salon girişlerini geciktirir. . tüm bu zincirin merkezinde yer alır.\n\n### 3. Mükerrer Ödemeler ve Avans Takipsizliği\nSahaya çıkan operasyon sorumlularının yaptığı acil harcamaların fiş/fatura takibi sisteme anında işlenmediğinde, proje sonunda faturasız masraflar acente üzerinde kalır.\n\n---\n\n## Metriklerle Fark: Önce & Sonra\n\n- **Operasyon Hazırlık Süresi:** 14 saatten 2.5 saate düşer (**%82 zaman kazancı**).\n- **Müşteri Revizyon Tepki Hızı:** 45 dakikadan 90 saniyeye iner.\n- **Mali Kaçak Oranı:** Sıfıra yakın denetim doğruluğu.\n\n---\n\n> [!IMPORTANT]\n> **Kritik Hatırlatma:** Bir projenin operasyonel kârı satış masasında değil, sahada . gibi kritik operasyonların disiplinle yönetilmesinde kazanılır.\n\n---\n\n## Eylem Planı: Yarın Sabah Nereden Başlamalısınız?\n\n1. **Envanter Çıkarın:** Şu anda . için kaç farklı dosya veya mesajlaşma kanalı kullanılıyor?\n2. **Kural Seti Belirleyin:** Hangi harcama veya değişiklik kimin yetkisinde?\n3. **Teknolojiye Emanet Edin:** İnsan hafızasına güvenmek yerine sistem kurallarına güvenin.\n\n---\n\n## Çözüm\n\nCODEICON mimarisi, acentelerin sahada ve masada yaşadığı bu zorlukları kökten çözmek için tasarlanmıştır. . sürecinizi güvene almak ve acentenizi geleceğe taşımak için modern teknolojilerden yararlanın.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Tekliften Sahaya MICE acentesi için günlük makale yayınlayalım: Kârlılığı Korumanın İpuçları",
-        "slug": "tekliften-sahaya-mice-acentesi-icin-gunluk-makale-yayinlayalim-k-rliligi-korumanin-ipuclari",
-        "excerpt": "MICE acentesi için günlük makale yayınlayalım operasyonunda karşılaşılan kronik darboğazlar, sahada test edilmiş çözüm yaklaşımları ve modern acentecilik vizyonu.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "Acente",
-          "Operasyon",
-          "Dijitalleşme",
-          "MICE"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-08",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Bir Operasyonun Kaderini Belirleyen Kritik Viraj\n\nMICE ve kurumsal seyahat sektöründe bir projenin başarısı, aylarca süren planlamanın sahada nasıl icra edildiğine bağlıdır. **MICE acentesi için günlük makale yayınlayalım** söz konusu olduğunda, en deneyimli acenteler dahi iletişim kopuklukları veya dağınık veri havuzları nedeniyle beklenmedik krizlerle karşılaşabilmektedir.\n\nÖzellikle **MICE Acenteleri & Operasyon Yöneticileri** için bu süreç; yalnızca operasyonel bir görev değil, müşteriye verilen sözün ve acente itibarının doğrudan sınavıdır. Bu incelememizde, profesyonel bir bakış açısıyla sahadaki kör noktaları teşhis ediyor ve somut çözümler üretiyoruz.\n\n---\n\n## Yaşanmış Saha Senaryosu: Tek Bir Detayın Yarattığı Domino Etkisi\n\nGeçtiğimiz sezon 650 kişilik uluslararası bir organizasyonda yaşanan gerçek bir örneği ele alalım:\n\n- **Sorun:** Katılımcı listesindeki son dakika revizyonları WhatsApp ve e-posta üzerinden parçalı olarak paylaşıldı.\n- **Sonuç:** Sahadaki operasyon ekibi revize edilmemiş eski listeyle hareket ettiği için mükerrer tahsisler ve gereksiz transfer maliyetleri doğdu.\n- **Maliyet Faturası:** Proje kâr marjının %18'i sadece 4 saat içinde kontrolsüzce buharlaştı.\n\nBu vaka bize açıkça gösteriyor ki; **MICE acentesi için günlük makale yayınlayalım** manuel kontrollerle sürdürülemeyecek kadar yüksek dinamizme sahiptir.\n\n---\n\n## Darboğazı Kökten Çözen 3 Dönüşüm Hamlesi\n\n### 1. Bilgi Asimetrisini Bitirin: Tekil Doğruluk Kaynağı (Single Source of Truth)\nFarklı departmanların (muhasebe, saha, proje yöneticisi) aynı anda aynı güncel veriye baktığından emin olun. Excel sayfalarını bilgisayardan bilgisayara göndermek yerine bulut tabanlı ve anlık senkronize olan bir işletim sistemi kurun.\n\n### 2. Canlı Yetki ve Görev Dağılımı\nKim ne zaman hangi işlemi yaptı? Değişiklik kimin onayıyla gerçekleşti? MICE acentesi için günlük makale yayınlayalım sürecinde her adımın kayıt altına alınması, sorumluluk bilincini artırır ve kriz anlarında suçlu aramak yerine çözüme odaklanmayı sağlar.\n\n### 3. Otomatik Hata ve Sapma Bildirimleri\nSistem, belirlenen limitlerin dışına çıkan veya saatinde tamamlanmayan adımlarda ilgili operasyon amirine anında alarm üretmelidir.\n\n---\n\n> [!NOTE]\n> **Operasyon Notu:** MICE acentesi için günlük makale yayınlayalım sürecinde otomasyona geçen kurumsal acentelerde, katılımcı başına düşen operasyonel maliyet **ortalama %34 oranında gerilemektedir**.\n\n---\n\n## Süreç Olgunluk Kontrol Listesi\n\n- [ ] Tüm katılımcı ve operasyon verileri anlık olarak tek bir merkezde toplanıyor mu?\n- [ ] Sahadaki son dakika değişiklikleri anında finans ve yönetim ekranlarına yansıyor mu?\n- [ ] Olası no-show veya aksaklıklarda acil durum prosedürleri önceden tanımlandı mı?\n- [ ] Müşteri temsilcisi telefon trafiğine boğulmadan operasyon durumunu görebiliyor mu?\n\n---\n\n## Özet ve Son Söz\n\nAcentecilikte hız önemlidir; ancak kontrolsüz hız felaket getirir. **MICE acentesi için günlük makale yayınlayalım** sürecinizi dijital omurgaya bağlayarak ekibinize nefes aldırabilir, müşterilerinize ise kusursuz bir deneyim sunabilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "title": "Günlük MICE makalesi: Sık Yapılan Hatalar ve Çözüm Stratejileri",
-        "slug": "gunluk-mice-makalesi-sik-yapilan-hatalar-ve-cozum-stratejileri",
-        "excerpt": "Günlük MICE makalesi operasyonunda havalimanı ve otel sahasında gecikmeleri yok eden, şoför koordinasyonunu kolaylaştıran pratik çözümler.",
-        "category": "Acente Yönetimi",
-        "tags": [
-          "Acente",
-          "Verimlilik",
-          "Otomasyon",
-          "Dijitalleşme",
-          "MICE OS"
-        ],
-        "readingTime": "5 dk okuma",
-        "coverImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
-        "publishedAt": "2026-10-08",
-        "published": true,
-        "featured": false,
-        "content": "## Giriş: Günlük MICE makalesi Neden Acenteler İçin Hayati Öneme Sahip?\n\nGünümüz turizm ve kurumsal etkinlik pazarında acentelerin başarısı, yalnızca iyi bir teklif hazırlamakla değil; **Günlük MICE makalesi** gibi kritik süreçleri sıfır hata ve maksimum hızla yönetebilmekle ölçülüyor. Özellikle **Saha & Transfer Operasyon Ekipleri** açısından bakıldığında, manuel yöntemlerle ilerleyen geleneksel iş akışları hem ekiplerin üzerindeki iş yükünü katlamakta hem de öngörülemeyen maliyet açıklarına davetiye çıkarmaktadır.\n\nBu makalemizde; cozum-odakli bir yaklaşımla, Günlük MICE makalesi operasyonunu nasıl dijitalleştirebileceğinizi, karşılaşılan kronik darboğazları ve kurumunuza sağlayacağı somut getirileri detaylandırıyoruz.\n\n---\n\n## Sahada ve Ofiste En Sık Karşılaşılan 4 Kronik Darboğaz\n\nAcente profesyonellerinin günlük temposunda bu alanda en çok vakit ve nakit kaybettiren faktörler şunlardır:\n\n1. **Parçalı İletişim ve Bilgi Kaybı:** WhatsApp grupları, excel kopyaları ve telefon trafiğinde kaybolan anlık değişiklikler.\n2. **Manuel Veri Girişinden Doğan Hatalar:** Listelerin elle girilmesi sırasında yapılan tek bir harf veya saat hatasının zincirleme kriz yaratması.\n3. **Maliyet & Operasyon Belirsizliği:** Proje teklifinin onaylandığı an ile sahanın kapandığı an arasında kontrol dışı masrafların birikmesi.\n4. **Zamanında Müdahale Edilememesi:** Sahadaki son dakika iptallerinin veya gecikmelerinin merkeze geç ulaşması yüzünden no-show veya ceza ödemeleriyle karşılaşılması.\n\n---\n\n## Adım Adım Başarı Stratejisi\n\n### 1. Veri Akışını Tek Bir İşletim Sisteminde Birleştirin\nGünlük MICE makalesi sürecini departmanlar arası bağımsız dosyalardan çıkarıp entegre bir platforma taşımak, mükerrer işleri %100 engeller. Bir veri bir kez girildiğinde operasyon, saha ve finans ekranlarına anında yansımalıdır.\n\n### 2. Canlı Entegrasyonlar ve Otonom Bildirimleri Kullanın\n- **Anlık Uyarılar:** Değişiklik olduğu anda ilgili personele otomatik bildirim iletin.\n- **Dinamik Raporlama:** Sürecin her adımında onay durumlarını ve gerçekleşen rakamları canlı izleyin.\n- **Belge & Liste Uyumu:** Dağınık formatlardaki müşteri verilerini tek tıkla standart formata dönüştürün.\n\n### 3. Rol Bazlı Görev Paylaşımı ve Sorumluluk Ataması\nEkip üyelerinin yalnızca kendi operasyonel alanına odaklanmasını sağlayın. **Saha & Transfer Operasyon Ekipleri** gereksiz bilgi gürültüsünden kurtulduğunda, iş teslim süreleri hızlanır ve müşteri memnuniyeti en üst seviyeye çıkar.\n\n---\n\n> [!NOTE]\n> **Sektörel Tecrübe Notu:** Yapılan saha araştırmalarına göre, Günlük MICE makalesi sürecini otomatikleştiren acenteler operasyonel iş yükünü **%65 oranında azaltmakta** ve tekliften operasyona geçiş süresini 3 kat hızlandırmaktadır.\n\n---\n\n## Süreç Kontrol ve Uygulama Listesi\n\nAcentenizde bu süreci devreye alırken aşağıdaki maddeleri kontrol ettiğinizden emin olun:\n\n- [x] Tüm ekip için ortak ve tekil bir operasyonel veri kaynağı tanımlandı mı?\n- [x] Müşteri ve tedarikçi tarafındaki anlık güncellemeler otomatik kaydediliyor mu?\n- [x] Olası risklere karşı sözleşme ve operasyonel onay adımları netleştirildi mi?\n- [x] Saha personeli ve merkez ofis arasında canlı iletişim köprüsü kuruldu mu?\n\n---\n\n## Sonuç ve Özet Değerlendirme\n\n**Günlük MICE makalesi** konusunu geleneksel kağıt-kalem veya excel mantığıyla yönetmek yerine modern bir teknolojik altyapıya emanet etmek, acentenizin marka prestijini yükseltirken finansal kârlılığınızı da garanti altına alır. CODEICON olarak sunduğumuz modüler acente işletim sistemiyle bu süreçleri dakikalar içinde sorunsuz bir iş akışına dönüştürebilirsiniz.",
-        "author": {
-          "name": "CODEICON Ekibi",
-          "role": "MICE & Teknoloji Editörü",
-          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-        }
-      },
-      {
-        "id": "post-1",
-        "slug": "mice-operasyonlarinda-tcmb-canli-kur-sabitleme-stratejileri",
-        "title": "MICE Operasyonlarında TCMB Canlı Kur ve Sabitleme Stratejileri",
-        "excerpt": "Dövizli kongre ve grup operasyonlarında kur dalgalanmalarına karşı acente kârlılığını korumanın ve faturalama süreçlerini otomatikleştirmenin yolları.",
-        "category": "Finans & Operasyon",
-        "tags": [
           "TCMB",
           "Kur Sabitleme",
-          "MICE Finans",
-          "ERP"
+          "Acente Finansı",
+          "Döviz Riski"
         ],
+        "readingTime": "6 dk okuma",
         "coverImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&auto=format&fit=crop&q=80",
         "author": {
-          "name": "Anılay Acıkavak",
-          "role": "Operasyon Direktörü",
+          "name": "CODEICON Ekibi",
+          "role": "MICE & Finans Direktörü",
           "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
         },
-        "publishedAt": "2026-10-08",
-        "readingTime": "5 dk okuma",
+        "publishedAt": "2026-11-12",
         "published": true,
         "featured": true,
-        "content": "## Döviz Dalgalanması ve MICE Acentelerinin En Büyük Riski\n\nKongre ve kurumsal etkinlik yönetiminde (MICE), bütçenin aylar öncesinden döviz (EUR/USD) üzerinden belirlenip tahsilatın ve tedarikçi ödemelerinin farklı tarihlerde TL veya döviz olarak yapılması, acenteler için ciddi kur farkı zararlarına yol açabilmektedir.\n\nBirçok acente, Excel tablolarında manuel girilen kurlarla veya teklif tarihindeki kurla işlem yapmaya çalıştığında faturanın kesildiği gün ile ödeme günü arasındaki kur farkı nedeniyle proje kârlılığının %15 ila %30'unu kaybedebilmektedir.\n\n### Çözüm: Proje Bazlı Otomatik Kur Sabitleme\n\nCODEICON ile acenteler, TCMB (Türkiye Cumhuriyet Merkez Bankası) API entegrasyonu sayesinde şu avantajları elde eder:\n\n1. **Giriş Günü (Check-in) Kur Kilitleme:** Misafirlerin otele giriş yaptığı günkü TCMB efektif satış kuru sistem tarafından otomatik çekilir ve projeye kilitlenir.\n2. **Tedarikçi ile Anlık Mutabakat:** Otel, rehber, transfer ve restoran tedarikçilerine kesilecek faturalar kilitlenen kur üzerinden tek tuşla doğrulanır.\n3. **ERP & Muhasebe Köprüsü:** Logo, Netsis ve Dia gibi ERP sistemlerine onaylanan faturalar tam kur tutarıyla çift yönlü aktarılır.\n\n> \"Kur sabitleme sistemi sayesinde 180 kişilik bir tıp kongresinde beklenmedik 42.000 TL'lik kur farkı kaybını tamamen engelledik.\"\n\n### Geleceğe Yönelik Tavsiyeler\n\nAcentenizin finansal sağlığını korumak için teklif sözleşmelerine mutlaka **TCMB giriş kuru maddesi** ekleyin ve operasyon yazılımınızın canlı kur API bağlantısını kontrol edin."
+        "content": "## Giriş: MICE Acentelerinde Kur Dalgalanması ve Kâr Erozyonu\n\nKurumsal etkinlik, kongre ve bayi toplantısı (MICE) organizasyonlarında bütçe çoğunlukla aylar öncesinden döviz (EUR/USD/GBP) üzerinden kararlaştırılırken; yerel tedarikçilere (otel, transfer, restoran, rehber) yapılan ödemeler ve müşteri tahsilatları farklı tarihlerde Türk Lirası veya çapraz kur üzerinden gerçekleşmektedir.\n\nBirçok acente, Excel tablolarında manuel girilen kurlarla işlem yapmaya çalıştığında, **teklif tarihi ile otel faturasının kesildiği gün arasındaki kur farkı nedeniyle proje kârlılığının %15 ila %30'unu kontrolsüzce kaybetmektedir.**\n\n---\n\n## TCMB Canlı Kur Motoru Nasıl Çalışır?\n\nCODEICON MICE Agency OS, Türkiye Cumhuriyet Merkez Bankası (TCMB) resmi kur servisiyle doğrudan entegredir:\n\n1. **Giriş Günü (Check-in) Kur Kilitleme:** Misafirlerin otele giriş yaptığı günkü TCMB saat 15:30 bültenindeki efektif satış kuru sistem tarafından otomatik çekilir ve ilgili projeye mühürlenir.\n2. **Tedarikçi ile Anlık Mutabakat:** Otel, araç filosu ve yan hizmet tedarikçilerine kesilecek faturalar kilitlenen kur üzerinden kuruşu kuruşuna doğrulanır.\n3. **ERP & Muhasebe Köprüsü:** Logo, Netsis, Dia ve Sejour gibi turizm muhasebe sistemlerine onaylanan faturalar tam kur tutarıyla çift yönlü aktarılır.\n\n```\n[Müşteri Teklifi] ---> [TCMB Check-in Kuru Kilitleme] ---> [Tedarikçi Faturası Doğrulama] ---> [Muhasebe ERP Aktarımı]\n```\n\n---\n\n## Kur Riski Önleme Kontrol Listesi\n\n- [x] Sözleşmelere TCMB check-in günü efektif satış kuru maddesi eklendi mi?\n- [x] Dövizli harcamalar tekil bir bütçe havuzunda konsolide ediliyor mu?\n- [x] Tedarikçi faturaları gelmeden önce sistemde kur farkı simülasyonu yapıldı mı?\n- [x] Muhasebe departmanı ile operasyon ekibi aynı güncel kur verisine bakıyor mu?\n\n> [!NOTE]\n> **Sektörel Sonuç:** CODEICON TCMB kur kilitleme motorunu kullanan kurumsal MICE acentelerinde, kur farkından kaynaklanan beklenmedik maliyet açıkları **%100 oranında engellenmektedir**."
       },
       {
-        "id": "post-2",
-        "slug": "otomatik-transfer-ve-sofor-whatsapp-gorev-emri",
-        "title": "Saha Transferlerinde Sıfır Hata: Şoför WhatsApp Görev Emri Otomasyonu",
-        "excerpt": "Rötarlı uçuşlar, değişen havalimanı transferleri ve yüzlerce kişilik yolcu listelerinde şoför iletişimini nasıl %100 otonom hale getirebilirsiniz?",
-        "category": "Saha & Transfer",
+        "id": "post-mice-2",
+        "slug": "saha-transferlerinde-sifir-hata-thy-pegasus-ucus-api-ve-whatsapp-sofor-gorev-emri",
+        "title": "Saha Transferlerinde Sıfır Hata: THY/Pegasus Uçuş API ve WhatsApp Şoför Görev Emri Otomasyonu",
+        "excerpt": "Havalimanı karşılamalarında rötarlı uçuşları anlık tespit eden ve şoförlere tek tıkla dinamik WhatsApp görev emri ileten saha yönetim mimarisi.",
+        "category": "Saha Operasyonu",
         "tags": [
-          "Transfer",
-          "WhatsApp",
-          "Saha Operasyonu",
-          "Uçuş API"
+          "Transfer Operasyonu",
+          "WhatsApp Görev Emri",
+          "Uçuş API",
+          "MICE OS",
+          "Saha Yönetimi"
         ],
+        "readingTime": "5 dk okuma",
         "coverImage": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop&q=80",
         "author": {
-          "name": "Haki Tokul",
+          "name": "CODEICON Ekibi",
           "role": "Saha Koordinatörü",
           "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
         },
-        "publishedAt": "2026-10-06",
-        "readingTime": "4 dk okuma",
+        "publishedAt": "2026-11-11",
         "published": true,
         "featured": false,
-        "content": "## Havalimanı Karşılamalarında Yaşanan Klasik Sorunlar\n\nBüyük ölçekli etkinliklerde aynı gün içerisinde 50 farklı uçuşla gelen 300 misafirin transferini organize etmek, operasyon ekiplerinin en yoğun stres yaşadığı anlardan biridir.\n\nUçak rötarları, terminal değişiklikleri ve şoförlerin güncel isim listelerine ulaşamaması sık sık karşılaşılan aksaklıklardır.\n\n### WhatsApp Otomasyonu ile Anlık Görev Emri\n\nCODEICON Saha Modülü, THY ve Pegasus API bağlantısı sayesinde uçuş saatlerindeki rötarları gerçek zamanlı algılar:\n\n- **Otonom Saat Revizyonu:** Uçak 45 dakika rötarlı indiğinde transfer karşılama saati sistemde otomatik güncellenir.\n- **Şoföre Tek Tıkla WhatsApp Görev Emri:** Şoföre araç plakası, misafir ismi, uçuş kodu ve özel karşılama tabelası tek tıkla WhatsApp şablonuyla iletilir.\n- **QR Kodlu Yolcu Doğrulama:** Araca binen misafirler QR kod okutularak sisteme \"Karşılandı\" olarak işlenir."
+        "content": "## Havalimanı Karşılamalarında Yaşanan Klasik Krizler\n\nBüyük ölçekli kurumsal organizasyonlarda aynı gün içinde 30 farklı şehirden gelen yüzlerce misafirin transferini koordine etmek, operasyon amirlerinin en yoğun stres yaşadığı anlardan biridir:\n\n- **Uçak Rötarları:** Uçak 45 dakika rötar yaptığında şoförün bundan haberi olmaz ve erken gidip otopark/bekleme maliyeti yaratır veya terminali terk eder.\n- **WhatsApp Bilgi Kirliliği:** Excel kopyaları ve ekran görüntüleri şoför gruplarında kaybolur; yanlış yolcu yanlış araca biner.\n- **İsim Listesi Uyuşmazlığı:** Karşılama tabelasında eksik veya yanlış yazılan isimler kurumsal müşteri nezdinde marka prestijini zedeler.\n\n---\n\n## CODEICON Otonom Saha Motoru Çözümü\n\nCODEICON MICE Agency OS, THY ve Pegasus uçuş takip API'lerini doğrudan operasyon havuzuna bağlar:\n\n1. **Canlı Rötar Algılama:** Uçuş saatindeki revizyon tespit edildiğinde karşılama saati ve araç kalkış zamanı sistemde otomatik ötelenir.\n2. **Tek Tıkla WhatsApp Görev Emri:** Şoföre araç plakası, misafir isimleri, uçuş kodu, terminal kapısı ve özel karşılama tabelası tek tıkla şablon mesaj olarak WhatsApp üzerinden iletilir.\n3. **QR Kodlu Karşılama Doğrulaması:** Araca binen misafirler QR kod okutularak sisteme \"Karşılandı\" olarak işlenir; merkez ofis canlı gösterge panelinden anlık araç doluluğunu izler."
       },
       {
-        "id": "post-3",
-        "slug": "matbu-excel-listelerinden-tek-tikla-rooming-yukleme",
-        "title": "Yüzlerce Kişilik Oda (Rooming) Listelerini Excel'den Tek Tıkla Sisteme Aktarma",
-        "excerpt": "Müşterilerden gelen dağınık Excel formatlarını veri kaybı yaşamadan tek tıkla ayrıştıran akıllı içe aktarım rehberi.",
+        "id": "post-mice-3",
+        "slug": "excel-cilesine-son-yuzlerce-kisilik-oda-rooming-listelerini-tek-tikla-sisteme-aktarma",
+        "title": "Excel Çilesine Son: Yüzlerce Kişilik Oda (Rooming) Listelerini Tek Tıkla Sisteme Aktarma",
+        "excerpt": "Farklı formatlardaki müşteri Excel şablonlarını veri kaybı olmadan Sejour ve otel standartlarına dönüştüren akıllı veri eşleme rehberi.",
         "category": "Acente Teknolojileri",
         "tags": [
-          "Excel",
-          "Rooming",
+          "Rooming List",
           "Otel Yönetimi",
-          "Veri Aktarımı"
+          "Excel Haritalama",
+          "MICE Acente Yazılımı",
+          "Otomasyon"
         ],
+        "readingTime": "5 dk okuma",
         "coverImage": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80",
         "author": {
-          "name": "Tayfun Kürtür",
+          "name": "CODEICON Ekibi",
           "role": "Yazılım Direktörü",
           "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
         },
-        "publishedAt": "2026-10-04",
-        "readingTime": "3 dk okuma",
+        "publishedAt": "2026-11-10",
         "published": true,
         "featured": false,
-        "content": "## Excel Çilesine Son Veren Akıllı Veri Haritalama\n\nKurumsal müşterilerin her biri kendi şirket şablonunda bir oda listesi gönderir: kimisinde T.C. kimlik numarası ilk sütundadır, kimisinde ad-soyad birleşiktir, kimisinde ise oda tipi belirtilmemiştir.\n\nOperasyon ekipleri bu listeleri otel şablonuna uydurmak için saatlerce kopyala-yapıştır yapmak zorunda kalır.\n\n### CODEICON Matbu Excel İçe Aktarıcı Nasıl Çalışır?\n\n1. **Sütun Eşleme Motoru:** Dosyayı sürükleyip bıraktığınızda sistem sütun başlıklarını otomatik tanır.\n2. **Hata Yakalama (Data Validation):** Eksik T.C., hatalı giriş-çıkış tarihi veya mükerrer isimleri kırmızı ile vurgular.\n3. **Tek Tıkla Projeye Atama:** Onaylanan liste Sejour veya otel formatına dönüştürülerek projeye bağlanır."
+        "content": "## Kurumsal Müşterilerin Dağınık Excel Dosyaları\n\nHer kurumsal müşteri kendi şirket formatında bir oda listesi gönderir:\n- Kimisinde Ad ve Soyad tek sütundadır, kimisinde ayrıdır.\n- T.C. kimlik numaraları veya pasaport numaraları eksik ya da hatalıdır.\n- Oda tipleri (Single, Double, Twin, Suit) otelin kullandığı kodlarla uyuşmaz.\n- Giriş-çıkış tarihleri farklı yazım formatlarındadır (DD.MM.YYYY vs YYYY/MM/DD).\n\nOperasyon ekipleri bu listeleri otel şablonuna uydurmak için saatlerce manuel kopyala-yapıştır yapmak zorunda kalır ve insan kaynaklı hatalar yüzünden check-in sırasında misafirler kapıda bekletilir.\n\n---\n\n## Akıllı Veri Eşleme ve Ayrıştırma Motoru\n\nCODEICON Rooming Modülü bu süreci saniyeler seviyesine indirir:\n\n- **Akıllı Başlık Tanıma:** Sürükleyip bıraktığınız Excel dosyasındaki sütun başlıklarını (İsim, TC, Giriş, Çıkış, Oda Tipi) otomatik analiz eder ve eşleştirir.\n- **Kritik Doğrulama (Data Validation):** Eksik TC/Pasaport, çakışan tarihler veya mükerrer isimleri kırmızı uyarı ile vurgulayarak düzeltmenizi sağlar.\n- **Sejour & Otel Formatına Tek Tıkla Dönüştürme:** Onaylanan liste Sejour sistemine veya otelin istediği resmi matbu formata dönüştürülerek doğrudan otele iletilir."
+      },
+      {
+        "id": "post-mice-4",
+        "slug": "acentelerde-proje-bazli-karlilik-etkinlik-aktivite-butcesi-ve-tedarikci-cari-mutabakati",
+        "title": "Acentelerde Proje Bazlı Kârlılık: Etkinlik & Aktivite Bütçesi ve Tedarikçi Cari Mutabakatı",
+        "excerpt": "Kongre ve bayi toplantılarında sahne, ses, otel ve transfer maliyetlerini tek tabloda konsolide ederek proje net kârlılığını garanti altına alma.",
+        "category": "Acente Yönetimi",
+        "tags": [
+          "Proje Bütçeleme",
+          "MICE Yönetim Sistemi",
+          "Tedarikçi Mutabakatı",
+          "Cari Yönetim",
+          "ERP"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "MICE & Teknoloji Editörü",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-09",
+        "published": true,
+        "featured": false,
+        "content": "## Proje Kapandıktan Sonra Ortaya Çıkan Gizli Maliyetler\n\nMICE acentelerinin en büyük kabuslarından biri, operasyon başarıyla bittikten haftalar sonra gelen beklenmedik tedarikçi faturalarıdır (ekstra salon kirası, jeneratör yakıtı, rehber mesaisi, araç bekleme ücreti).\n\nOperasyon sırasında anlık bütçeye işlenmeyen bu kalemler, projenin %25 olarak hedeflenen kâr marjını %5'e kadar düşürebilmektedir.\n\n### CODEICON Inline Bütçe ve Tedarikçi Havuzu\n\n- **Tek Ekrandan Hızlı Giriş:** Excel rahatlığında çalışan inline tablo görünümü ile tüm etkinlik harcamaları tek tuşla girilir.\n- **Tutar x Kur Otomatik TL Karşılığı:** Dövizli girilen tedarikçi kalemleri proje kuruyla çarpılarak anlık bütçeye yansıtılır.\n- **Avans ve Fatura Kilit Sistemi:** Ödenen avanslar tedarikçi cari kartına otomatik işlenir; faturası gelmeyen kalemler kırmızı alarm verir."
+      },
+      {
+        "id": "post-kongre-1",
+        "slug": "kongre-ve-sempozyumlar-icin-cok-musterili-bagimsiz-domainli-web-mimarisi",
+        "title": "Kongre ve Sempozyumlar İçin Çok Müşterili (Multi-Tenant) Bağımsız Domainli Web Mimarisi",
+        "excerpt": "Dernek ve acentelerin tek altyapıdan kendi özel alan adlarıyla (kongre2026.org) tam teşekküllü etkinlik sitesi açmasını sağlayan modern SaaS mimarisi.",
+        "category": "Kongre Teknolojileri",
+        "tags": [
+          "Kongre Yönetim Sistemi",
+          "Multi-Tenant SaaS",
+          "Özel Domain",
+          "Etkinlik Yazılımı",
+          "KONGRE"
+        ],
+        "readingTime": "6 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Kongre Teknolojileri Direktörü",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-08",
+        "published": true,
+        "featured": true,
+        "content": "## Her Kongre İçin Sıfırdan Web Sitesi Yapma Devri Bitti\n\nGeleneksel kongre organizasyonlarında her sempozyum veya uluslararası kongre için web ajanslarına gidilip sıfırdan site yaptırılır; bu süreç haftalarca sürer ve yüz binlerce liralık maliyet yaratır. Üstelik kayıt formları, bildiri gönderme sistemleri ve ödeme altyapıları siteye yama şeklinde entegre edildiğinde güvenlik açıkları ve veri kayıpları kaçınılmaz olur.\n\n---\n\n## KONGRE Cloud Çok Kiracılı (Multi-Tenant) Mimarisi\n\nKONGRE SaaS, derneklerin ve acentelerin dakikalar içinde kendi markaları ve özel alan adlarıyla site açmasını sağlar:\n\n1. **Özel Alan Adı (Custom Domain) & Otomatik SSL:** Örneğin `kardiyoloji2026.org` alan adınızı CNAME ile bağladığınız anda sistem Let's Encrypt SSL sertifikasını otomatik üretir.\n2. **Hazır Blok Editörü & Tema Kataloğu:** Kongre kurulları, davetli konuşmacılar, bilimsel program takvimi ve sponsor logoları kod yazmadan görsel bloklarla dizilir.\n3. **Merkezi Katılımcı Veritabanı:** Farklı yıllarda düzenlenen kongrelerin katılımcı ve bildiri verileri tek bir güvenli müşteri havuzunda toplanır; böylece bir sonraki kongrenin duyurusu tek tıkla eski katılımcılara ulaştırılır."
+      },
+      {
+        "id": "post-kongre-2",
+        "slug": "bilimsel-kongrelerde-bildiri-abstract-toplama-cift-kor-hakem-ve-oturum-yonetimi",
+        "title": "Bilimsel Kongrelerde Bildiri (Abstract) Toplama, Çift Kör Hakem ve Oturum Yönetimi",
+        "excerpt": "Akademik ve tıbbi kongrelerde sözel/poster bildiri süreçlerini, çift kör hakem puanlamasını ve salon yerleşimini dijitalleştiren uçtan uca rehber.",
+        "category": "Kongre Teknolojileri",
+        "tags": [
+          "Bildiri Yönetimi",
+          "Abstract Sistemi",
+          "Hakem Değerlendirme",
+          "Bilimsel Program",
+          "Kongre SaaS"
+        ],
+        "readingTime": "6 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Akademik Koordinatör",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-07",
+        "published": true,
+        "featured": false,
+        "content": "## Bildiri Süreçlerinde Yaşanan Kaos\n\nBüyük ölçekli bilimsel kongrelerde 500 ila 2.000 arasında sözel ve poster bildiri toplanır. Bu bildirilerin e-posta üzerinden toplanması ve hakemlere Word dosyası olarak dağıtılması tam bir felakettir:\n- Hakemlerin kimlikleri yazarlara sızabilir (Çift kör hakemlik ilkesi ihlal edilir).\n- Revizyon takibi kaybolur; hangi hakemin hangi bildiriye kaç puan verdiği karışır.\n- Kabul edilen bildirilerin salonlara ve oturumlara atanması günlerce sürer.\n\n---\n\n## KONGRE Abstract ve Hakem Motoru\n\n- **Çift Kör (Double-Blind) Hakemlik:** Yazarın adı ve kurumu hakemlerden, hakemin adı ise yazardan otomatik gizlenir.\n- **Parametrik Puanlama Cetveli:** Bilimsel kurulun belirlediği kriterlere (Özgünlük, Metodoloji, Sonuçlar) göre hakemler online puanlama yapar.\n- **Tek Tıkla Kabul/Ret Mektupları:** Onaylanan bildiri sahiplerine otomatik onay mektubu ve sunum saati iletilir.\n- **Dinamik Kongre Bildiri Kitapçığı (Abstract Book):** Onaylanan tüm bildiriler tek tıkla sayfa numaraları ve indeksleriyle PDF kitapçık haline getirilir."
+      },
+      {
+        "id": "post-kongre-3",
+        "slug": "kongre-sahasinda-hizli-akredite-qr-kodlu-akilli-gecis-yaka-karti-ve-katilimci-portali",
+        "title": "Kongre Sahasında Hızlı Akredite: QR Kodlu Akıllı Geçiş, Yaka Kartı ve Katılımcı Portalı",
+        "excerpt": "Kayıt masalarındaki uzun sıraları yok eden QR akredite, anlık termal yaka kartı baskısı ve kişisel katılımcı ajandası teknolojileri.",
+        "category": "Etkinlik Yönetimi",
+        "tags": [
+          "QR Akredite",
+          "Yaka Kartı Basımı",
+          "Katılımcı Portalı",
+          "Kayıt Masası",
+          "Saha Otomasyonu"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Saha Operasyon Direktörü",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-06",
+        "published": true,
+        "featured": false,
+        "content": "## Kayıt Masalarındaki Kuyruklar Marka İtibarını Vuruyor\n\nSabah saat 08:30'da kongre merkezine aynı anda giriş yapan 1.500 doktor veya kurumsal delegenin yaka kartı arama masalarında dakikalarca beklemesi, organizasyonun ilk dakikadan negatif puan almasına sebep olur.\n\n### KONGRE 3 Saniyede Akredite Sistemi\n\n1. **SMS / WhatsApp QR Bileti:** Katılımcı alana yaklaşırken telefonuna kişisel QR kodlu giriş kartı iletilir.\n2. **Kiosktan veya Bankodan Anlık Baskı:** Masadaki tablete veya QR okuyucuya telefon tutulduğu anda termal yaka kartı 3 saniyede basılır.\n3. **Kişisel Katılımcı Portalı:** Katılımcı giriş yaptıktan sonra cebinden hangi salonda hangi oturum olduğunu, kayıtlı olduğu workshop'ları ve havalimanı dönüş transfer saatini canlı görür."
+      },
+      {
+        "id": "post-kongre-4",
+        "slug": "etkinlik-sponsorluk-yonetimi-sponsor-firma-portali-stant-yerlesimi-ve-davetli-kotalari",
+        "title": "Etkinlik Sponsorluk Yönetimi: Sponsor Firma Portalı, Stant Yerleşimi ve Davetli Kotaları",
+        "excerpt": "Kongre ve kurumsal etkinliklerde sponsor firmaların stant alanlarını, dijital materyallerini ve davetli kotalarını bağımsız portallarından yönetmesi.",
+        "category": "Kongre Teknolojileri",
+        "tags": [
+          "Sponsor Yönetimi",
+          "Stant Yerleşimi",
+          "Davetli Kotası",
+          "Kongre SaaS",
+          "Kurumsal Etkinlik"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Sponsorluk Koordinatörü",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-05",
+        "published": true,
+        "featured": false,
+        "content": "## Sponsorluk Süreçlerinde Kota ve İletişim Karmaşası\n\nBir kongrede 20 farklı ilaç veya teknoloji firması sponsor olduğunda; her birinin paketine göre kaç davetli getirebileceği, stant görevlilerinin kimler olacağı ve web sitesine konulacak yüksek çözünürlüklü logoların toplanması organizatörün günlerini alır.\n\n### KONGRE Bağımsız Sponsor Portalı\n\n- **Firma Özel Portalı:** Sponsor firmaya özel bir yönetim linki verilir. Firma yetkilisi sisteme girerek kendi logosunu, broşürlerini ve tanıtım videosunu yükler.\n- **Kota Kontrolü:** Örneğin Platin sponsora tanımlanan 10 kişilik ücretsiz delege kotası dolduğunda sistem otomatik olarak ek kayıtları ücretlendirir.\n- **İnteraktif Stant Haritası:** Sponsorlar fuaye alanındaki boş stantları plan üzerinden görerek yerleşim seçimini online tamamlar."
+      },
+      {
+        "id": "post-arch-1",
+        "slug": "mimarlik-ofislerinde-musteri-tasarim-dondurma-design-freeze-ve-token-korumali-dijital-onay",
+        "title": "Mimarlık Ofislerinde Müşteri Tasarım Dondurma (Design Freeze) ve Token Korumalı Dijital Onay",
+        "excerpt": "Müşterinin bitmek bilmeyen son dakika revizyonlarını engelleyen, röleve'den ruhsata aşamaları kilitleyen yasal dijital onay mekanizması.",
+        "category": "Mimarlık & Proje",
+        "tags": [
+          "ARCH OS",
+          "Design Freeze",
+          "Tasarım Dondurma",
+          "Mimarlık Ofis Yazılımı",
+          "Proje Yönetimi"
+        ],
+        "readingTime": "6 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Baş Mimar & ARCH OS Lideri",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-04",
+        "published": true,
+        "featured": true,
+        "content": "## Mimarların En Büyük Çilesi: 'Scope Creep' ve Bitmeyen Revizyonlar\n\nİç mimarlık ve mimari proje stüdyolarında projenin en büyük kâr düşmanı, inşaat veya uygulama aşamasına geçildikten sonra işverenin \"Banyodaki seramiğin rengini değiştirelim\", \"Mutfak adasını sola kaydıralım\" gibi geriye dönük istekleridir.\n\nBu istekler resmi olarak kayıt altına alınmadığında mimarlık ofisi hem zaman kaybeder hem de sahada kırıp dökme masraflarını kendi cebinden karşılamak zorunda kalır.\n\n---\n\n## ARCH OS Design Freeze Protokolü\n\nARCH OS, projeyi 4 ana aşamada dondurarak ilerletir:\n1. **Röleve & Konsept Tasarım**\n2. **Ruhsat & Kesin Proje**\n3. **Uygulama & Detay Çizimleri**\n4. **Şantiye Teslimi**\n\nHer aşama tamamlandığında sistem işverene özel şifreli bir token linki üretir (`/approve/[token]`). İşveren linke tıklar, tasarım paftalarını inceler ve dijital imza/onay verir.\n\n> [!IMPORTANT]\n> **Yasal Kalkan:** Onay verildikten sonra aşama kilitlenir (Freeze). Bundan sonra işverenden gelen her yeni değişiklik sisteme **\"Ek Tasarım Revizyonu\"** olarak işlenir ve otomatik ek bütçe faturası üretilir."
+      },
+      {
+        "id": "post-arch-2",
+        "slug": "santiyede-dijital-devrim-fotograf-ustune-canvas-cizimle-snag-kusur-listesi-ve-taseron-takibi",
+        "title": "Şantiyede Dijital Devrim: Fotoğraf Üstüne Canvas Çizimle Snag (Kusur) Listesi ve Taşeron Takibi",
+        "excerpt": "Şantiye şefinin çektiği fotoğraf üstüne kırmızı kalemle çizim yaparak kusurları ilgili taşerona teslim tarihiyle görev atayan yeni nesil saha sistemi.",
+        "category": "Şantiye Operasyonları",
+        "tags": [
+          "Şantiye Takip Programı",
+          "Snag List",
+          "Punch List",
+          "Şantiye Günlüğü",
+          "Taşeron Yönetimi"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Şantiye Koordinatörü",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-03",
+        "published": true,
+        "featured": false,
+        "content": "## Şantiyedeki Kusurlar Neden Zamanında Düzeltilmez?\n\nŞantiyede yapılan imalat hataları (çatlak sıva, yanlış priz yeri, hatalı su yalıtımı) geleneksel olarak defterlere not alınır veya WhatsApp'tan taşeronlara sözlü söylenir. Birkaç gün sonra bu notlar unutulur ve boya bittikten sonra fark edilen kusur binlerce liralık kırım masrafına yol açar.\n\n### ARCH OS Fotoğraflı Snag (Punch) Listesi\n\n1. **Sahada Fotoğraf Çek:** Şantiye mühendisi cep telefonundan kusurlu imalatın fotoğrafını çeker.\n2. **Canvas Üzerinde İşaretle:** Parmak dokunuşuyla fotoğrafın üzerine kırmızı daire çizer, ok ekler veya not yazar.\n3. **Taşerona Görev Ata:** Kusuru doğrudan \"Alçıpan Taşeronu\"na atar, termin tarihi (örneğin 48 saat) ve lokasyon (Blok A, Daire 4 Salon) belirler.\n4. **Çözüldü Doğrulaması:** Taşeron hatayı düzelttiğinde yeni fotoğrafı yükler; mimar onaylamadan görev kapanmaz."
+      },
+      {
+        "id": "post-arch-3",
+        "slug": "birim-fiyatli-metraj-cetveli-boq-ve-kumulatif-taseron-hakedis-motoru",
+        "title": "Birim Fiyatlı Metraj Cetveli (BOQ) ve Kümülatif Taşeron Hakediş Motoru: Avans Mahsubu & %5 Teminat Kesintisi",
+        "excerpt": "Taşeron hakedişlerinde fazla ödeme riskini sıfırlayan kümülatif metraj hesabı, avans mahsubu ve yasal teminat kesintisi matematiği.",
+        "category": "Şantiye Operasyonları",
+        "tags": [
+          "Taşeron Hakediş Programı",
+          "BOQ Metraj Cetveli",
+          "Avans Mahsubu",
+          "Teminat Kesintisi",
+          "ARCH OS"
+        ],
+        "readingTime": "6 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Maliyet & Hakediş Mühendisi",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-02",
+        "published": true,
+        "featured": false,
+        "content": "## Taşeron Hakedişlerinde En Sık Yapılan Kritik Hatalar\n\nİnşaat ve mimari taahhüt işlerinde taşeronlara yapılan ödemelerde en büyük kayıplar şunlardan kaynaklanır:\n- **Dönemsel değil kümülatif hesaplanmaması:** Önceki hakedişlerde ödenen miktarlar düşülmeden yapılan mükerrer ödemeler.\n- **Avansların unutulması:** İşe başlarken verilen malzeme avansının hakedişten mahsup edilmemesi.\n- **Teminat kesintisinin yapılmaması:** İş tesliminde çıkabilecek kusurlara karşı yasal %5 teminat kesintisinin uygulanmaması.\n\n---\n\n## ARCH OS Hakediş Hesaplama Formülü\n\nARCH OS hakediş motoru her taşeron için kuruşu kuruşuna şu parametrik formülü uygular:\n\n$$\\text{Ödenecek Net Tutar} = (\\text{Kümülatif İmalat Tutarı} - \\text{Önceki Hakedişler}) - \\text{Avans Mahsubu} - \\text{\\%5 Teminat Kesintisi} + \\text{KDV Tevkifatı}$$\n\nTek tıkla resmi hakediş icmali, metraj ataşmanı ve banka ödeme talimatı PDF formatında oluşturulur."
+      },
+      {
+        "id": "post-arch-4",
+        "slug": "anahtar-teslim-insaatta-cift-kasa-modeli-ofis-kasasi-ile-musteri-emanet-escrow-kasasi",
+        "title": "Anahtar Teslim İnşaatta Çift Kasa Modeli: Ofis Kasası ile Müşteri Emanet (Escrow) Kasasının Yasal Ayrımı",
+        "excerpt": "Mimarlık ve müteahhitlik şirketlerinde işveren emanet parasının şirket işletme sermayesine karışmasını engelleyen çift cüzdan finans mimarisi.",
+        "category": "Finans & İnşaat",
+        "tags": [
+          "Çift Kasa",
+          "Emanet Kasa Escrow",
+          "İnşaat Muhasebesi",
+          "Mimarlık Finansı",
+          "Proje Kârlılığı"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Finans Direktörü",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-11-01",
+        "published": true,
+        "featured": false,
+        "content": "## İnşaat Firmalarını İflasa Sürükleyen 'Kasa Karışması'\n\nAnahtar teslim proje yapan birçok ofis, işverenden şantiye masrafları için aldığı 2 milyon lirayı şirketin ana banka hesabına koyar. Bu para ofisin kârı zannedilerek ofis kirası, personel maaşı veya başka projenin borcu için harcanır.\n\nMalzeme alma günü geldiğinde kasada para kalmadığı anlaşılır ve şirket nakit akışı krizine girer.\n\n### ARCH OS Çift Cüzdan (Dual-Wallet) Mimarisi\n\n- **Ofis Kasası (Turnkey Wallet):** Mimarlık ofisinin kendi hakediş kârı, tasarım bedeli ve yönetim komisyonlarının tutulduğu hesap.\n- **İşveren Emanet Kasası (Client Escrow Wallet):** Sadece ve sadece o şantiyenin demir, beton, seramik ve taşeron giderleri için harcanabilen kilitli hesap.\n- **Şeffaf Müşteri Ekstresi:** İşveren istediği an emanet parasının nereye harcandığını fatura görselleriyle online inceler."
+      },
+      {
+        "id": "post-arch-5",
+        "slug": "mimarlik-studyolarinda-fiyat-maskeleme-ve-cizer-mimar-timesheet-maliyet-analizi",
+        "title": "Mimarlık Stüdyolarında Fiyat Maskeleme (Financial Privacy) ve Çizer Mimar Timesheet Maliyet Analizi",
+        "excerpt": "Şantiye şefi ve çizer mimarların metrajı yönetirken şirket kâr marjlarını görmesini engelleyen rol bazlı güvenlik maskelemesi ve saatlik efor hesabı.",
+        "category": "Mimarlık & Proje",
+        "tags": [
+          "Fiyat Maskeleme",
+          "Timesheet",
+          "Mimar Maliyet Hesabı",
+          "ARCH OS",
+          "Ofis Yönetimi"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Yazılım Mimarı",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-31",
+        "published": true,
+        "featured": false,
+        "content": "## Ticari Sırların Ofis İçinde Korunması\n\nMimarlık ofisinde çalışan yeni mezun bir mimar veya şantiye stajyeri, AutoCAD veya Revit paftalarını düzenlerken müşteriye kesilen fatura tutarlarını veya taşeronla anlaşılan birim kâr marjlarını görmemelidir.\n\n### ARCH OS Financial Masking Interceptor\n\n- **Metrajı Gör, Fiyatı Görme:** Çizer mimar metrajı (kaç metrekare parke, kaç adet kapı) görür ve düzenler; fakat birim fiyat ve toplam tutar alanları `***` olarak maskelenir.\n- **Timesheet Saatlik Efor Maliyeti:** Mimarın projeye harcadığı saatler girilir; sistem ofis sahibine o projenin gerçek işçilik maliyetini ve net kârlılığını anlık raporlar."
+      },
+      {
+        "id": "post-bordro-1",
+        "slug": "kktc-2026-gelir-vergisi-paye-mevzuati-70893-asgari-ucret-vergi-korumasi-ve-dilim-hesaplari",
+        "title": "KKTC 2026 Gelir Vergisi (PAYE) Mevzuatı: 70.893 ₺ Asgari Ücret Vergi Koruması ve Dilim Hesapları",
+        "excerpt": "KKTC 24/1982 sayılı Gelir Vergisi Yasası kapsamında 70.893 ₺ asgari ücrete kadar uygulanan tam vergi muafiyeti ve kuruşu kuruşuna Net'ten Brüt'e bordro hesabı.",
+        "category": "KKTC Bordro & İK",
+        "tags": [
+          "KKTC Bordro Programı",
+          "PAYE Gelir Vergisi",
+          "70.893 Asgari Ücret",
+          "BORDRO CY",
+          "KKTC Mevzuatı"
+        ],
+        "readingTime": "6 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "KKTC Bordro & Vergi Uzmanı",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-30",
+        "published": true,
+        "featured": true,
+        "content": "## KKTC Bordro Mevzuatında Türkiye'den Farklı Kritik Kurallar\n\nKuzey Kıbrıs Türk Cumhuriyeti'nde (KKTC) bordro ve maaş hesaplamaları Türkiye mevzuatından tamamen farklı yasal parametrelere dayanır. Türkiye bordro yazılımlarını KKTC'de kullanmaya çalışan şirketler cezai yaptırımlarla ve ciddi vergi cezalarıyla karşılaşmaktadır.\n\n---\n\n## 70.893 ₺ Asgari Ücret Vergi Koruması Nedir?\n\nKKTC 24/1982 sayılı Gelir Vergisi Yasası gereğince; **yürürlükteki brüt asgari ücrete (70.893 ₺) kadar olan kazançlar Gelir Vergisinden (PAYE) tamamen muaftır.**\n\nBir çalışan asgari ücretin üzerinde maaş aldığında dahi asgari ücrete tekabül eden matrah vergiden düşülür ve yalnızca aşan kısım artan oranlı vergi dilimlerine (%10, %20, %25, %30, %37) tabi tutulur.\n\n### BORDRO CY Hassas Hesaplama Motoru\n\nBORDRO CY, KKTC Sosyal Sigortalar Dairesi ve Gelir ve Vergi Dairesi yönergelerine uygun olarak:\n- **Sosyal Sigorta Kesintisi:** KKTC vatandaşı (%9 işçi + %11 işveren), TC vatandaşı (%8.25 işçi + %8.71 işveren), 3. Ülke vatandaşı (%13 işçi + %13 işveren).\n- **İhtiyat Sandığı Kesintisi:** %4 veya %5 işçi primi + %4 veya %5 işveren katkısı.\n- **PAYE Stopajı:** Asgari ücret matrah indirimi kuruşu kuruşuna düşüldükten sonra hesaplanan net stopaj."
+      },
+      {
+        "id": "post-bordro-2",
+        "slug": "kktc-gelir-ve-vergi-dairesi-resmi-form-vd-17a-stopaj-beyannamesi-doldurma-rehberi",
+        "title": "KKTC Gelir ve Vergi Dairesi Resmi Form VD 17a Stopaj Beyannamesi Doldurma ve E-Beyan Rehberi",
+        "excerpt": "KKTC Maliye Bakanlığı Form VD 17a Tablo 1-4 alanları, safi kazanç dökümü ve resmi matbu beyannamenin tek tıkla oluşturulması.",
+        "category": "KKTC Bordro & İK",
+        "tags": [
+          "VD 17a",
+          "Stopaj Beyannamesi",
+          "KKTC Maliye",
+          "BORDRO CY",
+          "E-Bordro"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1450133064473-71024230f91b?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Mevzuat Baş Danışmanı",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-29",
+        "published": true,
+        "featured": false,
+        "content": "## Form VD 17a Nedir?\n\nKKTC Gelir ve Vergi Dairesi'ne her ay verilmesi zorunlu olan **Form VD 17a (Ücretlilerle İlgili Stopaj Beyannamesi)**, işverenin ilgili ayda çalıştırdığı personellerden kestiği PAYE gelir vergilerini beyan ettiği resmi belgedir.\n\n### Beyannamenin 4 Ana Tablosu:\n\n1. **Tablo 1 (Vergi Sorumlusuna Ait Bilgiler):** VKN, Şirket MŞ Tescil No, faaliyet alanı ve kurumsal yasal iletişim bilgileri.\n2. **Tablo 2 (Ödemeler ve Vergiler Özeti):** Toplam brüt maaş ödemesi, toplam sosyal güvence katkıları (SSK + İhtiyat Sandığı), toplam safi kazanç ve hesaplanan stopaj.\n3. **Tablo 3 (Ödenek Elde Eden Kişilerin Ayrıntılı Dökümü):** Her çalışanın kimlik/pasaport no, brüt kazancı, sosyal sigorta kesintisi, hayat sigortası indirimi ve kesilen PAYE vergisi.\n4. **Tablo 4 (Beyan ve Onay):** Vergi sorumlusunun yasal imza alanı.\n\nBORDRO CY, bu formu kuruş hatası olmadan tek tıkla resmi matbu PDF ve Gelir ve Vergi Dairesi e-beyan XML/Excel formatında üretir."
+      },
+      {
+        "id": "post-bordro-3",
+        "slug": "kktc-sosyal-sigortalar-dairesi-form-ss14-prim-bordrosu-ve-ihtiyat-sandigi-is-22a",
+        "title": "KKTC Sosyal Sigortalar Dairesi Form SS14 Prim Bordrosu, D1-D2 Bordro Tipleri ve İhtiyat Sandığı İ.S. 22A",
+        "excerpt": "Form SS14 sigorta numarası sıralama kuralı, D1/D2 bordro tipi gruplamaları ve 4 kutulu resmi matbu ücret hesap pusulası.",
+        "category": "KKTC Bordro & İK",
+        "tags": [
+          "Form SS14",
+          "İ.S. 22A",
+          "Sosyal Sigortalar KKTC",
+          "İhtiyat Sandığı",
+          "BORDRO CY"
+        ],
+        "readingTime": "5 dk okuma",
+        "coverImage": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=80",
+        "author": {
+          "name": "CODEICON Ekibi",
+          "role": "Mevzuat Baş Danışmanı",
+          "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
+        },
+        "publishedAt": "2026-10-28",
+        "published": true,
+        "featured": false,
+        "content": "## Form SS14 Sıralama ve Gruplama Kuralları\n\nKKTC Sosyal Sigortalar Dairesi resmi yönergelerine göre hazırlanan **Form SS14 (Aylık Sigorta Primleri Bordrosu)** rastgele doldurulamaz:\n\n- **Bordro Tipi Gruplaması:** Personeller teşvik durumuna ve sigorta prim oranına göre **D1, D2, D3** gibi ayrı bordro sayfalarına bölünmelidir.\n- **Sigorta Numarası Sıralaması:** Sayfa içindeki tüm çalışanlar **Sigorta Sicil Numarasına göre küçükten büyüğe** dizilmek zorundadır.\n\n### Resmi 4 Kutulu Ücret Hesap Pusulası\n\nÇalışanlara verilen bordro pusulaları KKTC Çalışma Bakanlığı standartlarında 4 bağımsız kutudan oluşur:\n1. **Kazançlar:** Aylık Brüt Maaş, Ek Ödenekler, Primler.\n2. **Yasal Kesintiler:** Sigorta İşçi Primi, İhtiyat Sandığı İşçi Primi, Gelir Vergisi (PAYE).\n3. **İşveren Maliyeti:** Sigorta İşveren Payı, İhtiyat Sandığı İşveren Payı, Toplam Personel Maliyeti.\n4. **Net Ödenen:** Çalışanın banka hesabına yatan net tutar.\n\nBORDRO CY, tüm bu resmi matbu formları sıfır hata ve tam yasal güvenceyle üretir."
       }
     ]
   },
@@ -1102,25 +1059,25 @@
     "eyebrow": "MİMARLIK & ŞANTİYE SAAS",
     "statusBadge": "TR & KKTC Standartları",
     "title": "ARCH OS",
-    "headline": "Mimarlık & Şantiye Operasyonları",
-    "subtitle": "Röleve'den ruhsata, şantiye günlüğünden taşeron hakedişine ve dijital tasarım dondurmaya (Design Freeze) mimarlık stüdyolarının bulut işletim sistemi.",
+    "headline": "Mimarlık Ofis & Şantiye Operasyonları",
+    "subtitle": "Röleve'den ruhsata, şantiye günlüğünden taşeron hakedişine ve müşteri tasarım dondurma (Design Freeze) onayına kadar mimarlık ve anahtar teslim inşaat stüdyolarının bulut işletim sistemi.",
     "primaryImage": "/images/arch/arch-dashboard.jpg",
     "secondaryImage": "/images/arch/arch-siteops.jpg",
     "projectsImage": "/images/arch/arch-projects.jpg",
     "logoSvg": "/images/arch/arch-logo.svg",
-    "ctaText": "Demo Talep Et",
+    "ctaText": "Mimarlık Demosu Al",
     "ctaHref": "#contact",
     "pills": [
       "Müşteri Tasarım Dondurma (Design Freeze)",
-      "Fotoğraflı Şantiye Snagging",
-      "Taşeron BOQ & Kümülatif Hakediş Motoru",
-      "Çift Cüzdan (Ofis & Müşteri Emanet Kasası)"
+      "Fotoğraflı Şantiye Snagging (Punch List)",
+      "Taşeron BOQ Metrajı & Hakediş Motoru",
+      "Çift Kasa (Ofis & Müşteri Emanet Kasası)"
     ],
     "highlights": [
-      "Tek tıkla token korumalı müşteri onay linki (/approve/[token])",
-      "Fotoğraf üstüne canvas çizimle anlık kusur (snag) raporlama",
-      "Avans mahsubu, %5 teminat ve KDV tevkifatlı taşeron hakedişi",
-      "TCMB canlı kurları ile çok para birimli proje kârlılık takibi"
+      "Tek tıkla token korumalı müşteri onay linki (/approve/[token]) ile revizyon dondurma",
+      "Şantiyede mobil fotoğraf üstüne canvas çizimle anlık kusur (snag) raporlama",
+      "Avans mahsubu, %5 teminat kesintisi ve KDV tevkifatlı taşeron hakediş raporları",
+      "Ofis Turnkey kasası ile İşveren Escrow kasasını ayıran çift cüzdan mimarisi"
     ]
   },
   "bordro": {
@@ -1129,16 +1086,16 @@
     "statusBadge": "%100 KKTC Mevzuat Uyumlu",
     "title": "BORDRO CY",
     "headline": "KKTC Standartlarında Bulut Bordro & İK ERP",
-    "subtitle": "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız hesaplama ve resmi matbu bildirgeler.",
+    "subtitle": "KKTC Sosyal Sigorta, İhtiyat Sandığı ve Gelir Vergisi (PAYE) mevzuatına tam uyumlu; Net'ten Brüt'e hatasız kuruşu kuruşuna hesaplama ve resmi matbu bildirgeler.",
     "primaryImage": "/images/bordro/bordro-matbu-bos.svg",
     "secondaryImage": "/images/bordro/bordro-matbu-bos.svg",
-    "ctaText": "Demo Talep Et",
+    "ctaText": "Bordro Demosu Al",
     "ctaHref": "#contact",
     "pills": [
       "Net'ten Brüt'e Kuruşu Kuruşuna",
       "70.893 ₺ Asgari Ücret Vergi Koruması",
-      "Resmi SS7, SS8, İ.S.4, VD17A Bildirgeleri",
-      "Toplu Puantaj & 4 Kutulu Pusula"
+      "Resmi VD 17a, SS14, İ.S. 22A Bildirgeleri",
+      "Toplu Puantaj & 4 Kutulu Resmi Pusula"
     ]
   },
   "hepp": {
@@ -1164,6 +1121,30 @@
       "Yakındaki işletmeyi bul, boş saati anında gör",
       "24 saat ve 2 saat kala WhatsApp hatırlatma bildirimi",
       "Lefkoşa, Girne ve Mağusa için tek uygulamada tüm hizmetler"
+    ]
+  },
+  "kongre": {
+    "enabled": true,
+    "eyebrow": "KONGRE & ETKİNLİK SAAS",
+    "statusBadge": "Multi-Tenant Bulut Mimarisi",
+    "title": "KONGRE Cloud",
+    "headline": "Bağımsız Domainli Kongre & Etkinlik SaaS",
+    "subtitle": "Dernekler, acenteler ve kongre organizatörleri için kendi domaininde açılan web sitesi, bilimsel program, bildiri (abstract) hakemliği, QR akıllı geçiş ve sponsor stant yönetim platformu.",
+    "primaryImage": "/images/kongre/kongre-dashboard.png",
+    "secondaryImage": "/images/kongre/kongre-portal.webp",
+    "ctaText": "Kongre Demosu Al",
+    "ctaHref": "#contact",
+    "pills": [
+      "Özel Domain (kongre2026.org) & Tema",
+      "Bildiri (Abstract) & Çift Kör Hakem",
+      "QR Kodlu Hızlı Akredite & Yaka Kartı",
+      "Sponsor Portalı & Stant Kota Dağılımı"
+    ],
+    "highlights": [
+      "Tek altyapıdan sınırsız sayıda bağımsız kongre ve kurumsal etkinlik sitesi açma",
+      "Sözel ve poster bildiri toplama, çift kör hakem puanlaması ve kabul mektupları",
+      "Kayıt masasında sıra bekletmeyen QR kodlu yaka kartı anlık baskı entegrasyonu",
+      "Platin, altın ve gümüş sponsorların kendi kotalarını yönettiği bağımsız portal"
     ]
   }
 }

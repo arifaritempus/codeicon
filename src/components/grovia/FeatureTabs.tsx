@@ -157,77 +157,77 @@ export default function FeatureTabs({ content }: { content?: any }) {
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-bold text-[#1A1A1A] tracking-tight">
-                  {currentTab.mockupType === "team"
-                    ? "TCMB Canlı Finans"
-                    : currentTab.mockupType === "kpi"
-                    ? "Canlı Filo & Transfer"
-                    : currentTab.mockupType === "automation"
-                    ? "MICE Proje Altyapısı"
-                    : "Müşteri Teklif Portalı"}
+                  {currentTab.id === "kongre-os-tab"
+                    ? "KONGRE Cloud SaaS"
+                    : currentTab.id === "arch-os-tab"
+                    ? "ARCH OS Stüdyo & Şantiye"
+                    : currentTab.id === "bordro-cy-tab"
+                    ? "BORDRO CY KKTC ERP"
+                    : "MICE Agency OS Panel"}
                 </h3>
 
                 {/* Form fields mockup */}
                 <div className="space-y-3 pt-1">
                   <div>
                     <label className="text-[11px] font-medium text-[#7A7570] block mb-1">
-                      {currentTab.mockupType === "team"
-                        ? "Kur Durumu"
-                        : currentTab.mockupType === "kpi"
-                        ? "Transfer Güzergahı"
-                        : currentTab.mockupType === "automation"
-                        ? "Organizasyon / Proje"
-                        : "Teklif & Proje Adı"}
+                      {currentTab.id === "kongre-os-tab"
+                        ? "Etkinlik Domaini & Durum"
+                        : currentTab.id === "arch-os-tab"
+                        ? "Tasarım Aşaması & Freeze"
+                        : currentTab.id === "bordro-cy-tab"
+                        ? "Mevzuat Dönemi & Asgari Ücret"
+                        : "TCMB Çek-in Kuru & Bütçe"}
                     </label>
                     <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#2A2A2A] font-medium">
-                      {currentTab.mockupType === "team"
-                        ? "€38.45 (Giriş Günü Sabitlendi)"
-                        : currentTab.mockupType === "kpi"
-                        ? "Antalya Havalimanı - Belek Kongre"
-                        : currentTab.mockupType === "automation"
-                        ? "Uluslararası Tıp Kongresi (MICE)"
-                        : "2026 Bayi Toplantısı Teklifi"}
+                      {currentTab.id === "kongre-os-tab"
+                        ? "https://kongre2026.org (Özel Domain & SSL)"
+                        : currentTab.id === "arch-os-tab"
+                        ? "Uygulama Projesi (Design Freeze Onaylandı)"
+                        : currentTab.id === "bordro-cy-tab"
+                        ? "2026/Eylül (70.893 ₺ Vergi Koruması)"
+                        : "€38.45 (Giriş Günü Sabitlendi)"}
                     </div>
                   </div>
 
                   <div>
                     <label className="text-[11px] font-medium text-[#7A7570] block mb-1">
-                      {currentTab.mockupType === "team"
-                        ? "Fatura Havuzu"
-                        : currentTab.mockupType === "kpi"
-                        ? "Pax Kapasitesi"
-                        : currentTab.mockupType === "automation"
-                        ? "Rooming List"
-                        : "Müşteri Yetkilisi"}
+                      {currentTab.id === "kongre-os-tab"
+                        ? "Bildiri (Abstract) & Hakem"
+                        : currentTab.id === "arch-os-tab"
+                        ? "Şantiye Snag / Kusur Listesi"
+                        : currentTab.id === "bordro-cy-tab"
+                        ? "Resmi Kurum Bildirgeleri"
+                        : "Otel Rooming & Uçuş"}
                     </label>
                     <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#2A2A2A] font-medium">
-                      {currentTab.mockupType === "team"
-                        ? "12 Tedarikçi Faturası Eşleşti"
-                        : currentTab.mockupType === "kpi"
-                        ? "45 / 45 Dolu (1 Ek Minibüs)"
-                        : currentTab.mockupType === "automation"
-                        ? "180 Pax Aktarıldı (0 Hata)"
-                        : "onay@kurumsal-musteri.com"}
+                      {currentTab.id === "kongre-os-tab"
+                        ? "420 Sözel/Poster Bildiri (Çift Kör Hakem)"
+                        : currentTab.id === "arch-os-tab"
+                        ? "14 İmalat Hatası Taşeronlara Atandı"
+                        : currentTab.id === "bordro-cy-tab"
+                        ? "Form VD 17a, SS14 & İ.S. 22A"
+                        : "180 Pax Aktarıldı (0 Hata)"}
                     </div>
                   </div>
 
                   <div>
                     <label className="text-[11px] font-medium text-[#7A7570] block mb-1">
-                      {currentTab.mockupType === "team"
-                        ? "ERP Senkronu"
-                        : currentTab.mockupType === "kpi"
-                        ? "Saha İletişimi"
-                        : currentTab.mockupType === "automation"
-                        ? "Kârlılık Durumu"
-                        : "Onay Linki Durumu"}
+                      {currentTab.id === "kongre-os-tab"
+                        ? "Saha Akredite Durumu"
+                        : currentTab.id === "arch-os-tab"
+                        ? "Hakediş & Kasa Durumu"
+                        : currentTab.id === "bordro-cy-tab"
+                        ? "Hesap Pusulası & Net Ödeme"
+                        : "Saha İletişimi"}
                     </label>
                     <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-emerald-700 font-medium">
-                      {currentTab.mockupType === "team"
-                        ? "✓ Logo / Netsis Entegre"
-                        : currentTab.mockupType === "kpi"
-                        ? "✓ WhatsApp Görev Emri İletildi"
-                        : currentTab.mockupType === "automation"
-                        ? "✓ Net Kâr: %28.4 (Canlı)"
-                        : "✓ Güvenli Token ile Onaylandı"}
+                      {currentTab.id === "kongre-os-tab"
+                        ? "✓ QR Kod ile 3 Saniyede Yaka Kartı Baskısı"
+                        : currentTab.id === "arch-os-tab"
+                        ? "✓ %5 Teminat & Avans Mahsubu Yapıldı"
+                        : currentTab.id === "bordro-cy-tab"
+                        ? "✓ 4 Kutulu Resmi Pusula Kuruşu Kuruşuna"
+                        : "✓ WhatsApp Şoför Görev Emri İletildi"}
                     </div>
                   </div>
                 </div>
