@@ -446,7 +446,7 @@ export default function Hero({
                     <span className="w-2 h-2 rounded-full bg-[#81C784]" />
                     <span className="ml-1 font-mono text-[10px] text-[#605F5F]">app.bordro.cy</span>
                   </div>
-                  <span className="text-[10px] font-semibold text-neutral-600">Resmi Matbu Maaş Bordrosu</span>
+                  <span className="text-[10px] font-semibold text-neutral-600">KKTC Bordro ERP</span>
                 </div>
                 <div className="overflow-hidden rounded-xl bg-white p-1">
                   <img
