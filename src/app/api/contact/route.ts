@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, company, message } = body;
+    const { name, email, phone, company, message, system } = body;
 
     // Validation
     if (!name || typeof name !== "string" || !name.trim()) {
@@ -30,13 +30,24 @@ export async function POST(request: Request) {
       );
     }
 
+    const systemLabels: Record<string, string> = {
+      mice: "MICE Agency OS (Acente & Kur)",
+      kongre: "KONGRE Cloud (Multi-Tenant SaaS)",
+      arch: "ARCH OS (Mimarlık & Şantiye)",
+      bordro: "BORDRO CY (KKTC Bordro ERP)",
+      hepp: "hepp (Akıllı Randevu)",
+      all: "Tüm Ekosistem & Danışmanlık",
+    };
+    const selectedSystemText = system ? systemLabels[system] || system : "Genel Başvuru";
+    const enrichedMessage = `[İlgilenilen Sistem: ${selectedSystemText}]\n\n${message.trim()}`;
+
     // Send email via Hostinger SMTP
     await sendContactEmail({
       name: name.trim(),
       email: email.trim(),
       phone: phone ? String(phone).trim() : undefined,
       company: company ? String(company).trim() : undefined,
-      message: message.trim(),
+      message: enrichedMessage,
     });
 
     return NextResponse.json({

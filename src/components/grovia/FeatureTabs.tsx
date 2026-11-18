@@ -1,7 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Laptop, TrendingUp, Layers, Users, Sparkles, Check, ArrowRight } from "lucide-react";
+import {
+  Laptop,
+  Calendar,
+  Building2,
+  Calculator,
+  Smartphone,
+  TrendingUp,
+  Layers,
+  Users,
+  Sparkles,
+  Check,
+  ArrowRight
+} from "lucide-react";
 
 export default function FeatureTabs({ content }: { content?: any }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -54,12 +66,20 @@ export default function FeatureTabs({ content }: { content?: any }) {
     },
   ];
 
-  const icons = [Laptop, TrendingUp, Layers, Users];
+  const defaultIcons: Record<string, any> = {
+    "mice-os-tab": Laptop,
+    "kongre-os-tab": Calendar,
+    "arch-os-tab": Building2,
+    "bordro-cy-tab": Calculator,
+    "hepp-tab": Smartphone,
+  };
+  const fallbackIcons = [Laptop, Calendar, Building2, Calculator, Smartphone];
+
   const rawTabs = content?.tabs && content.tabs.length > 0 ? content.tabs : defaultTabs;
   const tabs = rawTabs.map((t: any, i: number) => ({
     id: t.id || defaultTabs[i % defaultTabs.length].id,
     label: t.label || defaultTabs[i % defaultTabs.length].label,
-    icon: icons[i % icons.length],
+    icon: defaultIcons[t.id] || fallbackIcons[i % fallbackIcons.length],
     badge: t.mockupBadge || (t.label || defaultTabs[i % defaultTabs.length].label).toUpperCase(),
     title: t.title || defaultTabs[i % defaultTabs.length].title,
     description: t.description || defaultTabs[i % defaultTabs.length].description,
@@ -163,6 +183,8 @@ export default function FeatureTabs({ content }: { content?: any }) {
                     ? "ARCH OS Stüdyo & Şantiye"
                     : currentTab.id === "bordro-cy-tab"
                     ? "BORDRO CY KKTC ERP"
+                    : currentTab.id === "hepp-tab"
+                    ? "hepp Akıllı Randevu"
                     : "MICE Agency OS Panel"}
                 </h3>
 
@@ -176,6 +198,8 @@ export default function FeatureTabs({ content }: { content?: any }) {
                         ? "Tasarım Aşaması & Freeze"
                         : currentTab.id === "bordro-cy-tab"
                         ? "Mevzuat Dönemi & Asgari Ücret"
+                        : currentTab.id === "hepp-tab"
+                        ? "Hizmet & Randevu Zamanı"
                         : "TCMB Çek-in Kuru & Bütçe"}
                     </label>
                     <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#2A2A2A] font-medium">
@@ -185,6 +209,8 @@ export default function FeatureTabs({ content }: { content?: any }) {
                         ? "Uygulama Projesi (Design Freeze Onaylandı)"
                         : currentTab.id === "bordro-cy-tab"
                         ? "2026/Eylül (70.893 ₺ Vergi Koruması)"
+                        : currentTab.id === "hepp-tab"
+                        ? "Saç & Sakal Tasarımı (Bugün 15:30 Onaylandı)"
                         : "€38.45 (Giriş Günü Sabitlendi)"}
                     </div>
                   </div>
@@ -197,6 +223,8 @@ export default function FeatureTabs({ content }: { content?: any }) {
                         ? "Şantiye Snag / Kusur Listesi"
                         : currentTab.id === "bordro-cy-tab"
                         ? "Resmi Kurum Bildirgeleri"
+                        : currentTab.id === "hepp-tab"
+                        ? "İşletme & Uzman Takvimi"
                         : "Otel Rooming & Uçuş"}
                     </label>
                     <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-[#2A2A2A] font-medium">
@@ -206,6 +234,8 @@ export default function FeatureTabs({ content }: { content?: any }) {
                         ? "14 İmalat Hatası Taşeronlara Atandı"
                         : currentTab.id === "bordro-cy-tab"
                         ? "Form VD 17a, SS14 & İ.S. 22A"
+                        : currentTab.id === "hepp-tab"
+                        ? "Mustafa Usta (Dolu: 4 Randevu / Boş: 3 Dilim)"
                         : "180 Pax Aktarıldı (0 Hata)"}
                     </div>
                   </div>
@@ -218,6 +248,8 @@ export default function FeatureTabs({ content }: { content?: any }) {
                         ? "Hakediş & Kasa Durumu"
                         : currentTab.id === "bordro-cy-tab"
                         ? "Hesap Pusulası & Net Ödeme"
+                        : currentTab.id === "hepp-tab"
+                        ? "No-Show & Hatırlatma"
                         : "Saha İletişimi"}
                     </label>
                     <div className="bg-[#FAF9F6] border border-[#EDE8E3] rounded-lg px-3.5 py-2 text-xs text-emerald-700 font-medium">
@@ -227,6 +259,8 @@ export default function FeatureTabs({ content }: { content?: any }) {
                         ? "✓ %5 Teminat & Avans Mahsubu Yapıldı"
                         : currentTab.id === "bordro-cy-tab"
                         ? "✓ 4 Kutulu Resmi Pusula Kuruşu Kuruşuna"
+                        : currentTab.id === "hepp-tab"
+                        ? "✓ WhatsApp & SMS Hatırlatması Otomatik İletildi"
                         : "✓ WhatsApp Şoför Görev Emri İletildi"}
                     </div>
                   </div>

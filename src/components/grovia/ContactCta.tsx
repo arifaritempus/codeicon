@@ -15,6 +15,7 @@ export default function ContactCta({
     email: "",
     phone: "",
     company: "",
+    system: "all",
     message: "",
   });
   const [submitting, setSubmitting] = useState(false);
@@ -46,7 +47,7 @@ export default function ContactCta({
       }
 
       setSubmitted(true);
-      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", company: "", system: "all", message: "" });
     } catch (err: any) {
       console.error("Form submit error:", err);
       setErrorMessage(err.message || "Bağlantı hatası oluştu. Lütfen tekrar deneyin.");
@@ -244,6 +245,25 @@ export default function ContactCta({
                         className="w-full px-4 py-3 rounded-xl bg-[#1A1D23] border border-white/10 focus:border-[#FEF7AF]/60 focus:bg-[#1A1D23]/90 focus:outline-none text-sm text-white placeholder:text-white/30 transition"
                       />
                     </div>
+                  </div>
+
+                  {/* System of Interest Selector */}
+                  <div>
+                    <label className="block text-xs text-white/80 font-semibold mb-1.5">
+                      İlgilendiğiniz Sistem / Çözüm
+                    </label>
+                    <select
+                      value={formData.system}
+                      onChange={(e) => setFormData({ ...formData, system: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-[#1A1D23] border border-white/10 focus:border-[#FEF7AF]/60 focus:bg-[#1A1D23]/90 focus:outline-none text-sm text-white transition cursor-pointer"
+                    >
+                      <option value="all">✦ Tüm Ekosistem &amp; Kurumsal Danışmanlık</option>
+                      <option value="mice">✦ MICE Agency OS (Acente Operasyon &amp; TCMB Kur Motoru)</option>
+                      <option value="kongre">✦ KONGRE Cloud (Multi-Tenant Kongre &amp; Bildiri SaaS)</option>
+                      <option value="arch">✦ ARCH OS (Mimarlık Stüdyosu &amp; Şantiye İşletim Sistemi)</option>
+                      <option value="bordro">✦ BORDRO CY (%100 KKTC Mevzuat Bulut Bordro ERP)</option>
+                      <option value="hepp">✦ hepp (Yeni Nesil Akıllı Randevu Pazaryeri)</option>
+                    </select>
                   </div>
 
                   {/* Message */}

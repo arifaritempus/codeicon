@@ -49,7 +49,7 @@ export default function Navbar({ content }: { content?: any }) {
 
   return (
     <>
-      <header className="fixed top-5 inset-x-0 mx-auto w-[94%] max-w-[890px] z-50 transition-all">
+      <header className="fixed top-4 sm:top-5 inset-x-0 mx-auto w-[95%] max-w-[1020px] z-50 transition-all">
         <nav className="bg-white/95 backdrop-blur-md border border-[#E6E1DC] shadow-[0_4px_24px_rgba(0,0,0,0.06)] rounded-full px-3.5 sm:px-5 py-2 flex items-center justify-between gap-3">
           {/* Logo */}
           <Link

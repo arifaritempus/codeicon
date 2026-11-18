@@ -39,8 +39,8 @@
     "headerLinks": [
       {
         "id": "1",
-        "label": "Hakkımızda",
-        "href": "#process"
+        "label": "Amiral Sistemler",
+        "href": "#products"
       },
       {
         "id": "2",
@@ -49,6 +49,11 @@
       },
       {
         "id": "3",
+        "label": "Entegrasyonlar",
+        "href": "#integrations"
+      },
+      {
+        "id": "4",
         "label": "Fiyatlandırma",
         "href": "#pricing"
       }
@@ -259,6 +264,21 @@
         ],
         "ctaText": "Bordro ERP'sini İncele",
         "ctaHref": "#bordro-cy"
+      },
+      {
+        "id": "hepp-tab",
+        "label": "hepp Randevu",
+        "mockupBadge": "AKILLI RANDEVU PAZARYERİ",
+        "title": "Hizmet Sektörü İçin Akıllı Mobil & Web Randevu Ekosistemi",
+        "description": "Kuaför, güzellik salonu, klinik, veteriner ve bağımsız uzmanlar için saniyeler içinde randevu oluşturan, WhatsApp ve SMS ile hatırlatan ve komisyonsuz doğrudan ödeme sunan platform.",
+        "bullets": [
+          "Müşteriler için 15 saniyede anında online randevu oluşturma ve takvim seçimi",
+          "No-show oranını sıfırlayan otomatik WhatsApp ve SMS randevu hatırlatması",
+          "İşletmeler için personel vardiyası, işlem süreleri ve anlık ciro yönetimi",
+          "Komisyonsuz doğrudan işletme hesabına veya kasaya tahsilat modeli"
+        ],
+        "ctaText": "hepp.app'i Ziyaret Et",
+        "ctaHref": "https://hepp.app"
       }
     ]
   },
@@ -464,23 +484,27 @@
     "newsletterTitle": "MICE & Acente Bültenine Kaydolun",
     "newsletterButtonText": "Abone Ol",
     "newsletterSuccess": "✓ Bülten aboneliğiniz başarıyla kaydedildi!",
-    "col2Title": "Platform & Modüller",
+    "col2Title": "Amiral Sistemler",
     "col2Links": [
       {
-        "label": "MICE & Kongre Yönetimi",
-        "href": "#features"
+        "label": "MICE Agency OS",
+        "href": "/#mice-os"
       },
       {
-        "label": "Saha & Filo Transferi",
-        "href": "#features"
+        "label": "KONGRE Cloud",
+        "href": "/#kongre-os"
       },
       {
-        "label": "TCMB Canlı Kur & Finans",
-        "href": "#features"
+        "label": "ARCH OS (Mimarlık)",
+        "href": "/#arch-os"
       },
       {
-        "label": "Online Müşteri Portalı",
-        "href": "#features"
+        "label": "BORDRO CY (KKTC ERP)",
+        "href": "/#bordro-cy"
+      },
+      {
+        "label": "hepp (Randevu Pazaryeri)",
+        "href": "https://hepp.app"
       }
     ],
     "socials": {
