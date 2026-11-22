@@ -17,7 +17,7 @@ export const revalidate = 0;
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getSiteContent();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.codeicon.co";
   const title =
     content?.brand?.siteTitle ||
     "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP";

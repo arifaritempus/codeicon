@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.codeicon.co"),
   title: {
     default: "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP",
     template: "%s | CODEICON",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "CODEICON",
   ],
   alternates: {
-    canonical: "https://codeicon.co",
+    canonical: "https://www.codeicon.co",
     types: {
       "text/plain": "/llms.txt",
     },
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: "https://codeicon.co",
+    url: "https://www.codeicon.co",
     title: "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP",
     description:
       "Kurumsal MICE acente sistemi, KONGRE etkinlik SaaS, ARCH OS mimarlık ve şantiye hakediş yazılımı, KKTC Bordro CY ve hepp randevu ekosistemi.",
     siteName: "CODEICON",
     images: [
       {
-        url: "https://codeicon.co/images/mockups/dashboard.png",
+        url: "https://www.codeicon.co/images/mockups/dashboard.png",
         width: 1200,
         height: 630,
         alt: "CODEICON Teknoloji Ekosistemi",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "CODEICON — MICE Acente Sistemi, Kongre SaaS, ARCH OS & KKTC Bordro ERP",
     description:
       "Kurumsal MICE acente sistemi, KONGRE etkinlik SaaS, ARCH OS mimarlık ve şantiye hakediş yazılımı, KKTC Bordro CY ve hepp randevu ekosistemi.",
-    images: ["https://codeicon.co/images/mockups/dashboard.png"],
+    images: ["https://www.codeicon.co/images/mockups/dashboard.png"],
   },
   robots: {
     index: true,
@@ -89,10 +89,10 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://codeicon.co/#organization",
+      "@id": "https://www.codeicon.co/#organization",
       name: "CODEICON",
-      url: "https://codeicon.co",
-      logo: "https://codeicon.co/favicon.ico",
+      url: "https://www.codeicon.co",
+      logo: "https://www.codeicon.co/favicon.ico",
       description:
         "MICE acente sistemi, ARCH OS mimarlık & şantiye yönetimi, KKTC Bordro ERP ve mobil randevu teknolojileri üreten kurumsal yazılım şirketi.",
       address: {
@@ -112,22 +112,22 @@ const structuredData = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://codeicon.co/#website",
-      url: "https://codeicon.co",
+      "@id": "https://www.codeicon.co/#website",
+      url: "https://www.codeicon.co",
       name: "CODEICON",
       description: "MICE Acente Sistemi & Kurumsal Yazılım Ekosistemi",
       publisher: {
-        "@id": "https://codeicon.co/#organization",
+        "@id": "https://www.codeicon.co/#organization",
       },
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://codeicon.co/blog?q={search_term_string}",
+        target: "https://www.codeicon.co/blog?q={search_term_string}",
         "query-input": "required name=search_term_string",
       },
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://codeicon.co/#mice-os",
+      "@id": "https://www.codeicon.co/#mice-os",
       name: "CODEICON MICE Agency OS",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Cloud / Web",
@@ -150,7 +150,7 @@ const structuredData = {
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://codeicon.co/#kongre-os",
+      "@id": "https://www.codeicon.co/#kongre-os",
       name: "KONGRE Cloud SaaS",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Cloud / Web",
@@ -173,7 +173,7 @@ const structuredData = {
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://codeicon.co/#arch-os",
+      "@id": "https://www.codeicon.co/#arch-os",
       name: "ARCH OS (Architectural Office OS)",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Cloud / Web",
@@ -191,7 +191,7 @@ const structuredData = {
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://codeicon.co/#bordro-cy",
+      "@id": "https://www.codeicon.co/#bordro-cy",
       name: "BORDRO CY (KKTC Bordro & İK ERP)",
       applicationCategory: "BusinessApplication",
       operatingSystem: "Cloud / Web",
@@ -206,7 +206,7 @@ const structuredData = {
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://codeicon.co/#hepp-app",
+      "@id": "https://www.codeicon.co/#hepp-app",
       name: "hepp Mobil Randevu",
       applicationCategory: "LifestyleApplication",
       operatingSystem: "iOS, Android, Web",
@@ -216,7 +216,7 @@ const structuredData = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://codeicon.co/#faq",
+      "@id": "https://www.codeicon.co/#faq",
       mainEntity: [
         {
           "@type": "Question",

@@ -1,0 +1,25 @@
+name: Daily AI Blog Post Generation
+
+on:
+  schedule:
+    # Runs at 06:00 UTC every day (09:00 Turkey / Cyprus time)
+    - cron: "0 6 * * *"
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Daily AI Blog API
+        run: |
+          echo "Triggering CODEICON AI blog writer agent..."
+          RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X GET "https://www.codeicon.co/api/cron/generate-blog?secret=codeicon_daily_blog_secret_key_2026")
+          BODY=$(echo "$RESPONSE" | sed -e '$d')
+          STATUS=$(echo "$RESPONSE" | tail -n1 | cut -d':' -f2)
+          echo "Status: $STATUS"
+          echo "Response: $BODY"
+          if [ "$STATUS" -ne 200 ]; then
+            echo "Failed to generate daily blog post"
+            exit 1
+          fi
+          echo "Daily blog post successfully generated and published!"

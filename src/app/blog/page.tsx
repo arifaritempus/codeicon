@@ -29,7 +29,7 @@ export default async function BlogPage() {
   const content = await getSiteContent();
   const blogSettings = content?.blog || {};
   const posts: any[] = (blogSettings.posts || []).filter((p: any) => p.published !== false);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.codeicon.co";
 
   const blogJsonLd = {
     "@context": "https://schema.org",

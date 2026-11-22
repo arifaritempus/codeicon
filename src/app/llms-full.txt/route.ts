@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const content = await getSiteContent();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.codeicon.co";
 
   const brandName = content?.brand?.name || "CODEICON";
   const brandTitle = "MICE Acente Sistemi, ARCH OS Mimarlık Platformu & Kurumsal Yazılım Ekosistemi";

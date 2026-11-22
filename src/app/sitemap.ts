@@ -4,7 +4,7 @@ import { getSiteContent } from "@/lib/contentStore";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.codeicon.co";
   const content = await getSiteContent();
   const posts: any[] = content?.blog?.posts || [];
 

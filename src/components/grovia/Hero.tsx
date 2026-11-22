@@ -33,8 +33,8 @@ export default function Hero({
 }) {
   const [activeSystem, setActiveSystem] = useState<"mice" | "kongre" | "arch" | "bordro" | "hepp">("mice");
 
-  const title = content?.title || "Dikey Sektörler İçin";
-  const titleAccent = content?.titleAccent || "Bulut İşletim Sistemleri";
+  const title = content?.title || "MICE Acente Sistemi, Kongre";
+  const titleAccent = content?.titleAccent || "& Kurumsal İşletim Sistemleri";
   const subtitle =
     content?.subtitle ||
     "B2B MICE acentelerinden kongre yönetimine, mimarlık stüdyolarından KKTC bordro ERP'sine ve akıllı randevu pazaryerine; operasyonları sıfır hataya indiren entegre teknoloji ekosistemi.";

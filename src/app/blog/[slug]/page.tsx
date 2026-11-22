@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const relatedPosts = posts.filter((p) => p.slug !== slug && p.published !== false);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codeicon.co";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.codeicon.co";
   const postUrl = `${baseUrl}/blog/${slug}`;
 
   const articleJsonLd = {
