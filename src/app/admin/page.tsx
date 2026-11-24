@@ -81,6 +81,11 @@ export default function AdminPage() {
   const [postEditorTab, setPostEditorTab] = useState<"edit" | "preview">("edit");
   const [deleteConfirmSlug, setDeleteConfirmSlug] = useState<string | null>(null);
 
+  // Proposal State
+  const [editingProposal, setEditingProposal] = useState<any | null>(null);
+  const [deleteConfirmProposalId, setDeleteConfirmProposalId] = useState<string | null>(null);
+  const [copiedProposalSlug, setCopiedProposalSlug] = useState<string | null>(null);
+
   // Automated Daily Cron state
   const [cronLoading, setCronLoading] = useState(false);
   const [cronResult, setCronResult] = useState<{ success: boolean; message: string; title?: string } | null>(null);
@@ -237,6 +242,7 @@ export default function AdminPage() {
           };
         }
         if (!data.blog.posts) data.blog.posts = [];
+        if (!data.proposals) data.proposals = [];
 
         setContent(data);
       })
@@ -262,6 +268,7 @@ export default function AdminPage() {
         if (data) {
           if (!data.blog) data.blog = { enabled: true, posts: [] };
           if (!data.blog.posts) data.blog.posts = [];
+          if (!data.proposals) data.proposals = [];
           setContent(data);
         }
       }
@@ -601,6 +608,103 @@ export default function AdminPage() {
       }
     } catch (e) {
       console.error("Delete blog post error:", e);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Proposal Management Helpers
+  const handleSaveProposal = async (proposalToSave: any) => {
+    if (!proposalToSave.clientCompany || !proposalToSave.clientCompany.trim()) {
+      alert("Lütfen bir firma unvanı girin.");
+      return;
+    }
+
+    const slug = (proposalToSave.slug || generateSlug(proposalToSave.clientCompany)).trim();
+    const finalProposal = {
+      ...proposalToSave,
+      id: proposalToSave.id || `prop-${Date.now()}`,
+      slug,
+      proposalNo: proposalToSave.proposalNo || `TEK-${new Date().getFullYear()}-MICE-001`,
+      date: proposalToSave.date || new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }),
+      validDays: proposalToSave.validDays || 30,
+      clientCompany: proposalToSave.clientCompany.trim(),
+      clientContact: proposalToSave.clientContact || "",
+      clientTitle: proposalToSave.clientTitle || `${proposalToSave.clientCompany} Adına`,
+      clientEmail: proposalToSave.clientEmail || "",
+      clientPhone: proposalToSave.clientPhone || "",
+      clientWebsite: proposalToSave.clientWebsite || "",
+      setupFee: parseFloat(proposalToSave.setupFee) || 100000,
+      setupDiscount: parseFloat(proposalToSave.setupDiscount) || 100,
+      monthlyPrice: parseFloat(proposalToSave.monthlyPrice) || 35000,
+      yearlyPrice: parseFloat(proposalToSave.yearlyPrice) || 350000,
+      escalationClause: proposalToSave.escalationClause || "Müteakip hizmet yıllarındaki lisans bedeli artış oranı, Türkiye İstatistik Kurumu (TÜİK) tarafından açıklanan bir önceki yılın TÜFE 12 aylık ortalamasını geçmeyecek şekilde belirlenir ve acenteye yenileme tarihinden en az 30 gün önce bildirilir.",
+      status: proposalToSave.status || "published",
+      updatedAt: new Date().toISOString(),
+    };
+
+    const currentProposals = content?.proposals || [];
+    const existingIdx = currentProposals.findIndex((p: any) => p.id === finalProposal.id || p.slug === slug);
+
+    let newProposals: any[];
+    if (existingIdx >= 0) {
+      newProposals = [...currentProposals];
+      newProposals[existingIdx] = finalProposal;
+    } else {
+      newProposals = [finalProposal, ...currentProposals];
+    }
+
+    const updatedContent = {
+      ...content,
+      proposals: newProposals,
+    };
+
+    setContent(updatedContent);
+    setEditingProposal(null);
+
+    try {
+      setSaving(true);
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedContent),
+      });
+      if (res.ok) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
+      }
+    } catch (e) {
+      console.error("Save proposal error:", e);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDeleteProposal = async (id: string) => {
+    const currentProposals = content?.proposals || [];
+    const newProposals = currentProposals.filter((p: any) => p.id !== id);
+
+    const updatedContent = {
+      ...content,
+      proposals: newProposals,
+    };
+
+    setContent(updatedContent);
+    setDeleteConfirmProposalId(null);
+
+    try {
+      setSaving(true);
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedContent),
+      });
+      if (res.ok) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
+      }
+    } catch (e) {
+      console.error("Delete proposal error:", e);
     } finally {
       setSaving(false);
     }
@@ -995,6 +1099,7 @@ export default function AdminPage() {
               { id: "features", label: "📊 Özellik Sekmeleri", icon: Layers },
               { id: "integrations", label: "🔗 Entegrasyonlar", icon: Link2 },
               { id: "pricing", label: "💳 Fiyatlandırma", icon: CreditCard },
+              { id: "proposals", label: "📄 MICE Teklifleri & Sözleşmeler", icon: FileText },
               { id: "references", label: "⭐ Referanslar & Logolar", icon: Building2 },
               { id: "blog", label: "✍️ Blog & İçerik", icon: BookOpen },
               { id: "faq", label: "❓ Sıkça Sorulanlar (FAQ)", icon: HelpCircle },
@@ -6689,6 +6794,187 @@ export default function AdminPage() {
               </div>
             )}
 
+            {/* TAB: MICE PROPOSALS & CONTRACTS */}
+            {activeTab === "proposals" && (
+              <div className="space-y-8">
+                {/* Header with Stats & Actions */}
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-[#EAE6E1]">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#FF4D2D]/10 text-[#FF4D2D]">
+                        MICE AGENCY OS
+                      </span>
+                      <h2 className="text-xl font-bold text-[#1A1A1A]">Kurumsal B2B Teklif & Sözleşme Yönetimi</h2>
+                    </div>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      Acentelere özel dinamik matbu teklif oluşturun, canlı onay linki üretin ve tek tıkla A4 PDF çıktı alın.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingProposal({
+                        id: `prop-${Date.now()}`,
+                        slug: "",
+                        proposalNo: `TEK-${new Date().getFullYear()}-MICE-${String((content?.proposals?.length || 0) + 1).padStart(3, "0")}`,
+                        date: new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }),
+                        validDays: 30,
+                        clientCompany: "",
+                        clientContact: "",
+                        clientTitle: "",
+                        clientEmail: "",
+                        clientPhone: "",
+                        clientWebsite: "",
+                        setupFee: 100000,
+                        setupDiscount: 100,
+                        monthlyPrice: 35000,
+                        yearlyPrice: 350000,
+                        escalationClause: "Müteakip hizmet yıllarındaki lisans bedeli artış oranı, Türkiye İstatistik Kurumu (TÜİK) tarafından açıklanan bir önceki yılın TÜFE 12 aylık ortalamasını geçmeyecek şekilde belirlenir ve acenteye yenileme tarihinden en az 30 gün önce bildirilir.",
+                        status: "published",
+                      });
+                    }}
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#1A1A1A] hover:bg-[#FF4D2D] text-white text-xs font-bold transition shadow-xs shrink-0"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>+ Yeni Teklif Oluştur</span>
+                  </button>
+                </div>
+
+                {/* Proposals List */}
+                <div className="space-y-4">
+                  {(!content?.proposals || content.proposals.length === 0) ? (
+                    <div className="text-center py-16 bg-[#FAF9F6] rounded-2xl border border-dashed border-[#DDD7D0]">
+                      <FileText className="w-10 h-10 text-neutral-300 mx-auto mb-3" />
+                      <h3 className="text-sm font-bold text-neutral-800">Henüz teklif bulunmuyor</h3>
+                      <p className="text-xs text-neutral-500 mt-1 max-w-sm mx-auto">
+                        Acenteleriniz için özel lisanslama ve fiyatlandırma teklifi oluşturmak için yukarıdaki butona tıklayın.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 gap-4">
+                      {content.proposals.map((prop: any) => {
+                        const isDeleting = deleteConfirmProposalId === prop.id;
+                        const isCopied = copiedProposalSlug === prop.slug;
+
+                        return (
+                          <div
+                            key={prop.id || prop.slug}
+                            className="p-5 rounded-2xl border border-[#DDD7D0] bg-[#FAF9F6] hover:bg-white hover:border-[#FF4D2D]/30 transition-all shadow-2xs space-y-4"
+                          >
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                              <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-xl bg-white border border-[#DDD7D0] flex items-center justify-center font-bold text-neutral-900 shadow-2xs text-sm">
+                                  🏢
+                                </div>
+                                <div>
+                                  <div className="flex items-center gap-2">
+                                    <h3 className="text-base font-extrabold text-[#1A1A1A]">{prop.clientCompany}</h3>
+                                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-white border border-[#DDD7D0] font-bold text-[#FF4D2D]">
+                                      {prop.proposalNo}
+                                    </span>
+                                  </div>
+                                  <p className="text-xs text-[#605F5F] mt-0.5">
+                                    Yetkili: <strong className="text-neutral-800">{prop.clientContact || "Belirtilmedi"}</strong> {prop.clientTitle ? `(${prop.clientTitle})` : ""} • {prop.clientEmail || ""}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center gap-2">
+                                {/* Copy Link */}
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const fullUrl = `${window.location.origin}/teklif/${prop.slug}`;
+                                    navigator.clipboard.writeText(fullUrl);
+                                    setCopiedProposalSlug(prop.slug);
+                                    setTimeout(() => setCopiedProposalSlug(null), 2500);
+                                  }}
+                                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition ${
+                                    isCopied
+                                      ? "bg-emerald-50 text-emerald-700 border-emerald-300 font-bold"
+                                      : "bg-white text-neutral-700 border-[#DDD7D0] hover:bg-neutral-50"
+                                  }`}
+                                  title="Müşteri Teklif Linkini Kopyala"
+                                >
+                                  {isCopied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                                  <span>{isCopied ? "Link Kopyalandı!" : "Linki Kopyala"}</span>
+                                </button>
+
+                                {/* Open in New Tab */}
+                                <Link
+                                  href={`/teklif/${prop.slug}`}
+                                  target="_blank"
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#DDD7D0] text-xs font-semibold text-neutral-700 hover:text-[#1A1A1A] hover:bg-neutral-50 transition"
+                                  title="Canlı Teklifi Aç / PDF İndir"
+                                >
+                                  <ExternalLink className="w-3.5 h-3.5 text-[#FF4D2D]" />
+                                  <span>Önizle / PDF</span>
+                                </Link>
+
+                                {/* Edit Button */}
+                                <button
+                                  type="button"
+                                  onClick={() => setEditingProposal({ ...prop })}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1A1A1A] text-white text-xs font-semibold hover:bg-neutral-800 transition"
+                                >
+                                  <Edit3 className="w-3.5 h-3.5" />
+                                  <span>Düzenle</span>
+                                </button>
+
+                                {/* Delete */}
+                                {isDeleting ? (
+                                  <div className="flex items-center gap-1 bg-red-50 p-1 rounded-xl border border-red-200">
+                                    <span className="text-[10px] font-bold text-red-700 px-1">Silinsin mi?</span>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleDeleteProposal(prop.id)}
+                                      className="px-2 py-1 rounded bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition"
+                                    >
+                                      Evet
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => setDeleteConfirmProposalId(null)}
+                                      className="px-2 py-1 rounded bg-white text-[#1A1A1A] text-[10px] font-semibold border border-neutral-300"
+                                    >
+                                      İptal
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <button
+                                    type="button"
+                                    onClick={() => setDeleteConfirmProposalId(prop.id)}
+                                    className="p-2 rounded-xl text-neutral-400 hover:text-red-600 hover:bg-red-50 transition"
+                                    title="Teklifi Sil"
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Details Chips */}
+                            <div className="pt-3 border-t border-[#EAE6E1] flex flex-wrap items-center gap-3 text-xs text-[#605F5F]">
+                              <span>💰 Aylık: <strong className="text-neutral-900">{parseFloat(prop.monthlyPrice || 35000).toLocaleString("tr-TR")} TL</strong></span>
+                              <span>•</span>
+                              <span>📅 Yıllık: <strong className="text-[#FF4D2D]">{parseFloat(prop.yearlyPrice || 350000).toLocaleString("tr-TR")} TL</strong></span>
+                              <span>•</span>
+                              <span>🎁 Giriş Bedeli: <span className="line-through text-neutral-400">100.000 TL</span> <strong className="text-emerald-600">0 TL (Hediye)</strong></span>
+                              <span>•</span>
+                              <span>🔗 URL: <code className="text-[11px] bg-white px-2 py-0.5 rounded border border-[#DDD7D0]">/teklif/{prop.slug}</code></span>
+                              <span>•</span>
+                              <span>🕒 Tarih: {prop.date || "24 Kasım 2026"}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Bottom Save Bar */}
             <div className="mt-8 pt-6 border-t border-[#F0ECE6] flex items-center justify-between">
               <span className="text-xs text-[#8C8C8C]">
@@ -7351,6 +7637,248 @@ export default function AdminPage() {
                   <span>{saving ? "Kaydediliyor..." : "Yazıyı Kaydet"}</span>
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* EDIT / CREATE PROPOSAL MODAL */}
+      {editingProposal && (
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-3xl border border-[#DDD7D0] shadow-2xl max-w-2xl w-full my-8 overflow-hidden flex flex-col max-h-[90vh]">
+            {/* Modal Header */}
+            <div className="px-6 py-5 border-b border-[#F0ECE6] flex items-center justify-between shrink-0 bg-[#FAF9F6]">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FF4D2D]" />
+                <h3 className="text-base font-bold text-[#1A1A1A]">
+                  {editingProposal.id && content?.proposals?.some((p: any) => p.id === editingProposal.id)
+                    ? "Teklifi Düzenle"
+                    : "Yeni Kurumsal Teklif Oluştur"}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setEditingProposal(null)}
+                className="p-1.5 rounded-full hover:bg-neutral-200 transition text-[#605F5F]"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 overflow-y-auto space-y-5 text-xs">
+              {/* Row 1: Company & Slug */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">
+                    Müşteri Acente / Firma Adı *
+                  </label>
+                  <input
+                    type="text"
+                    value={editingProposal.clientCompany || ""}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setEditingProposal((prev: any) => ({
+                        ...prev,
+                        clientCompany: val,
+                        slug: prev.slug || generateSlug(val),
+                      }));
+                    }}
+                    placeholder="Örn: BELT Events"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">
+                    URL Bağlantı Kodu (Slug) *
+                  </label>
+                  <div className="flex items-center">
+                    <span className="px-3 py-2.5 bg-[#FAF9F6] border border-r-0 border-[#DDD7D0] rounded-l-xl text-neutral-400 text-xs">
+                      codeicon.co/teklif/
+                    </span>
+                    <input
+                      type="text"
+                      value={editingProposal.slug || ""}
+                      onChange={(e) => setEditingProposal({ ...editingProposal, slug: generateSlug(e.target.value) })}
+                      placeholder="belt-events"
+                      className="w-full px-3.5 py-2.5 rounded-r-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 2: Proposal No & Date */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">Teklif No</label>
+                  <input
+                    type="text"
+                    value={editingProposal.proposalNo || ""}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, proposalNo: e.target.value })}
+                    placeholder="TEK-2026-MICE-009"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">Tarih</label>
+                  <input
+                    type="text"
+                    value={editingProposal.date || ""}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, date: e.target.value })}
+                    placeholder="24 Kasım 2026"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">Geçerlilik Süresi</label>
+                  <input
+                    type="text"
+                    value={editingProposal.validDays || 30}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, validDays: e.target.value })}
+                    placeholder="30 Gün"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+              </div>
+
+              {/* Row 3: Contact Person & Title */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">Yetkili Kişi (Ad Soyad)</label>
+                  <input
+                    type="text"
+                    value={editingProposal.clientContact || ""}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, clientContact: e.target.value })}
+                    placeholder="Örn: Tuğba Parscan"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">Yetkili Unvanı</label>
+                  <input
+                    type="text"
+                    value={editingProposal.clientTitle || ""}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, clientTitle: e.target.value })}
+                    placeholder="Örn: Belt Events Adına"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+              </div>
+
+              {/* Row 4: Email, Phone, Website */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">E-Posta</label>
+                  <input
+                    type="email"
+                    value={editingProposal.clientEmail || ""}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, clientEmail: e.target.value })}
+                    placeholder="tparscan@beltevents.com"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">Telefon</label>
+                  <input
+                    type="text"
+                    value={editingProposal.clientPhone || ""}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, clientPhone: e.target.value })}
+                    placeholder="+90 546 276 77 07"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">Web Sitesi</label>
+                  <input
+                    type="text"
+                    value={editingProposal.clientWebsite || ""}
+                    onChange={(e) => setEditingProposal({ ...editingProposal, clientWebsite: e.target.value })}
+                    placeholder="https://www.beltevents.com"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white"
+                  />
+                </div>
+              </div>
+
+              {/* Pricing Settings Box */}
+              <div className="p-4 rounded-2xl bg-[#FAF9F6] border border-[#DDD7D0] space-y-4">
+                <h4 className="text-xs font-bold text-[#1A1A1A] flex items-center gap-1.5">
+                  <span>💳</span> Fiyatlandırma & Yatırım Ayarları (TL)
+                </h4>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-neutral-600 mb-1">Aylık Lisans Bedeli (TL)</label>
+                    <input
+                      type="number"
+                      value={editingProposal.monthlyPrice || 35000}
+                      onChange={(e) => setEditingProposal({ ...editingProposal, monthlyPrice: e.target.value })}
+                      className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] bg-white font-bold text-neutral-900 focus:outline-none focus:border-black"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-bold text-neutral-600 mb-1">Yıllık Lisans Bedeli (TL)</label>
+                    <input
+                      type="number"
+                      value={editingProposal.yearlyPrice || 350000}
+                      onChange={(e) => setEditingProposal({ ...editingProposal, yearlyPrice: e.target.value })}
+                      className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] bg-white font-bold text-[#FF4D2D] focus:outline-none focus:border-black"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-bold text-neutral-600 mb-1">Giriş / Kurulum Bedeli (TL)</label>
+                    <input
+                      type="number"
+                      value={editingProposal.setupFee || 100000}
+                      onChange={(e) => setEditingProposal({ ...editingProposal, setupFee: e.target.value })}
+                      className="w-full px-3 py-2 rounded-xl border border-[#DDD7D0] bg-white text-neutral-500 focus:outline-none focus:border-black"
+                    />
+                    <span className="text-[10px] text-emerald-600 font-bold block mt-1">%100 İndirim ile 0 TL uygulanır</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Escalation Clause */}
+              <div>
+                <label className="block text-xs font-bold text-[#1A1A1A] mb-1.5">
+                  Yıllık Artış Oranı & Yasal İbare
+                </label>
+                <textarea
+                  rows={3}
+                  value={editingProposal.escalationClause || ""}
+                  onChange={(e) => setEditingProposal({ ...editingProposal, escalationClause: e.target.value })}
+                  placeholder="Müteakip hizmet yıllarındaki lisans bedeli artış oranı..."
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD7D0] focus:outline-none focus:border-black bg-white resize-none"
+                />
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-6 py-4 border-t border-[#F0ECE6] flex items-center justify-between shrink-0 bg-[#FAF9F6]">
+              <button
+                type="button"
+                onClick={() => setEditingProposal(null)}
+                className="px-4 py-2 rounded-full border border-[#DDD7D0] text-xs font-semibold text-[#605F5F] hover:bg-neutral-100 transition"
+              >
+                İptal
+              </button>
+
+              <button
+                type="button"
+                disabled={saving}
+                onClick={() => handleSaveProposal(editingProposal)}
+                className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#1A1A1A] hover:bg-[#FF4D2D] text-white text-xs font-bold transition shadow-xs"
+              >
+                <Save className="w-3.5 h-3.5" />
+                <span>{saving ? "Kaydediliyor..." : "Teklifi Kaydet"}</span>
+              </button>
             </div>
           </div>
         </div>

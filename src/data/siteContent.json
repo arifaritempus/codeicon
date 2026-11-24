@@ -1170,5 +1170,27 @@
       "Kayıt masasında sıra bekletmeyen QR kodlu yaka kartı anlık baskı entegrasyonu",
       "Platin, altın ve gümüş sponsorların kendi kotalarını yönettiği bağımsız portal"
     ]
-  }
+  },
+  "proposals": [
+    {
+      "id": "prop-belt-events",
+      "slug": "belt-events",
+      "proposalNo": "TEK-2026-MICE-009",
+      "date": "24 Kasım 2026",
+      "validDays": 30,
+      "clientCompany": "BELT Events",
+      "clientContact": "Tuğba Parscan",
+      "clientTitle": "Belt Events Adına",
+      "clientEmail": "tparscan@beltevents.com",
+      "clientPhone": "+90 546 276 77 07",
+      "clientWebsite": "https://www.beltevents.com",
+      "setupFee": 100000,
+      "setupDiscount": 100,
+      "monthlyPrice": 35000,
+      "yearlyPrice": 350000,
+      "escalationClause": "Müteakip hizmet yıllarındaki lisans bedeli artış oranı, Türkiye İstatistik Kurumu (TÜİK) tarafından açıklanan bir önceki yılın TÜFE 12 aylık ortalamasını geçmeyecek şekilde belirlenir ve acenteye yenileme tarihinden en az 30 gün önce bildirilir.",
+      "status": "published",
+      "createdAt": "2026-11-24T12:00:00.000Z"
+    }
+  ]
 }
