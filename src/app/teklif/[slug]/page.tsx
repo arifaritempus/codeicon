@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getSiteContent } from "@/lib/contentStore";
+import PrintProposalButton from "@/components/PrintProposalButton";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -272,13 +273,7 @@ export default async function ProposalPage({ params }: PageProps) {
           >
             ← CODEICON Ana Sayfasına Git
           </a>
-          <button
-            onClick={() => {}}
-            id="print-action-btn"
-            className="inline-flex items-center gap-2 bg-[#1A1A1A] hover:bg-[#FF4D2D] text-white text-xs font-bold py-2.5 px-4 rounded-lg shadow-sm transition-colors cursor-pointer"
-          >
-            <span>🖨️</span> PDF Olarak Kaydet / Yazdır
-          </button>
+          <PrintProposalButton />
         </div>
 
         {/* Header */}
@@ -657,21 +652,6 @@ export default async function ProposalPage({ params }: PageProps) {
           </div>
         </div>
       </div>
-
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            document.addEventListener('DOMContentLoaded', function() {
-              var btn = document.getElementById('print-action-btn');
-              if (btn) {
-                btn.addEventListener('click', function() {
-                  window.print();
-                });
-              }
-            });
-          `,
-        }}
-      />
     </div>
   );
 }
