@@ -13,7 +13,13 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const content = await getSiteContent();
-  const proposal = content?.proposals?.find((p: any) => p.slug === slug);
+  const proposal = content?.proposals?.find((p: any) => 
+    p.slug === slug || 
+    p.slug?.startsWith(slug + "-") || 
+    slug.startsWith(p.slug + "-") ||
+    p.id === `prop-${slug}` ||
+    p.id === slug
+  );
 
   if (!proposal) {
     return {
@@ -32,7 +38,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProposalPage({ params }: PageProps) {
   const { slug } = await params;
   const content = await getSiteContent();
-  const proposal = content?.proposals?.find((p: any) => p.slug === slug);
+  const proposal = content?.proposals?.find((p: any) => 
+    p.slug === slug || 
+    p.slug?.startsWith(slug + "-") || 
+    slug.startsWith(p.slug + "-") ||
+    p.id === `prop-${slug}` ||
+    p.id === slug
+  );
 
   if (!proposal) {
     notFound();
