@@ -422,7 +422,7 @@ export default async function ProposalPage({ params }: PageProps) {
           İşbu teklif; <strong>{proposal.clientCompany}</strong> bünyesinde yürütülen MICE (Toplantı, Kongre, Teşvik Gezisi ve Lansman) operasyonlarının, transfer ve filo lojistiğinin, otel rooming listesi eşlemelerinin ve döviz kurlu finansal mutabakatlarının tek bir bulut işletim sistemi üzerinden otonomlaştırılması amacıyla hazırlanmıştır.
         </p>
         <p className="text-[14px] text-neutral-700 mb-3">
-          <strong>MICE Agency OS</strong>; acentelerin teklif tarihi ile giriş günü arasındaki döviz kur dalgalanmalarından doğan kur farkı zararını sıfırlayan <strong>TCMB 15:30 kur sabitleme motoru</strong>, karmaşık Excel listelerini tek tıkla otel formatına dönüştüren <strong>akıllı rooming motoru</strong>, transfer listelerini tedarikçiler bazında filtreleyip özet çıkaran, mutabakat sağlayan yapısı ve Projeler ekranındaki <strong>Sejour modülü</strong> ile operasyonel hata payını en aza indirmeyi taahhüt eder.
+          <strong>MICE Agency OS</strong>; acentelerin teklif tarihi ile giriş günü arasındaki döviz kur dalgalanmalarından doğan kur farkı zararını sıfırlayan <strong>TCMB 15:30 kur sabitleme motoru</strong>, karmaşık Excel listelerini tek tıkla otel formatına dönüştüren <strong>akıllı rooming motoru</strong>, transfer listelerini tedarikçiler bazında filtreleyip özet çıkaran, mutabakat sağlayan yapısı ve voucher/proforma takibi sağlayan <strong>Sejour modülü</strong> ile operasyonel hata payını en aza indirmeyi taahhüt eder.
         </p>
 
         {/* 3. Proje Kapsamı ve Sayfa Bazlı Modüler Mimari */}
@@ -475,14 +475,14 @@ export default async function ProposalPage({ params }: PageProps) {
                 <h3 className="text-[14px] font-extrabold text-neutral-900">3. Projeler Sayfası (Operasyon & Finans Kartı + Sejour Modülü)</h3>
               </div>
               <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
-                Onaylanan etkinliklerin canlı finans tablosu, operasyonel kumanda merkezi ve Sejour veri köprüsüdür.
+                Onaylanan etkinliklerin canlı finans tablosu, operasyonel kumanda merkezi ve Sejour satış/voucher yönetim ekranıdır.
               </p>
               <ul>
                 <li><strong>Canlı Proje P&L:</strong> Bütçe ve gerçekleşen harcamaların anlık kâr/zarar takibi.</li>
                 <li><strong>Kur Kilitleme & Servis Bedeli:</strong> Check-in günü kur sabitleme ve acente hizmet bedeli hesaplama.</li>
               </ul>
               <div className="submodule-highlight">
-                <strong>Sejour Modülü:</strong> Sejour'daki rezervasyon ve voucher verilerini tek tıkla projeye aktararak mükerrer veri girişini sonlandırır.
+                <strong>Sejour Modülü:</strong> Voucher numarası bazında acente ve otel rezervasyon kaydı, oda/transfer maliyet takibi ve tek tıkla proforma fatura dökümü.
               </div>
             </div>
           </div>
