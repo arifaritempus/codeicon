@@ -390,7 +390,7 @@ export default async function ProposalPage({ params }: PageProps) {
           <tbody>
             <tr>
               <td><strong>Firma Unvanı</strong></td>
-              <td>CODEICON Teknoloji Çözümleri</td>
+              <td>V3CODERS SOFTWARE SOLUTIONS - FZCO</td>
               <td><strong>{proposal.clientCompany}</strong></td>
             </tr>
             <tr>
@@ -410,7 +410,10 @@ export default async function ProposalPage({ params }: PageProps) {
             </tr>
             <tr>
               <td><strong>Web / Adres</strong></td>
-              <td>https://www.codeicon.co</td>
+              <td>
+                https://www.codeicon.co<br />
+                <span className="text-[11px] text-neutral-500">67321-001, IFZA Business Park. DDP, Dubai – BAE</span>
+              </td>
               <td>{proposal.clientWebsite || "—"}</td>
             </tr>
           </tbody>
@@ -733,8 +736,12 @@ export default async function ProposalPage({ params }: PageProps) {
         <div className="sign-box">
           <div className="sign-block">
             <p><strong>HİZMET SAĞLAYICI:</strong></p>
-            <p><strong>CODEICON Teknoloji Çözümleri</strong></p>
-            <p className="mt-2 text-neutral-700">Yetkili: Arif Arı</p>
+            <p><strong>V3CODERS SOFTWARE SOLUTIONS - FZCO</strong></p>
+            <p className="text-neutral-500 text-[11px] mt-1 leading-snug">
+              Adres: 67321-001, IFZA Business Park. DDP,<br />
+              Dubai – Birleşik Arap Emirlikleri
+            </p>
+            <p className="mt-2.5 text-neutral-700">Yetkili: Arif Arı</p>
             <p className="text-neutral-400 text-[11.5px]">Ekosistem Yöneticisi</p>
             <div className="sign-line"></div>
             <p className="mt-1.5 text-neutral-400 text-[11.5px]">İmza & Kaşe</p>
