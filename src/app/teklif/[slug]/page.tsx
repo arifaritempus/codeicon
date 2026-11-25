@@ -65,6 +65,17 @@ export default async function ProposalPage({ params }: PageProps) {
 
   const escalationText = proposal.escalationClause || "Müteakip hizmet yıllarındaki lisans bedeli artış oranı, Türkiye İstatistik Kurumu (TÜİK) tarafından açıklanan bir önceki yılın TÜFE 12 aylık ortalamasını geçmeyecek şekilde belirlenir ve acenteye yenileme tarihinden en az 30 gün önce bildirilir.";
 
+  const references = [
+    { name: "Tempus Travel", url: "https://tempustravel.co" },
+    { name: "La Tour Event", url: "https://latour.com.tr" },
+    { name: "Cyprus Royal Tourism", url: "https://cyprusroyalturizm.com/" },
+    { name: "Ravento Travel", url: "https://raventotravel.com/" },
+    { name: "Eventalist Dmc", url: "https://eventalist-dmc.com" },
+    { name: "Royal Tur", url: "https://royaltur.com/" },
+    { name: "Atlantis Tur", url: "https://atlantistur.com/" },
+    { name: "Duca Tour", url: "https://ducatour.com/" },
+  ];
+
   return (
     <div className="proposal-root min-h-screen bg-[#F4F2EE] text-[#1A1A1A] py-8 px-4 font-sans antialiased">
       <style>{`
@@ -214,6 +225,50 @@ export default async function ProposalPage({ params }: PageProps) {
           margin-top: 24px;
         }
 
+        .references-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+          margin: 16px 0 24px;
+        }
+
+        @media (max-width: 768px) {
+          .references-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        .reference-card {
+          background: #FAFAFA;
+          border: 1px solid #E5E7EB;
+          border-radius: 8px;
+          padding: 12px 14px;
+          text-decoration: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          transition: all 0.15s ease-in-out;
+        }
+
+        .reference-card:hover {
+          border-color: #FF4D2D;
+          background: #FFFFFF;
+          box-shadow: 0 2px 8px rgba(255, 77, 45, 0.08);
+        }
+
+        .reference-name {
+          font-size: 13px;
+          font-weight: 700;
+          color: #111;
+          margin-bottom: 2px;
+        }
+
+        .reference-url {
+          font-size: 11px;
+          color: #6B7280;
+          word-break: break-all;
+        }
+
         .sign-box {
           margin-top: 36px;
           display: grid;
@@ -261,6 +316,19 @@ export default async function ProposalPage({ params }: PageProps) {
           }
           .pricing-section {
             page-break-before: auto !important;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+          }
+          .references-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 8px !important;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+          }
+          .reference-card {
+            background: #FAFAFA !important;
+            border: 1px solid #E5E7EB !important;
+            padding: 8px 10px !important;
             page-break-inside: avoid !important;
             break-inside: avoid !important;
           }
@@ -360,24 +428,23 @@ export default async function ProposalPage({ params }: PageProps) {
         {/* 3. Proje Kapsamı ve Sayfa Bazlı Modüler Mimari */}
         <h2 className="proposal-h2">3. Proje Kapsamı ve Sayfa Bazlı Modüler Mimari</h2>
         <p className="text-[13px] text-neutral-500 mb-3.5">
-          MICE Agency OS, acentenin günlük operasyon akışını birebir yansıtan ve birbirine bağlı çalışan sayfa mimarisiyle tasarlanmıştır:
+          MICE Agency OS, acentenin günlük operasyon akışını birebir yansıtan 7 amiral sayfadan oluşur:
         </p>
 
         <div className="modules-grid">
           {/* Sayfa 1 */}
           <div className="module-card">
             <div>
-              <div className="mb-2">
+              <div className="mb-1.5">
                 <span className="module-route-tag">/requests</span>
-                <h3 className="text-[14.5px] font-extrabold text-neutral-900">1. Talepler Sayfası</h3>
+                <h3 className="text-[14px] font-extrabold text-neutral-900">1. Talepler Sayfası</h3>
               </div>
-              <p className="text-[12.5px] text-neutral-600 mb-2.5 leading-relaxed">
-                Müşterilerden gelen tüm MICE etkinlik taleplerinin merkezi olarak toplandığı ve durumlarının izlendiği başlangıç noktasıdır.
+              <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
+                Gelen kurumsal etkinlik taleplerinin toplandığı ve durumlarının izlendiği başlangıç ekranıdır.
               </p>
               <ul>
-                <li><strong>Talep Kartı Oluşturma:</strong> Etkinlik adı, tarih aralığı, hedef pax sayısı, lokasyon ve müşteri bütçe bilgileri.</li>
-                <li><strong>Durum ve Sorumlu Takibi:</strong> Yeni Talep, Teklif Aşaması, Revize, Onaylandı veya İptal statü filtreleri ve yetkili atama.</li>
-                <li><strong>Talepten Teklife Hızlı Geçiş:</strong> Onaylanan veya olgunlaşan talebi tek tıkla doğrudan Teklifler modülüne aktarma.</li>
+                <li><strong>Talep Havuzu:</strong> Tarih aralığı, pax sayısı, bütçe ve sorumlu personel atama.</li>
+                <li><strong>Statü & Aktarım:</strong> Yeni, Teklif, Revize ve Onay statüleri; tek tıkla teklife aktarım.</li>
               </ul>
             </div>
           </div>
@@ -385,18 +452,17 @@ export default async function ProposalPage({ params }: PageProps) {
           {/* Sayfa 2 */}
           <div className="module-card">
             <div>
-              <div className="mb-2">
+              <div className="mb-1.5">
                 <span className="module-route-tag">/quotes</span>
-                <h3 className="text-[14.5px] font-extrabold text-neutral-900">2. Teklifler Sayfası</h3>
+                <h3 className="text-[14px] font-extrabold text-neutral-900">2. Teklifler Sayfası</h3>
               </div>
-              <p className="text-[12.5px] text-neutral-600 mb-2.5 leading-relaxed">
-                Otel, uçak, transfer, gala, teknik ve rehberlik kalemlerinin dinamik kâr marjlarıyla bütçelendiği ve tekliflendirildiği ekrandır.
+              <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
+                Tüm MICE gider kalemlerinin kâr marjlarıyla bütçelendiği ve interaktif sunulduğu ekrandır.
               </p>
               <ul>
-                <li><strong>Çoklu Kalem & Hizmet Bütçeleme:</strong> Konaklama, salon kirası, transfer ve ekstra giderlerin tek teklifte toplanması.</li>
-                <li><strong>Çoklu Para Birimi (EUR/USD/GBP/TL):</strong> TCMB 15:30 kurlarıyla otomatik maliyet hesabı ve anlık kâr marjı simülasyonu.</li>
-                <li><strong>İnteraktif Müşteri Web Onay Portalı:</strong> Müşteriye özel link ile mobil uyumlu teklif sunumu ve online onay.</li>
-                <li><strong>Tek Tıkla Projeye Dönüşüm:</strong> Müşterinin onayladığı teklifin tek tıkla canlı operasyonel projeye evrilmesi.</li>
+                <li><strong>Çoklu Hizmet Bütçeleme:</strong> Konaklama, transfer, gala ve teknik kalemlerin tek ekranda toplanması.</li>
+                <li><strong>TCMB Kur & Simülasyon:</strong> EUR/USD/TL kurlarıyla anlık maliyet ve kâr marjı hesabı.</li>
+                <li><strong>İnteraktif Web Portalı:</strong> Müşteriye özel link ile online interaktif teklif ve onay.</li>
               </ul>
             </div>
           </div>
@@ -404,21 +470,19 @@ export default async function ProposalPage({ params }: PageProps) {
           {/* Sayfa 3 */}
           <div className="module-card" style={{ gridColumn: "span 2" }}>
             <div>
-              <div className="mb-2">
+              <div className="mb-1.5">
                 <span className="module-route-tag">/projects</span>
-                <h3 className="text-[14.5px] font-extrabold text-neutral-900">3. Projeler Sayfası (Operasyon & Finans Kartı + Sejour Modülü)</h3>
+                <h3 className="text-[14px] font-extrabold text-neutral-900">3. Projeler Sayfası (Operasyon & Finans Kartı + Sejour Modülü)</h3>
               </div>
-              <p className="text-[12.5px] text-neutral-600 mb-2.5 leading-relaxed">
-                Onaylanıp sözleşmeye bağlanan etkinliklerin operasyonel ana kumanda merkezi, canlı finans tablosu ve Sejour veri köprüsüdür.
+              <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
+                Onaylanan etkinliklerin canlı finans tablosu, operasyonel kumanda merkezi ve Sejour veri köprüsüdür.
               </p>
               <ul>
-                <li><strong>Canlı Proje P&L (Kâr/Zarar) Tablosu:</strong> Bütçelenen maliyet ile gerçekleşen fatura/gider sapmalarının kalem kalem anlık takibi.</li>
-                <li><strong>Servis Bedeli & Komisyon Modülü:</strong> Acentenin hizmet bedellerinin (Service Fee) şeffaf hesaplanması ve faturalandırılması.</li>
-                <li><strong>Check-in Günü Kur Kilitleme:</strong> Misafirin giriş günündeki kurun projeye kilitlenerek acentenin kur farkı zararına karşı tam korunması.</li>
-                <li><strong>Etkinlik Süreç Akışı:</strong> Hazırlık, Devam Eden ve Tamamlanan aşamalarıyla projenin 360 derece izlenmesi.</li>
+                <li><strong>Canlı Proje P&L:</strong> Bütçe ve gerçekleşen harcamaların anlık kâr/zarar takibi.</li>
+                <li><strong>Kur Kilitleme & Servis Bedeli:</strong> Check-in günü kur sabitleme ve acente hizmet bedeli hesaplama.</li>
               </ul>
               <div className="submodule-highlight">
-                <strong>Sejour Modülü:</strong> Sejour'daki rezervasyon ve konaklama verilerini tek tıkla projeye aktarır; proforma tutarları ve voucher bilgileriyle bütçe kalemlerini otomatik eşler. Manuel mükerrer veri girişine son verir.
+                <strong>Sejour Modülü:</strong> Sejour'daki rezervasyon ve voucher verilerini tek tıkla projeye aktararak mükerrer veri girişini sonlandırır.
               </div>
             </div>
           </div>
@@ -426,17 +490,16 @@ export default async function ProposalPage({ params }: PageProps) {
           {/* Sayfa 4 */}
           <div className="module-card">
             <div>
-              <div className="mb-2">
+              <div className="mb-1.5">
                 <span className="module-route-tag">/operations</span>
-                <h3 className="text-[14.5px] font-extrabold text-neutral-900">4. Operasyonlar & Transfer Sayfası (Lojistik & Filo)</h3>
+                <h3 className="text-[14px] font-extrabold text-neutral-900">4. Operasyonlar & Transfer Sayfası</h3>
               </div>
-              <p className="text-[12.5px] text-neutral-600 mb-2.5 leading-relaxed">
-                Havalimanı karşılama, transfer operasyonu, araç planlama ve tedarikçi bazlı mutabakat ekranıdır.
+              <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
+                Havalimanı karşılama, transfer operasyonu ve araç filo lojistiğinin yönetim merkezidir.
               </p>
               <ul>
-                <li><strong>Tedarikçi Bazında Transfer Listeleri:</strong> Araç tedarikçisi bazında ayrı listeler, özetler ve operasyon mutabakatı.</li>
-                <li><strong>Araç & Pax Kapasite Dağıtımı:</strong> Yolcu gruplarının araç tiplerine (Vito, Sprinter, Midibüs) ve transfer güzergahlarına göre dağıtımı.</li>
-                <li><strong>Transfer Operasyon Mutabakatı:</strong> Gerçekleşen transfer maliyetleri ile tedarikçi mutabakatının tek panelden kontrolü.</li>
+                <li><strong>Tedarikçi Gruplama:</strong> Araç firması bazında ayrı listeler, özetler ve operasyon mutabakatı.</li>
+                <li><strong>Araç & Pax Dağıtımı:</strong> Yolcuların araç tiplerine ve güzergahlara göre otonom eşlenmesi.</li>
               </ul>
             </div>
           </div>
@@ -444,17 +507,16 @@ export default async function ProposalPage({ params }: PageProps) {
           {/* Sayfa 5 */}
           <div className="module-card">
             <div>
-              <div className="mb-2">
+              <div className="mb-1.5">
                 <span className="module-route-tag">/hotels</span>
-                <h3 className="text-[14.5px] font-extrabold text-neutral-900">5. Oteller & Rooming Sayfası (Konaklama & Liste Motoru)</h3>
+                <h3 className="text-[14px] font-extrabold text-neutral-900">5. Oteller & Rooming Sayfası</h3>
               </div>
-              <p className="text-[12.5px] text-neutral-600 mb-2.5 leading-relaxed">
-                Otel kontrat fiyatları, oda blokajları ve karmaşık misafir listelerinin otonom eşlendiği modüldür.
+              <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
+                Otel blokajları ve karmaşık misafir konaklama listelerinin otonom eşlendiği modüldür.
               </p>
               <ul>
-                <li><strong>Akıllı Excel Rooming Eşleme:</strong> Kurumsal firmadan gelen dağınık Excel listesinin sürükle-bırak yöntemiyle sisteme alınması.</li>
-                <li><strong>Otomatik Oda & Arkadaş Eşleme:</strong> SGL, DBL, TWN, Suite oda tiplerine ve oda arkadaşlarına hatasız dağıtım (250 pax 45 sn).</li>
-                <li><strong>Otel Formatında Çıktı:</strong> Otelin birebir kabul ettiği şablonda tek tıkla hatasız Excel ve PDF çıktısı üretilmesi.</li>
+                <li><strong>Akıllı Excel Rooming Eşleme:</strong> Dağınık kurumsal Excel listelerini sürükle-bırak ile sisteme alma.</li>
+                <li><strong>Oda Tipi Dağıtımı & Çıktı:</strong> SGL/DBL/TWN eşlemesi ve tek tıkla otele hazır şablon çıktısı.</li>
               </ul>
             </div>
           </div>
@@ -462,17 +524,16 @@ export default async function ProposalPage({ params }: PageProps) {
           {/* Sayfa 6 */}
           <div className="module-card">
             <div>
-              <div className="mb-2">
+              <div className="mb-1.5">
                 <span className="module-route-tag">/accounting & /suppliers</span>
-                <h3 className="text-[14.5px] font-extrabold text-neutral-900">6. Muhasebe & Tedarikçi Carileri Sayfası</h3>
+                <h3 className="text-[14px] font-extrabold text-neutral-900">6. Muhasebe & Tedarikçi Carileri Sayfası</h3>
               </div>
-              <p className="text-[12.5px] text-neutral-600 mb-2.5 leading-relaxed">
-                Otel, araç, rehber ve ajans cari hesaplarının, fatura mutabakatlarının ve kur farkı denetimlerinin yönetimidir.
+              <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
+                Tedarikçi carileri, dövizli mutabakatlar ve kur farkı denetiminin yapıldığı finans ekranıdır.
               </p>
               <ul>
-                <li><strong>TCMB 15:30 Kur Riski Kalkanı:</strong> Her gün 15:30'da TCMB gösterge kurlarının çekilmesi ve döviz cari mutabakatı.</li>
-                <li><strong>Tedarikçi Fatura & Cari Mutabakatı:</strong> Gerçekleşen ödeme kuru ile fatura kuru arasındaki farkın kuruşu kuruşuna denetimi.</li>
-                <li><strong>ERP & Muhasebe Köprüsü (Logo/Netsis/Dia vb.):</strong> Kurumsal muhasebe programlarıyla çift yönlü cari ve fatura entegrasyonu (Opsiyonel).</li>
+                <li><strong>TCMB 15:30 Kur Kalkanı:</strong> Günlük gösterge kurlarıyla döviz cari ve fatura mutabakatı.</li>
+                <li><strong>ERP Köprüsü (Logo/Netsis/Dia):</strong> Kurumsal muhasebe programlarıyla opsiyonel entegrasyon.</li>
               </ul>
             </div>
           </div>
@@ -480,17 +541,16 @@ export default async function ProposalPage({ params }: PageProps) {
           {/* Sayfa 7 */}
           <div className="module-card">
             <div>
-              <div className="mb-2">
+              <div className="mb-1.5">
                 <span className="module-route-tag">/dashboard & /reports</span>
-                <h3 className="text-[14.5px] font-extrabold text-neutral-900">7. Yönetim Paneli & Raporlar Sayfası (Executive BI)</h3>
+                <h3 className="text-[14px] font-extrabold text-neutral-900">7. Yönetim Paneli & Raporlar Sayfası</h3>
               </div>
-              <p className="text-[12.5px] text-neutral-600 mb-2.5 leading-relaxed">
-                Acente yöneticilerinin şirket cirosunu, kârlılıklarını ve operasyonel verimliliği tek bakışta gördüğü analiz ekranıdır.
+              <p className="text-[12px] text-neutral-600 mb-2 leading-relaxed">
+                Acente yöneticileri için şirket cirosu, operasyon kârlılığı ve genel performans özetidir.
               </p>
               <ul>
-                <li><strong>Etkinlik Karlılık Analizi:</strong> Tamamlanan projelerin net kâr oranları, bütçe aşım grafikleri ve müşteri kârlılığı.</li>
-                <li><strong>Tedarikçi Performansı:</strong> Hangi otel ve transfer firmasıyla ne kadar hacim yapıldığı ve maliyet analizleri.</li>
-                <li><strong>Tek Tıkla Yönetim Raporu:</strong> Yönetim kurulu ve şirket ortakları için anlık PDF ve Excel özet raporları.</li>
+                <li><strong>Kârlılık Analizi:</strong> Tamamlanan projelerin net kâr marjları ve bütçe gerçekleşme oranları.</li>
+                <li><strong>Yönetici Çıktıları:</strong> Tek tıkla yönetim kuruluna sunulabilir anlık PDF ve Excel raporları.</li>
               </ul>
             </div>
           </div>
@@ -648,6 +708,26 @@ export default async function ProposalPage({ params }: PageProps) {
           <strong>AES-256 Şifreleme:</strong> Tüm operasyonel ve finansal veriler izole PostgreSQL veritabanında şifrelenir. Başka kurumlarla paylaşılamaz.<br />
           <strong>Otomatik Coğrafi Yedekleme:</strong> Veriler her 24 saatte bir farklı bir coğrafi veri merkezine yedeklenir.
         </p>
+
+        {/* 7. Sektörel Referanslarımız */}
+        <h2 className="proposal-h2">7. Sektörel Referanslarımız</h2>
+        <p className="text-[13px] text-neutral-600 mb-3">
+          Türkiye ve KKTC turizm & MICE sektörünün öncü acenteleri operasyon ve finans süreçlerinde teknolojimize güveniyor:
+        </p>
+        <div className="references-grid">
+          {references.map((ref) => (
+            <a
+              key={ref.name}
+              href={ref.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="reference-card"
+            >
+              <div className="reference-name">{ref.name}</div>
+              <div className="reference-url">{ref.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</div>
+            </a>
+          ))}
+        </div>
 
         {/* İmza Blokları */}
         <div className="sign-box">
