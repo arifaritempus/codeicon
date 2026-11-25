@@ -3,10 +3,10 @@
     "hero": true,
     "process": true,
     "features": true,
-    "integrations": true,
-    "pricing": true,
+    "integrations": false,
+    "pricing": false,
     "caseStudies": false,
-    "faq": true,
+    "faq": false,
     "contact": true
   },
   "assets": {

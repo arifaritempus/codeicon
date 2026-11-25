@@ -107,10 +107,10 @@ export default async function Home() {
     hero: true,
     process: true,
     features: true,
-    integrations: true,
-    pricing: true,
-    caseStudies: true,
-    faq: true,
+    integrations: false,
+    pricing: false,
+    caseStudies: false,
+    faq: false,
     contact: true,
   };
 

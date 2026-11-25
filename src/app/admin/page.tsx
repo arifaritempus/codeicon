@@ -866,14 +866,41 @@ export default function AdminPage() {
   }
 
 
-  const toggleVisibility = (key: string) => {
-    setContent({
+  const toggleVisibility = async (key: string) => {
+    if (!content) return;
+    const newVisibility = {
+      ...content.visibility,
+      [key]: !content.visibility?.[key],
+    };
+    const updated = {
       ...content,
-      visibility: {
-        ...content.visibility,
-        [key]: !content.visibility[key],
-      },
-    });
+      visibility: newVisibility,
+    };
+    setContent(updated);
+
+    // Auto-save immediately to Supabase / server so changes are never lost
+    try {
+      setSaving(true);
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      });
+      if (res.ok) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 2500);
+      } else {
+        const errData = await res.json().catch(() => ({}));
+        setSaveError(errData.error || "Görünürlük kaydedilemedi!");
+        setTimeout(() => setSaveError(null), 5000);
+      }
+    } catch (e) {
+      console.error("Auto-save visibility error:", e);
+      setSaveError("Bağlantı hatası: Görünürlük kaydedilemedi.");
+      setTimeout(() => setSaveError(null), 5000);
+    } finally {
+      setSaving(false);
+    }
   };
 
   const copyToClipboard = (url: string) => {
@@ -3067,11 +3094,24 @@ export default function AdminPage() {
             {/* TAB: SECTION VISIBILITY */}
             {activeTab === "visibility" && (
               <div className="space-y-6">
-                <div>
-                  <h2 className="text-xl font-bold text-[#1A1A1A]">Bölüm Görünürlüğü</h2>
-                  <p className="text-xs text-[#605F5F] mt-1">
-                    İstemediğin bölümleri tek tıkla kapatabilirsin. Kapatılan bölümler ana sayfadan tamamen kaldırılır.
-                  </p>
+                <div className="flex items-center justify-between pb-3 border-b border-[#EAE6E1]">
+                  <div>
+                    <h2 className="text-xl font-bold text-[#1A1A1A]">Bölüm Görünürlüğü (Aç/Kapa)</h2>
+                    <p className="text-xs text-[#605F5F] mt-1">
+                      İstemediğin bölümleri tek tıkla kapatabilirsin. Anahtara bastığınız anda değişiklik <strong>otomatik olarak anında kaydedilir</strong> ve canlı siteden gizlenir.
+                    </p>
+                  </div>
+                  {saving && (
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold animate-pulse">
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      <span>Kaydediliyor...</span>
+                    </div>
+                  )}
+                  {saveSuccess && (
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
+                      <span>✓ Canlıya Kaydedildi</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
