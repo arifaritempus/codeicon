@@ -354,7 +354,7 @@ export default async function ProposalPage({ params }: PageProps) {
           İşbu teklif; <strong>{proposal.clientCompany}</strong> bünyesinde yürütülen MICE (Toplantı, Kongre, Teşvik Gezisi ve Lansman) operasyonlarının, transfer ve filo lojistiğinin, otel rooming listesi eşlemelerinin ve döviz kurlu finansal mutabakatlarının tek bir bulut işletim sistemi üzerinden otonomlaştırılması amacıyla hazırlanmıştır.
         </p>
         <p className="text-[14px] text-neutral-700 mb-3">
-          <strong>MICE Agency OS</strong>; acentelerin teklif tarihi ile giriş günü arasındaki döviz kur dalgalanmalarından doğan kur farkı zararını sıfırlayan <strong>TCMB 15:30 kur sabitleme motoru</strong>, karmaşık Excel listelerini tek tıkla otel formatına dönüştüren <strong>akıllı rooming motoru</strong>, transfer listelerini tedarikçiler bazında filtreleyip özet çıkaran, mutabakat sağlayan yapısı ve Projeler ekranına tam entegre <strong>Sejour modülü</strong> ile operasyonel hata payını en aza indirmeyi taahhüt eder.
+          <strong>MICE Agency OS</strong>; acentelerin teklif tarihi ile giriş günü arasındaki döviz kur dalgalanmalarından doğan kur farkı zararını sıfırlayan <strong>TCMB 15:30 kur sabitleme motoru</strong>, karmaşık Excel listelerini tek tıkla otel formatına dönüştüren <strong>akıllı rooming motoru</strong>, transfer listelerini tedarikçiler bazında filtreleyip özet çıkaran, mutabakat sağlayan yapısı ve Projeler ekranındaki <strong>Sejour modülü</strong> ile operasyonel hata payını en aza indirmeyi taahhüt eder.
         </p>
 
         {/* 3. Proje Kapsamı ve Sayfa Bazlı Modüler Mimari */}
@@ -418,7 +418,7 @@ export default async function ProposalPage({ params }: PageProps) {
                 <li><strong>Etkinlik Süreç Akışı:</strong> Hazırlık, Devam Eden ve Tamamlanan aşamalarıyla projenin 360 derece izlenmesi.</li>
               </ul>
               <div className="submodule-highlight">
-                <strong>Entegre Sejour Modülü:</strong> Sejour'daki rezervasyon ve konaklama verilerini tek tıkla projeye aktarır; proforma tutarları ve voucher bilgileriyle bütçe kalemlerini otomatik eşler. Manuel mükerrer veri girişine son verir.
+                <strong>Sejour Modülü:</strong> Sejour'daki rezervasyon ve konaklama verilerini tek tıkla projeye aktarır; proforma tutarları ve voucher bilgileriyle bütçe kalemlerini otomatik eşler. Manuel mükerrer veri girişine son verir.
               </div>
             </div>
           </div>
@@ -572,7 +572,7 @@ export default async function ProposalPage({ params }: PageProps) {
                 <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
               <tr>
-                <td><strong>Projeler & Entegre Sejour Modülü (/projects)</strong></td>
+                <td><strong>Projeler & Sejour Modülü (/projects)</strong></td>
                 <td style={{ textAlign: "center" }}>Dahil</td>
                 <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
