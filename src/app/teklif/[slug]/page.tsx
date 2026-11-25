@@ -550,7 +550,12 @@ export default async function ProposalPage({ params }: PageProps) {
                 <td className="highlight-col" style={{ textAlign: "center", color: "#FF4D2D" }}><strong>Sınırsız Kullanıcı</strong></td>
               </tr>
               <tr>
-                <td><strong>Talepler & Teklifler Modülü (/requests, /quotes)</strong></td>
+                <td><strong>Talepler Modülü (/requests)</strong></td>
+                <td style={{ textAlign: "center" }}>Dahil</td>
+                <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
+              </tr>
+              <tr>
+                <td><strong>Teklifler Modülü (/quotes)</strong></td>
                 <td style={{ textAlign: "center" }}>Dahil</td>
                 <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
@@ -560,24 +565,24 @@ export default async function ProposalPage({ params }: PageProps) {
                 <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
               <tr>
-                <td><strong>Servis Bedeli & Canlı P&L Yönetimi</strong></td>
+                <td><strong>Operasyonlar & Transfer Modülü (/operations)</strong></td>
                 <td style={{ textAlign: "center" }}>Dahil</td>
                 <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
               <tr>
-                <td><strong>Excel Rooming Listesi Akıllı Eşleme Motoru</strong></td>
+                <td><strong>Oteller & Rooming Modülü (/hotels)</strong></td>
                 <td style={{ textAlign: "center" }}>Dahil</td>
                 <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
               <tr>
-                <td><strong>TCMB 15:30 Kur Sabitleme Motoru</strong></td>
-                <td style={{ textAlign: "center" }}><strong>Dahil</strong></td>
-                <td className="highlight-col" style={{ textAlign: "center" }}><strong>Dahil</strong></td>
+                <td><strong>Muhasebe & Tedarikçiler Modülü (/accounting & /suppliers)</strong></td>
+                <td style={{ textAlign: "center" }}>Dahil</td>
+                <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
               <tr>
-                <td><strong>Tedarikçi Bazlı Transfer Listeleri & Mutabakat</strong></td>
-                <td style={{ textAlign: "center" }}><strong>Dahil</strong></td>
-                <td className="highlight-col" style={{ textAlign: "center" }}><strong>Dahil</strong></td>
+                <td><strong>Yönetim Paneli & Raporlar Modülü (/dashboard & /reports)</strong></td>
+                <td style={{ textAlign: "center" }}>Dahil</td>
+                <td className="highlight-col" style={{ textAlign: "center" }}>Dahil</td>
               </tr>
               <tr>
                 <td><strong>ERP & Muhasebe Köprüsü (Logo/Netsis/Dia vb.)</strong></td>
