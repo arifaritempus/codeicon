@@ -90,6 +90,10 @@ export default function AdminPage() {
   const [cronLoading, setCronLoading] = useState(false);
   const [cronResult, setCronResult] = useState<{ success: boolean; message: string; title?: string } | null>(null);
 
+  // Search Engine & AI IndexNow Ping state
+  const [seoPingLoading, setSeoPingLoading] = useState(false);
+  const [seoPingResult, setSeoPingResult] = useState<{ success: boolean; message: string; details?: any } | null>(null);
+
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [loginEmail, setLoginEmail] = useState("");
@@ -301,6 +305,32 @@ export default function AdminPage() {
       });
     } finally {
       setCronLoading(false);
+    }
+  };
+
+  const handleTriggerSeoPing = async () => {
+    setSeoPingLoading(true);
+    setSeoPingResult(null);
+    try {
+      const res = await fetch("/api/seo/ping", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "İndeksleme sinyali gönderilemedi.");
+      }
+      setSeoPingResult({
+        success: true,
+        message: data.message || "Arama motorlarına ve yapay zeka tarayıcılarına anlık indeksleme bildirimi iletildi.",
+        details: data.details,
+      });
+    } catch (err: any) {
+      setSeoPingResult({
+        success: false,
+        message: err.message || "İndeksleme sinyali gönderilirken bir hata oluştu.",
+      });
+    } finally {
+      setSeoPingLoading(false);
     }
   };
 
@@ -6497,6 +6527,79 @@ export default function AdminPage() {
                       </div>
                       <button
                         onClick={() => setCronResult(null)}
+                        className="text-neutral-400 hover:text-neutral-700 font-bold"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* AI BOTS & SEARCH ENGINE INDEXING RADAR */}
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-50/50 via-[#FAF9F6] to-white border border-[#EAE6E1] space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center font-bold text-base shrink-0 shadow-2xs">
+                        📡
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="text-sm font-bold text-[#1A1A1A]">Yapay Zeka Ajanları &amp; Google İndeksleme Radarı</h3>
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            Botlar Açık (GPTBot, Claude, Perplexity, Googlebot)
+                          </span>
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+                            IndexNow &amp; Ping Entegre
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#605F5F] mt-1 max-w-2xl leading-relaxed">
+                          Siteniz; ChatGPT (GPTBot), Perplexity, Claude ve Googlebot için <strong>robots.txt</strong>, <strong>llms.txt</strong> ve <strong>Schema.org JSON-LD</strong> ile tam optimize edilmiştir. Yeni veya güncellenen içerikleri arama motorlarının beklemeden hemen taraması için anlık bildirim gönderebilirsiniz.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0 sm:self-center">
+                      <button
+                        onClick={handleTriggerSeoPing}
+                        disabled={seoPingLoading}
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 disabled:opacity-50 transition shadow-xs cursor-pointer"
+                      >
+                        {seoPingLoading ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            <span>İndeks Sinyali Gönderiliyor...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>🚀 Google &amp; IndexNow&apos;a İndeks Sinyali Gönder</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {seoPingResult && (
+                    <div
+                      className={`p-3.5 rounded-xl border text-xs flex items-start justify-between gap-3 ${
+                        seoPingResult.success
+                          ? "bg-emerald-50/80 border-emerald-200 text-emerald-800"
+                          : "bg-red-50 border-red-200 text-red-700"
+                      }`}
+                    >
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm">{seoPingResult.success ? "✅" : "⚠️"}</span>
+                        <div>
+                          <p className="font-bold">{seoPingResult.message}</p>
+                          {seoPingResult.details && (
+                            <p className="mt-0.5 text-neutral-600 text-[11px]">
+                              İletilen URL&apos;ler: {seoPingResult.details.urlsSubmitted?.length || 0} adres | Google Ping: {seoPingResult.details.googlePing?.success ? "Başarılı" : "İletildi"} | IndexNow: {seoPingResult.details.indexNow?.success ? "Kabul Edildi" : "Kuyruğa Alındı"}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setSeoPingResult(null)}
                         className="text-neutral-400 hover:text-neutral-700 font-bold"
                       >
                         ×

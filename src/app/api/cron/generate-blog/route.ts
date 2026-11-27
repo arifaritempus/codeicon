@@ -119,6 +119,30 @@ async function handleGenerateDailyBlog(request: Request) {
       console.warn("Revalidation notice:", revErr);
     }
 
+    // 8. Ping Search Engines & IndexNow immediately
+    try {
+      const host = "www.codeicon.co";
+      const key = "f1a8c909e6c24be8b2e35a0928a6f443";
+      fetch("https://api.indexnow.org/indexnow", {
+        method: "POST",
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        body: JSON.stringify({
+          host,
+          key,
+          keyLocation: `https://${host}/${key}.txt`,
+          urlList: [
+            `https://${host}/`,
+            `https://${host}/blog`,
+            `https://${host}/blog/${post.slug}`,
+            `https://${host}/sitemap.xml`,
+          ],
+        }),
+      }).catch(() => {});
+      fetch(`https://www.google.com/ping?sitemap=https://${host}/sitemap.xml`).catch(() => {});
+    } catch (pingErr) {
+      console.warn("Search engine notification warning:", pingErr);
+    }
+
     return NextResponse.json({
       success: true,
       message: "Günlük MICE blog makalesi başarıyla oluşturuldu ve yayına alındı.",
